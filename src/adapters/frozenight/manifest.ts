@@ -53,8 +53,8 @@ export const FROZENIGHT_MANIFEST: EngineAssetManifest = {
     {
       file: "RUST-COPYRIGHT.html",
       sha256:
-        "025c0dd1236493fcd5b6386b68453852e6528722bd5f8dce5949e94d225e7a60",
-      bytes: 360726,
+        "d6649b1cee02b1b20b340118c8d94822ed1a1078fb124e8de7262f355b50235c",
+      bytes: 359228,
     },
     {
       file: "engine-manifest.json",

@@ -28,7 +28,7 @@ npm --prefix examples/minimal run preview
 Copy this folder, then install the package from the registry:
 
 ```sh
-npm install --save-exact @upapawn/chess-engine-runtime@next
+npm install --save-exact chess-engine-kit@next
 npm run dev
 ```
 

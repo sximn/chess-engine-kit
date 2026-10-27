@@ -4,7 +4,7 @@ import {
   type ChessEngine,
   type EngineEvent,
   type AnalyzeRequest,
-} from "@upapawn/chess-engine-runtime";
+} from "chess-engine-kit";
 const ROOT = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 const base = new URL("./engines/frozenight/", document.baseURI);
 const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({

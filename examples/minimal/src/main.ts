@@ -4,7 +4,7 @@ import {
   createFrozenight,
   type AnalysisResult,
   type Score,
-} from "@upapawn/chess-engine-runtime";
+} from "chess-engine-kit";
 
 // Vite's relative base and document.baseURI also work under a deployment subpath.
 const engine = createFrozenight({

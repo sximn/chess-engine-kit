@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@upapawn/chess-engine-runtime",
+      "name": "chess-engine-kit",
       "dependencies": {
         "chess.js": "1.4.0",
       },

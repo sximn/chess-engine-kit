@@ -6,12 +6,12 @@ Publication is always a separate, explicit command.
 
 ## Prepare
 
-Replace `REPLACE_ME` in package.json's repository, homepage and bugs URLs when the
-repository is chosen. Dry runs allow placeholders; actual publication refuses
-them. Confirm the package name/scope is yours. Configure an npm registry access
-token for Bun through `NPM_CONFIG_TOKEN` or an existing `.npmrc`/`bunfig.toml`
-registry configuration, with publishing access and any required 2FA. Scope
-ownership/registry availability are not checked locally.
+Verify package.json's repository, homepage and bugs URLs for
+`sximn/chess-engine-kit`. Confirm you can publish the `chess-engine-kit` package
+name. Configure an npm registry access token for Bun through `NPM_CONFIG_TOKEN`
+or an existing `.npmrc`/`bunfig.toml` registry configuration, with publishing
+access and any required 2FA. Ownership of the package name and registry
+availability are not checked locally.
 
 For a later release, choose a version bump (no automatic commit or Git tag):
 
@@ -64,7 +64,7 @@ bun run release:publish --tag latest
 
 For manual tagging or registry inspection, use the current name/version from
 package.json. Publishing requires account authentication; a successful dry run
-does not prove access to the scope. See Bun's
+does not prove publishing access to the package name. See Bun's
 [publishing guide](https://bun.com/docs/pm/cli/publish) for authentication and
 [package utilities](https://bun.com/docs/pm/cli/pm) for packing and versioning.
 CI only prepares and dry-runs; it never publishes.
@@ -72,7 +72,7 @@ CI only prepares and dry-runs; it never publishes.
 ## Consume the release
 
 ```sh
-bun add --exact @upapawn/chess-engine-runtime@next
+bun add --exact chess-engine-kit@next
 ```
 
 Follow the [README](../README.md) for asset copying and analysis, or copy the

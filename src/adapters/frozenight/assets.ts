@@ -43,7 +43,7 @@ export async function loadFrozenightAssets(
   let cache: Cache | undefined;
   if (useCache)
     try {
-      cache = await caches.open("chess-engine-runtime-assets-v1");
+      cache = await caches.open("chess-engine-kit-assets-v1");
     } catch {
       /* Installed assets still work without CacheStorage. */
     }

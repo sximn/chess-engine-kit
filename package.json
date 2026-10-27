@@ -1,14 +1,14 @@
 {
-  "name": "@upapawn/chess-engine-runtime",
+  "name": "chess-engine-kit",
   "version": "0.0.1",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/REPLACE_ME/chess-engine-runtime.git"
+    "url": "git+https://github.com/sximn/chess-engine-kit.git"
   },
-  "homepage": "https://github.com/REPLACE_ME/chess-engine-runtime#readme",
+  "homepage": "https://github.com/sximn/chess-engine-kit#readme",
   "bugs": {
-    "url": "https://github.com/REPLACE_ME/chess-engine-runtime/issues"
+    "url": "https://github.com/sximn/chess-engine-kit/issues"
   },
   "type": "module",
   "license": "MIT",
@@ -42,7 +42,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "bun scripts/build-package.ts",
-    "check": "tsc --noEmit && tsc -p tsconfig.scripts.json",
+    "check": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.scripts.json",
     "test": "bun scripts/test.ts",
     "test:browser": "playwright test",
     "test:package": "bun scripts/verification/verify-package.ts",

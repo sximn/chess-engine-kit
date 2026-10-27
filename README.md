@@ -1,4 +1,4 @@
-# Chess engine runtime
+# Chess engine kit
 
 Run chess analysis in a browser worker with a prebuilt Frozenight WebAssembly
 engine. TypeScript API, move history, up to three candidate lines, progress and
@@ -25,7 +25,7 @@ shows scores, candidate lines, progress, terminal positions and errors.
 Once published, install the experimental release:
 
 ```sh
-bun add --exact @upapawn/chess-engine-runtime@next
+bun add --exact chess-engine-kit@next
 ```
 
 Copy its assets before development and production builds. In a Vite app:
@@ -49,7 +49,7 @@ CLI also support Node-based build tooling.
 Run this in the browser, such as a component's mount hook:
 
 ```ts
-import { API_VERSION, createFrozenight } from "@upapawn/chess-engine-runtime";
+import { API_VERSION, createFrozenight } from "chess-engine-kit";
 
 const engine = createFrozenight({
   assetBaseUrl: new URL("./engines/frozenight/", document.baseURI),
