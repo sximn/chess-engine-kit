@@ -31,7 +31,7 @@ bun run release:prepare
 bun run release:dry-run
 ```
 
-Preparation type-checks, runs unit/engine tests, builds the package, and uses
+Preparation runs `bun run check`, unit/engine tests, builds the package, and uses
 `bun pm pack` to create a tarball. It installs the artifact in the browser test
 app with Bun and the minimal example with npm, builds them, and runs the browser
 suite. A separate lightweight patch-bump rehearsal checks the rebuilt SDK,

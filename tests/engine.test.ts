@@ -104,10 +104,12 @@ test("500 static evaluations and 200 deterministic searches match the portable n
     : {
         status: 0,
         stderr: "",
-        stdout: JSON.parse(
-          fs.readFileSync("tests/fixtures/native-golden.json", "utf8"),
+        stdout: (
+          JSON.parse(
+            fs.readFileSync("tests/fixtures/native-golden.json", "utf8"),
+          ).results as unknown[]
         )
-          .results.map((r: unknown) => JSON.stringify(r))
+          .map((r) => JSON.stringify(r))
           .join("\n"),
       };
   assert.equal(native.status, 0, native.stderr);
@@ -225,7 +227,7 @@ test("limits retain only completed iterations and malformed input fails predicta
     limits: { maxNodes: 1000, maxTimeMs: 100 },
   });
   assert.ok(["nodes", "time"].includes(r.reason!));
-  assert.ok(r.nodes <= 1001);
+  assert.ok(typeof r.nodes === "number" && r.nodes <= 1001);
   legal(r, { rootFen: root, movesUci: [] }, 3);
   assert.equal(run("not a FEN").error, "INVALID_POSITION");
   assert.equal(run(root, ["e2e5"]).error, "INVALID_POSITION");

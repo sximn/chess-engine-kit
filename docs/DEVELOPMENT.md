@@ -6,17 +6,21 @@ WASM and need no Rust installation.
 Bun handles repository tasks, packing, publishing and version changes. The
 minimal example retains npm as the installation compatibility check.
 
-`bun run check` explicitly checks the SDK with `tsconfig.build.json --noEmit`
-and scripts with `tsconfig.scripts.json`. The broader root configuration is not
-used for this pre-build check: tests import the built SDK, and each application
-checks its source after installing the packed package. This keeps root checks
-independent of generated builds and application installs.
+`bun run check` invokes Bun's native `bun check` to validate the SDK, scripts,
+asset-copy CLI, unit tests, browser tests and Playwright configuration from source.
+Contract tests load the
+built SDK at runtime while using its source API for types, so checking works
+before `dist/` exists. Standalone applications check their own sources after
+installing the packed package: the browser test app uses `bun run check`, and the
+minimal npm example uses `tsc --noEmit`.
 
-Repository scripts are TypeScript executed by Bun. `check` type-checks both the
-SDK and scripts; unit/engine tests run with Bun's test runner. The asset-copy
-CLI source in `bin/copy-assets.ts` is bundled into `dist/bin/copy-assets.js`
-with a Node shebang, so npm applications can use it with Node. The browser SDK
-is still published as JavaScript with TypeScript declarations.
+Repository scripts are TypeScript executed by Bun; unit/engine tests run with
+Bun's test runner. `tsconfig.build.json` selects the browser SDK for declaration
+generation. The TypeScript compiler remains for emitting `dist/types/` because
+Bun's checker does not emit declarations. The asset-copy CLI source in
+`bin/copy-assets.ts` is bundled into `dist/bin/copy-assets.js` with a Node shebang
+for npm applications. The browser SDK is published as JavaScript with TypeScript
+declarations.
 
 ```sh
 bun install --frozen-lockfile
@@ -64,7 +68,7 @@ Deterministic fixtures, source/model manifests and license notices remain tracke
 
 ## CI browser setup
 
-The package job uses Ubuntu 24.04 and checks SDK and script types before browser
+The package job uses Ubuntu 24.04 and checks SDK, script and test types before browser
 setup. System dependency installation bypasses the Azure Ubuntu mirror in both the hosted runner's
 mirror list and direct APT source URLs. This addresses intermittent mirror stalls
 reported in [runner-images](https://github.com/actions/runner-images/issues/12949).

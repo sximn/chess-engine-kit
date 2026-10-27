@@ -17,8 +17,9 @@ bun run test:browser
 Package verification copies this app and the minimal example to `.build/apps/`,
 installs this app's pinned tooling from `bun.lock` with Bun and the minimal
 example with npm, installs the exact package tarball in both, then builds them.
-Source manifests and lockfiles stay unchanged. This app is excluded from the
-published npm package.
+This app's build runs `bun run check` (Bun's native checker) against the installed
+package before bundling. Source manifests and lockfiles stay unchanged. This app
+is excluded from the published npm package.
 
 To inspect the built harness manually after package verification:
 

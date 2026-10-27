@@ -1,11 +1,15 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Chess } from "chess.js";
-import {
+// Check against the source API without requiring dist during bun check.
+// At runtime these contract tests still exercise the built package.
+const {
   createWorkerEngine,
   createFrozenight,
   EngineError,
-} from "../dist/index.js";
+}: typeof import("../src/index.ts") = await import(
+  new URL("../dist/index.js", import.meta.url).href
+);
 import type {
   AnalyzeRequest,
   EngineEvent,

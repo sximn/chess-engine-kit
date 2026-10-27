@@ -10,5 +10,13 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "scripts/**/*.ts",
+    "bin/**/*.ts",
+    "tests/*.ts",
+    "tests/browser/**/*.ts",
+    "tests/integration/browser-app/offline.ts",
+    "playwright.config.ts"
+  ]
 }

@@ -222,7 +222,6 @@ export function releaseFingerprint() {
     "bun.lock",
     "tsconfig.json",
     "tsconfig.build.json",
-    "tsconfig.scripts.json",
     "playwright.config.ts",
     "README.md",
     "LICENSE",

@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 24
       - run: bun install --frozen-lockfile
-      - name: Type-check SDK and scripts
+      - name: Type-check SDK, scripts and tests
         run: bun run check
       - name: Prefer Ubuntu archive for system packages
         shell: bash

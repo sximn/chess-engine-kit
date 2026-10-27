@@ -26,7 +26,6 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       "bun.lock",
       "tsconfig.json",
       "tsconfig.build.json",
-      "tsconfig.scripts.json",
       "playwright.config.ts",
       "README.md",
       "LICENSE",

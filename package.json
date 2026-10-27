@@ -42,7 +42,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "bun scripts/build-package.ts",
-    "check": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.scripts.json",
+    "check": "bun check",
     "test": "bun scripts/test.ts",
     "test:browser": "playwright test",
     "test:package": "bun scripts/verification/verify-package.ts",
