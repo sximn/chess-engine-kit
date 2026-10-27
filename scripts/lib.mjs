@@ -53,25 +53,20 @@ export function packPackage() {
     sha256: sha256(fs.readFileSync(file)),
   };
 }
-export function installExample(name, tarball, { inPlace = false } = {}) {
-  if (!["consumer", "minimal"].includes(name)) throw Error("Unknown example");
-  const source = path.join(root, "examples", name);
-  const destination = inPlace
-    ? source
-    : path.join(root, ".build/consumers", name);
+export const applications = {
+  "browser-app": "tests/integration/browser-app",
+  minimal: "examples/minimal",
+};
+export function installApplication(name, tarball, { inPlace = false } = {}) {
+  if (!Object.hasOwn(applications, name)) throw Error("Unknown application");
+  const source = path.join(root, applications[name]);
+  const destination = inPlace ? source : path.join(root, ".build/apps", name);
   if (!inPlace) {
     fs.rmSync(destination, { recursive: true, force: true });
     fs.cpSync(source, destination, {
       recursive: true,
       filter: (file) =>
-        ![
-          "node_modules",
-          "dist",
-          "public",
-          "ios",
-          "android",
-          "capacitor",
-        ].includes(path.basename(file)),
+        !["node_modules", "dist", "public"].includes(path.basename(file)),
     });
   }
   run("npm", ["ci", "--ignore-scripts", "--no-audit", "--no-fund"], {
@@ -102,20 +97,12 @@ export function installExample(name, tarball, { inPlace = false } = {}) {
     ),
   );
   if (installed.version !== readPackage().version)
-    throw Error("Example installed the wrong package version");
+    throw Error("Application installed the wrong package version");
   return destination;
 }
 export function releaseFingerprint() {
   const hash = createHash("sha256");
-  const skip = new Set([
-    "node_modules",
-    "dist",
-    ".build",
-    "public",
-    "ios",
-    "android",
-    "capacitor",
-  ]);
+  const skip = new Set(["node_modules", "dist", ".build", "public"]);
   function walk(relative) {
     if (relative === path.join("src", "adapters", "frozenight", "manifest.ts"))
       return;

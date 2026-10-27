@@ -7,7 +7,7 @@ import {
   releaseFingerprint,
   sha256,
   reportPath,
-} from "./lib.mjs";
+} from "../lib.mjs";
 
 const receipt = path.join(root, ".build/release.json");
 fs.rmSync(receipt, { force: true });
@@ -15,10 +15,10 @@ const fingerprint = releaseFingerprint();
 run("npm", ["run", "check"]);
 run("npm", ["test"]);
 run("npm", ["run", "test:versioning"]);
-run("npm", ["run", "test:consumer"]);
+run("npm", ["run", "test:package"]);
 run("npm", ["run", "test:browser"]);
 const packed = JSON.parse(
-  fs.readFileSync(reportPath("consumer-build.json"), "utf8"),
+  fs.readFileSync(reportPath("package-build.json"), "utf8"),
 );
 const pkg = readPackage();
 if (fingerprint !== releaseFingerprint())

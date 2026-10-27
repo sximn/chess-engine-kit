@@ -5,7 +5,6 @@ import {
   type EngineEvent,
   type AnalyzeRequest,
 } from "@upapawn/chess-engine-runtime";
-import { Capacitor } from "@capacitor/core";
 const ROOT = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 const base = new URL("./engines/frozenight/", document.baseURI);
 const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
@@ -101,8 +100,7 @@ async function run() {
 }
 Object.assign(window, { runEngineSmoke: smoke });
 document.querySelector("#run")!.addEventListener("click", () => void run());
-if (Capacitor.isNativePlatform()) void run();
-else if ("serviceWorker" in navigator)
+if ("serviceWorker" in navigator)
   void navigator.serviceWorker
     .register(new URL("./service-worker.js", document.baseURI))
     .catch(() => {});

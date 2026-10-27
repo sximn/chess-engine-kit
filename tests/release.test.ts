@@ -38,11 +38,15 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       repository: "https://github.com/REPLACE_ME/runtime",
     };
     fs.writeFileSync(path.join(directory, "package.json"), JSON.stringify(pkg));
-    for (const name of ["lib.mjs", "publish.mjs"])
+    for (const name of ["lib.mjs", "release/publish.mjs"]) {
+      fs.mkdirSync(path.dirname(path.join(directory, "scripts", name)), {
+        recursive: true,
+      });
       fs.copyFileSync(
         path.join("scripts", name),
         path.join(directory, "scripts", name),
       );
+    }
     const { releaseFingerprint, sha256 } = await import(
       pathToFileURL(path.join(directory, "scripts/lib.mjs")).href
     );
@@ -70,7 +74,7 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
     const invoke = (args: string[]) =>
       spawnSync(
         process.execPath,
-        [path.join(directory, "scripts/publish.mjs"), ...args],
+        [path.join(directory, "scripts/release/publish.mjs"), ...args],
         {
           encoding: "utf8",
           env: {

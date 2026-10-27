@@ -1,7 +1,7 @@
 """Freeze 200 complete, non-mate-in-one rows from a supplied Lichess CC0 CSV prefix.
 Download example: curl --range 0-262143 https://database.lichess.org/lichess_db_puzzle.csv.zst -o /tmp/puzzles.zst
 zstd -dc /tmp/puzzles.zst > /tmp/puzzles.csv  # truncated-frame warning expected for a range prefix
-python3 scripts/import-puzzle-corpus.py /tmp/puzzles.csv
+python3 scripts/maintenance/fixtures/import-puzzle-corpus.py /tmp/puzzles.csv
 No filtering based on engine performance. First 100 development, next 100 held out.
 """
 import csv, hashlib, json, sys

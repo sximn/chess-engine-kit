@@ -1,6 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
-import { root, run, packPackage, installExample, reportPath } from "./lib.mjs";
+import {
+  root,
+  run,
+  packPackage,
+  applications,
+  installApplication,
+  reportPath,
+} from "../lib.mjs";
 
 run(process.execPath, ["scripts/build-package.mjs"]);
 const packed = packPackage();
@@ -37,8 +44,8 @@ for (const file of packed.files.filter((file) => file.endsWith(".md"))) {
       throw Error(`Broken packaged documentation link: ${file} -> ${target}`);
   }
 }
-for (const name of ["consumer", "minimal"]) {
-  const directory = installExample(name, packed.file);
+for (const name of Object.keys(applications)) {
+  const directory = installApplication(name, packed.file);
   run("npm", ["run", "build"], { cwd: directory });
   const manifest = JSON.parse(
     fs.readFileSync(
@@ -50,12 +57,12 @@ for (const name of ["consumer", "minimal"]) {
     throw Error("Deployed assets do not match the release version");
 }
 fs.writeFileSync(
-  reportPath("consumer-build.json"),
+  reportPath("package-build.json"),
   JSON.stringify(
     {
       ...packed,
       file: path.relative(root, packed.file),
-      examples: ["consumer", "minimal"],
+      applications: Object.keys(applications),
       installScripts: false,
     },
     null,

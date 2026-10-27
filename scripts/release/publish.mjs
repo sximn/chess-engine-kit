@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { root, run, readPackage, releaseFingerprint, sha256 } from "./lib.mjs";
+import { root, run, readPackage, releaseFingerprint, sha256 } from "../lib.mjs";
 
 const args = process.argv.slice(2);
 let dryRun = false,

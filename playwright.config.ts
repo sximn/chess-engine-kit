@@ -11,13 +11,13 @@ export default defineConfig({
   use: { baseURL: "http://localhost:4175/review/", trace: "retain-on-failure" },
   webServer: [
     {
-      command: "node scripts/serve-consumer.mjs",
+      command: "node scripts/verification/serve-test-app.mjs",
       url: "http://localhost:4175/review/",
       reuseExistingServer: false,
     },
     {
       command:
-        "node scripts/serve-consumer.mjs --example minimal --base /minimal/ --port 4177",
+        "node scripts/verification/serve-test-app.mjs --app minimal --base /minimal/ --port 4177",
       url: "http://localhost:4177/minimal/",
       reuseExistingServer: false,
     },

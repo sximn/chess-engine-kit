@@ -3,7 +3,7 @@ export function assetBaseUrl(value: string | URL): URL {
   if (typeof location === "undefined")
     throw new EngineError(
       "UNSUPPORTED_BROWSER",
-      "Initialize the engine in a browser or Capacitor WebView.",
+      "Initialize the engine in a browser.",
     );
   const raw = String(value);
   const base = new URL(raw.endsWith("/") ? raw : raw + "/", location.href);

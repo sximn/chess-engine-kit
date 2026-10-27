@@ -19,12 +19,12 @@ test("installed tarball runs real MultiPV and 100 cancellation/replacement cycle
   expect(result.baseUrl).toContain("/review/engines/frozenight/");
   expect(errors).toEqual([]);
   fs.writeFileSync(
-    reportPath(`consumer-${info.project.name}.json`),
+    reportPath(`browser-app-${info.project.name}.json`),
     JSON.stringify(result, null, 2),
   );
 });
 
-test("consumer-owned offline shell reloads and executes the installed package without origin traffic", async ({
+test("test app offline shell reloads and executes the installed package without origin traffic", async ({
   page,
   context,
 }, info) => {
@@ -33,7 +33,7 @@ test("consumer-owned offline shell reloads and executes the installed package wi
   if (info.project.name === "webkit") {
     origin = "http://localhost:4176";
     server = spawn(process.execPath, [
-      "scripts/serve-consumer.mjs",
+      "scripts/verification/serve-test-app.mjs",
       "--port",
       "4176",
     ]);

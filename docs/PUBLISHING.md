@@ -30,8 +30,11 @@ npm run release:dry-run
 ```
 
 Preparation type-checks, runs unit/engine tests, builds and packs the package,
-installs the exact tarball in both examples, builds them, and runs the browser
-suite. It also rehearses a patch version bump in an isolated checkout. It writes
+installs the exact tarball in the browser test app and minimal example, builds
+them, and runs the browser
+suite. A separate lightweight patch-bump rehearsal checks the rebuilt SDK and
+asset manifests and tarball identity in an isolated copy, without reinstalling
+or rebuilding the applications. Preparation writes
 `.build/release.json` with the filename, version and SHA-256 of
 the verified tarball. `.build/package.tgz` is a convenient local alias.
 
