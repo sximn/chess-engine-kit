@@ -10,12 +10,13 @@ its service worker and offline shell; the SDK does not register a service worker
 From the repository root:
 
 ```sh
-npm run test:package
-npm run test:browser
+bun run test:package
+bun run test:browser
 ```
 
 Package verification copies this app and the minimal example to `.build/apps/`,
-installs their pinned tooling and the exact package tarball, then builds them.
+installs this app's pinned tooling from `bun.lock` with Bun and the minimal
+example with npm, installs the exact package tarball in both, then builds them.
 Source manifests and lockfiles stay unchanged. This app is excluded from the
 published npm package.
 
@@ -26,6 +27,6 @@ bun scripts/verification/serve-test-app.ts
 ```
 
 Open `http://localhost:4175/review/` and click **Run engine checks**. The server
-serves `.build/apps/browser-app/dist/`; rerun `npm run test:package` after changing
+serves `.build/apps/browser-app/dist/`; rerun `bun run test:package` after changing
 the harness. Stop the manual server before running Playwright, which starts its
 own servers.

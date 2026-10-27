@@ -3,6 +3,9 @@
 Use Node >=22.12 and Bun 1.4.3. Ordinary SDK builds use the committed prebuilt
 WASM and need no Rust installation.
 
+Bun handles repository tasks, packing, publishing and version changes. The
+minimal example retains npm as the installation compatibility check.
+
 Repository scripts are TypeScript executed by Bun. `check` type-checks both the
 SDK and scripts; unit/engine tests run with Bun's test runner. The asset-copy
 CLI source in `bin/copy-assets.ts` is bundled into `dist/bin/copy-assets.js`
@@ -11,14 +14,14 @@ is still published as JavaScript with TypeScript declarations.
 
 ```sh
 bun install --frozen-lockfile
-npm run check
-npm test
-npm run test:package
+bun run check
+bun run test
+bun run test:package
 bunx playwright install chromium firefox webkit
-npm run test:browser
+bun run test:browser
 ```
 
-`npm test` builds the SDK and exercises client contracts, asset deployment,
+`bun run test` builds the SDK and exercises client contracts, asset deployment,
 independent move generation, frozen native/WASM parity, history, legal PVs and OOM
 recovery. The deterministic reference searches are deliberately shallow; passing
 parity checks does not measure engine strength. The tactical fixture test checks
@@ -27,9 +30,15 @@ legal reference solutions, not the engine's puzzle solve rate.
 `test:package` builds and packs the current version, checks package contents and
 documentation links, then installs it into isolated copies of the browser test
 app (`tests/integration/browser-app`) and the learning example (`examples/minimal`)
-at `.build/apps/`. Their committed npm lockfiles pin tooling; `npm ci` runs with
-install scripts disabled, followed by an unsaved installation of the exact tarball.
-The source applications and their lockfiles are never rewritten by verification.
+at `.build/apps/`. Bun installs the browser app from its committed `bun.lock`
+with `--frozen-lockfile`; npm installs the minimal example with `npm ci` and its
+`package-lock.json`. Both disable install scripts, then install the exact tarball
+without saving manifest or lockfile changes. Verification reads the packed
+archive to check its identity and file list. The source applications and their
+lockfiles are never rewritten by verification.
+
+Every installed package file must match the verified tarball's bytes. This checks
+that both package managers installed the artifact being released.
 
 Browser checks use those production builds at deployment subpaths in Chromium,
 Firefox and WebKit. They cover real analysis, cancellation/replacement, offline
@@ -53,7 +62,7 @@ Run commands from the repository root. Scripts are grouped by purpose:
 
 - `scripts/`: package builds, unit tests, example setup and shared helpers.
 - `scripts/verification/`: package installation, version checks and the browser
-  test server. `npm run test:package` checks the packed npm artifact.
+  test server. `bun run test:package` checks the packed npm artifact.
 - `scripts/release/`: release preparation and publication.
 - `scripts/maintenance/engine/`: Rust/WASM builds and engine verification.
 - `scripts/maintenance/fixtures/`: explicit test-data regeneration.
@@ -68,10 +77,10 @@ service worker. See that app's README for manual inspection commands.
 Install Rust 1.90.0 and target `wasm32-unknown-unknown`:
 
 ```sh
-npm run engine:build
-npm run engine:reference
-npm run engine:notices
-npm run test:native
+bun run engine:build
+bun run engine:reference
+bun run engine:notices
+bun run test:native
 bun scripts/maintenance/engine/verify-reproducibility.ts
 ```
 

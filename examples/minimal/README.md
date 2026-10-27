@@ -2,13 +2,14 @@
 
 A Vite + TypeScript page with editable root FEN and UCI history, three candidate
 lines, progress, cancellation and error handling. It imports the installed package
-and keeps the UI in [src/main.ts](src/main.ts). Use Node >=22.12.
+and keeps the UI in [src/main.ts](src/main.ts). Use Node >=22.12. Repository setup
+also uses Bun.
 
 ## From the repository
 
 ```sh
 bun install --frozen-lockfile
-npm run example:setup
+bun run example:setup
 npm --prefix examples/minimal run dev
 ```
 

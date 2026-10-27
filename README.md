@@ -12,7 +12,7 @@ From this repository, using Node >=22.12 and Bun 1.4.3:
 
 ```sh
 bun install --frozen-lockfile
-npm run example:setup
+bun run example:setup
 npm --prefix examples/minimal run dev
 ```
 
@@ -25,7 +25,7 @@ shows scores, candidate lines, progress, terminal positions and errors.
 Once published, install the experimental release:
 
 ```sh
-npm install --save-exact @upapawn/chess-engine-runtime@next
+bun add --exact @upapawn/chess-engine-runtime@next
 ```
 
 Copy its assets before development and production builds. In a Vite app:
@@ -34,14 +34,15 @@ Copy its assets before development and production builds. In a Vite app:
 {
   "scripts": {
     "engine:assets": "chess-engine-assets --to public/engines/frozenight",
-    "dev": "npm run engine:assets && vite",
-    "build": "npm run engine:assets && vite build"
+    "dev": "bun run engine:assets && vite",
+    "build": "bun run engine:assets && vite build"
   }
 }
 ```
 
 For SvelteKit, use `static/engines/frozenight`. Serve the folder from your app's
-origin. Consumers need Node for build tooling; Bun and Rust are not required.
+origin. These commands use Bun as the task runner. The published SDK and asset-copy
+CLI also support Node-based build tooling.
 
 ## Analyze a position
 

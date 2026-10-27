@@ -65,16 +65,16 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       JSON.stringify(receipt),
     );
 
-    // Every child uses a fake npm executable: these tests cannot reach a registry.
+    // Intercept the publisher with fake Bun so no registry can be reached.
     const captured = path.join(directory, ".build/arguments.json");
     fs.writeFileSync(
-      path.join(directory, "bin/npm"),
-      '#!/usr/bin/env bun\nrequire("node:fs").writeFileSync(process.env.RELEASE_TEST_CAPTURE, JSON.stringify(process.argv.slice(2)));\n',
+      path.join(directory, "bin/bun"),
+      `#!${process.execPath}\nrequire("node:fs").writeFileSync(process.env.RELEASE_TEST_CAPTURE, JSON.stringify({ args: process.argv.slice(2), dryRunToken: process.env.NPM_CONFIG_TOKEN === "bun-dry-run-placeholder" }));\n`,
       { mode: 0o755 },
     );
     const invoke = (args: string[]) =>
       spawnSync(
-        "bun",
+        process.execPath,
         [path.join(directory, "scripts/release/publish.ts"), ...args],
         {
           encoding: "utf8",
@@ -93,7 +93,9 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       JSON.stringify(receipt),
     );
     assert.equal(invoke(["--dry-run", "--tag", "latest"]).status, 0);
-    assert.deepEqual(JSON.parse(fs.readFileSync(captured, "utf8")), [
+    const dryRun = JSON.parse(fs.readFileSync(captured, "utf8"));
+    assert.equal(dryRun.dryRunToken, true);
+    assert.deepEqual(dryRun.args, [
       "publish",
       tarball,
       "--ignore-scripts",
@@ -127,6 +129,20 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       /Release inputs or tarball changed/,
     );
     assert.equal(fs.existsSync(captured), false);
+    // Real publication must never receive the dry-run-only placeholder.
+    fs.writeFileSync(
+      path.join(directory, "package.json"),
+      JSON.stringify({ ...pkg, repository: "https://example.test/runtime" }),
+    );
+    receipt.fingerprint = releaseFingerprint();
+    fs.writeFileSync(
+      path.join(directory, ".build/release.json"),
+      JSON.stringify(receipt),
+    );
+    assert.equal(invoke([]).status, 0);
+    const publication = JSON.parse(fs.readFileSync(captured, "utf8"));
+    assert.equal(publication.dryRunToken, false);
+    assert.equal(publication.args.includes("--dry-run"), false);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

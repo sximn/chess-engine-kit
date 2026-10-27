@@ -55,9 +55,9 @@
     "release:prepare": "bun scripts/release/prepare-release.ts",
     "release:dry-run": "bun scripts/release/publish.ts --dry-run",
     "release:publish": "bun scripts/release/publish.ts",
-    "version:patch": "npm version patch --no-git-tag-version",
-    "version:minor": "npm version minor --no-git-tag-version",
-    "version:major": "npm version major --no-git-tag-version",
+    "version:patch": "bun pm version patch --no-git-tag-version",
+    "version:minor": "bun pm version minor --no-git-tag-version",
+    "version:major": "bun pm version major --no-git-tag-version",
     "prepack": "bun run build"
   },
   "dependencies": {
@@ -65,10 +65,11 @@
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
+    "@types/bun": "^1.4.4",
     "@types/node": "24.10.1",
+    "prettier": "3.9.10",
     "typescript": "6.0.3",
-    "vite": "8.3.5",
-    "prettier": "3.9.10"
+    "vite": "8.3.5"
   },
   "engines": {
     "node": ">=22.12.0"
