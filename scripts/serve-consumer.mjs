@@ -1,8 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import http from "node:http";
-const root = path.resolve("examples/consumer/dist"),
-  base = "/review/";
+const option = (name, fallback) => {
+  const index = process.argv.indexOf(name);
+  return index < 0 ? fallback : process.argv[index + 1];
+};
+const example = option("--example", "consumer");
+if (!["consumer", "minimal"].includes(example)) throw Error("Unknown example");
+const root = path.resolve(".build/consumers", example, "dist"),
+  base = option("--base", "/review/");
+const port = Number(option("--port", "4175"));
 const types = {
   ".html": "text/html",
   ".js": "text/javascript",
@@ -34,8 +41,6 @@ const server = http.createServer((req, res) => {
   });
   res.end(fs.readFileSync(file));
 });
-server.listen(
-  Number(process.argv[process.argv.indexOf("--port") + 1]) || 4175,
-  "127.0.0.1",
-  () => console.log("Consumer http://localhost:4175/review/"),
+server.listen(port, "127.0.0.1", () =>
+  console.log(`Consumer http://localhost:${port}${base}`),
 );

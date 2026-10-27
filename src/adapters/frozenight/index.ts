@@ -43,11 +43,12 @@ export function createFrozenight(options: FrozenightOptions = {}): ChessEngine {
       capabilities: FROZENIGHT_CAPABILITIES,
       configure,
       validateRequest: validateFrozenightRequest,
-      loadAssets: () =>
+      loadAssets: (signal) =>
         loadFrozenightAssets(
           FROZENIGHT_MANIFEST,
           base,
           options.cacheAssets !== false,
+          signal,
         ),
       createWorker:
         options.workerFactory ??

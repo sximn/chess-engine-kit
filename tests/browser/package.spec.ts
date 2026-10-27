@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
+import { reportPath } from "../../scripts/lib.mjs";
 
 test("installed tarball runs real MultiPV and 100 cancellation/replacement cycles on a subpath", async ({
   page,
@@ -18,7 +19,7 @@ test("installed tarball runs real MultiPV and 100 cancellation/replacement cycle
   expect(result.baseUrl).toContain("/review/engines/frozenight/");
   expect(errors).toEqual([]);
   fs.writeFileSync(
-    `artifacts/consumer-${info.project.name}.json`,
+    reportPath(`consumer-${info.project.name}.json`),
     JSON.stringify(result, null, 2),
   );
 });
@@ -64,7 +65,7 @@ test("consumer-owned offline shell reloads and executes the installed package wi
   await page.getByRole("button", { name: "Run engine checks" }).click();
   await expect(page.getByRole("status")).toHaveText("All checks passed");
   fs.writeFileSync(
-    `artifacts/offline-${info.project.name}.json`,
+    reportPath(`offline-${info.project.name}.json`),
     JSON.stringify(
       {
         completed: true,

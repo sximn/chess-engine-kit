@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "chess-engine-assets --to public/engines/frozenight && vite",
     "build": "chess-engine-assets --to public/engines/frozenight && tsc --noEmit && vite build && node offline.mjs"
   },
   "dependencies": {
-    "@upapawn/chess-engine-runtime": "file:../../.build/upapawn-chess-engine-runtime-0.1.0.tgz",
     "@capacitor/core": "8.5.3"
   },
   "devDependencies": {

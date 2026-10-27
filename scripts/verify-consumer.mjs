@@ -1,64 +1,67 @@
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
-const run = (command, args, cwd = process.cwd()) => {
-  const r = spawnSync(command, args, {
-    cwd,
-    stdio: "inherit",
-    env: { ...process.env, npm_config_cache: path.resolve(".build/npm-cache") },
-  });
-  if (r.status !== 0) throw Error(command + " failed");
-};
-fs.mkdirSync(".build", { recursive: true });
-run("npm", ["pack", "--ignore-scripts", "--pack-destination", ".build"]);
-const tar = path.resolve(".build/upapawn-chess-engine-runtime-0.1.0.tgz");
-const listing = spawnSync("tar", ["-tzf", tar], { encoding: "utf8" });
-if (listing.status !== 0) throw Error("Cannot inspect packed artifact");
-const files = listing.stdout.trim().split("\n");
+import { root, run, packPackage, installExample, reportPath } from "./lib.mjs";
+
+run(process.execPath, ["scripts/build-package.mjs"]);
+const packed = packPackage();
 if (
-  files.some((f) =>
-    /^package\/(src|engine|scripts|tests|node_modules)\//.test(f),
+  packed.files.some((file) =>
+    /^(src|engine|scripts|tests|node_modules|artifacts|\.build)\//.test(file),
   )
 )
-  throw Error("Development source leaked into runtime package");
+  throw Error("Development files leaked into the runtime package");
+for (const required of [
+  "dist/index.js",
+  "dist/types/index.d.ts",
+  "bin/copy-assets.mjs",
+  "docs/API.md",
+  "docs/PUBLISHING.md",
+]) {
+  if (!packed.files.includes(required))
+    throw Error(`Missing packaged file: ${required}`);
+}
 if (
-  !files.some((f) => f.endsWith(".wasm")) ||
-  !files.some((f) => /worker-.*\.js$/.test(f)) ||
-  !files.includes("package/dist/types/index.d.ts")
+  !packed.files.some((file) => file.endsWith(".wasm")) ||
+  !packed.files.some((file) => /worker-.*\.js$/.test(file))
 )
-  throw Error("Missing runtime assets or declarations");
-fs.rmSync("examples/consumer/package-lock.json", { force: true });
-fs.rmSync("examples/consumer/node_modules/@upapawn/chess-engine-runtime", {
-  recursive: true,
-  force: true,
-});
-run(
-  "npm",
-  ["install", "--ignore-scripts", "--no-audit", "--no-fund"],
-  path.resolve("examples/consumer"),
-);
-fs.rmSync("examples/consumer/public/engines/frozenight",{recursive:true,force:true});
-run("npm", ["run", "build"], path.resolve("examples/consumer"));
-const manifest = JSON.parse(
-  fs.readFileSync(
-    "examples/consumer/dist/engines/frozenight/manifest.json",
-    "utf8",
-  ),
-);
+  throw Error("Missing runtime assets");
+// Relative Markdown links must resolve within the published artifact, not just the checkout.
+for (const file of packed.files.filter((file) => file.endsWith(".md"))) {
+  const markdown = fs.readFileSync(path.join(root, file), "utf8");
+  for (const [, target] of markdown.matchAll(/\]\(([^\s)]+)\)/g)) {
+    if (/^(https?:|mailto:|#)/.test(target)) continue;
+    const resolved = path.posix.normalize(
+      path.posix.join(path.posix.dirname(file), target.split("#")[0]),
+    );
+    if (!packed.files.includes(resolved))
+      throw Error(`Broken packaged documentation link: ${file} -> ${target}`);
+  }
+}
+for (const name of ["consumer", "minimal"]) {
+  const directory = installExample(name, packed.file);
+  run("npm", ["run", "build"], { cwd: directory });
+  const manifest = JSON.parse(
+    fs.readFileSync(
+      path.join(directory, "dist/engines/frozenight/manifest.json"),
+      "utf8",
+    ),
+  );
+  if (manifest.packageVersion !== packed.version)
+    throw Error("Deployed assets do not match the release version");
+}
 fs.writeFileSync(
-  "artifacts/consumer-build.json",
+  reportPath("consumer-build.json"),
   JSON.stringify(
     {
-      tarball: path.basename(tar),
-      packedFiles: files,
-      sourceIncluded: false,
-      rustRequired: false,
-      manifest,
+      ...packed,
+      file: path.relative(root, packed.file),
+      examples: ["consumer", "minimal"],
+      installScripts: false,
     },
     null,
     2,
   ) + "\n",
 );
 console.log(
-  "Installed tarball and built a standalone Vite/TypeScript consumer without Rust or install scripts.",
+  `Verified ${packed.name}@${packed.version} in two isolated npm projects. Tarball: ${path.relative(root, packed.file)}`,
 );

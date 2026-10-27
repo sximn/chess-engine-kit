@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { spawnSync } from "node:child_process";
+import { reportPath } from "./lib.mjs";
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "chess-engine-rebuild-"));
 fs.cpSync("engine", temp + "/engine", {
   recursive: true,
@@ -29,7 +30,7 @@ if (
 )
   throw Error("Rebuild drift across checkout paths");
 fs.writeFileSync(
-  "artifacts/reproducibility.json",
+  reportPath("reproducibility.json"),
   JSON.stringify(
     {
       buildHash: source.buildHash,

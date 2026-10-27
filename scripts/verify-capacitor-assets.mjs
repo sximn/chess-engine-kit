@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { reportPath } from "./lib.mjs";
 const arg = (name) => {
   const i = process.argv.indexOf(name);
   return i < 0 ? undefined : process.argv[i + 1];
@@ -10,7 +11,7 @@ const apk = arg("--android"),
   app = arg("--ios");
 if (!apk && !app)
   throw Error("Select --android <apk> and/or --ios <built-app>");
-const root = "examples/consumer/dist",
+const root = ".build/consumers/consumer/dist",
   files = [];
 function walk(dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -36,7 +37,7 @@ for (const file of files) {
     throw Error("iOS mismatch: " + file);
 }
 fs.writeFileSync(
-  "artifacts/capacitor-assets.json",
+  reportPath("capacitor-assets.json"),
   JSON.stringify(
     {
       webFiles: files.length,

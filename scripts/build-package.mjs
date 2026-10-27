@@ -54,10 +54,11 @@ const manifest = {
   descriptor: {
     engineId: "frozenight",
     engineName: "Frozenight",
-    engineVersion: "0.1.0+" + original.upstreamCommit.slice(0, 12),
+    engineVersion: pkg.version + "+" + original.upstreamCommit.slice(0, 12),
     sourceRevision: original.upstreamCommit,
     buildHash: original.buildHash,
     modelHash: original.networkHash,
+    adapterHash: sha(workerBytes),
   },
   wasm: entry(wasmFile, wasmBytes),
   worker: entry(workerFile, workerBytes),

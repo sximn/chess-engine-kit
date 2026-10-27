@@ -6,6 +6,7 @@ import { spawnSync } from "node:child_process";
 import { Chess } from "chess.js";
 import { instantiateEngine } from "../.build/test-helpers.js";
 import path from "node:path";
+import { reportPath } from "../scripts/lib.mjs";
 import {
   validateResult,
   terminalResult,
@@ -123,9 +124,9 @@ test("500 static evaluations and 200 deterministic searches match the portable n
     maxMemory = Math.max(maxMemory, engine.exports.memory.buffer.byteLength);
   });
   fs.writeFileSync(
-    process.env.ENGINE_TEST_REFERENCE
-      ? "artifacts/native-parity.json"
-      : "artifacts/parity.json",
+    reportPath(
+      process.env.ENGINE_TEST_REFERENCE ? "native-parity.json" : "parity.json",
+    ),
     JSON.stringify(
       {
         reference: process.env.ENGINE_TEST_REFERENCE

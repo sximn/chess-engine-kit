@@ -28,6 +28,7 @@ export async function loadFrozenightAssets(
   manifest: EngineAssetManifest,
   base: string | URL,
   useCache: boolean,
+  signal?: AbortSignal,
 ) {
   if (
     typeof WebAssembly === "undefined" ||
@@ -69,6 +70,9 @@ export async function loadFrozenightAssets(
     }
   }
   const abort = new AbortController();
+  const onAbort = () => abort.abort();
+  if (signal?.aborted) abort.abort();
+  signal?.addEventListener("abort", onAbort, { once: true });
   const timer = setTimeout(() => abort.abort(), 30000);
   let bytes: ArrayBuffer;
   try {
@@ -93,6 +97,7 @@ export async function loadFrozenightAssets(
         );
   } finally {
     clearTimeout(timer);
+    signal?.removeEventListener("abort", onAbort);
   }
   if (
     bytes.byteLength !== manifest.wasm.bytes ||

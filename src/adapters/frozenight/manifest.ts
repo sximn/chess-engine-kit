@@ -9,7 +9,8 @@ export const FROZENIGHT_MANIFEST: EngineAssetManifest = {
     "engineVersion": "0.1.0+f4d5a00725b2",
     "sourceRevision": "f4d5a00725b2cd5f1c32910d57a84c77b66cc670",
     "buildHash": "9a2e3b8feabcb7de68f7a9e67304f521d931a7aca6bd3b53c120243a3beece1c",
-    "modelHash": "3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac"
+    "modelHash": "3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac",
+    "adapterHash": "7277835d120e808ff9e93d35058eb5b13f50cd00d658a6b9653a66b49763abe6"
   },
   "wasm": {
     "file": "engine-a10d14426baedea6.wasm",
@@ -17,9 +18,9 @@ export const FROZENIGHT_MANIFEST: EngineAssetManifest = {
     "bytes": 3207045
   },
   "worker": {
-    "file": "worker-92f72ddc51022996.js",
-    "sha256": "92f72ddc5102299674f0d012e785910d40ebd63c0b6062ae08d2b837428e96fe",
-    "bytes": 42656
+    "file": "worker-7277835d120e808f.js",
+    "sha256": "7277835d120e808ff9e93d35058eb5b13f50cd00d658a6b9653a66b49763abe6",
+    "bytes": 43220
   },
   "notices": [
     {

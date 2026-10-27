@@ -2,6 +2,14 @@
   "name": "@upapawn/chess-engine-runtime",
   "version": "0.1.0",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/REPLACE_ME/chess-engine-runtime.git"
+  },
+  "homepage": "https://github.com/REPLACE_ME/chess-engine-runtime#readme",
+  "bugs": {
+    "url": "https://github.com/REPLACE_ME/chess-engine-runtime/issues"
+  },
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -22,7 +30,15 @@
     "bin/",
     "LICENSE",
     "README.md",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "docs/",
+    "examples/minimal/README.md",
+    "examples/minimal/package.json",
+    "examples/minimal/package-lock.json",
+    "examples/minimal/tsconfig.json",
+    "examples/minimal/vite.config.ts",
+    "examples/minimal/index.html",
+    "examples/minimal/src/"
   ],
   "sideEffects": false,
   "scripts": {
@@ -31,10 +47,18 @@
     "test": "node scripts/test.mjs",
     "test:browser": "playwright test",
     "test:consumer": "node scripts/verify-consumer.mjs",
+    "test:versioning": "node scripts/verify-versioning.mjs",
     "engine:build": "node scripts/build-engine.mjs",
     "engine:reference": "node scripts/build-reference.mjs",
     "engine:notices": "node scripts/engine-notices.mjs",
     "test:native": "node scripts/verify-native.mjs",
+    "example:setup": "node scripts/setup-example.mjs",
+    "release:prepare": "node scripts/prepare-release.mjs",
+    "release:dry-run": "node scripts/publish.mjs --dry-run",
+    "release:publish": "node scripts/publish.mjs",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
     "prepack": "bun run build"
   },
   "dependencies": {
@@ -50,5 +74,16 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "packageManager": "bun@1.4.3"
+  "packageManager": "bun@1.4.3",
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "keywords": [
+    "chess",
+    "wasm",
+    "chess-engine",
+    "browser",
+    "typescript"
+  ]
 }
