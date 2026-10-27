@@ -4,8 +4,10 @@
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true,
+    "types": [],
     "allowImportingTsExtensions": false,
     "rootDir": "src",
     "outDir": "dist/types"
-  }
+  },
+  "include": ["src/**/*.ts"]
 }

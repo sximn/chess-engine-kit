@@ -62,7 +62,8 @@ export async function packPackage({
     fs.readFileSync(path.join(cwd, "package.json"), "utf8"),
   );
 
-  const filename = pkg.name.replace(/^@/, "").replace("/", "-") + "-" + pkg.version + ".tgz";
+  const filename =
+    pkg.name.replace(/^@/, "").replace("/", "-") + "-" + pkg.version + ".tgz";
 
   const file = path.join(destination, filename);
 
@@ -167,7 +168,7 @@ export async function installApplication(
   );
 
   if (installed.version !== readPackage().version) {
-    throw Error("Application installed the wrong package version"); 
+    throw Error("Application installed the wrong package version");
   }
 
   const entries = await new Bun.Archive(fs.readFileSync(tarball)).files();
@@ -196,8 +197,10 @@ export function releaseFingerprint() {
   const skip = new Set(["node_modules", "dist", ".build", "public"]);
 
   function walk(relative: string) {
-    if (relative === path.join("src", "adapters", "frozenight", "manifest.ts")) {
-      return; 
+    if (
+      relative === path.join("src", "adapters", "frozenight", "manifest.ts")
+    ) {
+      return;
     }
 
     const file = path.join(root, relative);

@@ -38,7 +38,7 @@ if (
   packed.version !== pkg.version ||
   sha256(fs.readFileSync(path.join(root, packed.file))) !== packed.sha256
 ) {
-  throw Error("Release artifact changed during verification"); 
+  throw Error("Release artifact changed during verification");
 }
 
 fs.writeFileSync(

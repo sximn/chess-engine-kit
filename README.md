@@ -8,7 +8,7 @@ The package is experimental. See [engine provenance and limitations](docs/PROVEN
 
 ## Try the example locally
 
-From this repository, using Node >=22.12 and Bun 1.4.3:
+From this repository, using Node >=22.12 and Bun 1.4.4:
 
 ```sh
 bun install --frozen-lockfile

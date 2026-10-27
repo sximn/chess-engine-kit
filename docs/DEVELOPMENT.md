@@ -1,10 +1,15 @@
 # Development and verification
 
-Use Node >=22.12 and Bun 1.4.3. Ordinary SDK builds use the committed prebuilt
+Use Node >=22.12 and Bun 1.4.4. Ordinary SDK builds use the committed prebuilt
 WASM and need no Rust installation.
 
 Bun handles repository tasks, packing, publishing and version changes. The
 minimal example retains npm as the installation compatibility check.
+
+The SDK has its own browser-only TypeScript configuration. Scripts use
+`tsconfig.scripts.json` with Bun types, while each application checks its source
+after installing the packed package. This keeps root checks independent of
+generated builds and application installs.
 
 Repository scripts are TypeScript executed by Bun. `check` type-checks both the
 SDK and scripts; unit/engine tests run with Bun's test runner. The asset-copy

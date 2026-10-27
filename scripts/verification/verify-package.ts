@@ -28,7 +28,7 @@ for (const required of [
   "docs/PUBLISHING.md",
 ]) {
   if (!packed.files.includes(required)) {
-    throw Error(`Missing packaged file: ${required}`); 
+    throw Error(`Missing packaged file: ${required}`);
   }
 }
 
@@ -53,7 +53,7 @@ for (const file of packed.files.filter((file) => file.endsWith(".md"))) {
     );
 
     if (!packed.files.includes(resolved)) {
-      throw Error(`Broken packaged documentation link: ${file} -> ${target}`); 
+      throw Error(`Broken packaged documentation link: ${file} -> ${target}`);
     }
   }
 }
@@ -71,7 +71,7 @@ for (const name of Object.keys(applications)) {
   );
 
   if (manifest.packageVersion !== packed.version) {
-    throw Error("Deployed assets do not match the release version"); 
+    throw Error("Deployed assets do not match the release version");
   }
 }
 
