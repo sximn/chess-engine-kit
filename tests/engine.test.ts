@@ -4,15 +4,15 @@ import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { Chess } from "chess.js";
-import { instantiateEngine } from "../.build/test-helpers.js";
+import { instantiateEngine } from "./helpers.ts";
 import path from "node:path";
-import { reportPath } from "../scripts/lib.mjs";
+import { reportPath } from "../scripts/lib.ts";
 import {
   validateResult,
   terminalResult,
   validateRequest,
   replay,
-} from "../.build/test-helpers.js";
+} from "./helpers.ts";
 import type { AnalysisResult, RawResult, Position } from "../src/core/types.ts";
 const manifest = JSON.parse(
   fs.readFileSync("assets/frozenight/engine-manifest.json", "utf8"),

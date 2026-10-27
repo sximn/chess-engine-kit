@@ -1,8 +1,9 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import type { AssetEntry, EngineAssetManifest } from "../src/core/types.ts";
 const args = process.argv.slice(2);
 if (args.length !== 2 || args[0] !== "--to") {
   console.error(
@@ -10,10 +11,8 @@ if (args.length !== 2 || args[0] !== "--to") {
   );
   process.exit(1);
 }
-const source = fileURLToPath(
-  new URL("../dist/assets/frozenight/", import.meta.url),
-);
-const manifest = JSON.parse(
+const source = fileURLToPath(new URL("../assets/frozenight/", import.meta.url));
+const manifest: EngineAssetManifest = JSON.parse(
   fs.readFileSync(path.join(source, "manifest.json"), "utf8"),
 );
 const destination = path.resolve(args[1]);
@@ -22,9 +21,14 @@ if (
   source.startsWith(destination + path.sep)
 )
   throw Error("Choose a consumer asset destination");
-const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
-const entries = (m) => [m.wasm, m.worker, ...m.notices];
-let previous;
+const sha = (bytes: Uint8Array) =>
+  createHash("sha256").update(bytes).digest("hex");
+const entries = (m: EngineAssetManifest): AssetEntry[] => [
+  m.wasm,
+  m.worker,
+  ...m.notices,
+];
+let previous: AssetEntry[] | undefined;
 try {
   const old = JSON.parse(
     fs.readFileSync(path.join(destination, "manifest.json"), "utf8"),

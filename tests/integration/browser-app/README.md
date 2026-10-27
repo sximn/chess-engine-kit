@@ -22,7 +22,7 @@ published npm package.
 To inspect the built harness manually after package verification:
 
 ```sh
-node scripts/verification/serve-test-app.mjs
+bun scripts/verification/serve-test-app.ts
 ```
 
 Open `http://localhost:4175/review/` and click **Run engine checks**. The server

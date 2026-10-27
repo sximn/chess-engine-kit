@@ -7,7 +7,7 @@ import {
   releaseFingerprint,
   sha256,
   reportPath,
-} from "../lib.mjs";
+} from "../lib.ts";
 
 const receipt = path.join(root, ".build/release.json");
 fs.rmSync(receipt, { force: true });

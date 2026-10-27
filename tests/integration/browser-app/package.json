@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "chess-engine-assets --to public/engines/frozenight && vite",
-    "build": "chess-engine-assets --to public/engines/frozenight && tsc --noEmit && vite build && node offline.mjs"
+    "build": "chess-engine-assets --to public/engines/frozenight && tsc --noEmit && vite build && bun offline.ts"
   },
   "devDependencies": {
     "vite": "8.3.5",

@@ -3,6 +3,12 @@
 Use Node >=22.12 and Bun 1.4.3. Ordinary SDK builds use the committed prebuilt
 WASM and need no Rust installation.
 
+Repository scripts are TypeScript executed by Bun. `check` type-checks both the
+SDK and scripts; unit/engine tests run with Bun's test runner. The asset-copy
+CLI source in `bin/copy-assets.ts` is bundled into `dist/bin/copy-assets.js`
+with a Node shebang, so npm applications can use it with Node. The browser SDK
+is still published as JavaScript with TypeScript declarations.
+
 ```sh
 bun install --frozen-lockfile
 npm run check
@@ -66,7 +72,7 @@ npm run engine:build
 npm run engine:reference
 npm run engine:notices
 npm run test:native
-node scripts/maintenance/engine/verify-reproducibility.mjs
+bun scripts/maintenance/engine/verify-reproducibility.ts
 ```
 
 `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom toolchain locations.
@@ -77,12 +83,12 @@ independent checkout paths on the same host; they do not assert cross-OS identit
 When intentionally changing engine behavior, review changes against the pinned
 upstream, update source/model pins and notices, run native checks, and explicitly
 refresh frozen expectations with
-`node scripts/maintenance/fixtures/freeze-native-fixtures.mjs`.
+`bun scripts/maintenance/fixtures/freeze-native-fixtures.ts`.
 Review fixture diffs before accepting them, then rerun package verification.
 
 The other fixture generators are occasional maintenance tools:
 
-- `node scripts/maintenance/fixtures/create-engine-corpus.mjs` regenerates the
+- `bun scripts/maintenance/fixtures/create-engine-corpus.ts` regenerates the
   deterministic game/position corpus. Refresh native expectations afterward.
 - `python3 scripts/maintenance/fixtures/import-puzzle-corpus.py <puzzles.csv>`
   imports the tactical corpus from a supplied CSV prefix. The script documents

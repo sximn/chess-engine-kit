@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import { reportPath } from "../../scripts/lib.mjs";
+import { reportPath } from "../../scripts/lib.ts";
 
 test("installed tarball runs real MultiPV and 100 cancellation/replacement cycles on a subpath", async ({
   page,
@@ -32,8 +32,8 @@ test("test app offline shell reloads and executes the installed package without 
   let server: ReturnType<typeof spawn> | undefined;
   if (info.project.name === "webkit") {
     origin = "http://localhost:4176";
-    server = spawn(process.execPath, [
-      "scripts/verification/serve-test-app.mjs",
+    server = spawn("bun", [
+      "scripts/verification/serve-test-app.ts",
       "--port",
       "4176",
     ]);

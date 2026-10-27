@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { reportPath } from "./scripts/lib.mjs";
+import { reportPath } from "./scripts/lib.ts";
 export default defineConfig({
   testDir: "tests/browser",
   timeout: 120000,
@@ -11,13 +11,13 @@ export default defineConfig({
   use: { baseURL: "http://localhost:4175/review/", trace: "retain-on-failure" },
   webServer: [
     {
-      command: "node scripts/verification/serve-test-app.mjs",
+      command: "bun scripts/verification/serve-test-app.ts",
       url: "http://localhost:4175/review/",
       reuseExistingServer: false,
     },
     {
       command:
-        "node scripts/verification/serve-test-app.mjs --app minimal --base /minimal/ --port 4177",
+        "bun scripts/verification/serve-test-app.ts --app minimal --base /minimal/ --port 4177",
       url: "http://localhost:4177/minimal/",
       reuseExistingServer: false,
     },

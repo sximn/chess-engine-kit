@@ -2,8 +2,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-const files = [];
-function walk(dir) {
+const files: string[] = [];
+function walk(dir: string) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p);
@@ -11,6 +11,7 @@ function walk(dir) {
   }
 }
 walk("dist");
+files.sort();
 const hash = createHash("sha256");
 for (const file of files) {
   hash.update(file);

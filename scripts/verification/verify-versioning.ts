@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { root, readPackage, run, reportPath } from "../lib.mjs";
+import { root, readPackage, run, reportPath } from "../lib.ts";
 
 const original = readPackage();
 const sourceFiles = ["package.json", "src/adapters/frozenight/manifest.ts"];
@@ -20,7 +20,8 @@ try {
     "tsconfig.build.json",
     "src",
     "assets",
-    "scripts/build-package.mjs",
+    "bin",
+    "scripts/build-package.ts",
   ]) {
     const destination = path.join(directory, name);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
@@ -40,7 +41,7 @@ try {
     original.version,
     "Version bump did not change the version",
   );
-  run(process.execPath, ["scripts/build-package.mjs"], { cwd: directory });
+  run("bun", ["scripts/build-package.ts"], { cwd: directory });
   const manifest = JSON.parse(
     fs.readFileSync(
       path.join(directory, "dist/assets/frozenight/manifest.json"),

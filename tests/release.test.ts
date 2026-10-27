@@ -26,6 +26,7 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       "bun.lock",
       "tsconfig.json",
       "tsconfig.build.json",
+      "tsconfig.scripts.json",
       "playwright.config.ts",
       "README.md",
       "LICENSE",
@@ -38,7 +39,7 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       repository: "https://github.com/REPLACE_ME/runtime",
     };
     fs.writeFileSync(path.join(directory, "package.json"), JSON.stringify(pkg));
-    for (const name of ["lib.mjs", "release/publish.mjs"]) {
+    for (const name of ["lib.ts", "release/publish.ts"]) {
       fs.mkdirSync(path.dirname(path.join(directory, "scripts", name)), {
         recursive: true,
       });
@@ -48,7 +49,7 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
       );
     }
     const { releaseFingerprint, sha256 } = await import(
-      pathToFileURL(path.join(directory, "scripts/lib.mjs")).href
+      pathToFileURL(path.join(directory, "scripts/lib.ts")).href
     );
     const tarball = path.join(directory, ".build/package.tgz");
     fs.writeFileSync(tarball, "verified fixture");
@@ -68,13 +69,13 @@ test("release commands verify inputs and tarball, and dry-run never becomes publ
     const captured = path.join(directory, ".build/arguments.json");
     fs.writeFileSync(
       path.join(directory, "bin/npm"),
-      '#!/usr/bin/env node\nrequire("node:fs").writeFileSync(process.env.RELEASE_TEST_CAPTURE, JSON.stringify(process.argv.slice(2)));\n',
+      '#!/usr/bin/env bun\nrequire("node:fs").writeFileSync(process.env.RELEASE_TEST_CAPTURE, JSON.stringify(process.argv.slice(2)));\n',
       { mode: 0o755 },
     );
     const invoke = (args: string[]) =>
       spawnSync(
-        process.execPath,
-        [path.join(directory, "scripts/release/publish.mjs"), ...args],
+        "bun",
+        [path.join(directory, "scripts/release/publish.ts"), ...args],
         {
           encoding: "utf8",
           env: {

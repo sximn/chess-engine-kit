@@ -7,9 +7,9 @@ import {
   applications,
   installApplication,
   reportPath,
-} from "../lib.mjs";
+} from "../lib.ts";
 
-run(process.execPath, ["scripts/build-package.mjs"]);
+run("bun", ["scripts/build-package.ts"]);
 const packed = packPackage();
 if (
   packed.files.some((file) =>
@@ -20,7 +20,7 @@ if (
 for (const required of [
   "dist/index.js",
   "dist/types/index.d.ts",
-  "bin/copy-assets.mjs",
+  "dist/bin/copy-assets.js",
   "docs/API.md",
   "docs/PUBLISHING.md",
 ]) {

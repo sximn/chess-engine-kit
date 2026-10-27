@@ -46,9 +46,10 @@ const built = spawnSync(
   },
 );
 if (built.status !== 0) process.exit(built.status ?? 1);
-const sha = (bytes) => crypto.createHash("sha256").update(bytes).digest("hex");
+const sha = (bytes: Uint8Array) =>
+  crypto.createHash("sha256").update(bytes).digest("hex");
 const source = crypto.createHash("sha256");
-function walk(dir) {
+function walk(dir: string) {
   for (const entry of fs
     .readdirSync(dir, { withFileTypes: true })
     .sort((a, b) => a.name.localeCompare(b.name))) {

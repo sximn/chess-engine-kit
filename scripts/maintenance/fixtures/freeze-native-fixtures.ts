@@ -2,13 +2,14 @@
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
+import type { Position } from "../../../src/core/types.ts";
 const corpus = JSON.parse(
   fs.readFileSync("tests/fixtures/engine-corpus.json", "utf8"),
-);
+) as { positions: Position[] };
 const manifest = JSON.parse(
   fs.readFileSync("assets/frozenight/engine-manifest.json", "utf8"),
 );
-const request = (position, multiPv = 1) => ({
+const request = (position: Position, multiPv = 1) => ({
   position,
   limits: { maxNodes: 1000000, maxDepth: 3 },
   multiPv,

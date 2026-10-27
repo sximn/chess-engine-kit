@@ -1,18 +1,28 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawnSync } from "node:child_process";
+import {
+  spawnSync,
+  type SpawnSyncOptionsWithStringEncoding,
+} from "node:child_process";
 import { createHash } from "node:crypto";
 
 export const root = fileURLToPath(new URL("../", import.meta.url));
 export const readPackage = () =>
   JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
-export const sha256 = (bytes) =>
+export const sha256 = (bytes: Uint8Array) =>
   createHash("sha256").update(bytes).digest("hex");
-export function run(command, args, options = {}) {
+export function run(
+  command: string,
+  args: string[],
+  options: Omit<SpawnSyncOptionsWithStringEncoding, "encoding"> & {
+    encoding?: BufferEncoding;
+  } = {},
+) {
   const result = spawnSync(command, args, {
     cwd: root,
     stdio: "inherit",
+    encoding: "utf8",
     ...options,
     env: {
       ...process.env,
@@ -26,7 +36,7 @@ export function run(command, args, options = {}) {
     throw new Error(`${command} ${args.join(" ")} failed (${result.status})`);
   return result;
 }
-export function reportPath(name) {
+export function reportPath(name: string) {
   const directory = path.join(root, ".build/reports");
   fs.mkdirSync(directory, { recursive: true });
   return path.join(directory, name);
@@ -49,15 +59,21 @@ export function packPackage() {
     file,
     name: pkg.name,
     version: pkg.version,
-    files: packed.files.map((entry) => entry.path),
+    files: packed.files.map(
+      (entry: { path: string }) => entry.path,
+    ) as string[],
     sha256: sha256(fs.readFileSync(file)),
   };
 }
-export const applications = {
+export const applications: Record<string, string> = {
   "browser-app": "tests/integration/browser-app",
   minimal: "examples/minimal",
 };
-export function installApplication(name, tarball, { inPlace = false } = {}) {
+export function installApplication(
+  name: string,
+  tarball: string,
+  { inPlace = false } = {},
+) {
   if (!Object.hasOwn(applications, name)) throw Error("Unknown application");
   const source = path.join(root, applications[name]);
   const destination = inPlace ? source : path.join(root, ".build/apps", name);
@@ -103,7 +119,7 @@ export function installApplication(name, tarball, { inPlace = false } = {}) {
 export function releaseFingerprint() {
   const hash = createHash("sha256");
   const skip = new Set(["node_modules", "dist", ".build", "public"]);
-  function walk(relative) {
+  function walk(relative: string) {
     if (relative === path.join("src", "adapters", "frozenight", "manifest.ts"))
       return;
     const file = path.join(root, relative);
@@ -122,6 +138,7 @@ export function releaseFingerprint() {
     "bun.lock",
     "tsconfig.json",
     "tsconfig.build.json",
+    "tsconfig.scripts.json",
     "playwright.config.ts",
     "README.md",
     "LICENSE",

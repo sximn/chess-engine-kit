@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": [
+    "scripts/**/*.ts",
+    "bin/**/*.ts",
+    "tests/integration/browser-app/offline.ts"
+  ]
+}

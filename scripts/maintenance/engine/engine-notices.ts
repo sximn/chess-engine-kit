@@ -1,6 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
+type CargoPackage = {
+  name: string;
+  version: string;
+  license: string | null;
+  source: string | null;
+  repository: string | null;
+  manifest_path: string;
+};
 const cargo = process.env.ENGINE_CARGO || "cargo";
 const result = spawnSync(
   cargo,
@@ -16,7 +24,7 @@ const result = spawnSync(
   { encoding: "utf8", env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" } },
 );
 if (result.status !== 0) throw Error(result.stderr);
-const metadata = JSON.parse(result.stdout),
+const metadata = JSON.parse(result.stdout) as { packages: CargoPackage[] },
   packages = metadata.packages.filter((p) => p.source);
 const manifest = packages.map((p) => ({
   name: p.name,
@@ -43,6 +51,7 @@ for (const p of packages) {
   const dir = path.dirname(p.manifest_path);
   const licenses = fs
     .readdirSync(dir)
+    .sort()
     .filter(
       (n) =>
         /^(LICENSE|LICENCE|COPYING|NOTICE)/i.test(n) &&

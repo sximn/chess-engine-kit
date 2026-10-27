@@ -2,18 +2,18 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { spawnSync } from "node:child_process";
-import { reportPath } from "../../lib.mjs";
+import { reportPath } from "../../lib.ts";
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "chess-engine-rebuild-"));
 fs.cpSync("engine", temp + "/engine", {
   recursive: true,
   filter: (p) => path.basename(p) !== "target",
 });
-const builder = "scripts/maintenance/engine/build-engine.mjs";
+const builder = "scripts/maintenance/engine/build-engine.ts";
 fs.mkdirSync(path.dirname(path.join(temp, builder)), { recursive: true });
 fs.copyFileSync(builder, path.join(temp, builder));
 fs.mkdirSync(temp + "/src/adapters/frozenight", { recursive: true });
 fs.mkdirSync(temp + "/assets/frozenight", { recursive: true });
-const r = spawnSync(process.execPath, [builder], {
+const r = spawnSync("bun", [builder], {
   cwd: temp,
   stdio: "inherit",
   env: process.env,
