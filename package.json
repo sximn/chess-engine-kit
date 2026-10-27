@@ -1,6 +1,6 @@
 {
   "name": "@upapawn/chess-engine-runtime",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
   "repository": {
     "type": "git",

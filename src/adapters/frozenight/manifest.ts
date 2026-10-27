@@ -2,11 +2,11 @@
 import type { EngineAssetManifest } from '../../core/types.js';
 export const FROZENIGHT_MANIFEST: EngineAssetManifest = {
   "apiVersion": 1,
-  "packageVersion": "0.1.0",
+  "packageVersion": "0.0.1",
   "descriptor": {
     "engineId": "frozenight",
     "engineName": "Frozenight",
-    "engineVersion": "0.1.0+f4d5a00725b2",
+    "engineVersion": "0.0.1+f4d5a00725b2",
     "sourceRevision": "f4d5a00725b2cd5f1c32910d57a84c77b66cc670",
     "buildHash": "9a2e3b8feabcb7de68f7a9e67304f521d931a7aca6bd3b53c120243a3beece1c",
     "modelHash": "3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac",
