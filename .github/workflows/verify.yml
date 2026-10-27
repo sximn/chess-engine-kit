@@ -2,7 +2,7 @@ name: Verify engine package
 on: [push, pull_request, workflow_dispatch]
 jobs:
   package:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -12,7 +12,26 @@ jobs:
         with:
           node-version: 24
       - run: bun install --frozen-lockfile
-      - run: bunx playwright install --with-deps chromium firefox webkit
+      - name: Prefer Ubuntu archive for system packages
+        shell: bash
+        run: |
+          # Current hosted images use a mirror list; older images use direct URLs.
+          if [[ -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i '/azure\.archive\.ubuntu\.com/d' /etc/apt/apt-mirrors.txt
+          fi
+          for source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+            if [[ -f "$source" ]]; then
+              sudo sed -i -E \
+                's|https?://azure\.archive\.ubuntu\.com/ubuntu/?|https://archive.ubuntu.com/ubuntu/|g' \
+                "$source"
+            fi
+          done
+      - name: Install Playwright system dependencies
+        timeout-minutes: 10
+        run: bunx playwright install-deps chromium firefox webkit
+      - name: Install Playwright browsers
+        timeout-minutes: 10
+        run: bunx playwright install chromium firefox webkit
       - run: bun run release:prepare
       - run: bun run release:dry-run
       - uses: actions/upload-artifact@v4

@@ -61,6 +61,16 @@ traces in `test-results/`. CI uploads reports and the release artifact. Historic
 screenshots, timings and extraction proofs are not maintained as source files.
 Deterministic fixtures, source/model manifests and license notices remain tracked.
 
+## CI browser setup
+
+The package job uses Ubuntu 24.04. Before installing Playwright's system
+dependencies it bypasses the Azure Ubuntu mirror in both the hosted runner's
+mirror list and direct APT source URLs. This addresses intermittent mirror stalls
+reported in [runner-images](https://github.com/actions/runner-images/issues/12949).
+System dependencies and browser binaries install in separate steps, each limited
+to ten minutes, so logs show which download stage is slow. The next hosted run
+must confirm the timing improvement; local browser tests do not measure APT.
+
 ## Repository layout
 
 Run commands from the repository root. Scripts are grouped by purpose:
