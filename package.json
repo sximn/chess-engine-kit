@@ -1,0 +1,54 @@
+{
+  "name": "@upapawn/chess-engine-runtime",
+  "version": "0.1.0",
+  "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./assets/*": "./dist/assets/*",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "chess-engine-assets": "./bin/copy-assets.mjs"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "LICENSE",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "node scripts/build-package.mjs",
+    "check": "tsc --noEmit",
+    "test": "node scripts/test.mjs",
+    "test:browser": "playwright test",
+    "test:consumer": "node scripts/verify-consumer.mjs",
+    "engine:build": "node scripts/build-engine.mjs",
+    "engine:reference": "node scripts/build-reference.mjs",
+    "engine:notices": "node scripts/engine-notices.mjs",
+    "test:native": "node scripts/verify-native.mjs",
+    "prepack": "bun run build"
+  },
+  "dependencies": {
+    "chess.js": "1.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.10.1",
+    "typescript": "6.0.3",
+    "vite": "8.3.5",
+    "prettier": "3.9.10"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "bun@1.4.3"
+}

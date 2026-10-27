@@ -1,0 +1,45 @@
+name: Verify engine package
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: bun install --frozen-lockfile
+      - run: bun run build && bun run check && bun run test
+      - run: bun run test:consumer
+      - run: bunx playwright install --with-deps chromium firefox webkit
+      - run: bun run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: package-and-verification
+          path: |
+            .build/*.tgz
+            artifacts/
+  engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.90.0
+          targets: wasm32-unknown-unknown
+      - run: bun install --frozen-lockfile
+      - run: bun run engine:build && bun run engine:notices
+      - run: bun run test:native
+      - run: node scripts/verify-reproducibility.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rebuilt-engine-verification
+          path: artifacts/

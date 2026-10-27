@@ -1,0 +1,2409 @@
+{
+  "version": 1,
+  "source": "https://database.lichess.org/lichess_db_puzzle.csv.zst",
+  "rights": "CC0-1.0, https://database.lichess.org/#puzzles",
+  "retrieved": "2026-10-26",
+  "sampling": "First 200 complete non-mateIn1 rows in a 262144-byte compressed prefix. No performance-based exclusion. Convenience sample, not population-representative.",
+  "prefixCsvSha256": "e896732fdeff798c4f2c16f448fffa4442e636f66e1ee73a5f97f6c1749f83bf",
+  "positions": [
+    {
+      "id": "00008",
+      "partition": "development",
+      "rootFen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2R1/PqP2bPP/7K b - - 0 24",
+      "movesUci": ["f2g3"],
+      "solution": ["e6e7", "b2b1", "b3c1", "b1c1", "h6c1"],
+      "rating": 1811,
+      "themes": ["crushing", "hangingPiece", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/787zsVup/black#48"
+    },
+    {
+      "id": "0000D",
+      "partition": "development",
+      "rootFen": "5rk1/1p3ppp/pq3b2/8/8/1P1Q1N2/P4PPP/3R2K1 w - - 2 27",
+      "movesUci": ["d3d6"],
+      "solution": ["f8d8", "d6d8", "f6d8"],
+      "rating": 1529,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/F8M8OS71#53"
+    },
+    {
+      "id": "0008Q",
+      "partition": "development",
+      "rootFen": "8/4R3/1p2P3/p4r2/P6p/1P3Pk1/4K3/8 w - - 1 64",
+      "movesUci": ["e7f7"],
+      "solution": ["f5e5", "e2f1", "e5e6"],
+      "rating": 1383,
+      "themes": ["advantage", "endgame", "rookEndgame", "short"],
+      "gameUrl": "https://lichess.org/MQSyb3KW#127"
+    },
+    {
+      "id": "0009B",
+      "partition": "development",
+      "rootFen": "r2qr1k1/b1p2ppp/pp4n1/P1P1p3/4P1n1/B2P2Pb/3NBP1P/RN1QR1K1 b - - 1 16",
+      "movesUci": ["b6c5"],
+      "solution": ["e2g4", "h3g4", "d1g4"],
+      "rating": 1084,
+      "themes": ["advantage", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/4MWQCxQ6/black#32"
+    },
+    {
+      "id": "000Pw",
+      "partition": "development",
+      "rootFen": "6k1/5p1p/4p3/4q3/3nN3/2Q3P1/PP3P1P/6K1 w - - 2 37",
+      "movesUci": ["e4d2"],
+      "solution": ["d4e2", "g1f1", "e2c3"],
+      "rating": 1530,
+      "themes": ["crushing", "endgame", "fork", "short"],
+      "gameUrl": "https://lichess.org/au2lCK5o#73"
+    },
+    {
+      "id": "000Sa",
+      "partition": "development",
+      "rootFen": "2Q2bk1/5p1p/p5p1/2p3P1/2r1B3/7P/qPQ2P2/2K4R b - - 0 32",
+      "movesUci": ["c4c2"],
+      "solution": ["e4c2", "a2a1", "c2b1"],
+      "rating": 1476,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/lTTa9lwd/black#64"
+    },
+    {
+      "id": "000VW",
+      "partition": "development",
+      "rootFen": "r4r2/1p3pkp/p5p1/3R1N1Q/3P4/8/P1q2P2/3R2K1 b - - 3 25",
+      "movesUci": ["g6f5"],
+      "solution": ["d5c5", "c2e4", "h5g5", "g7h8", "g5f6"],
+      "rating": 2873,
+      "themes": ["crushing", "endgame", "long"],
+      "gameUrl": "https://lichess.org/e9AY2m5j/black#50"
+    },
+    {
+      "id": "000Vc",
+      "partition": "development",
+      "rootFen": "8/8/4k1p1/2KpP2p/5PP1/8/8/8 w - - 0 53",
+      "movesUci": ["g4h5"],
+      "solution": ["g6h5", "f4f5", "e6e5", "f5f6", "e5f6"],
+      "rating": 1569,
+      "themes": ["crushing", "endgame", "long", "pawnEndgame"],
+      "gameUrl": "https://lichess.org/l6AejDMO#105"
+    },
+    {
+      "id": "000Zo",
+      "partition": "development",
+      "rootFen": "4r3/1k6/pp3r2/1b2P2p/3R1p2/P1R2P2/1P4PP/6K1 w - - 0 35",
+      "movesUci": ["e5f6"],
+      "solution": ["e8e1", "g1f2", "e1f1"],
+      "rating": 1363,
+      "themes": ["endgame", "mate", "mateIn2", "operaMate", "short"],
+      "gameUrl": "https://lichess.org/n8Ff742v#69"
+    },
+    {
+      "id": "000aY",
+      "partition": "development",
+      "rootFen": "r4rk1/pp3ppp/2n1b3/q1pp2B1/8/P1Q2NP1/1PP1PP1P/2KR3R w - - 0 15",
+      "movesUci": ["g5e7"],
+      "solution": ["a5c3", "b2c3", "c6e7"],
+      "rating": 1412,
+      "themes": ["advantage", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/iihZGl6t#29"
+    },
+    {
+      "id": "000c8",
+      "partition": "development",
+      "rootFen": "6k1/Bp3pp1/p3p3/3pPn1p/N4P1q/P2Q1R1P/1P4PK/2r5 w - - 0 28",
+      "movesUci": ["a4c5"],
+      "solution": ["h4e1", "f3f1", "e1f1", "d3f1", "c1f1"],
+      "rating": 1478,
+      "themes": ["crushing", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/YXBq0z8X#55"
+    },
+    {
+      "id": "000h0",
+      "partition": "development",
+      "rootFen": "5rk1/p5p1/3bpr1p/1Pp4q/3pR3/1P1Q1N2/P4PPP/4R1K1 w - - 4 22",
+      "movesUci": ["e4e6"],
+      "solution": ["f6f3", "g2f3", "h5h2", "g1f1", "h2h3", "f1e2", "h3e6"],
+      "rating": 2048,
+      "themes": [
+        "advantage",
+        "interference",
+        "kingsideAttack",
+        "middlegame",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/OWe6M5dF#43"
+    },
+    {
+      "id": "000hf",
+      "partition": "development",
+      "rootFen": "r1bqk2r/pp1nbNp1/2p1p2p/8/2BP4/1PN3P1/P3QP1P/3R1RK1 b kq - 0 19",
+      "movesUci": ["e8f7"],
+      "solution": ["e2e6", "f7f8", "e6f7"],
+      "rating": 1391,
+      "themes": ["mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/71ygsFeE/black#38"
+    },
+    {
+      "id": "000jr",
+      "partition": "development",
+      "rootFen": "5k2/1p4pp/p5n1/5Q2/3BpP2/1P2PP1K/P1q4P/7r b - - 1 33",
+      "movesUci": ["f8g8"],
+      "solution": ["f5d5", "g8f8", "d4c5", "c2c5", "d5c5"],
+      "rating": 2152,
+      "themes": ["crushing", "endgame", "long"],
+      "gameUrl": "https://lichess.org/JgxFj109/black#66"
+    },
+    {
+      "id": "000lC",
+      "partition": "development",
+      "rootFen": "3r3r/pQNk1ppp/1qnb1n2/1B6/8/8/PPP3PP/3R1R1K w - - 5 19",
+      "movesUci": ["d1d6"],
+      "solution": ["d7d6", "b7b6", "a7b6"],
+      "rating": 1356,
+      "themes": ["advantage", "hangingPiece", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/vaqz2bx6#37"
+    },
+    {
+      "id": "000mr",
+      "partition": "development",
+      "rootFen": "5r1k/5rp1/p7/1b2B2p/1P1P1Pq1/2R1Q3/P3p1P1/2R3K1 w - - 0 41",
+      "movesUci": ["e3g3"],
+      "solution": ["f7f4", "e5f4", "f8f4"],
+      "rating": 1943,
+      "themes": ["crushing", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/8sVpuwso#81"
+    },
+    {
+      "id": "000o3",
+      "partition": "development",
+      "rootFen": "8/2p1k3/6p1/1p1P1p2/1P3P2/3K2Pp/7P/8 b - - 1 43",
+      "movesUci": ["e7d6"],
+      "solution": ["d3d4", "g6g5", "f4g5"],
+      "rating": 959,
+      "themes": ["crushing", "endgame", "pawnEndgame", "short", "zugzwang"],
+      "gameUrl": "https://lichess.org/BAY91mF3/black#86"
+    },
+    {
+      "id": "000qP",
+      "partition": "development",
+      "rootFen": "8/7R/8/5p2/4bk1P/8/2r2K2/6R1 w - - 7 51",
+      "movesUci": ["f2f1"],
+      "solution": ["f4f3", "f1e1", "c2c1", "e1d2", "c1g1"],
+      "rating": 2167,
+      "themes": ["crushing", "endgame", "exposedKing", "long", "skewer"],
+      "gameUrl": "https://lichess.org/r4xUR6fC#101"
+    },
+    {
+      "id": "000rO",
+      "partition": "development",
+      "rootFen": "3R4/8/K7/pB2b3/1p6/1P2k3/3p4/8 w - - 4 58",
+      "movesUci": ["a6a5"],
+      "solution": ["e5c7", "a5b4", "c7d8"],
+      "rating": 1110,
+      "themes": ["crushing", "endgame", "fork", "master", "short"],
+      "gameUrl": "https://lichess.org/tzeeBEc2#115"
+    },
+    {
+      "id": "00143",
+      "partition": "development",
+      "rootFen": "r2q1rk1/5ppp/1np5/p1b5/2p1B3/P7/1P3PPP/R1BQ1RK1 b - - 1 17",
+      "movesUci": ["d8f6"],
+      "solution": ["d1h5", "h7h6", "h5c5"],
+      "rating": 1797,
+      "themes": ["advantage", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/jcuxlI63/black#34"
+    },
+    {
+      "id": "0017R",
+      "partition": "development",
+      "rootFen": "r2qk2r/pp2ppbp/1n1p2p1/3Pn3/2P5/2NBBP1P/PP3P2/R2QK2R b KQkq - 0 12",
+      "movesUci": ["e5c4"],
+      "solution": ["d3c4", "b6c4", "d1a4", "d8d7", "a4c4"],
+      "rating": 1655,
+      "themes": ["advantage", "fork", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/ol84k0z4/black#24"
+    },
+    {
+      "id": "0018P",
+      "partition": "development",
+      "rootFen": "5R2/1p6/p1p5/2P1rk2/2K3p1/2P1p1P1/1P5P/8 b - - 1 44",
+      "movesUci": ["f5e6"],
+      "solution": [
+        "f8e8",
+        "e6f5",
+        "e8e5",
+        "f5e5",
+        "c4d3",
+        "e5d5",
+        "d3e3",
+        "a6a5",
+        "e3f4",
+        "d5c4",
+        "f4g4"
+      ],
+      "rating": 1903,
+      "themes": [
+        "crushing",
+        "endgame",
+        "exposedKing",
+        "rookEndgame",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/Xg1Gtfjr/black#88"
+    },
+    {
+      "id": "0018S",
+      "partition": "development",
+      "rootFen": "2kr3r/pp3p2/4p2p/1N1p2p1/3Q4/1P1P4/2q2PPP/5RK1 b - - 1 20",
+      "movesUci": ["b7b6"],
+      "solution": ["d4a1", "a7a5", "f1c1"],
+      "rating": 2608,
+      "themes": ["advantage", "endgame", "pin", "short"],
+      "gameUrl": "https://lichess.org/H1ARO2GL/black#40"
+    },
+    {
+      "id": "001Fg",
+      "partition": "development",
+      "rootFen": "2R2r1k/pQ4pp/5rp1/3B4/q2n4/7P/P4PP1/5RK1 w - - 3 30",
+      "movesUci": ["c8c7"],
+      "solution": ["d4e2", "g1h2", "a4f4", "h2h1", "e2g3", "f2g3", "f4f1"],
+      "rating": 1256,
+      "themes": ["advantage", "middlegame", "veryLong"],
+      "gameUrl": "https://lichess.org/y0QalMAw#59"
+    },
+    {
+      "id": "001Hi",
+      "partition": "development",
+      "rootFen": "6k1/pp1r1pp1/1qp1p2p/4P2P/5Q2/1P4R1/P1Pr1PP1/R5K1 b - - 4 23",
+      "movesUci": ["b6d4"],
+      "solution": ["f4f6", "d4f2", "f6f2", "d2f2", "g1f2"],
+      "rating": 2391,
+      "themes": ["advantage", "endgame", "long", "pin"],
+      "gameUrl": "https://lichess.org/tUkE0z1z/black#46"
+    },
+    {
+      "id": "001Oo",
+      "partition": "development",
+      "rootFen": "6k1/4p1bp/6p1/1p1pP3/1PpPp3/2P1P3/Q2B1KPP/3q4 b - - 2 23",
+      "movesUci": ["d1a4"],
+      "solution": ["a2a4", "b5a4", "b4b5", "g8f7", "b5b6"],
+      "rating": 2078,
+      "themes": ["crushing", "endgame", "long", "quietMove"],
+      "gameUrl": "https://lichess.org/8IKs77O9/black#46"
+    },
+    {
+      "id": "001Wz",
+      "partition": "development",
+      "rootFen": "4r1k1/5ppp/r1p5/p1n1RP2/8/2P2N1P/2P3P1/3R2K1 b - - 0 21",
+      "movesUci": ["e8e5"],
+      "solution": ["d1d8", "e5e8", "d8e8"],
+      "rating": 1118,
+      "themes": ["backRankMate", "endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/84RH3LaP/black#42"
+    },
+    {
+      "id": "001XA",
+      "partition": "development",
+      "rootFen": "1qr2rk1/pb2bppp/8/8/2p1N3/P1Bn2P1/2Q2PBP/1R3RK1 b - - 3 23",
+      "movesUci": ["b8c7"],
+      "solution": ["b1b7", "c7b7", "e4f6", "e7f6", "g2b7"],
+      "rating": 1687,
+      "themes": [
+        "crushing",
+        "discoveredAttack",
+        "long",
+        "master",
+        "middlegame",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/KZRiN695/black#46"
+    },
+    {
+      "id": "001aK",
+      "partition": "development",
+      "rootFen": "6k1/5p2/4p3/P1B5/2P4P/4Pnp1/Rb1rN3/5K2 b - - 1 33",
+      "movesUci": ["d2e2"],
+      "solution": ["f1e2", "g3g2", "e3e4", "f3d4", "e2f2"],
+      "rating": 2056,
+      "themes": ["crushing", "endgame", "hangingPiece", "long", "quietMove"],
+      "gameUrl": "https://lichess.org/Epr0AiEh/black#66"
+    },
+    {
+      "id": "001h8",
+      "partition": "development",
+      "rootFen": "2r3k1/2r4p/4p1p1/1p1q1pP1/p1bP1P1Q/P6R/5B2/2R3K1 b - - 5 34",
+      "movesUci": ["c4e2"],
+      "solution": ["h4h7", "c7h7", "c1c8", "g8g7", "c8c7"],
+      "rating": 1749,
+      "themes": [
+        "crushing",
+        "deflection",
+        "kingsideAttack",
+        "long",
+        "middlegame",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/IxCahP6X/black#68"
+    },
+    {
+      "id": "001kG",
+      "partition": "development",
+      "rootFen": "rnbq3r/1p2bkpp/p4n2/8/2pNP3/2N5/PPP3PP/R1BQ1RK1 b - - 1 11",
+      "movesUci": ["e7c5"],
+      "solution": ["d1h5", "f7g8", "h5c5"],
+      "rating": 1974,
+      "themes": ["advantage", "opening", "pin", "short"],
+      "gameUrl": "https://lichess.org/xXAEaVto/black#22"
+    },
+    {
+      "id": "001m3",
+      "partition": "development",
+      "rootFen": "7r/6k1/2b1pp2/8/P1N3p1/5nP1/4RP2/Q4K2 w - - 2 38",
+      "movesUci": ["e2e6"],
+      "solution": ["h8h1", "f1e2", "h1a1"],
+      "rating": 1455,
+      "themes": ["advantage", "endgame", "short", "skewer"],
+      "gameUrl": "https://lichess.org/LELOz22f#75"
+    },
+    {
+      "id": "001om",
+      "partition": "development",
+      "rootFen": "5r1k/pp4pp/5p2/1BbQp1r1/6K1/7P/1PP3P1/3R3R w - - 2 26",
+      "movesUci": ["g4h4"],
+      "solution": ["c5f2", "g2g3", "f2g3"],
+      "rating": 1018,
+      "themes": ["mate", "mateIn2", "middlegame", "morphysMate", "short"],
+      "gameUrl": "https://lichess.org/VWOIWtIh#51"
+    },
+    {
+      "id": "001u3",
+      "partition": "development",
+      "rootFen": "2r3k1/p1q2pp1/Q3p2p/b1Np4/2nP1P2/4P1P1/5K1P/2B1N3 b - - 3 33",
+      "movesUci": ["c7b6"],
+      "solution": ["a6c8", "g8h7", "c8b7"],
+      "rating": 2190,
+      "themes": ["advantage", "hangingPiece", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/BBn6ipaK/black#66"
+    },
+    {
+      "id": "001uD",
+      "partition": "development",
+      "rootFen": "6k1/1p3pp1/1p5p/2r1p3/2n5/r3PN2/2RnNPPP/2R3K1 b - - 1 32",
+      "movesUci": ["f7f6"],
+      "solution": ["f3d2", "c4d2", "c2d2", "c5c1", "e2c1"],
+      "rating": 1890,
+      "themes": ["advantage", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/2qkVLUl6/black#64"
+    },
+    {
+      "id": "001w5",
+      "partition": "development",
+      "rootFen": "1rb2rk1/q5P1/4p2p/3p3p/3P1P2/2P5/2QK3P/3R2R1 b - - 0 29",
+      "movesUci": ["f8f7"],
+      "solution": ["c2h7", "g8h7", "g7g8q"],
+      "rating": 1034,
+      "themes": [
+        "advancedPawn",
+        "attraction",
+        "mate",
+        "mateIn2",
+        "middlegame",
+        "promotion",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/0e1vxAEn/black#58"
+    },
+    {
+      "id": "001wR",
+      "partition": "development",
+      "rootFen": "6nr/pp3p1p/k1p5/8/1QN5/2P1P3/4KPqP/8 b - - 5 26",
+      "movesUci": ["b7b5"],
+      "solution": ["b4a5", "a6b7", "c4d6", "b7b8", "a5d8"],
+      "rating": 1152,
+      "themes": ["endgame", "long", "mate", "mateIn3"],
+      "gameUrl": "https://lichess.org/ruvbd9JW/black#52"
+    },
+    {
+      "id": "001wr",
+      "partition": "development",
+      "rootFen": "r4rk1/p3ppbp/Pp1q1np1/3PpbB1/2B5/2N5/1PPQ1PPP/3RR1K1 w - - 4 18",
+      "movesUci": ["f2f3"],
+      "solution": ["d6c5", "g1h1", "c5c4"],
+      "rating": 989,
+      "themes": [
+        "advantage",
+        "fork",
+        "master",
+        "masterVsMaster",
+        "middlegame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/KnJ2mojX#35"
+    },
+    {
+      "id": "001xO",
+      "partition": "development",
+      "rootFen": "k1r1b3/p1r1nppp/1p1qpn2/2Np4/1P1P4/PQRBPN2/5PPP/2R3K1 w - - 0 19",
+      "movesUci": ["d3a6"],
+      "solution": ["b6c5", "a6c8", "c5c4"],
+      "rating": 1780,
+      "themes": [
+        "crushing",
+        "master",
+        "masterVsMaster",
+        "middlegame",
+        "sacrifice",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/fNCePFgY#37"
+    },
+    {
+      "id": "001xl",
+      "partition": "development",
+      "rootFen": "8/4R1k1/p5pp/3B4/5q2/8/5P1P/6K1 b - - 5 40",
+      "movesUci": ["g7f6"],
+      "solution": ["e7f7", "f6e5", "f7f4"],
+      "rating": 1299,
+      "themes": [
+        "advantage",
+        "endgame",
+        "master",
+        "masterVsMaster",
+        "short",
+        "skewer",
+        "superGM"
+      ],
+      "gameUrl": "https://lichess.org/bEQkfPQD/black#80"
+    },
+    {
+      "id": "002Ds",
+      "partition": "development",
+      "rootFen": "8/1pp5/p2p4/P2Pk2p/1PP1p2P/2n1K2P/3N4/8 b - - 0 45",
+      "movesUci": ["b7b6"],
+      "solution": ["b4b5", "c3d1", "e3e2", "a6b5", "a5a6"],
+      "rating": 1992,
+      "themes": ["crushing", "endgame", "knightEndgame", "long"],
+      "gameUrl": "https://lichess.org/2SrvOtZN/black#90"
+    },
+    {
+      "id": "002GQ",
+      "partition": "development",
+      "rootFen": "5rk1/5ppp/4p3/4N3/8/1Pn5/5PPP/5RK1 w - - 0 28",
+      "movesUci": ["f1c1"],
+      "solution": ["c3e2", "g1f1", "e2c1"],
+      "rating": 653,
+      "themes": ["crushing", "endgame", "fork", "short"],
+      "gameUrl": "https://lichess.org/2K7g2pDT#55"
+    },
+    {
+      "id": "002Hv",
+      "partition": "development",
+      "rootFen": "8/8/8/3N2p1/5b2/3p3P/5kP1/3K4 w - - 16 56",
+      "movesUci": ["d5f4"],
+      "solution": ["g5f4", "h3h4", "f2g2", "h4h5", "f4f3", "d1d2", "f3f2"],
+      "rating": 1621,
+      "themes": ["advancedPawn", "crushing", "endgame", "veryLong"],
+      "gameUrl": "https://lichess.org/rLJ8Hp1v#111"
+    },
+    {
+      "id": "002IE",
+      "partition": "development",
+      "rootFen": "r3brk1/5pp1/p1nqpn1p/P2pN3/2pP4/2P1PN2/5PPP/RB1QK2R b KQ - 4 16",
+      "movesUci": ["c6e5"],
+      "solution": ["d4e5", "d6e7", "e5f6"],
+      "rating": 1229,
+      "themes": ["advantage", "fork", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/fDwvVUIp/black#32"
+    },
+    {
+      "id": "002KJ",
+      "partition": "development",
+      "rootFen": "r3kb1r/ppq2ppp/4pn2/2Ppn3/1P4bP/2P2N2/P3BPP1/RNBQ1RK1 b kq - 2 10",
+      "movesUci": ["f8e7"],
+      "solution": ["f3e5", "c7e5", "e2g4"],
+      "rating": 1569,
+      "themes": ["crushing", "discoveredAttack", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/2NpTzh7O/black#20"
+    },
+    {
+      "id": "002LF",
+      "partition": "development",
+      "rootFen": "7r/p2q1pk1/1pp3p1/8/6P1/4Q3/PP1R1P1r/5KN1 b - - 0 38",
+      "movesUci": ["d7g4"],
+      "solution": ["e3e5", "f7f6", "e5c7", "g7h6", "c7h2"],
+      "rating": 2185,
+      "themes": ["advantage", "endgame", "interference", "long"],
+      "gameUrl": "https://lichess.org/md88dHiL/black#76"
+    },
+    {
+      "id": "002LW",
+      "partition": "development",
+      "rootFen": "3r1rk1/1b1n1pp1/3p4/p4PPQ/4P3/3q1BN1/8/2R2RK1 b - - 1 28",
+      "movesUci": ["d7e5"],
+      "solution": ["f5f6", "e5f3", "f1f3"],
+      "rating": 2464,
+      "themes": ["advantage", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/0khwj5dv/black#56"
+    },
+    {
+      "id": "002Mm",
+      "partition": "development",
+      "rootFen": "rn1qr1k1/ppp3pQ/3p1pP1/3Pp3/2P1P3/8/PP3PP1/R1B1K3 b Q - 2 16",
+      "movesUci": ["g8f8"],
+      "solution": ["h7h8", "f8e7", "h8g7"],
+      "rating": 927,
+      "themes": ["deflection", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/wAkPv4uG/black#32"
+    },
+    {
+      "id": "002O7",
+      "partition": "development",
+      "rootFen": "r3qrk1/2p2pp1/p2bpn1p/2ppNb2/3P1P2/1PP1P1B1/P2N2PP/R2Q1RK1 b - - 0 14",
+      "movesUci": ["f5g4"],
+      "solution": ["e5g4", "f6g4", "d1g4"],
+      "rating": 1008,
+      "themes": ["crushing", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/dFEPPiEc/black#28"
+    },
+    {
+      "id": "002Tf",
+      "partition": "development",
+      "rootFen": "r3kbnr/ppp1qppp/2n5/3pP3/5B2/4PQ2/PPP2PPP/RN2KB1R w KQkq - 1 7",
+      "movesUci": ["f1b5"],
+      "solution": ["e7b4", "b1c3", "b4b2"],
+      "rating": 1561,
+      "themes": ["advantage", "fork", "opening", "short"],
+      "gameUrl": "https://lichess.org/Zq56PwHK#13"
+    },
+    {
+      "id": "002Ua",
+      "partition": "development",
+      "rootFen": "r4rk1/pp3ppp/3p1q2/P1P1p3/2B5/2B2n2/2P2P1P/R2Q1RK1 w - - 0 16",
+      "movesUci": ["g1h1"],
+      "solution": ["f6f4", "d1f3", "f4f3"],
+      "rating": 1666,
+      "themes": ["crushing", "kingsideAttack", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/06i3eMVp#31"
+    },
+    {
+      "id": "002Uy",
+      "partition": "development",
+      "rootFen": "8/8/1p6/k7/P1R5/1K5r/8/8 w - - 26 64",
+      "movesUci": ["c4c3"],
+      "solution": ["h3c3", "b3c3", "a5a4", "c3b2", "a4b4"],
+      "rating": 1565,
+      "themes": ["crushing", "defensiveMove", "endgame", "long", "rookEndgame"],
+      "gameUrl": "https://lichess.org/sLU7YN1A#127"
+    },
+    {
+      "id": "002VP",
+      "partition": "development",
+      "rootFen": "8/6p1/2B1bn2/6k1/3B4/6K1/4P3/8 b - - 4 44",
+      "movesUci": ["e6d5"],
+      "solution": ["d4f6", "g5f5", "c6d5"],
+      "rating": 1466,
+      "themes": ["crushing", "endgame", "short"],
+      "gameUrl": "https://lichess.org/7yJGEbUK/black#88"
+    },
+    {
+      "id": "002X3",
+      "partition": "development",
+      "rootFen": "6k1/2q2p1p/4pPp1/4P3/p1pP1P2/RrP5/6QP/4B1K1 b - - 0 33",
+      "movesUci": ["b3a3"],
+      "solution": ["g2a8", "c7b8", "a8b8"],
+      "rating": 914,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/yshS3bLB/black#66"
+    },
+    {
+      "id": "002bK",
+      "partition": "development",
+      "rootFen": "8/7p/2b1k3/p2p1pPB/1n1P3P/N1p1P3/4K3/8 b - - 1 42",
+      "movesUci": ["c6b5"],
+      "solution": ["a3b5", "c3c2", "e2d2"],
+      "rating": 1100,
+      "themes": ["advantage", "endgame", "hangingPiece", "short"],
+      "gameUrl": "https://lichess.org/IFGj8W5s/black#84"
+    },
+    {
+      "id": "002e5",
+      "partition": "development",
+      "rootFen": "r2q4/pp1n1kbp/3P2b1/6N1/6Q1/P3P3/6P1/4K2R b K - 1 21",
+      "movesUci": ["f7g8"],
+      "solution": ["g4c4", "g8h8", "h1h7", "g6h7", "g5f7"],
+      "rating": 2632,
+      "themes": ["crushing", "long", "middlegame", "sacrifice"],
+      "gameUrl": "https://lichess.org/qaapuG48/black#42"
+    },
+    {
+      "id": "002e8",
+      "partition": "development",
+      "rootFen": "r3nrk1/1b3pp1/4pb2/p3q3/1p1N4/3B2R1/PPPQN2P/1K4R1 b - - 1 23",
+      "movesUci": ["a8d8"],
+      "solution": ["d2h6", "g7g6", "g3h3"],
+      "rating": 2554,
+      "themes": [
+        "crushing",
+        "defensiveMove",
+        "master",
+        "middlegame",
+        "pin",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/ygzu5djr/black#46"
+    },
+    {
+      "id": "002mG",
+      "partition": "development",
+      "rootFen": "5r1k/B1p3pp/2Qb1p2/3Pq3/P6P/8/2P3K1/3R1R2 w - - 1 36",
+      "movesUci": ["g2f2"],
+      "solution": ["f8e8", "c6e8", "e5e8"],
+      "rating": 2377,
+      "themes": ["advantage", "middlegame", "quietMove", "short"],
+      "gameUrl": "https://lichess.org/age2hanq#71"
+    },
+    {
+      "id": "002p5",
+      "partition": "development",
+      "rootFen": "r1bqr1k1/pp1nbpp1/2p2n2/6P1/2BP4/P7/1PQNNPP1/R3K2R b KQ - 0 13",
+      "movesUci": ["f6d5"],
+      "solution": ["c2h7", "g8f8", "h7h8"],
+      "rating": 908,
+      "themes": ["kingsideAttack", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/meSoQkhU/black#26"
+    },
+    {
+      "id": "002rd",
+      "partition": "development",
+      "rootFen": "r6k/q1pb1p1p/1b3Pr1/p1ppP2Q/3P2p1/4B3/PP2NRPP/3R2K1 b - - 1 25",
+      "movesUci": ["d7e6"],
+      "solution": ["e2f4", "c5d4", "f4g6", "f7g6", "h5h6"],
+      "rating": 1795,
+      "themes": ["crushing", "kingsideAttack", "long", "middlegame", "pin"],
+      "gameUrl": "https://lichess.org/NcD6lul8/black#50"
+    },
+    {
+      "id": "002uV",
+      "partition": "development",
+      "rootFen": "r2r2k1/1p2qppp/2n1p3/5n2/p2P4/P2Q1N2/BP3PPP/2R1R1K1 w - - 4 20",
+      "movesUci": ["d3f5"],
+      "solution": ["e6f5", "e1e7", "c6e7"],
+      "rating": 1498,
+      "themes": ["advantage", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/WKH5eIti#39"
+    },
+    {
+      "id": "002xh",
+      "partition": "development",
+      "rootFen": "2nk4/8/2PBp1n1/1pK1P1p1/1P4P1/8/8/8 b - - 2 42",
+      "movesUci": ["g6h4"],
+      "solution": ["c5b5", "h4g2", "b5a6", "g2e3", "a6b7"],
+      "rating": 2065,
+      "themes": ["crushing", "endgame", "long"],
+      "gameUrl": "https://lichess.org/TfRvsd3p/black#84"
+    },
+    {
+      "id": "0030b",
+      "partition": "development",
+      "rootFen": "6k1/5ppp/5nb1/pp6/6rP/5N1Q/Pq2r1P1/3R2RK b - - 4 32",
+      "movesUci": ["g6e4"],
+      "solution": ["d1d8", "f6e8", "d8e8"],
+      "rating": 538,
+      "themes": ["backRankMate", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/mhIZR6Mc/black#64"
+    },
+    {
+      "id": "00347",
+      "partition": "development",
+      "rootFen": "8/2p5/8/2pPk2p/8/4K2P/6P1/8 w - - 1 42",
+      "movesUci": ["e3d3"],
+      "solution": ["h5h4", "d3c4", "e5d6"],
+      "rating": 2264,
+      "themes": ["crushing", "endgame", "pawnEndgame", "quietMove", "short"],
+      "gameUrl": "https://lichess.org/xFM0YP9S#83"
+    },
+    {
+      "id": "0039T",
+      "partition": "development",
+      "rootFen": "1r5r/p3kp2/4p2p/4P3/3R1Pp1/6P1/P1P4P/4K2R w K - 1 25",
+      "movesUci": ["d4a4"],
+      "solution": ["b8b1", "e1f2", "b1h1", "a4a7", "e7f8"],
+      "rating": 1121,
+      "themes": [
+        "crushing",
+        "defensiveMove",
+        "endgame",
+        "long",
+        "rookEndgame",
+        "skewer"
+      ],
+      "gameUrl": "https://lichess.org/BrtVeJlj#49"
+    },
+    {
+      "id": "003Ec",
+      "partition": "development",
+      "rootFen": "3r4/p4R2/1pb2Pp1/n1p1Q1kp/8/P2q4/1P4PP/6RK b - - 2 32",
+      "movesUci": ["d3f5"],
+      "solution": ["e5e3", "f5f4", "h2h4", "g5f5", "e3h3"],
+      "rating": 2245,
+      "themes": ["crushing", "long", "middlegame", "pin"],
+      "gameUrl": "https://lichess.org/qnd2dxXz/black#64"
+    },
+    {
+      "id": "003IM",
+      "partition": "development",
+      "rootFen": "8/5kp1/p3pb2/8/6Pp/1P4qP/P2RQ3/7K w - - 2 34",
+      "movesUci": ["e2g2"],
+      "solution": ["g3e1", "g2g1", "e1d2"],
+      "rating": 1096,
+      "themes": ["crushing", "deflection", "endgame", "master", "short"],
+      "gameUrl": "https://lichess.org/7CNJ1GaI#67"
+    },
+    {
+      "id": "003Jb",
+      "partition": "development",
+      "rootFen": "6k1/3bqr1p/2rpp1pR/p7/Pp1QP3/1B3P2/1PP3P1/2KR4 w - - 6 22",
+      "movesUci": ["d4a7"],
+      "solution": ["e7g5", "c1b1", "g5h6"],
+      "rating": 993,
+      "themes": ["advantage", "fork", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/8RvK0idj#43"
+    },
+    {
+      "id": "003S3",
+      "partition": "development",
+      "rootFen": "r4k1r/pNqnppb1/6pn/2p3Np/7P/2P2Q2/PP3PP1/R1B1K2R b KQ - 2 15",
+      "movesUci": ["a8b8"],
+      "solution": ["g5e6", "f8g8", "e6c7"],
+      "rating": 1336,
+      "themes": ["advantage", "middlegame", "pin", "short"],
+      "gameUrl": "https://lichess.org/Eu6S0GPA/black#30"
+    },
+    {
+      "id": "003Tx",
+      "partition": "development",
+      "rootFen": "2r5/pR5p/5p1k/4p3/4r3/B4nPP/PP3P2/1K2R3 w - - 0 27",
+      "movesUci": ["e1e4"],
+      "solution": ["f3d2", "b1a1", "c8c1"],
+      "rating": 1511,
+      "themes": ["backRankMate", "endgame", "fork", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/A7j9VEC0#53"
+    },
+    {
+      "id": "003UW",
+      "partition": "development",
+      "rootFen": "8/6pk/7p/2p5/2qp4/5PP1/P3QK1P/8 b - - 1 40",
+      "movesUci": ["c4d5"],
+      "solution": ["e2e4", "d5e4", "f3e4"],
+      "rating": 1473,
+      "themes": ["advantage", "endgame", "queenEndgame", "short"],
+      "gameUrl": "https://lichess.org/cXMga3rb/black#80"
+    },
+    {
+      "id": "003aS",
+      "partition": "development",
+      "rootFen": "8/8/5k1p/6p1/1R4PP/1p2KP2/8/1r6 w - - 0 43",
+      "movesUci": ["h4h5"],
+      "solution": ["b3b2", "b4b6", "f6e5", "f3f4", "g5f4"],
+      "rating": 2086,
+      "themes": [
+        "advancedPawn",
+        "crushing",
+        "defensiveMove",
+        "endgame",
+        "long",
+        "rookEndgame"
+      ],
+      "gameUrl": "https://lichess.org/I7ZktFeR#85"
+    },
+    {
+      "id": "003cs",
+      "partition": "development",
+      "rootFen": "2r1kbnr/pp4pp/4p3/3pP1N1/3q4/1P2B3/P3Q1PP/nN3RK1 b k - 1 16",
+      "movesUci": ["d4e5"],
+      "solution": ["f1f8", "e8f8", "e3c5", "c8c5", "e2e5", "c5c1", "g1f2"],
+      "rating": 2119,
+      "themes": [
+        "advantage",
+        "attraction",
+        "discoveredAttack",
+        "exposedKing",
+        "middlegame",
+        "sacrifice",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/PmRTKflq/black#32"
+    },
+    {
+      "id": "003eP",
+      "partition": "development",
+      "rootFen": "8/r1b1q2k/2p3p1/2Pp4/1P2p1n1/2B1P3/NQ6/2K4R b - - 1 36",
+      "movesUci": ["h7g8"],
+      "solution": ["h1h8", "g8f7", "h8h7", "f7e8", "h7e7"],
+      "rating": 1156,
+      "themes": ["crushing", "exposedKing", "long", "middlegame", "skewer"],
+      "gameUrl": "https://lichess.org/n9vCFmKh/black#72"
+    },
+    {
+      "id": "003if",
+      "partition": "development",
+      "rootFen": "8/3q1kpp/1P2p3/4Q3/5P2/4B2P/2r3PK/8 b - - 0 43",
+      "movesUci": ["d7b7"],
+      "solution": ["e5h5", "f7e7", "e3c5", "c2c5", "h5c5"],
+      "rating": 1700,
+      "themes": ["advantage", "endgame", "long"],
+      "gameUrl": "https://lichess.org/mYGtlm6w/black#86"
+    },
+    {
+      "id": "003jH",
+      "partition": "development",
+      "rootFen": "rn3rk1/p5pp/3N4/4np1q/5Q2/1P3K2/PB1P2P1/2R4R w - - 0 25",
+      "movesUci": ["f3f2"],
+      "solution": ["e5d3", "f2e3", "d3f4", "h1h5", "f4h5"],
+      "rating": 1089,
+      "themes": ["crushing", "fork", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/3CQGofXT#49"
+    },
+    {
+      "id": "003jb",
+      "partition": "development",
+      "rootFen": "r3kb1r/p4ppp/b1p1p3/3q4/3Q4/4BN2/PPP2PPP/R3K2R b KQkq - 0 11",
+      "movesUci": ["c6c5"],
+      "solution": ["d4a4", "a6b5", "a4b5"],
+      "rating": 962,
+      "themes": ["crushing", "fork", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/960EzUS0/black#22"
+    },
+    {
+      "id": "003jv",
+      "partition": "development",
+      "rootFen": "1R6/1p2k2p/p2n2p1/4K3/8/6P1/P6P/8 w - - 10 37",
+      "movesUci": ["b8h8"],
+      "solution": ["d6f7", "e5e4", "f7h8"],
+      "rating": 1006,
+      "themes": ["crushing", "endgame", "fork", "short"],
+      "gameUrl": "https://lichess.org/n0UvwK36#73"
+    },
+    {
+      "id": "003md",
+      "partition": "development",
+      "rootFen": "r1b1k2N/ppp3pp/2n5/2bp4/7q/1B4n1/PPPP1P1P/RNBQ1RK1 w q - 0 10",
+      "movesUci": ["f1e1"],
+      "solution": ["g3e4", "e1e4", "d5e4", "d1h5", "h4h5", "b3f7", "h5f7"],
+      "rating": 2171,
+      "themes": ["crushing", "defensiveMove", "middlegame", "veryLong"],
+      "gameUrl": "https://lichess.org/ALtR2fxT#19"
+    },
+    {
+      "id": "003mh",
+      "partition": "development",
+      "rootFen": "r4k1r/1pp2p2/p2p3p/3N4/3P2q1/8/PPP5/1K2Q1NR b - - 1 23",
+      "movesUci": ["a8e8"],
+      "solution": ["e1e8", "f8e8", "d5f6", "e8e7", "f6g4"],
+      "rating": 1325,
+      "themes": [
+        "advantage",
+        "attraction",
+        "fork",
+        "long",
+        "middlegame",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/HSa4keKZ/black#46"
+    },
+    {
+      "id": "003nQ",
+      "partition": "development",
+      "rootFen": "6rk/pp6/2n5/3ppn1p/3p4/2P2P1q/PP3QNB/R4R1K w - - 2 29",
+      "movesUci": ["f1g1"],
+      "solution": ["f5g3", "f2g3", "g8g3"],
+      "rating": 1286,
+      "themes": [
+        "crushing",
+        "kingsideAttack",
+        "master",
+        "middlegame",
+        "pin",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/p85fiZcl#57"
+    },
+    {
+      "id": "003o0",
+      "partition": "development",
+      "rootFen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/8/PPP2PPP/R2QK1NR w KQkq - 2 9",
+      "movesUci": ["g1f3"],
+      "solution": ["d8a5", "d1d2", "a5b5"],
+      "rating": 1001,
+      "themes": ["advantage", "fork", "master", "opening", "short"],
+      "gameUrl": "https://lichess.org/Ae0t9V1Z#17"
+    },
+    {
+      "id": "003r5",
+      "partition": "development",
+      "rootFen": "r2qr1k1/ppp2ppp/4b3/3P4/1nP2Q2/2N2N1P/PP3KP1/R4R2 w - - 1 15",
+      "movesUci": ["d5e6"],
+      "solution": ["b4d3", "f2g1", "d3f4"],
+      "rating": 1130,
+      "themes": ["crushing", "fork", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/JPN97v7j#29"
+    },
+    {
+      "id": "003wQ",
+      "partition": "development",
+      "rootFen": "2r2rk1/6pp/3Q1q2/8/3N1B2/6P1/PP1K3P/R4b2 w - - 0 24",
+      "movesUci": ["a1f1"],
+      "solution": ["f6d6", "f4d6", "f8f1"],
+      "rating": 1814,
+      "themes": ["advantage", "discoveredAttack", "middlegame", "pin", "short"],
+      "gameUrl": "https://lichess.org/W3wvnzlo#47"
+    },
+    {
+      "id": "0040n",
+      "partition": "development",
+      "rootFen": "r7/p2k1pp1/p1p1pn2/3p4/3P4/P3PQp1/1PP2P1q/2K4R w - - 0 20",
+      "movesUci": ["h1h2"],
+      "solution": ["g3h2", "f3h3", "f6g4"],
+      "rating": 1268,
+      "themes": ["advancedPawn", "advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/WIUWcrdG#39"
+    },
+    {
+      "id": "0042j",
+      "partition": "development",
+      "rootFen": "3r2k1/4nppp/pq1p1b2/1p2P3/2r2P2/2P1NR2/PP1Q2BP/3R2K1 b - - 0 24",
+      "movesUci": ["d6e5"],
+      "solution": ["d2d8", "b6d8", "d1d8"],
+      "rating": 550,
+      "themes": ["backRankMate", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/DuM2FZjg/black#48"
+    },
+    {
+      "id": "0047P",
+      "partition": "development",
+      "rootFen": "8/1N3k2/6p1/8/2P3P1/pr6/R5K1/8 w - - 1 56",
+      "movesUci": ["g2f1"],
+      "solution": ["b3b1", "f1e2", "b1b2", "e2d1", "b2a2"],
+      "rating": 1766,
+      "themes": [
+        "crushing",
+        "endgame",
+        "exposedKing",
+        "fork",
+        "long",
+        "master"
+      ],
+      "gameUrl": "https://lichess.org/Gb33KZKC#111"
+    },
+    {
+      "id": "0048h",
+      "partition": "development",
+      "rootFen": "4r3/p5k1/2p2R1p/2Pp4/1P1pr1P1/P6P/8/3R3K w - - 1 35",
+      "movesUci": ["f6c6"],
+      "solution": ["e4e1", "d1e1", "e8e1", "h1g2", "d4d3"],
+      "rating": 1152,
+      "themes": ["crushing", "endgame", "exposedKing", "long", "rookEndgame"],
+      "gameUrl": "https://lichess.org/dq15P00L#69"
+    },
+    {
+      "id": "0048r",
+      "partition": "development",
+      "rootFen": "1r3k2/5PbQ/p2p4/q2Pp1P1/8/3R4/2P1K3/8 b - - 0 32",
+      "movesUci": ["a5b5"],
+      "solution": ["h7g8", "f8e7", "g8g7"],
+      "rating": 1630,
+      "themes": ["crushing", "deflection", "endgame", "short"],
+      "gameUrl": "https://lichess.org/cNnX2ZPS/black#64"
+    },
+    {
+      "id": "0048x",
+      "partition": "development",
+      "rootFen": "6k1/7p/4p1p1/QP2Pp2/P1pq4/5bRK/7r/6R1 w - - 0 39",
+      "movesUci": ["h3h2"],
+      "solution": ["d4h4", "g3h3", "h4f2", "g1g2", "f2g2"],
+      "rating": 1299,
+      "themes": ["endgame", "exposedKing", "long", "mate", "mateIn3"],
+      "gameUrl": "https://lichess.org/GlWr58Ue#77"
+    },
+    {
+      "id": "004Ao",
+      "partition": "development",
+      "rootFen": "4qk2/1b3rR1/p7/1p2Q3/4P2P/P2P3K/2r5/3R4 w - - 5 41",
+      "movesUci": ["g7f7"],
+      "solution": ["e8f7", "e5h8", "f8e7"],
+      "rating": 1711,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/aFlzjb1K#81"
+    },
+    {
+      "id": "004Ax",
+      "partition": "development",
+      "rootFen": "8/8/4R1kp/p7/5rPK/8/7P/8 b - - 2 42",
+      "movesUci": ["g6f7"],
+      "solution": ["e6h6", "f4f6", "h6h7", "f7g6", "h7a7"],
+      "rating": 1999,
+      "themes": ["crushing", "endgame", "exposedKing", "long", "rookEndgame"],
+      "gameUrl": "https://lichess.org/x2mMwVJD/black#84"
+    },
+    {
+      "id": "004BW",
+      "partition": "development",
+      "rootFen": "r1bk2r1/ppq2pQp/3bpn2/1BpnN3/5P2/1P6/PBPP2PP/RN2K2R w KQ - 3 13",
+      "movesUci": ["e5f7"],
+      "solution": ["d8e7", "g7g8", "f6g8"],
+      "rating": 1687,
+      "themes": ["advantage", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/EXlG6TZs#25"
+    },
+    {
+      "id": "004LZ",
+      "partition": "development",
+      "rootFen": "8/7R/5p2/p7/7P/2p5/3k2r1/1K2N3 w - - 3 48",
+      "movesUci": ["e1g2"],
+      "solution": ["c3c2", "b1a2", "c2c1q", "h7d7", "d2e2"],
+      "rating": 1195,
+      "themes": [
+        "advancedPawn",
+        "crushing",
+        "defensiveMove",
+        "deflection",
+        "endgame",
+        "long",
+        "promotion"
+      ],
+      "gameUrl": "https://lichess.org/drahwNdj#95"
+    },
+    {
+      "id": "004Lu",
+      "partition": "development",
+      "rootFen": "8/p1p4p/4Pk2/2PP1p1P/1r3r2/5B2/P3RK2/8 b - - 3 38",
+      "movesUci": ["f6e7"],
+      "solution": ["d5d6", "c7d6", "c5d6", "e7d6", "e6e7"],
+      "rating": 1201,
+      "themes": [
+        "advancedPawn",
+        "advantage",
+        "endgame",
+        "exposedKing",
+        "long",
+        "master"
+      ],
+      "gameUrl": "https://lichess.org/WMeZuWza/black#76"
+    },
+    {
+      "id": "004M1",
+      "partition": "development",
+      "rootFen": "8/pp3kp1/6p1/2p2nP1/5NKP/6B1/PPqr2B1/4R3 b - - 5 40",
+      "movesUci": ["f5d4"],
+      "solution": ["g2e4", "c2a4", "e4d5"],
+      "rating": 2065,
+      "themes": ["advantage", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/2zvMGLYz/black#80"
+    },
+    {
+      "id": "004Op",
+      "partition": "development",
+      "rootFen": "2kr2r1/1bp4n/1pq1p2p/p1P5/1P3B2/P6P/5RP1/RB2Q1K1 w - - 3 26",
+      "movesUci": ["e1f1"],
+      "solution": ["d8d1", "f1d1", "g8g2", "g1f1", "g2g1", "f1e2", "g1d1"],
+      "rating": 2280,
+      "themes": [
+        "crushing",
+        "deflection",
+        "kingsideAttack",
+        "middlegame",
+        "pin",
+        "sacrifice",
+        "skewer",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/tneg9Bzk#51"
+    },
+    {
+      "id": "004RF",
+      "partition": "development",
+      "rootFen": "5rk1/5ppp/1p6/1qp2P1Q/3p3P/6R1/6PK/8 b - - 0 30",
+      "movesUci": ["c5c4"],
+      "solution": ["g3g7", "g8g7", "f5f6", "g7f6", "h5b5"],
+      "rating": 1727,
+      "themes": [
+        "attraction",
+        "crushing",
+        "discoveredAttack",
+        "endgame",
+        "long",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/2UeWcE4h/black#60"
+    },
+    {
+      "id": "004Ud",
+      "partition": "development",
+      "rootFen": "r1bqk2r/p3Bppp/3p4/1ppn4/4P3/4Q3/PPP2PPP/2KR1B1R b kq - 0 11",
+      "movesUci": ["d5e7"],
+      "solution": ["f1b5", "c8d7", "d1d6", "d7b5", "d6d8"],
+      "rating": 1575,
+      "themes": ["advantage", "interference", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/pJ7nXTvE/black#22"
+    },
+    {
+      "id": "004X6",
+      "partition": "development",
+      "rootFen": "1r4k1/p4ppp/2Q5/3pq3/8/P6P/2PR1PP1/Rr4K1 w - - 1 26",
+      "movesUci": ["a1b1"],
+      "solution": ["b8b1", "d2d1", "b1d1"],
+      "rating": 1152,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/wvPFkjF9#51"
+    },
+    {
+      "id": "004XI",
+      "partition": "held-out",
+      "rootFen": "8/3kqp2/4p3/p2p4/3P1P2/4P1rP/7r/1QR2K2 b - - 1 34",
+      "movesUci": ["e7a3"],
+      "solution": ["b1b7", "d7e8", "c1c8"],
+      "rating": 982,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/54fnArpo/black#68"
+    },
+    {
+      "id": "004Ys",
+      "partition": "held-out",
+      "rootFen": "r4rk1/3q1pbp/p1n1p1p1/2p3NP/1p3B2/3P3Q/PPP3P1/R3R1K1 b - - 2 19",
+      "movesUci": ["d7d4"],
+      "solution": ["f4e3", "d4f6", "e1f1", "f6e5", "h5g6", "e5e3", "h3e3"],
+      "rating": 2417,
+      "themes": ["advantage", "defensiveMove", "middlegame", "veryLong"],
+      "gameUrl": "https://lichess.org/LcIJdugn/black#38"
+    },
+    {
+      "id": "004b0",
+      "partition": "held-out",
+      "rootFen": "5kB1/4b3/4P3/2p2P2/2b5/8/p7/B6K w - - 4 48",
+      "movesUci": ["g8f7"],
+      "solution": ["e7g5", "f5f6", "g5e3", "a1e5", "e3f4", "e5f4", "a2a1q"],
+      "rating": 2368,
+      "themes": [
+        "advancedPawn",
+        "bishopEndgame",
+        "crushing",
+        "deflection",
+        "endgame",
+        "promotion",
+        "quietMove",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/CJKIi1QJ#95"
+    },
+    {
+      "id": "004d8",
+      "partition": "held-out",
+      "rootFen": "8/4kr2/R2p4/1p1Pp1p1/5p2/3K1P2/PPP5/8 b - - 0 39",
+      "movesUci": ["g5g4"],
+      "solution": ["a6a7", "e7f6", "a7f7", "f6f7", "f3g4"],
+      "rating": 1608,
+      "themes": ["crushing", "endgame", "long", "rookEndgame"],
+      "gameUrl": "https://lichess.org/FrR3BHbW/black#78"
+    },
+    {
+      "id": "004kB",
+      "partition": "held-out",
+      "rootFen": "4rr1k/pQpn2pp/3p1q2/8/8/2P5/PP3PPP/RN3RK1 w - - 1 16",
+      "movesUci": ["b7c7"],
+      "solution": ["f6f2", "f1f2", "e8e1", "f2f1", "e1f1"],
+      "rating": 1209,
+      "themes": [
+        "kingsideAttack",
+        "long",
+        "mate",
+        "mateIn3",
+        "middlegame",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/Cl9T6bjt#31"
+    },
+    {
+      "id": "004mT",
+      "partition": "held-out",
+      "rootFen": "5Q2/8/1b1kp1p1/5p2/3p4/5qPK/7P/8 b - - 1 51",
+      "movesUci": ["d6c6"],
+      "solution": ["f8a8", "c6d6", "a8f3"],
+      "rating": 1361,
+      "themes": ["advantage", "endgame", "short", "skewer"],
+      "gameUrl": "https://lichess.org/Jqhi4ozb/black#102"
+    },
+    {
+      "id": "004nd",
+      "partition": "held-out",
+      "rootFen": "3q2k1/2r5/pp3p1Q/2b1n3/P3N3/2P5/1P4PP/R6K b - - 0 24",
+      "movesUci": ["c7d7"],
+      "solution": ["e4f6", "d8f6", "h6f6"],
+      "rating": 898,
+      "themes": ["crushing", "fork", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/IajkZZBp/black#48"
+    },
+    {
+      "id": "004sY",
+      "partition": "held-out",
+      "rootFen": "8/2k3n1/3p2p1/1KpP2Pp/2P4P/7B/8/8 w - - 0 57",
+      "movesUci": ["b5a6"],
+      "solution": ["c7d8", "a6b5", "g7f5"],
+      "rating": 2191,
+      "themes": ["crushing", "endgame", "short"],
+      "gameUrl": "https://lichess.org/sMrTPfXp#113"
+    },
+    {
+      "id": "004sg",
+      "partition": "held-out",
+      "rootFen": "6k1/p3b2p/1p1pP3/2p3P1/1Pnp3B/P6P/3Q3K/8 w - - 0 38",
+      "movesUci": ["b4c5"],
+      "solution": ["c4d2", "c5c6", "d6d5", "g5g6", "e7d6"],
+      "rating": 2439,
+      "themes": [
+        "advantage",
+        "clearance",
+        "endgame",
+        "hangingPiece",
+        "long",
+        "quietMove"
+      ],
+      "gameUrl": "https://lichess.org/pSRIvt7K#75"
+    },
+    {
+      "id": "004u0",
+      "partition": "held-out",
+      "rootFen": "6k1/ppq3pp/2p1rp2/4r3/4p1Q1/P5RP/1P3PP1/3R2K1 b - - 3 34",
+      "movesUci": ["e6e8"],
+      "solution": ["d1d7", "c7d7", "g4d7"],
+      "rating": 1325,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/3gEqoQeQ/black#68"
+    },
+    {
+      "id": "004zh",
+      "partition": "held-out",
+      "rootFen": "4b1k1/4Pr2/3R2pp/1ppBP1q1/8/PP4P1/2P4P/3R3K b - - 2 38",
+      "movesUci": ["g5h5"],
+      "solution": [
+        "d1f1",
+        "g8g7",
+        "d5f7",
+        "e8f7",
+        "d6d8",
+        "h5e5",
+        "f1f7",
+        "g7f7",
+        "e7e8q",
+        "e5e8",
+        "d8e8"
+      ],
+      "rating": 2624,
+      "themes": [
+        "advancedPawn",
+        "attraction",
+        "crushing",
+        "endgame",
+        "exposedKing",
+        "intermezzo",
+        "pin",
+        "promotion",
+        "quietMove",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/sYeKSrqj/black#76"
+    },
+    {
+      "id": "0050w",
+      "partition": "held-out",
+      "rootFen": "5rk1/1p2p1rp/p2p4/2pPb2R/2P1P3/1P1BKP1R/8/8 b - - 4 30",
+      "movesUci": ["g7g3"],
+      "solution": ["h3g3", "e5g3", "h5g5", "g8f7", "g5g3"],
+      "rating": 1131,
+      "themes": ["crushing", "endgame", "fork", "long"],
+      "gameUrl": "https://lichess.org/QD8pUcTR/black#60"
+    },
+    {
+      "id": "0054a",
+      "partition": "held-out",
+      "rootFen": "r1b2rk1/ppq2ppp/8/4b2Q/4R3/3B4/PP3PPP/R1B3K1 b - - 1 15",
+      "movesUci": ["g7g6"],
+      "solution": ["h5e5", "c7e5", "e4e5"],
+      "rating": 1454,
+      "themes": ["advantage", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/kZlE1pvD/black#30"
+    },
+    {
+      "id": "0055Y",
+      "partition": "held-out",
+      "rootFen": "r1b2rk1/p3pp2/2B4b/2Qpq3/3N2pp/4P3/2P2PPP/1R2K2R b K - 1 23",
+      "movesUci": ["h6e3"],
+      "solution": ["f2e3", "e5e3", "e1d1"],
+      "rating": 2055,
+      "themes": ["advantage", "defensiveMove", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/7Jpwzowt/black#46"
+    },
+    {
+      "id": "005Bm",
+      "partition": "held-out",
+      "rootFen": "4rk2/p1q5/1p3Q1b/8/1p5N/2P1p3/P3P3/2K5 b - - 0 43",
+      "movesUci": ["c7f7"],
+      "solution": ["h4g6", "f8g8", "f6h8"],
+      "rating": 1434,
+      "themes": ["endgame", "mate", "mateIn2", "pin", "short"],
+      "gameUrl": "https://lichess.org/KKslCMev/black#86"
+    },
+    {
+      "id": "005HG",
+      "partition": "held-out",
+      "rootFen": "r2q1rk1/p1p2pp1/3bbn1p/4N3/2Q5/1P4P1/PB1PPP1P/RN2K2R w KQ - 1 12",
+      "movesUci": ["c4c2"],
+      "solution": ["d6e5", "b2e5", "d8d5", "f2f3", "d5e5"],
+      "rating": 1788,
+      "themes": ["advantage", "clearance", "fork", "long", "opening"],
+      "gameUrl": "https://lichess.org/JTymzeq9#23"
+    },
+    {
+      "id": "005N7",
+      "partition": "held-out",
+      "rootFen": "r6k/2q3pp/8/2p1n3/R1Qp4/7P/2PB1PP1/6K1 b - - 0 32",
+      "movesUci": ["e5c4"],
+      "solution": ["a4a8", "c7b8", "a8b8"],
+      "rating": 683,
+      "themes": [
+        "backRankMate",
+        "endgame",
+        "hangingPiece",
+        "mate",
+        "mateIn2",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/jxZhmGhg/black#64"
+    },
+    {
+      "id": "005YM",
+      "partition": "held-out",
+      "rootFen": "5k2/p4pp1/1qn3r1/3pP2p/5P2/1NPQ4/Pr3RPP/R5K1 w - - 5 24",
+      "movesUci": ["b3d4"],
+      "solution": ["b2f2", "g1f2", "c6d4", "d3d4", "b6b2"],
+      "rating": 2429,
+      "themes": ["advantage", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/fDmK2ipV#47"
+    },
+    {
+      "id": "005YX",
+      "partition": "held-out",
+      "rootFen": "2rr4/2N2pk1/p1Q1b1pp/1p4q1/3pP3/1B1P4/PPP3PP/6RK w - - 7 25",
+      "movesUci": ["c7e6"],
+      "solution": ["f7e6", "c6b7", "g7h8"],
+      "rating": 2004,
+      "themes": ["defensiveMove", "equality", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/zbi5w5Qy#49"
+    },
+    {
+      "id": "005do",
+      "partition": "held-out",
+      "rootFen": "7r/pp1k4/4p1b1/3pP1Np/3P1P1K/8/P7/2R5 b - - 7 42",
+      "movesUci": ["h8f8"],
+      "solution": ["c1c7", "d7c7", "g5e6", "c7b6", "e6f8"],
+      "rating": 1433,
+      "themes": [
+        "attraction",
+        "crushing",
+        "deflection",
+        "endgame",
+        "fork",
+        "long",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/Q1hPi58C/black#84"
+    },
+    {
+      "id": "005f3",
+      "partition": "held-out",
+      "rootFen": "r5k1/2p1pp2/pp4p1/1q1r4/5P2/2QP2R1/PP6/1K4R1 b - - 0 32",
+      "movesUci": ["d5h5"],
+      "solution": [
+        "g3g6",
+        "f7g6",
+        "g1g6",
+        "g8f7",
+        "c3g7",
+        "f7e8",
+        "g7g8",
+        "e8d7",
+        "g8e6",
+        "d7d8",
+        "g6g8"
+      ],
+      "rating": 1974,
+      "themes": ["crushing", "endgame", "sacrifice", "veryLong"],
+      "gameUrl": "https://lichess.org/Prb24UzR/black#64"
+    },
+    {
+      "id": "005gP",
+      "partition": "held-out",
+      "rootFen": "8/8/3p4/2kP4/1p4P1/2pK4/P7/8 w - - 1 42",
+      "movesUci": ["g4g5"],
+      "solution": [
+        "c5d5",
+        "g5g6",
+        "d5e6",
+        "g6g7",
+        "e6f7",
+        "a2a4",
+        "b4a3",
+        "g7g8r",
+        "f7g8"
+      ],
+      "rating": 1723,
+      "themes": ["crushing", "enPassant", "endgame", "pawnEndgame", "veryLong"],
+      "gameUrl": "https://lichess.org/I76OvKQT#83"
+    },
+    {
+      "id": "005jJ",
+      "partition": "held-out",
+      "rootFen": "r1b1qrk1/pp1n1pbp/2pp1np1/4p3/2PP1B2/2NBPN1P/PP3PP1/R2Q1RK1 w - - 0 10",
+      "movesUci": ["d4e5"],
+      "solution": ["d6e5", "f4h2", "e5e4"],
+      "rating": 1215,
+      "themes": ["advantage", "opening", "short"],
+      "gameUrl": "https://lichess.org/wt6Q2xGb#19"
+    },
+    {
+      "id": "005jR",
+      "partition": "held-out",
+      "rootFen": "8/5p1k/1P4pp/3Qn3/4BP2/6P1/1p2P2P/2q3K1 w - - 1 34",
+      "movesUci": ["g1f2"],
+      "solution": ["b2b1q", "e4b1", "e5g4", "f2f3", "c1h1"],
+      "rating": 2772,
+      "themes": ["advancedPawn", "crushing", "endgame", "long", "promotion"],
+      "gameUrl": "https://lichess.org/ltr8kYV9#67"
+    },
+    {
+      "id": "005nD",
+      "partition": "held-out",
+      "rootFen": "3rk2r/2qn1pp1/p1Q1R3/3n3p/8/8/PP4PP/5R1K b k - 0 23",
+      "movesUci": ["f7e6"],
+      "solution": ["c6e6", "d5e7", "e6f7"],
+      "rating": 1111,
+      "themes": ["fork", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/hlgaj6lV/black#46"
+    },
+    {
+      "id": "005qG",
+      "partition": "held-out",
+      "rootFen": "8/8/1p1k1p1p/3npp2/2B5/PP1K1PP1/7P/8 b - - 0 36",
+      "movesUci": ["f5f4"],
+      "solution": ["c4d5", "f4g3", "h2g3", "d6d5", "g3g4"],
+      "rating": 2310,
+      "themes": ["crushing", "defensiveMove", "endgame", "long"],
+      "gameUrl": "https://lichess.org/RMj9gStA/black#72"
+    },
+    {
+      "id": "005ws",
+      "partition": "held-out",
+      "rootFen": "8/8/5pp1/3K3p/3N2kP/8/8/8 w - - 2 62",
+      "movesUci": ["d5e6"],
+      "solution": [
+        "g6g5",
+        "h4g5",
+        "f6g5",
+        "e6d5",
+        "h5h4",
+        "d5e4",
+        "h4h3",
+        "d4f3",
+        "g4g3"
+      ],
+      "rating": 2448,
+      "themes": [
+        "crushing",
+        "endgame",
+        "knightEndgame",
+        "master",
+        "masterVsMaster",
+        "quietMove",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/LOwACSXb#123"
+    },
+    {
+      "id": "005wy",
+      "partition": "held-out",
+      "rootFen": "1r6/pp2kpp1/2n1p1n1/3p2PQ/5P2/2PqP3/PP1N4/2KR3R w - - 3 27",
+      "movesUci": ["h5h7"],
+      "solution": ["c6b4", "c3b4", "b8c8", "d2c4", "c8c4"],
+      "rating": 1780,
+      "themes": [
+        "long",
+        "mate",
+        "mateIn3",
+        "middlegame",
+        "queensideAttack",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/mBQMheB4#53"
+    },
+    {
+      "id": "005xu",
+      "partition": "held-out",
+      "rootFen": "8/3k4/1K1P4/2P3r1/R7/5b2/8/8 b - - 0 68",
+      "movesUci": ["g5g8"],
+      "solution": ["a4a7", "d7e6", "a7e7", "e6d5", "d6d7"],
+      "rating": 1914,
+      "themes": ["advancedPawn", "crushing", "endgame", "exposedKing", "long"],
+      "gameUrl": "https://lichess.org/TDu28XvE/black#136"
+    },
+    {
+      "id": "005yO",
+      "partition": "held-out",
+      "rootFen": "r1r3k1/ppq3bQ/4p2p/4n3/3p4/2P5/PBB2PPP/4R1K1 b - - 2 24",
+      "movesUci": ["g8f8"],
+      "solution": ["b2a3", "f8f7", "c2d1", "c8h8", "d1h5", "f7f6", "h7e4"],
+      "rating": 3050,
+      "themes": [
+        "advantage",
+        "exposedKing",
+        "middlegame",
+        "quietMove",
+        "veryLong"
+      ],
+      "gameUrl": "https://lichess.org/j65YI8hC/black#48"
+    },
+    {
+      "id": "0061g",
+      "partition": "held-out",
+      "rootFen": "6k1/pp3pp1/2p1q1Pp/3b4/8/6Q1/PB3Pp1/3RrNK1 b - - 2 27",
+      "movesUci": ["e1d1"],
+      "solution": ["g3b8", "e6e8", "b8e8"],
+      "rating": 801,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/dJ3xEKJK/black#54"
+    },
+    {
+      "id": "0068B",
+      "partition": "held-out",
+      "rootFen": "r1q3k1/4bppp/pp2pn2/4B3/8/2N2Q2/PPPR1PPP/6K1 b - - 0 18",
+      "movesUci": ["f6d7"],
+      "solution": ["d2d7", "c8d7", "f3a8"],
+      "rating": 1459,
+      "themes": ["crushing", "deflection", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/LNdzAgWP/black#36"
+    },
+    {
+      "id": "0068D",
+      "partition": "held-out",
+      "rootFen": "7r/pppk4/2pb1r2/8/2NP2p1/2P5/PP2RPP1/4R1K1 w - - 2 26",
+      "movesUci": ["c4d6"],
+      "solution": ["f6h6", "f2f4", "g4g3", "e2e7", "d7d6", "g1f1", "h6h1"],
+      "rating": 1949,
+      "themes": ["crushing", "endgame", "veryLong"],
+      "gameUrl": "https://lichess.org/WNAZgV2o#51"
+    },
+    {
+      "id": "006E1",
+      "partition": "held-out",
+      "rootFen": "5rk1/R4pp1/1p5p/3Q4/1PPp2q1/3P2P1/5P2/4nK2 w - - 0 34",
+      "movesUci": ["f1e1"],
+      "solution": ["f8e8", "e1f1", "g4h3", "d5g2", "e8e1", "f1e1", "h3g2"],
+      "rating": 1572,
+      "themes": ["crushing", "deflection", "endgame", "veryLong"],
+      "gameUrl": "https://lichess.org/KaLKLKD5#67"
+    },
+    {
+      "id": "006HV",
+      "partition": "held-out",
+      "rootFen": "1r6/5k2/2p1pNp1/p5Pp/1pQ1P2P/2P4R/KP3P2/3q4 w - - 4 31",
+      "movesUci": ["c4c6"],
+      "solution": ["b4b3", "a2a3", "d1a1"],
+      "rating": 1159,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/ibb2c72C#61"
+    },
+    {
+      "id": "006NL",
+      "partition": "held-out",
+      "rootFen": "1r6/k2qn1b1/p1b1p1p1/2PpPpN1/2nN1P1P/p4B2/1PP2Q2/1K1R3R w - - 0 32",
+      "movesUci": ["d4c6"],
+      "solution": [
+        "e7c6",
+        "b2b3",
+        "a3a2",
+        "b1a1",
+        "c4e5",
+        "f4e5",
+        "g7e5",
+        "a1a2",
+        "b8b5"
+      ],
+      "rating": 2545,
+      "themes": ["advancedPawn", "advantage", "middlegame", "pin", "veryLong"],
+      "gameUrl": "https://lichess.org/yA3M5Q6W#63"
+    },
+    {
+      "id": "006OI",
+      "partition": "held-out",
+      "rootFen": "8/p7/5k2/P5R1/6KP/8/8/5r2 w - - 5 53",
+      "movesUci": ["g5g8"],
+      "solution": ["f1g1", "g4f4", "g1g8"],
+      "rating": 843,
+      "themes": ["crushing", "endgame", "rookEndgame", "short", "skewer"],
+      "gameUrl": "https://lichess.org/6AH1H5wg#105"
+    },
+    {
+      "id": "006RM",
+      "partition": "held-out",
+      "rootFen": "1k1r3r/2q5/pp1n2p1/8/1Q6/3R2P1/PPP2P1P/3R2K1 b - - 4 29",
+      "movesUci": ["c7c5"],
+      "solution": ["b4c5", "b6c5", "d3d6", "d8d6", "d1d6"],
+      "rating": 1445,
+      "themes": ["crushing", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/ceS0QvtT/black#58"
+    },
+    {
+      "id": "006XF",
+      "partition": "held-out",
+      "rootFen": "r5kr/pp1qb1p1/2p4p/3pPb1Q/3P4/2P1B3/PP4PP/R4RK1 b - - 1 17",
+      "movesUci": ["f5e4"],
+      "solution": ["h5f7", "g8h7", "f1f6", "e7f6", "f7d7"],
+      "rating": 2372,
+      "themes": ["advantage", "long", "middlegame", "pin"],
+      "gameUrl": "https://lichess.org/Ynra1LLE/black#34"
+    },
+    {
+      "id": "006cZ",
+      "partition": "held-out",
+      "rootFen": "3r1rk1/1p4p1/p1p3Qp/2q5/8/3n1N1P/PP1R2P1/5R1K b - - 7 28",
+      "movesUci": ["g8h8"],
+      "solution": ["d2d3", "d8d3", "g6d3"],
+      "rating": 1374,
+      "themes": [
+        "advantage",
+        "master",
+        "masterVsMaster",
+        "middlegame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/qrbDEp56/black#56"
+    },
+    {
+      "id": "006fF",
+      "partition": "held-out",
+      "rootFen": "r1b4r/pp1k2pp/2nb2q1/1B1p2B1/3p3Q/8/PPP2PPP/3RR1K1 b - - 5 17",
+      "movesUci": ["h7h6"],
+      "solution": ["h4g4", "d7c7", "g5d8", "h8d8", "g4g6"],
+      "rating": 1702,
+      "themes": [
+        "advantage",
+        "discoveredAttack",
+        "exposedKing",
+        "long",
+        "middlegame"
+      ],
+      "gameUrl": "https://lichess.org/mAf9SSin/black#34"
+    },
+    {
+      "id": "006i7",
+      "partition": "held-out",
+      "rootFen": "r4rk1/3nqpp1/2p1bn1p/3pN3/1p1P4/2NQP2P/1PB2PP1/R4RK1 w - - 0 18",
+      "movesUci": ["e5c6"],
+      "solution": ["e7d6", "a1a8", "f8a8", "c6b4", "d6b4"],
+      "rating": 1727,
+      "themes": ["advantage", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/77CYKPKY#35"
+    },
+    {
+      "id": "006ia",
+      "partition": "held-out",
+      "rootFen": "1r4k1/4bpp1/1rp2n1p/3p4/3P4/2N1B1P1/Pq2QPKP/2R1R3 w - - 3 24",
+      "movesUci": ["e3h6"],
+      "solution": ["b2e2", "e1e2", "e7a3", "h6e3", "a3c1"],
+      "rating": 2073,
+      "themes": ["advantage", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/fcKXrUhC#47"
+    },
+    {
+      "id": "006of",
+      "partition": "held-out",
+      "rootFen": "r2qr2k/1pp2pp1/1b4np/pP2P3/P4n2/BQN2N1P/5PP1/R3R1K1 w - - 3 20",
+      "movesUci": ["b3f7"],
+      "solution": ["d8d3", "c3e2", "f4e2", "e1e2", "d3e2"],
+      "rating": 2615,
+      "themes": ["advantage", "kingsideAttack", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/MIdWd89x#39"
+    },
+    {
+      "id": "006om",
+      "partition": "held-out",
+      "rootFen": "1r3k2/5p1p/2p1pp2/P2n4/2r1N3/P4PK1/2R2P1P/2R5 b - - 9 29",
+      "movesUci": ["c4a4"],
+      "solution": ["e4c5", "a4a5", "c5d7", "f8g7", "d7b8"],
+      "rating": 1921,
+      "themes": ["crushing", "endgame", "fork", "long", "master"],
+      "gameUrl": "https://lichess.org/BMIgw1OR/black#58"
+    },
+    {
+      "id": "006pe",
+      "partition": "held-out",
+      "rootFen": "r4r2/2q1NN2/4bQpk/2n4p/pp5P/8/1PP2PP1/2KR3R b - - 0 28",
+      "movesUci": ["e6f7"],
+      "solution": ["e7f5", "h6h7", "f6g7"],
+      "rating": 1588,
+      "themes": ["master", "mate", "mateIn2", "middlegame", "pin", "short"],
+      "gameUrl": "https://lichess.org/gkSEAS27/black#56"
+    },
+    {
+      "id": "006wz",
+      "partition": "held-out",
+      "rootFen": "2r5/4ppkp/5bp1/1p6/1P6/P3B3/2r2PPP/1R1R2K1 b - - 2 22",
+      "movesUci": ["f6b2"],
+      "solution": ["b1b2", "c2b2", "e3d4", "f7f6", "d4b2"],
+      "rating": 1426,
+      "themes": [
+        "attraction",
+        "crushing",
+        "endgame",
+        "fork",
+        "long",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/qT0W6o27/black#44"
+    },
+    {
+      "id": "006yP",
+      "partition": "held-out",
+      "rootFen": "6R1/8/Kpk1p3/1p1pP3/6P1/PPP1r3/8/8 b - - 3 40",
+      "movesUci": ["e3c3"],
+      "solution": ["g8c8", "c6d7", "c8c3"],
+      "rating": 819,
+      "themes": [
+        "crushing",
+        "endgame",
+        "master",
+        "rookEndgame",
+        "short",
+        "skewer"
+      ],
+      "gameUrl": "https://lichess.org/vf9MOLH1/black#80"
+    },
+    {
+      "id": "0071K",
+      "partition": "held-out",
+      "rootFen": "3N1r2/6R1/kp6/p2pPp1Q/2pP2P1/2q5/2P5/2K5 w - - 0 38",
+      "movesUci": ["g7a7"],
+      "solution": ["a6a7", "h5h7", "a7a6"],
+      "rating": 1131,
+      "themes": [
+        "crushing",
+        "defensiveMove",
+        "endgame",
+        "hangingPiece",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/gY0ZkxR4#75"
+    },
+    {
+      "id": "0071N",
+      "partition": "held-out",
+      "rootFen": "6k1/p4pp1/1p5p/4b3/4B3/4P1P1/PpR2PKP/3r4 b - - 1 30",
+      "movesUci": ["b2b1q"],
+      "solution": ["c2c8", "d1d8", "c8d8"],
+      "rating": 554,
+      "themes": ["endgame", "mate", "mateIn2", "pillsburysMate", "short"],
+      "gameUrl": "https://lichess.org/HRlw71ON/black#60"
+    },
+    {
+      "id": "0072T",
+      "partition": "held-out",
+      "rootFen": "3q1nk1/1bN2rpp/pp1P4/1N6/4n2b/8/PPP2PPP/R1BQ1RK1 w - - 1 16",
+      "movesUci": ["b5d4"],
+      "solution": ["h4f2", "f1f2", "e4f2"],
+      "rating": 2304,
+      "themes": [
+        "advantage",
+        "kingsideAttack",
+        "master",
+        "middlegame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/aqhibPRF#31"
+    },
+    {
+      "id": "00734",
+      "partition": "held-out",
+      "rootFen": "rn3bk1/2rqp2p/2p3p1/3p1p2/3P1P1B/pP1BP3/P1Q2PRP/1KR5 b - - 0 26",
+      "movesUci": ["b8a6"],
+      "solution": ["d3f5", "e7e6", "f5g6"],
+      "rating": 1692,
+      "themes": ["crushing", "middlegame", "pin", "short"],
+      "gameUrl": "https://lichess.org/jM0Jnw0u/black#52"
+    },
+    {
+      "id": "00761",
+      "partition": "held-out",
+      "rootFen": "3r2k1/1b3pbR/p2P2P1/3p2N1/2p5/2P2N2/PP6/2K5 b - - 0 28",
+      "movesUci": ["f7g6"],
+      "solution": ["h7g7", "g8g7", "g5e6", "g7g8", "e6d8"],
+      "rating": 1357,
+      "themes": [
+        "attraction",
+        "crushing",
+        "endgame",
+        "exposedKing",
+        "fork",
+        "long",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/vu70Maig/black#56"
+    },
+    {
+      "id": "0078T",
+      "partition": "held-out",
+      "rootFen": "rk5r/1b3R2/pp2p2q/4P2p/B2p3B/4R2P/PP4P1/5Q1K b - - 0 27",
+      "movesUci": ["d4e3"],
+      "solution": ["f7b7", "b8b7", "f1f7", "b7b8", "h4e7"],
+      "rating": 2248,
+      "themes": [
+        "attraction",
+        "crushing",
+        "defensiveMove",
+        "exposedKing",
+        "long",
+        "middlegame",
+        "queensideAttack",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/mXf4gFYU/black#54"
+    },
+    {
+      "id": "00798",
+      "partition": "held-out",
+      "rootFen": "6K1/4k3/4P3/6pp/6rP/4R1P1/8/8 w - - 0 60",
+      "movesUci": ["g8g7"],
+      "solution": ["g5h4", "g7h6", "h4g3"],
+      "rating": 1895,
+      "themes": [
+        "crushing",
+        "discoveredAttack",
+        "endgame",
+        "rookEndgame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/4DOjQjiM#119"
+    },
+    {
+      "id": "007AS",
+      "partition": "held-out",
+      "rootFen": "r3kb1r/3nnpp1/4p1bp/1NppP3/3P4/6N1/P2BBPPP/R3K2R b KQkq - 0 17",
+      "movesUci": ["a8b8"],
+      "solution": ["b5d6", "e8d8", "d2a5"],
+      "rating": 1582,
+      "themes": ["crushing", "master", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/Nfuw1Dug/black#34"
+    },
+    {
+      "id": "007OE",
+      "partition": "held-out",
+      "rootFen": "8/pkp5/2p1p3/3p4/N2q4/1n4Q1/PPP3Pr/K2R4 w - - 2 29",
+      "movesUci": ["a2b3"],
+      "solution": ["d4d1", "a1a2", "h2h1", "a4c5", "b7b6"],
+      "rating": 1281,
+      "themes": ["advantage", "endgame", "hangingPiece", "long", "quietMove"],
+      "gameUrl": "https://lichess.org/1c7uOUzp#57"
+    },
+    {
+      "id": "007Rn",
+      "partition": "held-out",
+      "rootFen": "4r1k1/p4p1p/1p6/6q1/3P2n1/P4Q2/1P1B2P1/7K w - - 0 34",
+      "movesUci": ["d2g5"],
+      "solution": ["e8e1", "f3f1", "e1f1"],
+      "rating": 990,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/L9kH7FqT#67"
+    },
+    {
+      "id": "007XE",
+      "partition": "held-out",
+      "rootFen": "2kr3r/p1p1bpp1/2p2n1p/8/8/1P6/P1P1RPPP/RNB3K1 w - - 1 16",
+      "movesUci": ["e2e7"],
+      "solution": ["d8d1", "e7e1", "d1e1"],
+      "rating": 591,
+      "themes": [
+        "backRankMate",
+        "fork",
+        "mate",
+        "mateIn2",
+        "middlegame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/f4f7UwiT#31"
+    },
+    {
+      "id": "007eS",
+      "partition": "held-out",
+      "rootFen": "6k1/p4p2/1p5p/4r3/P3B3/1P3P2/2PK2PP/8 w - - 0 29",
+      "movesUci": ["d2e3"],
+      "solution": ["f7f5", "g2g4", "f5e4"],
+      "rating": 1197,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/8qs8bafy#57"
+    },
+    {
+      "id": "007en",
+      "partition": "held-out",
+      "rootFen": "rn3rk1/4pp1p/3p2pB/2q4P/3bP1b1/Pp2Q3/1P2B3/1K1R2NR w - - 0 20",
+      "movesUci": ["e3d4"],
+      "solution": ["c5c2", "b1a1", "a8a3", "b2a3", "c2a2"],
+      "rating": 1842,
+      "themes": [
+        "long",
+        "mate",
+        "mateIn3",
+        "middlegame",
+        "queensideAttack",
+        "sacrifice"
+      ],
+      "gameUrl": "https://lichess.org/jzE2yKAk#39"
+    },
+    {
+      "id": "007gO",
+      "partition": "held-out",
+      "rootFen": "2r3rk/5p2/4p2p/4q3/1Q6/8/1P3PPP/R4RK1 w - - 0 31",
+      "movesUci": ["a1c1"],
+      "solution": ["e5g5", "g2g3", "c8c1"],
+      "rating": 2197,
+      "themes": ["crushing", "endgame", "short"],
+      "gameUrl": "https://lichess.org/id1brvZc#61"
+    },
+    {
+      "id": "007ku",
+      "partition": "held-out",
+      "rootFen": "r1bq3Q/1np2kp1/p5B1/1p1Pp3/1Pn2BP1/2b2P2/P3K3/R4N2 b - - 5 35",
+      "movesUci": ["f7g6"],
+      "solution": ["h8h5", "g6f6", "f4g5"],
+      "rating": 1663,
+      "themes": ["mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/QveLbBjG/black#70"
+    },
+    {
+      "id": "007mr",
+      "partition": "held-out",
+      "rootFen": "5k2/p2r3p/1p4pP/3r1q2/3Rp3/2P5/PP3PQ1/K3R3 w - - 0 33",
+      "movesUci": ["d4e4"],
+      "solution": ["d5d1", "e1d1", "d7d1"],
+      "rating": 646,
+      "themes": ["backRankMate", "endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/J12UnEgz#65"
+    },
+    {
+      "id": "007tv",
+      "partition": "held-out",
+      "rootFen": "r3k1nr/1pp2ppp/1pnp2q1/4p1B1/2B1P3/3P1Q1P/PPP2PP1/R4RK1 b kq - 0 11",
+      "movesUci": ["g6g5"],
+      "solution": ["f3f7", "e8d8", "f7f8", "d8d7", "f8a8"],
+      "rating": 1108,
+      "themes": ["advantage", "attackingF2F7", "long", "middlegame", "skewer"],
+      "gameUrl": "https://lichess.org/ky7qZNjk/black#22"
+    },
+    {
+      "id": "0088O",
+      "partition": "held-out",
+      "rootFen": "7Q/2p5/1p2prp1/p4k1p/P4p1P/8/6RK/3q4 b - - 2 37",
+      "movesUci": ["d1a4"],
+      "solution": ["g2g5", "f5e4", "h8f6"],
+      "rating": 1133,
+      "themes": ["crushing", "deflection", "endgame", "short"],
+      "gameUrl": "https://lichess.org/GmH1DPx6/black#74"
+    },
+    {
+      "id": "008D5",
+      "partition": "held-out",
+      "rootFen": "r1bqk2r/pp3ppp/4p2n/3pP3/1b1P1P2/2N5/PP4PP/R1BQKB1R b KQkq - 2 9",
+      "movesUci": ["h6f5"],
+      "solution": ["d1a4", "c8d7", "a4b4"],
+      "rating": 1421,
+      "themes": ["advantage", "fork", "master", "opening", "short"],
+      "gameUrl": "https://lichess.org/jIGC2FuP/black#18"
+    },
+    {
+      "id": "008EC",
+      "partition": "held-out",
+      "rootFen": "6k1/4rpp1/p6p/7P/q1pP1R2/2Pb2Q1/P4RP1/6K1 w - - 9 31",
+      "movesUci": ["f4f7"],
+      "solution": [
+        "e7f7",
+        "g3b8",
+        "g8h7",
+        "f2f7",
+        "a4d1",
+        "g1f2",
+        "d1f1",
+        "f2g3",
+        "f1f7"
+      ],
+      "rating": 2344,
+      "themes": ["advantage", "endgame", "skewer", "veryLong"],
+      "gameUrl": "https://lichess.org/q5CqLXP5#61"
+    },
+    {
+      "id": "008GK",
+      "partition": "held-out",
+      "rootFen": "1k1r4/ppp3p1/8/1P5p/8/P3n2P/2P1r1P1/B3NRK1 b - - 4 31",
+      "movesUci": ["d8d1"],
+      "solution": ["f1f8", "d1d8", "f8d8"],
+      "rating": 651,
+      "themes": ["backRankMate", "endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/9vFFDYsH/black#62"
+    },
+    {
+      "id": "008LT",
+      "partition": "held-out",
+      "rootFen": "r4rk1/6p1/b3p1nN/p1pp4/1p3P1q/3P1Q1B/PPP2PK1/R6R b - - 0 26",
+      "movesUci": ["g8h8"],
+      "solution": ["h6f7", "f8f7", "h3e6"],
+      "rating": 2209,
+      "themes": [
+        "crushing",
+        "kingsideAttack",
+        "middlegame",
+        "pin",
+        "sacrifice",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/vnxisKeU/black#52"
+    },
+    {
+      "id": "008P4",
+      "partition": "held-out",
+      "rootFen": "8/4k3/1p1p4/rP2p1p1/P2nP1P1/3BK3/8/R7 w - - 0 35",
+      "movesUci": ["e3d2"],
+      "solution": ["d4b3", "d2c3", "b3a1"],
+      "rating": 703,
+      "themes": ["crushing", "endgame", "fork", "short"],
+      "gameUrl": "https://lichess.org/3GoHPRp3#69"
+    },
+    {
+      "id": "008Sk",
+      "partition": "held-out",
+      "rootFen": "8/6pp/3Bp2k/p2pP2P/P2bp1PK/8/r7/5R2 b - - 2 37",
+      "movesUci": ["d4f2"],
+      "solution": ["f1f2", "g7g5", "h4g3", "a2f2", "g3f2"],
+      "rating": 1912,
+      "themes": ["crushing", "endgame", "long"],
+      "gameUrl": "https://lichess.org/rah6MiKa/black#74"
+    },
+    {
+      "id": "008Y3",
+      "partition": "held-out",
+      "rootFen": "r5k1/1p1rqpp1/p3pnp1/2PN4/8/1Q5P/PP3PP1/3RR1K1 b - - 0 24",
+      "movesUci": ["e7c5"],
+      "solution": ["d5f6", "g7f6", "d1d7"],
+      "rating": 1054,
+      "themes": [
+        "advantage",
+        "discoveredAttack",
+        "kingsideAttack",
+        "master",
+        "middlegame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/jAILX5BH/black#48"
+    },
+    {
+      "id": "008aL",
+      "partition": "held-out",
+      "rootFen": "7k/6p1/1r5p/5p2/P2Rp3/4P3/5PPP/6K1 w - - 0 39",
+      "movesUci": ["a4a5"],
+      "solution": ["b6b1", "d4d1", "b1d1"],
+      "rating": 541,
+      "themes": [
+        "backRankMate",
+        "endgame",
+        "mate",
+        "mateIn2",
+        "rookEndgame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/j2ECU5ud#77"
+    },
+    {
+      "id": "008lc",
+      "partition": "held-out",
+      "rootFen": "7k/pb1qn2n/1p2R2Q/2p2p2/2Pp4/3B4/PP3PrP/4RK2 b - - 1 27",
+      "movesUci": ["g2g7"],
+      "solution": ["h6g7", "h8g7", "e6e7", "d7e7", "e1e7"],
+      "rating": 1974,
+      "themes": [
+        "attraction",
+        "crushing",
+        "exposedKing",
+        "fork",
+        "long",
+        "middlegame"
+      ],
+      "gameUrl": "https://lichess.org/UdZXrVA5/black#54"
+    },
+    {
+      "id": "008nF",
+      "partition": "held-out",
+      "rootFen": "2rq1rk1/7p/1n4pb/1R2p3/pPpP1P2/P1B5/3NQ1PP/2R3K1 w - - 0 31",
+      "movesUci": ["e2e5"],
+      "solution": ["f8e8", "e5e8", "d8e8"],
+      "rating": 2168,
+      "themes": ["crushing", "master", "middlegame", "short", "trappedPiece"],
+      "gameUrl": "https://lichess.org/tYO5rrIU#61"
+    },
+    {
+      "id": "008oX",
+      "partition": "held-out",
+      "rootFen": "4r1k1/2R3pp/2p4q/1p1p4/3P4/P7/1PP2R2/1K1N4 b - - 3 32",
+      "movesUci": ["e8e1"],
+      "solution": ["c7c8", "e1e8", "c8e8"],
+      "rating": 976,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/APGKH8YH/black#64"
+    },
+    {
+      "id": "008qL",
+      "partition": "held-out",
+      "rootFen": "r7/6pk/p2p4/2p1p1qp/1pP1PrP1/1P1Q1P1P/1P4K1/R4R2 w - - 0 25",
+      "movesUci": ["d3d6"],
+      "solution": ["a8d8", "d6d8", "g5d8"],
+      "rating": 1843,
+      "themes": ["advantage", "endgame", "short"],
+      "gameUrl": "https://lichess.org/TUrSVmLC#49"
+    },
+    {
+      "id": "008tL",
+      "partition": "held-out",
+      "rootFen": "8/7k/pR5p/3p4/5r2/2P1p2P/P5P1/6K1 w - - 0 40",
+      "movesUci": ["b6a6"],
+      "solution": ["e3e2", "a6e6", "f4f1"],
+      "rating": 1193,
+      "themes": [
+        "advancedPawn",
+        "crushing",
+        "endgame",
+        "master",
+        "rookEndgame",
+        "short"
+      ],
+      "gameUrl": "https://lichess.org/yhNupFCi#79"
+    },
+    {
+      "id": "0091A",
+      "partition": "held-out",
+      "rootFen": "1r3rk1/q4ppp/p3Pb2/3nN3/P2P4/7Q/1B4PP/1R3RK1 b - - 0 24",
+      "movesUci": ["b8b2"],
+      "solution": ["e6f7", "f8f7", "h3c8", "f7f8", "c8e6"],
+      "rating": 2177,
+      "themes": [
+        "advancedPawn",
+        "advantage",
+        "kingsideAttack",
+        "long",
+        "middlegame"
+      ],
+      "gameUrl": "https://lichess.org/XYVC46Km/black#48"
+    },
+    {
+      "id": "0092V",
+      "partition": "held-out",
+      "rootFen": "r2qk1nr/ppp3pp/2n5/1B1pp3/1b1P4/5Q1P/PP1B1PP1/RN2K2R b KQkq - 3 11",
+      "movesUci": ["e5e4"],
+      "solution": ["b5c6", "b7c6", "f3h5", "g7g6", "h5e5"],
+      "rating": 2259,
+      "themes": ["crushing", "exposedKing", "long", "opening"],
+      "gameUrl": "https://lichess.org/bW5LiCa5/black#22"
+    },
+    {
+      "id": "0092z",
+      "partition": "held-out",
+      "rootFen": "2r3k1/2qR1ppp/p7/2p2Q2/P7/7P/5PP1/6K1 b - - 3 26",
+      "movesUci": ["c7c6"],
+      "solution": ["f5f7", "g8h8", "f7g7"],
+      "rating": 991,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/fjaha7q0/black#52"
+    },
+    {
+      "id": "0095W",
+      "partition": "held-out",
+      "rootFen": "8/pp1r2kp/q2P1ppb/4p3/2N1P3/1Q5P/PPR2PP1/6K1 w - - 3 32",
+      "movesUci": ["c4e5"],
+      "solution": ["f6e5", "c2c7", "a6d6"],
+      "rating": 1832,
+      "themes": ["advantage", "endgame", "hangingPiece", "short"],
+      "gameUrl": "https://lichess.org/CaL8Bl7F#63"
+    },
+    {
+      "id": "009BH",
+      "partition": "held-out",
+      "rootFen": "3r2k1/6p1/4Q3/4B3/1p3P2/4PKP1/3q4/8 b - - 17 51",
+      "movesUci": ["g8h8"],
+      "solution": ["e6h6", "h8g8", "h6g7"],
+      "rating": 1513,
+      "themes": ["endgame", "mate", "mateIn2", "pin", "short"],
+      "gameUrl": "https://lichess.org/QauOOpOY/black#102"
+    },
+    {
+      "id": "009FP",
+      "partition": "held-out",
+      "rootFen": "r1b1k1nr/ppp2pbp/3ppqp1/8/2BnP3/N2P2QP/PPP2PP1/R1B1K2R b KQkq - 4 9",
+      "movesUci": ["e6e5"],
+      "solution": ["c1g5", "f6g5", "g3g5"],
+      "rating": 1339,
+      "themes": ["advantage", "opening", "short", "trappedPiece"],
+      "gameUrl": "https://lichess.org/2ndCtdd9/black#18"
+    },
+    {
+      "id": "009FS",
+      "partition": "held-out",
+      "rootFen": "r2qr1k1/p5bp/1pp1b1p1/8/2QN1p2/2P1n2P/PP3PP1/R1B1RNK1 w - - 1 18",
+      "movesUci": ["d4e6"],
+      "solution": ["e3c4", "e6d8", "e8e1"],
+      "rating": 1712,
+      "themes": ["crushing", "discoveredAttack", "opening", "short"],
+      "gameUrl": "https://lichess.org/MOdm5bE7#35"
+    },
+    {
+      "id": "009IO",
+      "partition": "held-out",
+      "rootFen": "3rk3/5p1r/p2Np1p1/3bP3/P2n4/8/1P3RPP/5RK1 b - - 4 25",
+      "movesUci": ["e8e7"],
+      "solution": ["f2f7", "h7f7", "f1f7"],
+      "rating": 1162,
+      "themes": ["hookMate", "mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/LJBrm9Or/black#50"
+    },
+    {
+      "id": "009Os",
+      "partition": "held-out",
+      "rootFen": "r2b2k1/1p3q1p/p2p4/3P2p1/2P1PRQr/8/P2B3P/2R4K w - - 1 29",
+      "movesUci": ["g4g3"],
+      "solution": ["h4f4", "d2f4", "f7f4", "g3f4", "g5f4"],
+      "rating": 1390,
+      "themes": ["crushing", "long", "middlegame"],
+      "gameUrl": "https://lichess.org/AdjEnXlm#57"
+    },
+    {
+      "id": "009Sz",
+      "partition": "held-out",
+      "rootFen": "r2qkb1r/pp4pp/4pp2/3pNb1B/3nnP2/2N5/PPP3PP/R1B1QRK1 b kq - 1 11",
+      "movesUci": ["f5g6"],
+      "solution": ["e5g6", "h7g6", "h5g6"],
+      "rating": 1619,
+      "themes": ["advantage", "opening", "short"],
+      "gameUrl": "https://lichess.org/FrC1DVlf/black#22"
+    },
+    {
+      "id": "009Wc",
+      "partition": "held-out",
+      "rootFen": "1r3rk1/1pq2pbp/p1p1pnp1/2N1N3/3P4/1QP5/PP3PPP/3RR1K1 w - - 2 19",
+      "movesUci": ["e5d7"],
+      "solution": ["f6d7", "c5d7", "c7d7"],
+      "rating": 1076,
+      "themes": ["crushing", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/WnthPrdl#37"
+    },
+    {
+      "id": "009XT",
+      "partition": "held-out",
+      "rootFen": "rn1qk2r/pp3ppp/3bp1b1/3p4/3Pn2N/3BB3/PPP2PPP/RN1Q1RK1 w kq - 4 10",
+      "movesUci": ["h4g6"],
+      "solution": ["d6h2", "g1h1", "h7g6"],
+      "rating": 1950,
+      "themes": ["crushing", "intermezzo", "opening", "short"],
+      "gameUrl": "https://lichess.org/bf23N8Ng#19"
+    },
+    {
+      "id": "009aD",
+      "partition": "held-out",
+      "rootFen": "r4k1r/pp3pp1/4p3/3pP1np/6bq/1PP2P2/P3B1PP/RN1Q1RK1 w - - 1 14",
+      "movesUci": ["f3g4"],
+      "solution": ["h5g4", "e2g4", "h4h2"],
+      "rating": 1426,
+      "themes": ["advantage", "kingsideAttack", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/aITVdulW#27"
+    },
+    {
+      "id": "009bR",
+      "partition": "held-out",
+      "rootFen": "4r2k/3q2r1/1p4pQ/p1pP4/2P4P/1N4p1/PP3RK1/8 b - - 1 37",
+      "movesUci": ["g7h7"],
+      "solution": ["f2f8", "e8f8", "h6f8"],
+      "rating": 1024,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/rvHGlZar/black#74"
+    },
+    {
+      "id": "009f8",
+      "partition": "held-out",
+      "rootFen": "8/1p4p1/pb2ppkp/3n4/3P4/P3BN1P/1P2KPP1/8 b - - 0 26",
+      "movesUci": ["g6f5"],
+      "solution": ["f3h4", "f5e4", "f2f3"],
+      "rating": 1149,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/paDYagZM/black#52"
+    },
+    {
+      "id": "009hH",
+      "partition": "held-out",
+      "rootFen": "k3r3/p3q3/1pp5/3pnB2/1P1Q4/1KPP4/P4R2/8 w - - 0 41",
+      "movesUci": ["f2e2"],
+      "solution": ["e5f3", "e2e7", "f3d4", "c3d4", "e8e7"],
+      "rating": 1980,
+      "themes": ["advantage", "endgame", "long"],
+      "gameUrl": "https://lichess.org/LEg5X8PU#81"
+    },
+    {
+      "id": "009lk",
+      "partition": "held-out",
+      "rootFen": "1R6/6pk/2p4p/3bP2r/5B1P/2P2qP1/P4P1Q/4R1K1 w - - 2 40",
+      "movesUci": ["e1e3"],
+      "solution": ["f3d1", "e3e1", "d1e1"],
+      "rating": 915,
+      "themes": ["mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/gLNPef4f#79"
+    },
+    {
+      "id": "009oc",
+      "partition": "held-out",
+      "rootFen": "5Q2/pbp3np/1p1pB1pk/1P6/P3q2P/6K1/8/8 b - - 1 32",
+      "movesUci": ["e4e6"],
+      "solution": ["f8f4", "g6g5", "f4g5"],
+      "rating": 1165,
+      "themes": ["endgame", "mate", "mateIn2", "short"],
+      "gameUrl": "https://lichess.org/426eHXom/black#64"
+    },
+    {
+      "id": "009tE",
+      "partition": "held-out",
+      "rootFen": "6k1/6pp/p1N2p2/1pP2bP1/5P2/8/PPP5/3K4 b - - 1 28",
+      "movesUci": ["f6g5"],
+      "solution": ["c6e7", "g8f7", "e7f5"],
+      "rating": 624,
+      "themes": ["crushing", "endgame", "fork", "short"],
+      "gameUrl": "https://lichess.org/fUV1iXBx/black#56"
+    },
+    {
+      "id": "009uB",
+      "partition": "held-out",
+      "rootFen": "3br2r/5k1p/4p1pQ/P5P1/1B5P/P6q/5R2/6K1 b - - 1 35",
+      "movesUci": ["f7g8"],
+      "solution": ["f2f8", "e8f8", "h6f8"],
+      "rating": 1081,
+      "themes": ["mate", "mateIn2", "middlegame", "short"],
+      "gameUrl": "https://lichess.org/1llcQdqK/black#70"
+    },
+    {
+      "id": "009wR",
+      "partition": "held-out",
+      "rootFen": "1R2R3/p7/1p1k3p/1Pb5/P5p1/6P1/5rKP/8 w - - 6 41",
+      "movesUci": ["g2h1"],
+      "solution": ["f2f1", "h1g2", "f1g1"],
+      "rating": 1250,
+      "themes": ["endgame", "mate", "mateIn2", "operaMate", "short"],
+      "gameUrl": "https://lichess.org/tBBaKL5q#81"
+    }
+  ]
+}

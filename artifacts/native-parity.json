@@ -1,0 +1,14 @@
+{
+  "reference": "fresh-native",
+  "build": "9a2e3b8feabcb7de68f7a9e67304f521d931a7aca6bd3b53c120243a3beece1c",
+  "network": "3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac",
+  "corpusSha256": "3e03572471fad3649525de1e4e3f24c4ee081bb5ee378d0398da87acd9200a4c",
+  "staticPositions": 500,
+  "searchPositions": 200,
+  "searchDepth": 3,
+  "multiPvPositions": 50,
+  "unexplainedDifferences": 0,
+  "elapsedMs": 1155.1112090000006,
+  "maximumObservedLinearMemoryBytes": 37748736,
+  "limitations": "Desktop deterministic fidelity test, not held-out tactical quality or phone performance."
+}

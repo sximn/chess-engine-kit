@@ -1,0 +1,19 @@
+{
+  "name": "chess-engine-runtime-consumer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "chess-engine-assets --to public/engines/frozenight && tsc --noEmit && vite build && node offline.mjs"
+  },
+  "dependencies": {
+    "@upapawn/chess-engine-runtime": "file:../../.build/upapawn-chess-engine-runtime-0.1.0.tgz",
+    "@capacitor/core": "8.5.3"
+  },
+  "devDependencies": {
+    "vite": "8.3.5",
+    "typescript": "6.0.3",
+    "@capacitor/cli": "8.5.3",
+    "@capacitor/ios": "8.5.3",
+    "@capacitor/android": "8.5.3"
+  }
+}

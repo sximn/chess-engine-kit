@@ -1,0 +1,6586 @@
+{
+  "engineBuild": "9a2e3b8feabcb7de68f7a9e67304f521d931a7aca6bd3b53c120243a3beece1c",
+  "modelHash": "3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac",
+  "sourceRevision": "f4d5a00725b2cd5f1c32910d57a84c77b66cc670",
+  "nativeBinarySha256": "f8b8a8e6b8c4d1467783a4d7b735957bd526b2febe1cdf3ea8de835afc40f823",
+  "results": [
+    {
+      "raw": 244
+    },
+    {
+      "raw": 27
+    },
+    {
+      "raw": 597
+    },
+    {
+      "raw": -444
+    },
+    {
+      "raw": 497
+    },
+    {
+      "raw": -105
+    },
+    {
+      "raw": 269
+    },
+    {
+      "raw": -196
+    },
+    {
+      "raw": 614
+    },
+    {
+      "raw": -377
+    },
+    {
+      "raw": 712
+    },
+    {
+      "raw": -620
+    },
+    {
+      "raw": 872
+    },
+    {
+      "raw": -583
+    },
+    {
+      "raw": 618
+    },
+    {
+      "raw": -216
+    },
+    {
+      "raw": -9
+    },
+    {
+      "raw": -1447
+    },
+    {
+      "raw": 1887
+    },
+    {
+      "raw": -1411
+    },
+    {
+      "raw": 1368
+    },
+    {
+      "raw": -1199
+    },
+    {
+      "raw": 1387
+    },
+    {
+      "raw": -1010
+    },
+    {
+      "raw": 1069
+    },
+    {
+      "raw": -691
+    },
+    {
+      "raw": 416
+    },
+    {
+      "raw": 296
+    },
+    {
+      "raw": -32
+    },
+    {
+      "raw": 337
+    },
+    {
+      "raw": -56
+    },
+    {
+      "raw": 391
+    },
+    {
+      "raw": 29
+    },
+    {
+      "raw": 443
+    },
+    {
+      "raw": -408
+    },
+    {
+      "raw": 615
+    },
+    {
+      "raw": -319
+    },
+    {
+      "raw": 892
+    },
+    {
+      "raw": -445
+    },
+    {
+      "raw": 1159
+    },
+    {
+      "raw": -877
+    },
+    {
+      "raw": 1513
+    },
+    {
+      "raw": -967
+    },
+    {
+      "raw": 1246
+    },
+    {
+      "raw": -6104
+    },
+    {
+      "raw": 5621
+    },
+    {
+      "raw": -4934
+    },
+    {
+      "raw": 5476
+    },
+    {
+      "raw": -4577
+    },
+    {
+      "raw": 4765
+    },
+    {
+      "raw": -3956
+    },
+    {
+      "raw": 4469
+    },
+    {
+      "raw": -4263
+    },
+    {
+      "raw": 4035
+    },
+    {
+      "raw": -3801
+    },
+    {
+      "raw": 4345
+    },
+    {
+      "raw": -4619
+    },
+    {
+      "raw": 4938
+    },
+    {
+      "raw": -3918
+    },
+    {
+      "raw": 2625
+    },
+    {
+      "raw": -2521
+    },
+    {
+      "raw": 2096
+    },
+    {
+      "raw": -2014
+    },
+    {
+      "raw": 2365
+    },
+    {
+      "raw": -2219
+    },
+    {
+      "raw": 2288
+    },
+    {
+      "raw": -2232
+    },
+    {
+      "raw": 1011
+    },
+    {
+      "raw": -904
+    },
+    {
+      "raw": 937
+    },
+    {
+      "raw": -3836
+    },
+    {
+      "raw": 4465
+    },
+    {
+      "raw": -3926
+    },
+    {
+      "raw": 4545
+    },
+    {
+      "raw": -3937
+    },
+    {
+      "raw": 4185
+    },
+    {
+      "raw": -3083
+    },
+    {
+      "raw": 3473
+    },
+    {
+      "raw": -2694
+    },
+    {
+      "raw": 3112
+    },
+    {
+      "raw": 64
+    },
+    {
+      "raw": 316
+    },
+    {
+      "raw": -91
+    },
+    {
+      "raw": 483
+    },
+    {
+      "raw": -180
+    },
+    {
+      "raw": 443
+    },
+    {
+      "raw": -108
+    },
+    {
+      "raw": 287
+    },
+    {
+      "raw": -201
+    },
+    {
+      "raw": 625
+    },
+    {
+      "raw": -120
+    },
+    {
+      "raw": 469
+    },
+    {
+      "raw": -290
+    },
+    {
+      "raw": -1040
+    },
+    {
+      "raw": 1209
+    },
+    {
+      "raw": -1298
+    },
+    {
+      "raw": 1537
+    },
+    {
+      "raw": -1209
+    },
+    {
+      "raw": 1228
+    },
+    {
+      "raw": -1163
+    },
+    {
+      "raw": 1173
+    },
+    {
+      "raw": -768
+    },
+    {
+      "raw": 1067
+    },
+    {
+      "raw": -794
+    },
+    {
+      "raw": 928
+    },
+    {
+      "raw": -698
+    },
+    {
+      "raw": 813
+    },
+    {
+      "raw": -605
+    },
+    {
+      "raw": 922
+    },
+    {
+      "raw": -648
+    },
+    {
+      "raw": 884
+    },
+    {
+      "raw": -842
+    },
+    {
+      "raw": 1184
+    },
+    {
+      "raw": -1027
+    },
+    {
+      "raw": 1129
+    },
+    {
+      "raw": -1038
+    },
+    {
+      "raw": 831
+    },
+    {
+      "raw": -721
+    },
+    {
+      "raw": 803
+    },
+    {
+      "raw": -464
+    },
+    {
+      "raw": 627
+    },
+    {
+      "raw": -190
+    },
+    {
+      "raw": -57
+    },
+    {
+      "raw": 294
+    },
+    {
+      "raw": -68
+    },
+    {
+      "raw": -4552
+    },
+    {
+      "raw": 5457
+    },
+    {
+      "raw": -4700
+    },
+    {
+      "raw": 3171
+    },
+    {
+      "raw": -5234
+    },
+    {
+      "raw": 5307
+    },
+    {
+      "raw": -5092
+    },
+    {
+      "raw": 5666
+    },
+    {
+      "raw": -6088
+    },
+    {
+      "raw": 1691
+    },
+    {
+      "raw": -1138
+    },
+    {
+      "raw": 1572
+    },
+    {
+      "raw": -1776
+    },
+    {
+      "raw": 2030
+    },
+    {
+      "raw": -2073
+    },
+    {
+      "raw": 2802
+    },
+    {
+      "raw": -2338
+    },
+    {
+      "raw": 2878
+    },
+    {
+      "raw": -1628
+    },
+    {
+      "raw": 1030
+    },
+    {
+      "raw": -393
+    },
+    {
+      "raw": 1040
+    },
+    {
+      "raw": 116
+    },
+    {
+      "raw": 416
+    },
+    {
+      "raw": -103
+    },
+    {
+      "raw": 242
+    },
+    {
+      "raw": 857
+    },
+    {
+      "raw": -281
+    },
+    {
+      "raw": -132
+    },
+    {
+      "raw": -1706
+    },
+    {
+      "raw": 2337
+    },
+    {
+      "raw": -2135
+    },
+    {
+      "raw": 1850
+    },
+    {
+      "raw": -1755
+    },
+    {
+      "raw": 2099
+    },
+    {
+      "raw": 152
+    },
+    {
+      "raw": 273
+    },
+    {
+      "raw": 126
+    },
+    {
+      "raw": 74
+    },
+    {
+      "raw": 3
+    },
+    {
+      "raw": 193
+    },
+    {
+      "raw": -63
+    },
+    {
+      "raw": 330
+    },
+    {
+      "raw": 46
+    },
+    {
+      "raw": 350
+    },
+    {
+      "raw": -122
+    },
+    {
+      "raw": 225
+    },
+    {
+      "raw": -145
+    },
+    {
+      "raw": 268
+    },
+    {
+      "raw": -297
+    },
+    {
+      "raw": 415
+    },
+    {
+      "raw": -558
+    },
+    {
+      "raw": 827
+    },
+    {
+      "raw": -503
+    },
+    {
+      "raw": 499
+    },
+    {
+      "raw": -437
+    },
+    {
+      "raw": 742
+    },
+    {
+      "raw": -699
+    },
+    {
+      "raw": 755
+    },
+    {
+      "raw": -455
+    },
+    {
+      "raw": 338
+    },
+    {
+      "raw": -215
+    },
+    {
+      "raw": 728
+    },
+    {
+      "raw": -394
+    },
+    {
+      "raw": 400
+    },
+    {
+      "raw": -201
+    },
+    {
+      "raw": 316
+    },
+    {
+      "raw": -118
+    },
+    {
+      "raw": 532
+    },
+    {
+      "raw": -449
+    },
+    {
+      "raw": 490
+    },
+    {
+      "raw": -487
+    },
+    {
+      "raw": 206
+    },
+    {
+      "raw": -20
+    },
+    {
+      "raw": -245
+    },
+    {
+      "raw": 222
+    },
+    {
+      "raw": -2190
+    },
+    {
+      "raw": 2126
+    },
+    {
+      "raw": -1185
+    },
+    {
+      "raw": 1642
+    },
+    {
+      "raw": -1761
+    },
+    {
+      "raw": 1527
+    },
+    {
+      "raw": -1422
+    },
+    {
+      "raw": 1781
+    },
+    {
+      "raw": -2771
+    },
+    {
+      "raw": 2947
+    },
+    {
+      "raw": -3524
+    },
+    {
+      "raw": 3589
+    },
+    {
+      "raw": -3683
+    },
+    {
+      "raw": 3809
+    },
+    {
+      "raw": -3477
+    },
+    {
+      "raw": 3167
+    },
+    {
+      "raw": -2868
+    },
+    {
+      "raw": 3044
+    },
+    {
+      "raw": -2349
+    },
+    {
+      "raw": 3101
+    },
+    {
+      "raw": -3247
+    },
+    {
+      "raw": 3984
+    },
+    {
+      "raw": -3555
+    },
+    {
+      "raw": 2580
+    },
+    {
+      "raw": -2079
+    },
+    {
+      "raw": 2276
+    },
+    {
+      "raw": -2771
+    },
+    {
+      "raw": 2683
+    },
+    {
+      "raw": -2360
+    },
+    {
+      "raw": 2737
+    },
+    {
+      "raw": -2837
+    },
+    {
+      "raw": 2887
+    },
+    {
+      "raw": -2461
+    },
+    {
+      "raw": 3035
+    },
+    {
+      "raw": -3228
+    },
+    {
+      "raw": 3531
+    },
+    {
+      "raw": -2889
+    },
+    {
+      "raw": 3136
+    },
+    {
+      "raw": -2851
+    },
+    {
+      "raw": 399
+    },
+    {
+      "raw": 0
+    },
+    {
+      "raw": 141
+    },
+    {
+      "raw": 174
+    },
+    {
+      "raw": 482
+    },
+    {
+      "raw": -231
+    },
+    {
+      "raw": 666
+    },
+    {
+      "raw": -384
+    },
+    {
+      "raw": 654
+    },
+    {
+      "raw": -526
+    },
+    {
+      "raw": 221
+    },
+    {
+      "raw": 349
+    },
+    {
+      "raw": 21
+    },
+    {
+      "raw": 170
+    },
+    {
+      "raw": -15
+    },
+    {
+      "raw": 566
+    },
+    {
+      "raw": -395
+    },
+    {
+      "raw": 492
+    },
+    {
+      "raw": -47
+    },
+    {
+      "raw": -30
+    },
+    {
+      "raw": 109
+    },
+    {
+      "raw": 358
+    },
+    {
+      "raw": -156
+    },
+    {
+      "raw": 327
+    },
+    {
+      "raw": -208
+    },
+    {
+      "raw": 270
+    },
+    {
+      "raw": -7
+    },
+    {
+      "raw": 160
+    },
+    {
+      "raw": 185
+    },
+    {
+      "raw": 234
+    },
+    {
+      "raw": 108
+    },
+    {
+      "raw": -3894
+    },
+    {
+      "raw": 4079
+    },
+    {
+      "raw": -3787
+    },
+    {
+      "raw": 3688
+    },
+    {
+      "raw": -3490
+    },
+    {
+      "raw": 3548
+    },
+    {
+      "raw": -3595
+    },
+    {
+      "raw": 3777
+    },
+    {
+      "raw": -3734
+    },
+    {
+      "raw": 3939
+    },
+    {
+      "raw": -3658
+    },
+    {
+      "raw": 3558
+    },
+    {
+      "raw": -3465
+    },
+    {
+      "raw": 3763
+    },
+    {
+      "raw": -3506
+    },
+    {
+      "raw": 3582
+    },
+    {
+      "raw": -3851
+    },
+    {
+      "raw": 3999
+    },
+    {
+      "raw": -3454
+    },
+    {
+      "raw": 3681
+    },
+    {
+      "raw": -2895
+    },
+    {
+      "raw": 3360
+    },
+    {
+      "raw": -3711
+    },
+    {
+      "raw": 3783
+    },
+    {
+      "raw": -4514
+    },
+    {
+      "raw": 4680
+    },
+    {
+      "raw": -3836
+    },
+    {
+      "raw": 4373
+    },
+    {
+      "raw": -3924
+    },
+    {
+      "raw": 4204
+    },
+    {
+      "raw": -3406
+    },
+    {
+      "raw": 4155
+    },
+    {
+      "raw": -5665
+    },
+    {
+      "raw": 5308
+    },
+    {
+      "raw": -5358
+    },
+    {
+      "raw": 5028
+    },
+    {
+      "raw": -4869
+    },
+    {
+      "raw": 4945
+    },
+    {
+      "raw": -5036
+    },
+    {
+      "raw": 5696
+    },
+    {
+      "raw": -5472
+    },
+    {
+      "raw": 6021
+    },
+    {
+      "raw": -6556
+    },
+    {
+      "raw": 6577
+    },
+    {
+      "raw": -6205
+    },
+    {
+      "raw": 6346
+    },
+    {
+      "raw": -4956
+    },
+    {
+      "raw": 6062
+    },
+    {
+      "raw": -6146
+    },
+    {
+      "raw": 7382
+    },
+    {
+      "raw": -7023
+    },
+    {
+      "raw": 7714
+    },
+    {
+      "raw": -7842
+    },
+    {
+      "raw": 8741
+    },
+    {
+      "raw": -8798
+    },
+    {
+      "raw": 8607
+    },
+    {
+      "raw": -8670
+    },
+    {
+      "raw": 9054
+    },
+    {
+      "raw": -7725
+    },
+    {
+      "raw": 113
+    },
+    {
+      "raw": 159
+    },
+    {
+      "raw": 39
+    },
+    {
+      "raw": 318
+    },
+    {
+      "raw": 8
+    },
+    {
+      "raw": 531
+    },
+    {
+      "raw": -335
+    },
+    {
+      "raw": 525
+    },
+    {
+      "raw": -219
+    },
+    {
+      "raw": 627
+    },
+    {
+      "raw": -178
+    },
+    {
+      "raw": 179
+    },
+    {
+      "raw": -97
+    },
+    {
+      "raw": 321
+    },
+    {
+      "raw": -71
+    },
+    {
+      "raw": 170
+    },
+    {
+      "raw": 178
+    },
+    {
+      "raw": -133
+    },
+    {
+      "raw": 259
+    },
+    {
+      "raw": -113
+    },
+    {
+      "raw": 432
+    },
+    {
+      "raw": -164
+    },
+    {
+      "raw": 209
+    },
+    {
+      "raw": -229
+    },
+    {
+      "raw": 421
+    },
+    {
+      "raw": -405
+    },
+    {
+      "raw": 525
+    },
+    {
+      "raw": -674
+    },
+    {
+      "raw": 1116
+    },
+    {
+      "raw": -807
+    },
+    {
+      "raw": 887
+    },
+    {
+      "raw": -1139
+    },
+    {
+      "raw": 997
+    },
+    {
+      "raw": -800
+    },
+    {
+      "raw": 769
+    },
+    {
+      "raw": -768
+    },
+    {
+      "raw": -674
+    },
+    {
+      "raw": 927
+    },
+    {
+      "raw": -975
+    },
+    {
+      "raw": 870
+    },
+    {
+      "raw": -877
+    },
+    {
+      "raw": 959
+    },
+    {
+      "raw": -3090
+    },
+    {
+      "raw": 3544
+    },
+    {
+      "raw": -3119
+    },
+    {
+      "raw": 3361
+    },
+    {
+      "raw": -3129
+    },
+    {
+      "raw": -1268
+    },
+    {
+      "raw": 1301
+    },
+    {
+      "raw": -1077
+    },
+    {
+      "raw": 911
+    },
+    {
+      "raw": -942
+    },
+    {
+      "raw": 1156
+    },
+    {
+      "raw": -2645
+    },
+    {
+      "raw": 2588
+    },
+    {
+      "raw": -2913
+    },
+    {
+      "raw": 3022
+    },
+    {
+      "raw": -3348
+    },
+    {
+      "raw": 3496
+    },
+    {
+      "raw": -3741
+    },
+    {
+      "raw": 3146
+    },
+    {
+      "raw": -2807
+    },
+    {
+      "raw": 3141
+    },
+    {
+      "raw": -2929
+    },
+    {
+      "raw": -2170
+    },
+    {
+      "raw": 2083
+    },
+    {
+      "raw": -2128
+    },
+    {
+      "raw": 2577
+    },
+    {
+      "raw": -2350
+    },
+    {
+      "raw": 2296
+    },
+    {
+      "raw": -2160
+    },
+    {
+      "raw": 2608
+    },
+    {
+      "raw": -2360
+    },
+    {
+      "raw": 2752
+    },
+    {
+      "raw": -1893
+    },
+    {
+      "raw": 1542
+    },
+    {
+      "raw": -1115
+    },
+    {
+      "raw": 2219
+    },
+    {
+      "raw": -2144
+    },
+    {
+      "raw": 2301
+    },
+    {
+      "raw": 2
+    },
+    {
+      "raw": 109
+    },
+    {
+      "raw": 123
+    },
+    {
+      "raw": 65
+    },
+    {
+      "raw": 266
+    },
+    {
+      "raw": -145
+    },
+    {
+      "raw": 531
+    },
+    {
+      "raw": -468
+    },
+    {
+      "raw": 470
+    },
+    {
+      "raw": -453
+    },
+    {
+      "raw": 667
+    },
+    {
+      "raw": -195
+    },
+    {
+      "raw": 1076
+    },
+    {
+      "raw": -1031
+    },
+    {
+      "raw": 702
+    },
+    {
+      "raw": -535
+    },
+    {
+      "raw": -168
+    },
+    {
+      "raw": -4949
+    },
+    {
+      "raw": 5053
+    },
+    {
+      "raw": -4373
+    },
+    {
+      "raw": 4642
+    },
+    {
+      "raw": -4412
+    },
+    {
+      "raw": 4726
+    },
+    {
+      "raw": -4149
+    },
+    {
+      "raw": 4383
+    },
+    {
+      "raw": -4792
+    },
+    {
+      "raw": 4868
+    },
+    {
+      "raw": -4910
+    },
+    {
+      "raw": 5942
+    },
+    {
+      "raw": -6437
+    },
+    {
+      "raw": 6839
+    },
+    {
+      "raw": -8181
+    },
+    {
+      "raw": 6714
+    },
+    {
+      "raw": -5493
+    },
+    {
+      "raw": 5789
+    },
+    {
+      "raw": -4181
+    },
+    {
+      "raw": 4898
+    },
+    {
+      "raw": -3556
+    },
+    {
+      "raw": 4375
+    },
+    {
+      "raw": -3326
+    },
+    {
+      "raw": 3747
+    },
+    {
+      "raw": -3501
+    },
+    {
+      "raw": 4126
+    },
+    {
+      "raw": -3721
+    },
+    {
+      "raw": 4529
+    },
+    {
+      "raw": -3333
+    },
+    {
+      "raw": 3809
+    },
+    {
+      "raw": -3489
+    },
+    {
+      "raw": 4118
+    },
+    {
+      "raw": -3577
+    },
+    {
+      "raw": 4713
+    },
+    {
+      "raw": -3566
+    },
+    {
+      "raw": 4182
+    },
+    {
+      "raw": -4066
+    },
+    {
+      "raw": 4778
+    },
+    {
+      "raw": -4237
+    },
+    {
+      "raw": 4897
+    },
+    {
+      "raw": -4354
+    },
+    {
+      "raw": 4778
+    },
+    {
+      "raw": -5368
+    },
+    {
+      "raw": 5405
+    },
+    {
+      "raw": -7429
+    },
+    {
+      "raw": 7909
+    },
+    {
+      "raw": -7404
+    },
+    {
+      "raw": 7647
+    },
+    {
+      "raw": -9522
+    },
+    {
+      "raw": 9977
+    },
+    {
+      "raw": -9908
+    },
+    {
+      "raw": 10055
+    },
+    {
+      "raw": -12315
+    },
+    {
+      "raw": 12955
+    },
+    {
+      "raw": -13520
+    },
+    {
+      "raw": 14205
+    },
+    {
+      "raw": -13948
+    },
+    {
+      "raw": 13921
+    },
+    {
+      "raw": -14733
+    },
+    {
+      "raw": 14680
+    },
+    {
+      "raw": -14723
+    },
+    {
+      "raw": 61
+    },
+    {
+      "raw": 390
+    },
+    {
+      "raw": -253
+    },
+    {
+      "raw": 433
+    },
+    {
+      "raw": -319
+    },
+    {
+      "raw": 648
+    },
+    {
+      "raw": -299
+    },
+    {
+      "raw": 310
+    },
+    {
+      "raw": -102
+    },
+    {
+      "raw": 125
+    },
+    {
+      "raw": 90
+    },
+    {
+      "raw": 120
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1208,
+      "lines": [
+        {
+          "pv": ["d7d5", "d2d4", "g8f6"],
+          "rank": 1,
+          "rootMove": "d7d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -16
+          }
+        },
+        {
+          "pv": ["c7c6", "d2d4", "d7d5"],
+          "rank": 2,
+          "rootMove": "c7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 4
+          }
+        },
+        {
+          "pv": ["e7e6", "d2d4", "d7d5"],
+          "rank": 3,
+          "rootMove": "e7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 5
+          }
+        }
+      ],
+      "nodes": 1208,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 342,
+      "lines": [
+        {
+          "pv": ["e2e4", "e7e5", "d2d4"],
+          "rank": 1,
+          "rootMove": "e2e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 60
+          }
+        }
+      ],
+      "nodes": 342,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 322,
+      "lines": [
+        {
+          "pv": ["d7d5", "d2d4", "e7e5"],
+          "rank": 1,
+          "rootMove": "d7d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -17
+          }
+        }
+      ],
+      "nodes": 322,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 343,
+      "lines": [
+        {
+          "pv": ["e2e4", "d7d5", "b1c3"],
+          "rank": 1,
+          "rootMove": "e2e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 20
+          }
+        }
+      ],
+      "nodes": 343,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 817,
+      "lines": [
+        {
+          "pv": ["d7d5", "d2d4", "f8d6"],
+          "rank": 1,
+          "rootMove": "d7d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 2
+          }
+        },
+        {
+          "pv": ["e6e5", "e2e4", "d7d5"],
+          "rank": 2,
+          "rootMove": "e6e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 8
+          }
+        },
+        {
+          "pv": ["f6f5", "d2d4", "g8f6"],
+          "rank": 3,
+          "rootMove": "f6f5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 32
+          }
+        }
+      ],
+      "nodes": 817,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 266,
+      "lines": [
+        {
+          "pv": ["b1a3", "d7d5", "d2d4"],
+          "rank": 1,
+          "rootMove": "b1a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 395
+          }
+        }
+      ],
+      "nodes": 266,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 300,
+      "lines": [
+        {
+          "pv": ["a3e7", "d2d4", "d7d5"],
+          "rank": 1,
+          "rootMove": "a3e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 31
+          }
+        }
+      ],
+      "nodes": 300,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 336,
+      "lines": [
+        {
+          "pv": ["b1a3", "g8e7", "d2d4"],
+          "rank": 1,
+          "rootMove": "b1a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 387
+          }
+        }
+      ],
+      "nodes": 336,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 905,
+      "lines": [
+        {
+          "pv": ["a3e7", "e2e4", "d7d5"],
+          "rank": 1,
+          "rootMove": "a3e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -23
+          }
+        },
+        {
+          "pv": ["a3f8", "e2e4", "d7d5"],
+          "rank": 2,
+          "rootMove": "a3f8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 4
+          }
+        },
+        {
+          "pv": ["a3d6", "d2d4", "g8h6"],
+          "rank": 3,
+          "rootMove": "a3d6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 12
+          }
+        }
+      ],
+      "nodes": 905,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 328,
+      "lines": [
+        {
+          "pv": ["d2d4", "c5b6", "e2e4"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 22
+          }
+        }
+      ],
+      "nodes": 328,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 483,
+      "lines": [
+        {
+          "pv": ["c5b6", "d2d4", "d7d5"],
+          "rank": 1,
+          "rootMove": "c5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -4
+          }
+        }
+      ],
+      "nodes": 483,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 251,
+      "lines": [
+        {
+          "pv": ["c3b4", "c6b4", "c2d1"],
+          "rank": 1,
+          "rootMove": "c3b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 270
+          }
+        }
+      ],
+      "nodes": 251,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1024,
+      "lines": [
+        {
+          "pv": ["b4e7", "d2d4", "g8h6"],
+          "rank": 1,
+          "rootMove": "b4e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 5
+          }
+        },
+        {
+          "pv": ["b4f8", "d2d4", "d7d5"],
+          "rank": 2,
+          "rootMove": "b4f8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 24
+          }
+        },
+        {
+          "pv": ["b4d6", "d2d4", "g8h6"],
+          "rank": 3,
+          "rootMove": "b4d6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 30
+          }
+        }
+      ],
+      "nodes": 1024,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 238,
+      "lines": [
+        {
+          "pv": ["c3b4", "c6b4", "c2c3"],
+          "rank": 1,
+          "rootMove": "c3b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 283
+          }
+        }
+      ],
+      "nodes": 238,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 274,
+      "lines": [
+        {
+          "pv": ["b4a3", "b2a3", "g8f6"],
+          "rank": 1,
+          "rootMove": "b4a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -43
+          }
+        }
+      ],
+      "nodes": 274,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 334,
+      "lines": [
+        {
+          "pv": ["b2b4", "a5b6", "a3c4"],
+          "rank": 1,
+          "rootMove": "b2b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 89
+          }
+        }
+      ],
+      "nodes": 334,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1577,
+      "lines": [
+        {
+          "pv": ["g8f6", "a3c4", "e8g8"],
+          "rank": 1,
+          "rootMove": "g8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2
+          }
+        },
+        {
+          "pv": ["a5b6", "a3c4", "d7d5"],
+          "rank": 2,
+          "rootMove": "a5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 4
+          }
+        },
+        {
+          "pv": ["h7h6", "b2b4", "a5b6"],
+          "rank": 3,
+          "rootMove": "h7h6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 51
+          }
+        }
+      ],
+      "nodes": 1577,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 368,
+      "lines": [
+        {
+          "pv": ["a3c4", "a5b6", "h3g5"],
+          "rank": 1,
+          "rootMove": "a3c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 70
+          }
+        }
+      ],
+      "nodes": 368,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 274,
+      "lines": [
+        {
+          "pv": ["g8f6", "b2b3", "e8g8"],
+          "rank": 1,
+          "rootMove": "g8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -56
+          }
+        }
+      ],
+      "nodes": 274,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 626,
+      "lines": [
+        {
+          "pv": ["b2b3", "g8f6", "c1b2"],
+          "rank": 1,
+          "rootMove": "b2b3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 70
+          }
+        }
+      ],
+      "nodes": 626,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1144,
+      "lines": [
+        {
+          "pv": ["a5c3", "b2c3", "g8f6"],
+          "rank": 1,
+          "rootMove": "a5c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -703
+          }
+        },
+        {
+          "pv": ["g6f4", "c3g7", "f4d3"],
+          "rank": 2,
+          "rootMove": "g6f4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -96
+          }
+        },
+        {
+          "pv": ["a5b6", "c3g7", "g8f6"],
+          "rank": 3,
+          "rootMove": "a5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 92
+          }
+        }
+      ],
+      "nodes": 1144,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 394,
+      "lines": [
+        {
+          "pv": ["b2c3", "g8f6", "c4c5"],
+          "rank": 1,
+          "rootMove": "b2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -716
+          }
+        }
+      ],
+      "nodes": 394,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 393,
+      "lines": [
+        {
+          "pv": ["c3f6", "a3b5", "g6e7"],
+          "rank": 1,
+          "rootMove": "c3f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1042
+          }
+        }
+      ],
+      "nodes": 393,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 342,
+      "lines": [
+        {
+          "pv": ["b2c3", "g8f6", "c4c5"],
+          "rank": 1,
+          "rootMove": "b2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -702
+          }
+        }
+      ],
+      "nodes": 342,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1290,
+      "lines": [
+        {
+          "pv": ["f5e4", "d3e4", "c3f6"],
+          "rank": 1,
+          "rootMove": "f5e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1036
+          }
+        },
+        {
+          "pv": ["c3a5", "b2b4", "a5b4"],
+          "rank": 2,
+          "rootMove": "c3a5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -971
+          }
+        },
+        {
+          "pv": ["c3d4", "a3b5", "f5e4"],
+          "rank": 3,
+          "rootMove": "c3d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -969
+          }
+        }
+      ],
+      "nodes": 1290,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 342,
+      "lines": [
+        {
+          "pv": ["d2c3", "f5e4", "d3e4"],
+          "rank": 1,
+          "rootMove": "d2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -630
+          }
+        }
+      ],
+      "nodes": 342,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 572,
+      "lines": [
+        {
+          "pv": ["c3f6", "a3b5", "f5e4"],
+          "rank": 1,
+          "rootMove": "c3f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -896
+          }
+        }
+      ],
+      "nodes": 572,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 474,
+      "lines": [
+        {
+          "pv": ["b2c3", "f5e4", "c2e4"],
+          "rank": 1,
+          "rootMove": "b2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -648
+          }
+        }
+      ],
+      "nodes": 474,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1135,
+      "lines": [
+        {
+          "pv": ["c3a1", "a3b5", "e8f7"],
+          "rank": 1,
+          "rootMove": "c3a1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1198
+          }
+        },
+        {
+          "pv": ["c3d4", "a3b5", "d4a1"],
+          "rank": 2,
+          "rootMove": "c3d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -955
+          }
+        },
+        {
+          "pv": ["c3b4", "a3b5", "e7d8"],
+          "rank": 3,
+          "rootMove": "c3b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -937
+          }
+        }
+      ],
+      "nodes": 1135,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 283,
+      "lines": [
+        {
+          "pv": ["d2c3", "g8f6", "e4e5"],
+          "rank": 1,
+          "rootMove": "d2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -671
+          }
+        }
+      ],
+      "nodes": 283,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 267,
+      "lines": [
+        {
+          "pv": ["c3a1", "e4f5", "a1f6"],
+          "rank": 1,
+          "rootMove": "c3a1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1297
+          }
+        }
+      ],
+      "nodes": 267,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 368,
+      "lines": [
+        {
+          "pv": ["d2c3", "e5g4", "f2e2"],
+          "rank": 1,
+          "rootMove": "d2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -690
+          }
+        }
+      ],
+      "nodes": 368,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1253,
+      "lines": [
+        {
+          "pv": ["c3a1", "e4f5", "e5g4"],
+          "rank": 1,
+          "rootMove": "c3a1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1269
+          }
+        },
+        {
+          "pv": ["e8h5", "f2e2", "c3a1"],
+          "rank": 2,
+          "rootMove": "e8h5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1249
+          }
+        },
+        {
+          "pv": ["c3d4", "a1b1", "d4f2"],
+          "rank": 3,
+          "rootMove": "c3d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1049
+          }
+        }
+      ],
+      "nodes": 1253,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 377,
+      "lines": [
+        {
+          "pv": ["d2c3", "e5g4", "f2e2"],
+          "rank": 1,
+          "rootMove": "d2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -756
+          }
+        }
+      ],
+      "nodes": 377,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 296,
+      "lines": [
+        {
+          "pv": ["c3a1", "f4e5", "a1e5"],
+          "rank": 1,
+          "rootMove": "c3a1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1310
+          }
+        }
+      ],
+      "nodes": 296,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 345,
+      "lines": [
+        {
+          "pv": ["d2c3", "e5g4", "h2e2"],
+          "rank": 1,
+          "rootMove": "d2c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -757
+          }
+        }
+      ],
+      "nodes": 345,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2497,
+      "lines": [
+        {
+          "pv": ["e5g4", "h2e2", "c3f6"],
+          "rank": 1,
+          "rootMove": "e5g4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1022
+          }
+        },
+        {
+          "pv": ["f5e4", "f4e5", "c3e5"],
+          "rank": 2,
+          "rootMove": "f5e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -840
+          }
+        },
+        {
+          "pv": ["g8f6", "d2c3", "e5g4"],
+          "rank": 3,
+          "rootMove": "g8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -830
+          }
+        }
+      ],
+      "nodes": 2497,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 398,
+      "lines": [
+        {
+          "pv": ["h2d2", "e5g4", "c1b2"],
+          "rank": 1,
+          "rootMove": "h2d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -708
+          }
+        }
+      ],
+      "nodes": 398,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 270,
+      "lines": [
+        {
+          "pv": ["d2c1", "b1c1", "e5g4"],
+          "rank": 1,
+          "rootMove": "d2c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1211
+          }
+        }
+      ],
+      "nodes": 270,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 476,
+      "lines": [
+        {
+          "pv": ["c1d2", "e5g4", "h2g2"],
+          "rank": 1,
+          "rootMove": "c1d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -767
+          }
+        }
+      ],
+      "nodes": 476,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2700,
+      "lines": [
+        {
+          "pv": ["d2c1", "b1c1", "e5f7"],
+          "rank": 1,
+          "rootMove": "d2c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1173
+          }
+        },
+        {
+          "pv": ["a6b5", "c1d2", "a8a3"],
+          "rank": 2,
+          "rootMove": "a6b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -953
+          }
+        },
+        {
+          "pv": ["e5c4", "b5b6", "c4b6"],
+          "rank": 3,
+          "rootMove": "e5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -923
+          }
+        }
+      ],
+      "nodes": 2700,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1479,
+      "lines": [
+        {
+          "pv": ["c1b2", "e5f7", "h4g5"],
+          "rank": 1,
+          "rootMove": "c1b2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -603
+          }
+        }
+      ],
+      "nodes": 1479,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 520,
+      "lines": [
+        {
+          "pv": ["d2c1", "b1c1", "g5f4"],
+          "rank": 1,
+          "rootMove": "d2c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1126
+          }
+        }
+      ],
+      "nodes": 520,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1574,
+      "lines": [
+        {
+          "pv": ["c1d2", "g5f4", "g3f4"],
+          "rank": 1,
+          "rootMove": "c1d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -788
+          }
+        }
+      ],
+      "nodes": 1574,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 3685,
+      "lines": [
+        {
+          "pv": ["d2c1", "f4e5", "c1a3"],
+          "rank": 1,
+          "rootMove": "d2c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1177
+          }
+        },
+        {
+          "pv": ["f6e4", "c1d2", "e4d2"],
+          "rank": 2,
+          "rootMove": "f6e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1003
+          }
+        },
+        {
+          "pv": ["g5f4", "c1d2", "f6e4"],
+          "rank": 3,
+          "rootMove": "g5f4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -965
+          }
+        }
+      ],
+      "nodes": 3685,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1112,
+      "lines": [
+        {
+          "pv": ["f4e5", "f6e4", "g3g4"],
+          "rank": 1,
+          "rootMove": "f4e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -912
+          }
+        }
+      ],
+      "nodes": 1112,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 958,
+      "lines": [
+        {
+          "pv": ["f6e4", "c1b2", "d7d6"],
+          "rank": 1,
+          "rootMove": "f6e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1131
+          }
+        }
+      ],
+      "nodes": 958,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 476,
+      "lines": [
+        {
+          "pv": ["g5f6", "d8f6", "b1b3"],
+          "rank": 1,
+          "rootMove": "g5f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -713
+          }
+        }
+      ],
+      "nodes": 476,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2292,
+      "lines": [
+        {
+          "pv": ["f6e4", "g3g4", "e5g4"],
+          "rank": 1,
+          "rootMove": "f6e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1155
+          }
+        },
+        {
+          "pv": ["h6g5", "c1g5", "c3d4"],
+          "rank": 2,
+          "rootMove": "h6g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1028
+          }
+        },
+        {
+          "pv": ["a6b5", "g5f6", "b5c4"],
+          "rank": 3,
+          "rootMove": "a6b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -901
+          }
+        }
+      ],
+      "nodes": 2292,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 662,
+      "lines": [
+        {
+          "pv": ["g5f6", "a6b5", "b1b3"],
+          "rank": 1,
+          "rootMove": "g5f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -732
+          }
+        }
+      ],
+      "nodes": 662,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 955,
+      "lines": [
+        {
+          "pv": ["h6g5", "e4f5", "e6f5"],
+          "rank": 1,
+          "rootMove": "h6g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -982
+          }
+        }
+      ],
+      "nodes": 955,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1862,
+      "lines": [
+        {
+          "pv": ["c1d2", "f6e4", "c2e4"],
+          "rank": 1,
+          "rootMove": "c1d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -644
+          }
+        }
+      ],
+      "nodes": 1862,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2997,
+      "lines": [
+        {
+          "pv": ["d2c1", "b1c1", "a6b5"],
+          "rank": 1,
+          "rootMove": "d2c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1208
+          }
+        },
+        {
+          "pv": ["d2h6", "c1b2", "d7d6"],
+          "rank": 2,
+          "rootMove": "d2h6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1056
+          }
+        },
+        {
+          "pv": ["a6b5", "c1b2", "d2h6"],
+          "rank": 3,
+          "rootMove": "a6b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -988
+          }
+        }
+      ],
+      "nodes": 2997,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1016,
+      "lines": [
+        {
+          "pv": ["b5c6", "b7c6", "b1c1"],
+          "rank": 1,
+          "rootMove": "b5c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1317
+          }
+        }
+      ],
+      "nodes": 1016,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 354,
+      "lines": [
+        {
+          "pv": ["b7c6", "b1c1", "f6e4"],
+          "rank": 1,
+          "rootMove": "b7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1317
+          }
+        }
+      ],
+      "nodes": 354,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 983,
+      "lines": [
+        {
+          "pv": ["b1c1", "b7c6", "e4f5"],
+          "rank": 1,
+          "rootMove": "b1c1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1199
+          }
+        }
+      ],
+      "nodes": 983,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1417,
+      "lines": [
+        {
+          "pv": ["c1a3", "h6h7", "b7c6"],
+          "rank": 1,
+          "rootMove": "c1a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1420
+          }
+        },
+        {
+          "pv": ["b7c6", "b1c1", "h8h6"],
+          "rank": 2,
+          "rootMove": "b7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1199
+          }
+        },
+        {
+          "pv": ["d7c6", "b1c1", "d8d2"],
+          "rank": 3,
+          "rootMove": "d7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1175
+          }
+        }
+      ],
+      "nodes": 1417,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 608,
+      "lines": [
+        {
+          "pv": ["c6b7", "c8b7", "b1b7"],
+          "rank": 1,
+          "rootMove": "c6b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1147
+          }
+        }
+      ],
+      "nodes": 608,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 735,
+      "lines": [
+        {
+          "pv": ["d7c6", "h3g5", "h8h6"],
+          "rank": 1,
+          "rootMove": "d7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1215
+          }
+        }
+      ],
+      "nodes": 735,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1232,
+      "lines": [
+        {
+          "pv": ["h3g5", "d7c6", "h6h7"],
+          "rank": 1,
+          "rootMove": "h3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1045
+          }
+        }
+      ],
+      "nodes": 1232,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2685,
+      "lines": [
+        {
+          "pv": ["h8h6", "f1g2", "d7c6"],
+          "rank": 1,
+          "rootMove": "h8h6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1248
+          }
+        },
+        {
+          "pv": ["d7c6", "h3g5", "h8h6"],
+          "rank": 2,
+          "rootMove": "d7c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1237
+          }
+        },
+        {
+          "pv": ["d7e6", "h3g5", "h8h6"],
+          "rank": 3,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1200
+          }
+        }
+      ],
+      "nodes": 2685,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 971,
+      "lines": [
+        {
+          "pv": ["h6h7", "b5b4", "h3g5"],
+          "rank": 1,
+          "rootMove": "h6h7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1124
+          }
+        }
+      ],
+      "nodes": 971,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 950,
+      "lines": [
+        {
+          "pv": ["h8h6", "f2g2", "d7e6"],
+          "rank": 1,
+          "rootMove": "h8h6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1331
+          }
+        }
+      ],
+      "nodes": 950,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1306,
+      "lines": [
+        {
+          "pv": ["h1d1", "d8b6", "f2g2"],
+          "rank": 1,
+          "rootMove": "h1d1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1294
+          }
+        }
+      ],
+      "nodes": 1306,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 4460,
+      "lines": [
+        {
+          "pv": ["d7e6", "f2g2", "d8d4"],
+          "rank": 1,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1416
+          }
+        },
+        {
+          "pv": ["f6g4", "f2g1", "h6e3"],
+          "rank": 2,
+          "rootMove": "f6g4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1347
+          }
+        },
+        {
+          "pv": ["h8f8", "f2g2", "d7e6"],
+          "rank": 3,
+          "rootMove": "h8f8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1291
+          }
+        }
+      ],
+      "nodes": 4460,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 815,
+      "lines": [
+        {
+          "pv": ["f2g1", "h6e3", "g1g2"],
+          "rank": 1,
+          "rootMove": "f2g1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1347
+          }
+        }
+      ],
+      "nodes": 815,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 740,
+      "lines": [
+        {
+          "pv": ["c6d4", "e2d3", "d4c2"],
+          "rank": 1,
+          "rootMove": "c6d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1504
+          }
+        }
+      ],
+      "nodes": 740,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 565,
+      "lines": [
+        {
+          "pv": ["c2f5", "d8c7", "f5g4"],
+          "rank": 1,
+          "rootMove": "c2f5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1008
+          }
+        }
+      ],
+      "nodes": 565,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1688,
+      "lines": [
+        {
+          "pv": ["d7e6", "c2e4", "d8d4"],
+          "rank": 1,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1395
+          }
+        },
+        {
+          "pv": ["a5c4", "a3c4", "b5c4"],
+          "rank": 2,
+          "rootMove": "a5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1374
+          }
+        },
+        {
+          "pv": ["b5c4", "g1d1", "h6e3"],
+          "rank": 3,
+          "rootMove": "b5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1313
+          }
+        }
+      ],
+      "nodes": 1688,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 616,
+      "lines": [
+        {
+          "pv": ["g1d1", "a5c4", "a3c4"],
+          "rank": 1,
+          "rootMove": "g1d1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1382
+          }
+        }
+      ],
+      "nodes": 616,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 955,
+      "lines": [
+        {
+          "pv": ["d7e6", "d3e2", "d8d2"],
+          "rank": 1,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2061
+          }
+        }
+      ],
+      "nodes": 955,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2473,
+      "lines": [
+        {
+          "pv": ["g1d1", "a5c4", "a3c4"],
+          "rank": 1,
+          "rootMove": "g1d1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1665
+          }
+        }
+      ],
+      "nodes": 2473,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2363,
+      "lines": [
+        {
+          "pv": ["d7e6", "d3e2", "d8d2"],
+          "rank": 1,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2074
+          }
+        },
+        {
+          "pv": ["a5c4", "a3c4", "b5c4"],
+          "rank": 2,
+          "rootMove": "a5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1821
+          }
+        },
+        {
+          "pv": ["h6e6", "h1e1", "a5c4"],
+          "rank": 3,
+          "rootMove": "h6e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1764
+          }
+        }
+      ],
+      "nodes": 2363,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1235,
+      "lines": [
+        {
+          "pv": ["d3e2", "h6e6", "h1f1"],
+          "rank": 1,
+          "rootMove": "d3e2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1682
+          }
+        }
+      ],
+      "nodes": 1235,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 965,
+      "lines": [
+        {
+          "pv": ["b6d4", "d3c2", "d4e4"],
+          "rank": 1,
+          "rootMove": "b6d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2312
+          }
+        }
+      ],
+      "nodes": 965,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1849,
+      "lines": [
+        {
+          "pv": ["d3c2", "d7e6", "c4b5"],
+          "rank": 1,
+          "rootMove": "d3c2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1850
+          }
+        }
+      ],
+      "nodes": 1849,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 4405,
+      "lines": [
+        {
+          "pv": ["b6d4", "d3c2", "a5c4"],
+          "rank": 1,
+          "rootMove": "b6d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2204
+          }
+        },
+        {
+          "pv": ["a5c4", "b2b4", "e3g5"],
+          "rank": 2,
+          "rootMove": "a5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2166
+          }
+        },
+        {
+          "pv": ["d7e6", "d3c2", "e3g5"],
+          "rank": 3,
+          "rootMove": "d7e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1960
+          }
+        }
+      ],
+      "nodes": 4405,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 618,
+      "lines": [
+        {
+          "pv": ["g5e6", "b5c4", "a3c4"],
+          "rank": 1,
+          "rootMove": "g5e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1072
+          }
+        }
+      ],
+      "nodes": 618,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1468,
+      "lines": [
+        {
+          "pv": ["b5c4", "d3c3", "e6f6"],
+          "rank": 1,
+          "rootMove": "b5c4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -2202
+          }
+        }
+      ],
+      "nodes": 1468,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1467,
+      "lines": [
+        {
+          "pv": ["g5e6", "g4f2", "d3e2"],
+          "rank": 1,
+          "rootMove": "g5e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -834
+          }
+        }
+      ],
+      "nodes": 1467,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1024,
+      "lines": [
+        {
+          "pv": ["e7e5", "e2e4", "g8f6"],
+          "rank": 1,
+          "rootMove": "e7e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 0
+          }
+        },
+        {
+          "pv": ["d7d5", "d2d4", "g8f6"],
+          "rank": 2,
+          "rootMove": "d7d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 8
+          }
+        },
+        {
+          "pv": ["c7c5", "e2e4", "g8f6"],
+          "rank": 3,
+          "rootMove": "c7c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 21
+          }
+        }
+      ],
+      "nodes": 1024,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 337,
+      "lines": [
+        {
+          "pv": ["d2d4", "g8f6", "g1f3"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 8
+          }
+        }
+      ],
+      "nodes": 337,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 379,
+      "lines": [
+        {
+          "pv": ["f8g7", "d2d4", "d7d5"],
+          "rank": 1,
+          "rootMove": "f8g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 18
+          }
+        }
+      ],
+      "nodes": 379,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 303,
+      "lines": [
+        {
+          "pv": ["d2d4", "d7d5", "c2c4"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 50
+          }
+        }
+      ],
+      "nodes": 303,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 893,
+      "lines": [
+        {
+          "pv": ["d7d5", "d2d4", "c8f5"],
+          "rank": 1,
+          "rootMove": "d7d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 25
+          }
+        },
+        {
+          "pv": ["g8f6", "d2d4", "d7d5"],
+          "rank": 2,
+          "rootMove": "g8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 28
+          }
+        },
+        {
+          "pv": ["b8c6", "d2d4", "d7d5"],
+          "rank": 3,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 32
+          }
+        }
+      ],
+      "nodes": 893,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 369,
+      "lines": [
+        {
+          "pv": ["f3h4", "e8f7", "e2e4"],
+          "rank": 1,
+          "rootMove": "f3h4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 92
+          }
+        }
+      ],
+      "nodes": 369,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 356,
+      "lines": [
+        {
+          "pv": ["e7e5", "d2d4", "e5e4"],
+          "rank": 1,
+          "rootMove": "e7e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 54
+          }
+        }
+      ],
+      "nodes": 356,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 372,
+      "lines": [
+        {
+          "pv": ["d2d4", "d7d6", "f3h4"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 101
+          }
+        }
+      ],
+      "nodes": 372,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1105,
+      "lines": [
+        {
+          "pv": ["e7e5", "e2e3", "g8e7"],
+          "rank": 1,
+          "rootMove": "e7e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 32
+          }
+        },
+        {
+          "pv": ["b8c6", "d2d4", "e7e5"],
+          "rank": 2,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 38
+          }
+        },
+        {
+          "pv": ["f8g7", "d2d4", "e7e5"],
+          "rank": 3,
+          "rootMove": "f8g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 41
+          }
+        }
+      ],
+      "nodes": 1105,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 300,
+      "lines": [
+        {
+          "pv": ["d2d4", "d7d6", "f3h4"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 118
+          }
+        }
+      ],
+      "nodes": 300,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 263,
+      "lines": [
+        {
+          "pv": ["e7e5", "a3a1", "e5e4"],
+          "rank": 1,
+          "rootMove": "e7e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 4
+          }
+        }
+      ],
+      "nodes": 263,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 329,
+      "lines": [
+        {
+          "pv": ["a3a1", "g6g5", "d2d4"],
+          "rank": 1,
+          "rootMove": "a3a1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 47
+          }
+        }
+      ],
+      "nodes": 329,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1105,
+      "lines": [
+        {
+          "pv": ["h7g7", "a3a1", "g6g5"],
+          "rank": 1,
+          "rootMove": "h7g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 20
+          }
+        },
+        {
+          "pv": ["g8e7", "d2d4", "d7d5"],
+          "rank": 2,
+          "rootMove": "g8e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 22
+          }
+        },
+        {
+          "pv": ["f6f5", "d2d4", "h5h4"],
+          "rank": 3,
+          "rootMove": "f6f5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 30
+          }
+        }
+      ],
+      "nodes": 1105,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 226,
+      "lines": [
+        {
+          "pv": ["c2g6", "e7f7", "g6g8"],
+          "rank": 1,
+          "rootMove": "c2g6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 291
+          }
+        }
+      ],
+      "nodes": 226,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 276,
+      "lines": [
+        {
+          "pv": ["e7g7", "d2d4", "d7d5"],
+          "rank": 1,
+          "rootMove": "e7g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 26
+          }
+        }
+      ],
+      "nodes": 276,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 470,
+      "lines": [
+        {
+          "pv": ["d2d4", "d7d6", "c5d6"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 34
+          }
+        }
+      ],
+      "nodes": 470,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2467,
+      "lines": [
+        {
+          "pv": ["e6e5", "e2e4", "b8c6"],
+          "rank": 1,
+          "rootMove": "e6e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -61
+          }
+        },
+        {
+          "pv": ["e7f7", "d3c2", "b8c6"],
+          "rank": 2,
+          "rootMove": "e7f7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -46
+          }
+        },
+        {
+          "pv": ["g8f6", "c1b2", "e7g7"],
+          "rank": 3,
+          "rootMove": "g8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -37
+          }
+        }
+      ],
+      "nodes": 2467,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 333,
+      "lines": [
+        {
+          "pv": ["c5b6", "c7b6", "a3a1"],
+          "rank": 1,
+          "rootMove": "c5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -5
+          }
+        }
+      ],
+      "nodes": 333,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 468,
+      "lines": [
+        {
+          "pv": ["b6c5", "d3c2", "b8c6"],
+          "rank": 1,
+          "rootMove": "b6c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -122
+          }
+        }
+      ],
+      "nodes": 468,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 586,
+      "lines": [
+        {
+          "pv": ["c5b6", "c7b6", "g2g4"],
+          "rank": 1,
+          "rootMove": "c5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -7
+          }
+        }
+      ],
+      "nodes": 586,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2399,
+      "lines": [
+        {
+          "pv": ["b6c5", "g2g4", "f5g4"],
+          "rank": 1,
+          "rootMove": "b6c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -129
+          }
+        },
+        {
+          "pv": ["c8a6", "f3g5", "f7g7"],
+          "rank": 2,
+          "rootMove": "c8a6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -126
+          }
+        },
+        {
+          "pv": ["e7e8", "g2g4", "c8a6"],
+          "rank": 3,
+          "rootMove": "e7e8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -107
+          }
+        }
+      ],
+      "nodes": 2399,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1157,
+      "lines": [
+        {
+          "pv": ["g2g4", "b8c6", "g4f5"],
+          "rank": 1,
+          "rootMove": "g2g4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -18
+          }
+        }
+      ],
+      "nodes": 1157,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1595,
+      "lines": [
+        {
+          "pv": ["b8c6", "g2g4", "f5g4"],
+          "rank": 1,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -80
+          }
+        }
+      ],
+      "nodes": 1595,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 282,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7e8", "c3h8"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 53
+          }
+        }
+      ],
+      "nodes": 282,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2752,
+      "lines": [
+        {
+          "pv": ["b6c5", "c3h8", "e6e5"],
+          "rank": 1,
+          "rootMove": "b6c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -136
+          }
+        },
+        {
+          "pv": ["e6e5", "g2g4", "f5g4"],
+          "rank": 2,
+          "rootMove": "e6e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -122
+          }
+        },
+        {
+          "pv": ["f8g7", "d3d4", "b6c5"],
+          "rank": 3,
+          "rootMove": "f8g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -90
+          }
+        }
+      ],
+      "nodes": 2752,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 360,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7e8", "c3h8"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 21
+          }
+        }
+      ],
+      "nodes": 360,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 351,
+      "lines": [
+        {
+          "pv": ["b6a5", "b1d2", "e7e8"],
+          "rank": 1,
+          "rootMove": "b6a5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1022
+          }
+        }
+      ],
+      "nodes": 351,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 504,
+      "lines": [
+        {
+          "pv": ["a5d2", "e7e8", "h2h1"],
+          "rank": 1,
+          "rootMove": "a5d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -113
+          }
+        }
+      ],
+      "nodes": 504,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 861,
+      "lines": [
+        {
+          "pv": ["c6a5", "d4f3", "a5c6"],
+          "rank": 1,
+          "rootMove": "c6a5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1148
+          }
+        },
+        {
+          "pv": ["c5d4", "a5d2", "e7e8"],
+          "rank": 2,
+          "rootMove": "c5d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -619
+          }
+        },
+        {
+          "pv": ["c6d4", "a5c5", "d4c6"],
+          "rank": 3,
+          "rootMove": "c6d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -469
+          }
+        }
+      ],
+      "nodes": 861,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 467,
+      "lines": [
+        {
+          "pv": ["a5c5", "a6d3", "c5a7"],
+          "rank": 1,
+          "rootMove": "a5c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 74
+          }
+        }
+      ],
+      "nodes": 467,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 389,
+      "lines": [
+        {
+          "pv": ["e5d3", "e2d3", "c5d4"],
+          "rank": 1,
+          "rootMove": "e5d3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -222
+          }
+        }
+      ],
+      "nodes": 389,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 279,
+      "lines": [
+        {
+          "pv": ["d4f3", "d8a8", "a5d2"],
+          "rank": 1,
+          "rootMove": "d4f3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 263
+          }
+        }
+      ],
+      "nodes": 279,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1047,
+      "lines": [
+        {
+          "pv": ["f3g5", "d4b5", "a7a8"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -448
+          }
+        },
+        {
+          "pv": ["f3d4", "a5c5", "d4c6"],
+          "rank": 2,
+          "rootMove": "f3d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -430
+          }
+        },
+        {
+          "pv": ["f3h2", "a5c5", "d8b8"],
+          "rank": 3,
+          "rootMove": "f3h2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -400
+          }
+        }
+      ],
+      "nodes": 1047,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 637,
+      "lines": [
+        {
+          "pv": ["d4f3", "g8f6", "a5d2"],
+          "rank": 1,
+          "rootMove": "d4f3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 242
+          }
+        }
+      ],
+      "nodes": 637,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 298,
+      "lines": [
+        {
+          "pv": ["d8c7", "d4f3", "e7e8"],
+          "rank": 1,
+          "rootMove": "d8c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -828
+          }
+        }
+      ],
+      "nodes": 298,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 474,
+      "lines": [
+        {
+          "pv": ["c7a7", "f3g5", "d4f5"],
+          "rank": 1,
+          "rootMove": "c7a7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 97
+          }
+        }
+      ],
+      "nodes": 474,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1841,
+      "lines": [
+        {
+          "pv": ["a7c7", "d4b5", "a6b5"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -701
+          }
+        },
+        {
+          "pv": ["e8a8", "c7c5", "e7e8"],
+          "rank": 2,
+          "rootMove": "e8a8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 227
+          }
+        },
+        {
+          "pv": ["a7b7", "c7c5", "g8f6"],
+          "rank": 3,
+          "rootMove": "a7b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 256
+          }
+        }
+      ],
+      "nodes": 1841,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 423,
+      "lines": [
+        {
+          "pv": ["c7a7", "e7f7", "d4b5"],
+          "rank": 1,
+          "rootMove": "c7a7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 830
+          }
+        }
+      ],
+      "nodes": 423,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 400,
+      "lines": [
+        {
+          "pv": ["a7c7", "d4b5", "a6b5"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -702
+          }
+        }
+      ],
+      "nodes": 400,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 574,
+      "lines": [
+        {
+          "pv": ["c7c5", "e7e8", "c5c1"],
+          "rank": 1,
+          "rootMove": "c7c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 366
+          }
+        }
+      ],
+      "nodes": 574,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2976,
+      "lines": [
+        {
+          "pv": ["a7c7", "d4c2", "e7f7"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -738
+          }
+        },
+        {
+          "pv": ["c5d4", "c7e5", "g7h7"],
+          "rank": 2,
+          "rootMove": "c5d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 88
+          }
+        },
+        {
+          "pv": ["e6e5", "c7c5", "e7e8"],
+          "rank": 3,
+          "rootMove": "e6e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 201
+          }
+        }
+      ],
+      "nodes": 2976,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 764,
+      "lines": [
+        {
+          "pv": ["d4e6", "g7f7", "e6d8"],
+          "rank": 1,
+          "rootMove": "d4e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 364
+          }
+        }
+      ],
+      "nodes": 764,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 412,
+      "lines": [
+        {
+          "pv": ["a7c7", "d4e6", "g7f7"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 321
+          }
+        }
+      ],
+      "nodes": 412,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 735,
+      "lines": [
+        {
+          "pv": ["e7f8", "g7f8", "d4e6"],
+          "rank": 1,
+          "rootMove": "e7f8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1356
+          }
+        }
+      ],
+      "nodes": 735,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1520,
+      "lines": [
+        {
+          "pv": ["a7c7", "e7f8", "g7f8"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -281
+          }
+        },
+        {
+          "pv": ["g8e7", "c7a7", "c5d4"],
+          "rank": 2,
+          "rootMove": "g8e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 740
+          }
+        },
+        {
+          "pv": ["f8e7", "d4f5", "e6f5"],
+          "rank": 3,
+          "rootMove": "f8e7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 771
+          }
+        }
+      ],
+      "nodes": 1520,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1588,
+      "lines": [
+        {
+          "pv": ["c7a7", "e6e5", "d4e6"],
+          "rank": 1,
+          "rootMove": "c7a7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1379
+          }
+        }
+      ],
+      "nodes": 1588,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 185,
+      "lines": [
+        {
+          "pv": ["a7c7", "d4e6", "c8e6"],
+          "rank": 1,
+          "rootMove": "a7c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -105
+          }
+        }
+      ],
+      "nodes": 185,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 319,
+      "lines": [
+        {
+          "pv": ["d4e6", "g7g8", "e6c7"],
+          "rank": 1,
+          "rootMove": "d4e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1074
+          }
+        }
+      ],
+      "nodes": 319,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2025,
+      "lines": [
+        {
+          "pv": ["c7d7", "d8b6", "c5d4"],
+          "rank": 1,
+          "rootMove": "c7d7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -475
+          }
+        },
+        {
+          "pv": ["c7c8", "d8b6", "a7b7"],
+          "rank": 2,
+          "rootMove": "c7c8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -351
+          }
+        },
+        {
+          "pv": ["c7f7", "d4c6", "f7d7"],
+          "rank": 3,
+          "rootMove": "c7f7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -180
+          }
+        }
+      ],
+      "nodes": 2025,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 386,
+      "lines": [
+        {
+          "pv": ["d4e6", "g7f7", "e6c7"],
+          "rank": 1,
+          "rootMove": "d4e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1140
+          }
+        }
+      ],
+      "nodes": 386,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 781,
+      "lines": [
+        {
+          "pv": ["c7c8", "d4c6", "d6d5"],
+          "rank": 1,
+          "rootMove": "c7c8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -154
+          }
+        }
+      ],
+      "nodes": 781,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 660,
+      "lines": [
+        {
+          "pv": ["d4e6", "g7f7", "e6c7"],
+          "rank": 1,
+          "rootMove": "d4e6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1091
+          }
+        }
+      ],
+      "nodes": 660,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1568,
+      "lines": [
+        {
+          "pv": ["c7c8", "d4c6", "f6d5"],
+          "rank": 1,
+          "rootMove": "c7c8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -216
+          }
+        },
+        {
+          "pv": ["c7d7", "d4c6", "f6d5"],
+          "rank": 2,
+          "rootMove": "c7d7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -213
+          }
+        },
+        {
+          "pv": ["c7f7", "d4c6", "f7d7"],
+          "rank": 3,
+          "rootMove": "c7f7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -148
+          }
+        }
+      ],
+      "nodes": 1568,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 197,
+      "lines": [
+        {
+          "pv": ["d8c7", "a7c7", "b3b4"],
+          "rank": 1,
+          "rootMove": "d8c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 199
+          }
+        }
+      ],
+      "nodes": 197,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 424,
+      "lines": [
+        {
+          "pv": ["c7d8", "a3a1", "a7c7"],
+          "rank": 1,
+          "rootMove": "c7d8",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1117
+          }
+        }
+      ],
+      "nodes": 424,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 777,
+      "lines": [
+        {
+          "pv": ["d8b6", "d6d5", "a3a2"],
+          "rank": 1,
+          "rootMove": "d8b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -592
+          }
+        }
+      ],
+      "nodes": 777,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2164,
+      "lines": [
+        {
+          "pv": ["a7b7", "d8f6", "g7f6"],
+          "rank": 1,
+          "rootMove": "a7b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1128
+          }
+        },
+        {
+          "pv": ["a6b7", "d8f6", "g7f6"],
+          "rank": 2,
+          "rootMove": "a6b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1127
+          }
+        },
+        {
+          "pv": ["d6d5", "d2b1", "c3b2"],
+          "rank": 3,
+          "rootMove": "d6d5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -731
+          }
+        }
+      ],
+      "nodes": 2164,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 287,
+      "lines": [
+        {
+          "pv": ["e2d3", "a7b7", "d2f3"],
+          "rank": 1,
+          "rootMove": "e2d3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 142
+          }
+        }
+      ],
+      "nodes": 287,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 471,
+      "lines": [
+        {
+          "pv": ["a7b7", "d8f6", "g7f6"],
+          "rank": 1,
+          "rootMove": "a7b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1255
+          }
+        }
+      ],
+      "nodes": 471,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 461,
+      "lines": [
+        {
+          "pv": ["b7a6", "d3a6", "a3a1"],
+          "rank": 1,
+          "rootMove": "b7a6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -828
+          }
+        }
+      ],
+      "nodes": 461,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1030,
+      "lines": [
+        {
+          "pv": ["g7g6", "b7a6", "a7a6"],
+          "rank": 1,
+          "rootMove": "g7g6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1304
+          }
+        },
+        {
+          "pv": ["g7h7", "b7a6", "a7a6"],
+          "rank": 2,
+          "rootMove": "g7h7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -579
+          }
+        },
+        {
+          "pv": ["g7f7", "g6f6", "f7g8"],
+          "rank": 3,
+          "rootMove": "g7f7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -302
+          }
+        }
+      ],
+      "nodes": 1030,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 501,
+      "lines": [
+        {
+          "pv": ["d8f6", "h8h7", "b7a6"],
+          "rank": 1,
+          "rootMove": "d8f6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -202
+          }
+        }
+      ],
+      "nodes": 501,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1336,
+      "lines": [
+        {
+          "pv": ["d3e2", "d1c2", "a6d3"],
+          "rank": 1,
+          "rootMove": "d3e2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1159
+          }
+        }
+      ],
+      "nodes": 1336,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 273,
+      "lines": [
+        {
+          "pv": ["d2f1", "a7b7", "a3a1"],
+          "rank": 1,
+          "rootMove": "d2f1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 202
+          }
+        }
+      ],
+      "nodes": 273,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1974,
+      "lines": [
+        {
+          "pv": ["a7b7", "a3a1", "b7b6"],
+          "rank": 1,
+          "rootMove": "a7b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 265
+          }
+        },
+        {
+          "pv": ["d4e3", "b7a6", "a7a6"],
+          "rank": 2,
+          "rootMove": "d4e3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 698
+          }
+        },
+        {
+          "pv": ["f8a3", "b6a7", "a6f1"],
+          "rank": 3,
+          "rootMove": "f8a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 819
+          }
+        }
+      ],
+      "nodes": 1974,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 198,
+      "lines": [
+        {
+          "pv": ["d1e2", "a7b7", "g6f6"],
+          "rank": 1,
+          "rootMove": "d1e2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 924
+          }
+        }
+      ],
+      "nodes": 198,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 585,
+      "lines": [
+        {
+          "pv": ["a7b7", "b6d4", "e2f1"],
+          "rank": 1,
+          "rootMove": "a7b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 423
+          }
+        }
+      ],
+      "nodes": 585,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 471,
+      "lines": [
+        {
+          "pv": ["d2e2", "f8a3", "b6a5"],
+          "rank": 1,
+          "rootMove": "d2e2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1220
+          }
+        }
+      ],
+      "nodes": 471,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2789,
+      "lines": [
+        {
+          "pv": ["f8a3", "e1e2", "d4d3"],
+          "rank": 1,
+          "rootMove": "f8a3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 693
+          }
+        },
+        {
+          "pv": ["e2h5", "g6f6", "f8b4"],
+          "rank": 2,
+          "rootMove": "e2h5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 926
+          }
+        },
+        {
+          "pv": ["a5c5", "b6c5", "f8c5"],
+          "rank": 3,
+          "rootMove": "a5c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 965
+          }
+        }
+      ],
+      "nodes": 2789,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 351,
+      "lines": [
+        {
+          "pv": ["a4b5", "f8a3", "e1e2"],
+          "rank": 1,
+          "rootMove": "a4b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1128
+          }
+        }
+      ],
+      "nodes": 351,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 303,
+      "lines": [
+        {
+          "pv": ["b5b7", "e1e2", "f8a3"],
+          "rank": 1,
+          "rootMove": "b5b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 373
+          }
+        }
+      ],
+      "nodes": 303,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 346,
+      "lines": [
+        {
+          "pv": ["a4b5", "e2b5", "a3a7"],
+          "rank": 1,
+          "rootMove": "a4b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1069
+          }
+        }
+      ],
+      "nodes": 346,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1241,
+      "lines": [
+        {
+          "pv": ["b5b7", "e1e2", "f8d6"],
+          "rank": 1,
+          "rootMove": "b5b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 433
+          }
+        },
+        {
+          "pv": ["b5b6", "e1e2", "f8d6"],
+          "rank": 2,
+          "rootMove": "b5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 699
+          }
+        },
+        {
+          "pv": ["f8d6", "a4b5", "e2b5"],
+          "rank": 3,
+          "rootMove": "f8d6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 747
+          }
+        }
+      ],
+      "nodes": 1241,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 507,
+      "lines": [
+        {
+          "pv": ["a4b5", "f8d6", "a3a8"],
+          "rank": 1,
+          "rootMove": "a4b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1046
+          }
+        }
+      ],
+      "nodes": 507,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 544,
+      "lines": [
+        {
+          "pv": ["b5b7", "g6g5", "f8a3"],
+          "rank": 1,
+          "rootMove": "b5b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 100
+          }
+        }
+      ],
+      "nodes": 544,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 504,
+      "lines": [
+        {
+          "pv": ["a4b5", "h5g6", "b8e5"],
+          "rank": 1,
+          "rootMove": "a4b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 800
+          }
+        }
+      ],
+      "nodes": 504,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2101,
+      "lines": [
+        {
+          "pv": ["b5b6", "g7c7", "d4e3"],
+          "rank": 1,
+          "rootMove": "b5b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 363
+          }
+        },
+        {
+          "pv": ["b5b4", "g7c7", "d4e3"],
+          "rank": 2,
+          "rootMove": "b5b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 386
+          }
+        },
+        {
+          "pv": ["c5b7", "b8e5", "b5b6"],
+          "rank": 3,
+          "rootMove": "c5b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 415
+          }
+        }
+      ],
+      "nodes": 2101,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 457,
+      "lines": [
+        {
+          "pv": ["a4b5", "a6b8", "a3a8"],
+          "rank": 1,
+          "rootMove": "a4b5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 905
+          }
+        }
+      ],
+      "nodes": 457,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 683,
+      "lines": [
+        {
+          "pv": ["b5b7", "b8e5", "h8h7"],
+          "rank": 1,
+          "rootMove": "b5b7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 216
+          }
+        }
+      ],
+      "nodes": 683,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 336,
+      "lines": [
+        {
+          "pv": ["b8e5", "h8h7", "a4b5"],
+          "rank": 1,
+          "rootMove": "b8e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 1507
+          }
+        }
+      ],
+      "nodes": 336,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1115,
+      "lines": [
+        {
+          "pv": ["h5h4", "f1g2", "d7d5"],
+          "rank": 1,
+          "rootMove": "h5h4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 2
+          }
+        },
+        {
+          "pv": ["e7e5", "d2d4", "h5h4"],
+          "rank": 2,
+          "rootMove": "e7e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 26
+          }
+        },
+        {
+          "pv": ["a7a5", "g1f3", "d7d5"],
+          "rank": 3,
+          "rootMove": "a7a5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 45
+          }
+        }
+      ],
+      "nodes": 1115,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 423,
+      "lines": [
+        {
+          "pv": ["d2d4", "h5h4", "d4e5"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 26
+          }
+        }
+      ],
+      "nodes": 423,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 408,
+      "lines": [
+        {
+          "pv": ["h5h4", "f1g2", "d7d5"],
+          "rank": 1,
+          "rootMove": "h5h4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -39
+          }
+        }
+      ],
+      "nodes": 408,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 386,
+      "lines": [
+        {
+          "pv": ["d2d4", "e5d4", "c3d4"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 16
+          }
+        }
+      ],
+      "nodes": 386,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1395,
+      "lines": [
+        {
+          "pv": ["e5f4", "d2d4", "f4g3"],
+          "rank": 1,
+          "rootMove": "e5f4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -99
+          }
+        },
+        {
+          "pv": ["h5h4", "g1h3", "h4g3"],
+          "rank": 2,
+          "rootMove": "h5h4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -83
+          }
+        },
+        {
+          "pv": ["b8c6", "f4e5", "c6e5"],
+          "rank": 3,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -41
+          }
+        }
+      ],
+      "nodes": 1395,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 262,
+      "lines": [
+        {
+          "pv": ["f4e5", "f6g4", "d2d4"],
+          "rank": 1,
+          "rootMove": "f4e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 90
+          }
+        }
+      ],
+      "nodes": 262,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 248,
+      "lines": [
+        {
+          "pv": ["e5f4", "g3f4", "d7d5"],
+          "rank": 1,
+          "rootMove": "e5f4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -142
+          }
+        }
+      ],
+      "nodes": 248,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 327,
+      "lines": [
+        {
+          "pv": ["f4e5", "f6g4", "d2d4"],
+          "rank": 1,
+          "rootMove": "f4e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 10
+          }
+        }
+      ],
+      "nodes": 327,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1941,
+      "lines": [
+        {
+          "pv": ["b8c6", "f4e5", "c6e5"],
+          "rank": 1,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -92
+          }
+        },
+        {
+          "pv": ["d7d6", "f1g2", "b8c6"],
+          "rank": 2,
+          "rootMove": "d7d6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -84
+          }
+        },
+        {
+          "pv": ["f6g4", "e2e3", "e5f4"],
+          "rank": 3,
+          "rootMove": "f6g4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -66
+          }
+        }
+      ],
+      "nodes": 1941,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 393,
+      "lines": [
+        {
+          "pv": ["f4e5", "h4g3", "e5f6"],
+          "rank": 1,
+          "rootMove": "f4e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 31
+          }
+        }
+      ],
+      "nodes": 393,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 448,
+      "lines": [
+        {
+          "pv": ["h4g3", "f4e5", "h8h2"],
+          "rank": 1,
+          "rootMove": "h4g3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -214
+          }
+        }
+      ],
+      "nodes": 448,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 264,
+      "lines": [
+        {
+          "pv": ["d2e3", "h4g3", "f4e5"],
+          "rank": 1,
+          "rootMove": "d2e3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 182
+          }
+        }
+      ],
+      "nodes": 264,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1821,
+      "lines": [
+        {
+          "pv": ["f7g6", "f4e5", "f6g4"],
+          "rank": 1,
+          "rootMove": "f7g6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -751
+          }
+        },
+        {
+          "pv": ["e3d2", "c1d2", "f7g6"],
+          "rank": 2,
+          "rootMove": "e3d2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -672
+          }
+        },
+        {
+          "pv": ["e3f2", "e1f2", "f7g6"],
+          "rank": 3,
+          "rootMove": "e3f2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -623
+          }
+        }
+      ],
+      "nodes": 1821,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 550,
+      "lines": [
+        {
+          "pv": ["g6g7", "h8g8", "g7h6"],
+          "rank": 1,
+          "rootMove": "g6g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -81
+          }
+        }
+      ],
+      "nodes": 550,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 336,
+      "lines": [
+        {
+          "pv": ["f7g6", "d2e3", "f4g3"],
+          "rank": 1,
+          "rootMove": "f7g6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -820
+          }
+        }
+      ],
+      "nodes": 336,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 540,
+      "lines": [
+        {
+          "pv": ["g6g7", "h8g8", "g7h6"],
+          "rank": 1,
+          "rootMove": "g6g7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": 3
+          }
+        }
+      ],
+      "nodes": 540,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 460,
+      "lines": [
+        {
+          "pv": ["e8f7", "d2d4", "c5d6"],
+          "rank": 1,
+          "rootMove": "e8f7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -952
+          }
+        }
+      ],
+      "nodes": 460,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 887,
+      "lines": [
+        {
+          "pv": ["d2d4", "b8c6", "d4c5"],
+          "rank": 1,
+          "rootMove": "d2d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -928
+          }
+        }
+      ],
+      "nodes": 887,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 754,
+      "lines": [
+        {
+          "pv": ["c5b4", "f3g5", "f7e8"],
+          "rank": 1,
+          "rootMove": "c5b4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1044
+          }
+        }
+      ],
+      "nodes": 754,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 433,
+      "lines": [
+        {
+          "pv": ["d2e3", "f4g3", "f3g5"],
+          "rank": 1,
+          "rootMove": "d2e3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -707
+          }
+        }
+      ],
+      "nodes": 433,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 3642,
+      "lines": [
+        {
+          "pv": ["e3c5", "d2d4", "c5d6"],
+          "rank": 1,
+          "rootMove": "e3c5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -921
+          }
+        },
+        {
+          "pv": ["e3b6", "a4a5", "a6b5"],
+          "rank": 2,
+          "rootMove": "e3b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -900
+          }
+        },
+        {
+          "pv": ["e3f2", "e1f2", "h4g3"],
+          "rank": 3,
+          "rootMove": "e3f2",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -871
+          }
+        }
+      ],
+      "nodes": 3642,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 665,
+      "lines": [
+        {
+          "pv": ["f3d4", "h4g3", "f1g2"],
+          "rank": 1,
+          "rootMove": "f3d4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -859
+          }
+        }
+      ],
+      "nodes": 665,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1055,
+      "lines": [
+        {
+          "pv": ["d4c3", "e1c1", "h4g3"],
+          "rank": 1,
+          "rootMove": "d4c3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1118
+          }
+        }
+      ],
+      "nodes": 1055,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 756,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7g8", "g3f4"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -849
+          }
+        }
+      ],
+      "nodes": 756,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2980,
+      "lines": [
+        {
+          "pv": ["h4g3", "f3g5", "f7g8"],
+          "rank": 1,
+          "rootMove": "h4g3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -990
+          }
+        },
+        {
+          "pv": ["f4e3", "f3e5", "f7g8"],
+          "rank": 2,
+          "rootMove": "f4e3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -909
+          }
+        },
+        {
+          "pv": ["f4g3", "h2g3", "d7d6"],
+          "rank": 3,
+          "rootMove": "f4g3",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -905
+          }
+        }
+      ],
+      "nodes": 2980,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2718,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7g8", "f1g2"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1009
+          }
+        }
+      ],
+      "nodes": 2718,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 542,
+      "lines": [
+        {
+          "pv": ["a7b6", "c4c5", "b6a5"],
+          "rank": 1,
+          "rootMove": "a7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1151
+          }
+        }
+      ],
+      "nodes": 542,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 551,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7g8", "f1g2"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -916
+          }
+        }
+      ],
+      "nodes": 551,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1799,
+      "lines": [
+        {
+          "pv": ["g2h1r", "f3e5", "f7g8"],
+          "rank": 1,
+          "rootMove": "g2h1r",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1658
+          }
+        },
+        {
+          "pv": ["g2h1q", "f3e5", "f7e6"],
+          "rank": 2,
+          "rootMove": "g2h1q",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1535
+          }
+        },
+        {
+          "pv": ["g2h1b", "f3g5", "f7g8"],
+          "rank": 3,
+          "rootMove": "g2h1b",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1389
+          }
+        }
+      ],
+      "nodes": 1799,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 421,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7e8", "f1g2"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1180
+          }
+        }
+      ],
+      "nodes": 421,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 680,
+      "lines": [
+        {
+          "pv": ["g2h1r", "f3g5", "f7g6"],
+          "rank": 1,
+          "rootMove": "g2h1r",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1823
+          }
+        }
+      ],
+      "nodes": 680,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 193,
+      "lines": [
+        {
+          "pv": ["h1f1", "a7b6", "f3g5"],
+          "rank": 1,
+          "rootMove": "h1f1",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1466
+          }
+        }
+      ],
+      "nodes": 193,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1349,
+      "lines": [
+        {
+          "pv": ["a7b6", "f3g5", "f7g6"],
+          "rank": 1,
+          "rootMove": "a7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1458
+          }
+        },
+        {
+          "pv": ["b8c6", "b6a7", "a8a7"],
+          "rank": 2,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1303
+          }
+        },
+        {
+          "pv": ["c7b6", "f3g5", "f7g6"],
+          "rank": 3,
+          "rootMove": "c7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1233
+          }
+        }
+      ],
+      "nodes": 1349,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 420,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7g8", "b6a7"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -990
+          }
+        }
+      ],
+      "nodes": 420,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 603,
+      "lines": [
+        {
+          "pv": ["a7b6", "f3g5", "f7e7"],
+          "rank": 1,
+          "rootMove": "a7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1234
+          }
+        }
+      ],
+      "nodes": 603,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1276,
+      "lines": [
+        {
+          "pv": ["f3g5", "f7g7", "b6a7"],
+          "rank": 1,
+          "rootMove": "f3g5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -833
+          }
+        }
+      ],
+      "nodes": 1276,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 2963,
+      "lines": [
+        {
+          "pv": ["a7b6", "f3g5", "f7g8"],
+          "rank": 1,
+          "rootMove": "a7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1199
+          }
+        },
+        {
+          "pv": ["b8c6", "f3g5", "f7g7"],
+          "rank": 2,
+          "rootMove": "b8c6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1088
+          }
+        },
+        {
+          "pv": ["d5e4", "f3g5", "f7g7"],
+          "rank": 3,
+          "rootMove": "d5e4",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1061
+          }
+        }
+      ],
+      "nodes": 2963,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 1243,
+      "lines": [
+        {
+          "pv": ["b6c7", "d8c7", "f3e5"],
+          "rank": 1,
+          "rootMove": "b6c7",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -723
+          }
+        }
+      ],
+      "nodes": 1243,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 701,
+      "lines": [
+        {
+          "pv": ["a7b6", "f3e5", "f7g7"],
+          "rank": 1,
+          "rootMove": "a7b6",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -1000
+          }
+        }
+      ],
+      "nodes": 701,
+      "reason": "depth"
+    },
+    {
+      "completedIteration": true,
+      "depth": 3,
+      "iterationNodes": 759,
+      "lines": [
+        {
+          "pv": ["f3e5", "f7g7", "b6a7"],
+          "rank": 1,
+          "rootMove": "f3e5",
+          "score": {
+            "bound": "exact",
+            "kind": "cp",
+            "perspective": "white",
+            "value": -683
+          }
+        }
+      ],
+      "nodes": 759,
+      "reason": "depth"
+    }
+  ]
+}
