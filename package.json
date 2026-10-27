@@ -1,7 +1,15 @@
 {
-  "name": "@upapawn/chess-engine-runtime",
-  "version": "0.1.0",
+  "name": "chess-engine-kit",
+  "version": "0.0.1",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sximn/chess-engine-kit.git"
+  },
+  "homepage": "https://github.com/sximn/chess-engine-kit#readme",
+  "bugs": {
+    "url": "https://github.com/sximn/chess-engine-kit/issues"
+  },
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -15,26 +23,41 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "chess-engine-assets": "./bin/copy-assets.mjs"
+    "chess-engine-assets": "./dist/bin/copy-assets.js"
   },
   "files": [
     "dist/",
-    "bin/",
     "LICENSE",
     "README.md",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "docs/",
+    "examples/minimal/README.md",
+    "examples/minimal/package.json",
+    "examples/minimal/package-lock.json",
+    "examples/minimal/tsconfig.json",
+    "examples/minimal/vite.config.ts",
+    "examples/minimal/index.html",
+    "examples/minimal/src/"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "node scripts/build-package.mjs",
-    "check": "tsc --noEmit",
-    "test": "node scripts/test.mjs",
+    "build": "bun scripts/build-package.ts",
+    "check": "bun check",
+    "test": "bun scripts/test.ts",
     "test:browser": "playwright test",
-    "test:consumer": "node scripts/verify-consumer.mjs",
-    "engine:build": "node scripts/build-engine.mjs",
-    "engine:reference": "node scripts/build-reference.mjs",
-    "engine:notices": "node scripts/engine-notices.mjs",
-    "test:native": "node scripts/verify-native.mjs",
+    "test:package": "bun scripts/verification/verify-package.ts",
+    "test:versioning": "bun scripts/verification/verify-versioning.ts",
+    "engine:build": "bun scripts/maintenance/engine/build-engine.ts",
+    "engine:reference": "bun scripts/maintenance/engine/build-reference.ts",
+    "engine:notices": "bun scripts/maintenance/engine/engine-notices.ts",
+    "test:native": "bun scripts/maintenance/engine/verify-native.ts",
+    "example:setup": "bun scripts/setup-example.ts",
+    "release:prepare": "bun scripts/release/prepare-release.ts",
+    "release:dry-run": "bun scripts/release/publish.ts --dry-run",
+    "release:publish": "bun scripts/release/publish.ts",
+    "version:patch": "bun pm version patch --no-git-tag-version",
+    "version:minor": "bun pm version minor --no-git-tag-version",
+    "version:major": "bun pm version major --no-git-tag-version",
     "prepack": "bun run build"
   },
   "dependencies": {
@@ -42,13 +65,25 @@
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
+    "@types/bun": "^1.4.4",
     "@types/node": "24.10.1",
+    "prettier": "3.9.10",
     "typescript": "6.0.3",
-    "vite": "8.3.5",
-    "prettier": "3.9.10"
+    "vite": "8.3.5"
   },
   "engines": {
     "node": ">=22.12.0"
   },
-  "packageManager": "bun@1.4.3"
+  "packageManager": "bun@1.4.4",
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "keywords": [
+    "chess",
+    "wasm",
+    "chess-engine",
+    "browser",
+    "typescript"
+  ]
 }

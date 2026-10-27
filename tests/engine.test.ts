@@ -4,14 +4,15 @@ import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { Chess } from "chess.js";
-import { instantiateEngine } from "../.build/test-helpers.js";
+import { instantiateEngine } from "./helpers.ts";
 import path from "node:path";
+import { reportPath } from "../scripts/lib.ts";
 import {
   validateResult,
   terminalResult,
   validateRequest,
   replay,
-} from "../.build/test-helpers.js";
+} from "./helpers.ts";
 import type { AnalysisResult, RawResult, Position } from "../src/core/types.ts";
 const manifest = JSON.parse(
   fs.readFileSync("assets/frozenight/engine-manifest.json", "utf8"),
@@ -103,10 +104,12 @@ test("500 static evaluations and 200 deterministic searches match the portable n
     : {
         status: 0,
         stderr: "",
-        stdout: JSON.parse(
-          fs.readFileSync("tests/fixtures/native-golden.json", "utf8"),
+        stdout: (
+          JSON.parse(
+            fs.readFileSync("tests/fixtures/native-golden.json", "utf8"),
+          ).results as unknown[]
         )
-          .results.map((r: unknown) => JSON.stringify(r))
+          .map((r) => JSON.stringify(r))
           .join("\n"),
       };
   assert.equal(native.status, 0, native.stderr);
@@ -123,9 +126,9 @@ test("500 static evaluations and 200 deterministic searches match the portable n
     maxMemory = Math.max(maxMemory, engine.exports.memory.buffer.byteLength);
   });
   fs.writeFileSync(
-    process.env.ENGINE_TEST_REFERENCE
-      ? "artifacts/native-parity.json"
-      : "artifacts/parity.json",
+    reportPath(
+      process.env.ENGINE_TEST_REFERENCE ? "native-parity.json" : "parity.json",
+    ),
     JSON.stringify(
       {
         reference: process.env.ENGINE_TEST_REFERENCE
@@ -224,7 +227,7 @@ test("limits retain only completed iterations and malformed input fails predicta
     limits: { maxNodes: 1000, maxTimeMs: 100 },
   });
   assert.ok(["nodes", "time"].includes(r.reason!));
-  assert.ok(r.nodes <= 1001);
+  assert.ok(typeof r.nodes === "number" && r.nodes <= 1001);
   legal(r, { rootFen: root, movesUci: [] }, 3);
   assert.equal(run("not a FEN").error, "INVALID_POSITION");
   assert.equal(run(root, ["e2e5"]).error, "INVALID_POSITION");

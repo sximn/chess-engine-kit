@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analyze a chess position</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font: 16px/1.5 system-ui;
+      }
+      label {
+        display: block;
+        margin-top: 16px;
+      }
+      input,
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        font: 14px monospace;
+      }
+      button {
+        margin: 16px 8px 0 0;
+        padding: 10px 18px;
+      }
+      pre {
+        padding: 16px;
+        background: #f4f4f4;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Analyze a chess position</h1>
+    <p>
+      Enter a root FEN and optional UCI moves from that position. Positive
+      scores favor White.
+    </p>
+    <form id="analysis">
+      <label for="fen">Root FEN</label>
+      <textarea id="fen" rows="2" required spellcheck="false">
+rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</textarea>
+      <label for="moves">Moves from the root (space-separated UCI)</label>
+      <input id="moves" value="e2e4 e7e5 g1f3" spellcheck="false" />
+      <button id="analyze" type="submit">Analyze</button>
+      <button id="cancel" type="button" disabled>Cancel</button>
+    </form>
+    <p id="status" role="status">Ready. The engine loads on first analysis.</p>
+    <pre id="result" aria-label="Analysis result">
+Results will appear here.</pre>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

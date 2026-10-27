@@ -3,14 +3,7 @@ dist/
 .build/
 *.tgz
 engine/frozenight/target/
-artifacts/*.cpuprofile
+artifacts/
 test-results/
 playwright-report/
-examples/consumer/node_modules/
-examples/consumer/dist/
-examples/consumer/public/engines/
-examples/consumer/capacitor/
-examples/consumer/ios/
-examples/consumer/android/
-examples/consumer/package-lock.json
-examples/consumer/public/
+tests/integration/browser-app/public/

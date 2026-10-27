@@ -1,8 +1,0 @@
-{
-  "buildHash": "9a2e3b8feabcb7de68f7a9e67304f521d931a7aca6bd3b53c120243a3beece1c",
-  "wasmSha256": "a10d14426baedea66d0fe4fc19c9e0a8a60b416012cff6847c2db910b0706bc6",
-  "independentCheckout": true,
-  "independentTargetDirectory": true,
-  "pathRemapping": true,
-  "identical": true
-}

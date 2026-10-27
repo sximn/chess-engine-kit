@@ -22,6 +22,7 @@ scope.onmessage = async ({ data }) => {
           active.position,
           active.multiPv,
           active.rootMoves,
+          "progress",
         );
         lastProgress = performance.now();
         scope.postMessage({

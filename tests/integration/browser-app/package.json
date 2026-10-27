@@ -1,0 +1,14 @@
+{
+  "name": "chess-engine-browser-test-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "chess-engine-assets --to public/engines/frozenight && vite",
+    "check": "bun check",
+    "build": "chess-engine-assets --to public/engines/frozenight && bun run check && vite build && bun offline.ts"
+  },
+  "devDependencies": {
+    "vite": "8.3.5",
+    "typescript": "6.0.3"
+  }
+}

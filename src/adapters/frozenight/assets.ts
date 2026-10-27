@@ -3,7 +3,7 @@ export function assetBaseUrl(value: string | URL): URL {
   if (typeof location === "undefined")
     throw new EngineError(
       "UNSUPPORTED_BROWSER",
-      "Initialize the engine in a browser or Capacitor WebView.",
+      "Initialize the engine in a browser.",
     );
   const raw = String(value);
   const base = new URL(raw.endsWith("/") ? raw : raw + "/", location.href);
@@ -28,6 +28,7 @@ export async function loadFrozenightAssets(
   manifest: EngineAssetManifest,
   base: string | URL,
   useCache: boolean,
+  signal?: AbortSignal,
 ) {
   if (
     typeof WebAssembly === "undefined" ||
@@ -42,7 +43,7 @@ export async function loadFrozenightAssets(
   let cache: Cache | undefined;
   if (useCache)
     try {
-      cache = await caches.open("chess-engine-runtime-assets-v1");
+      cache = await caches.open("chess-engine-kit-assets-v1");
     } catch {
       /* Installed assets still work without CacheStorage. */
     }
@@ -69,6 +70,9 @@ export async function loadFrozenightAssets(
     }
   }
   const abort = new AbortController();
+  const onAbort = () => abort.abort();
+  if (signal?.aborted) abort.abort();
+  signal?.addEventListener("abort", onAbort, { once: true });
   const timer = setTimeout(() => abort.abort(), 30000);
   let bytes: ArrayBuffer;
   try {
@@ -93,6 +97,7 @@ export async function loadFrozenightAssets(
         );
   } finally {
     clearTimeout(timer);
+    signal?.removeEventListener("abort", onAbort);
   }
   if (
     bytes.byteLength !== manifest.wasm.bytes ||

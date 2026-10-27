@@ -6,6 +6,7 @@ import {
   type Position,
   type EngineCapabilities,
   type RawResult,
+  type Score,
 } from "./types.js";
 
 export function replay(position: Position) {
@@ -158,6 +159,7 @@ export function validateResult(
   position: Position,
   multiPv: number,
   rootMoves?: string[],
+  phase: "progress" | "completed" = "completed",
 ) {
   if (
     !result ||
@@ -172,7 +174,13 @@ export function validateResult(
       (!Number.isSafeInteger(result.iterationNodes) ||
         result.iterationNodes < 0 ||
         (result.nodes !== null && result.iterationNodes > result.nodes))) ||
-    typeof result.completedIteration !== "boolean"
+    typeof result.completedIteration !== "boolean" ||
+    result.error !== undefined ||
+    (result.reason !== undefined &&
+      !["time", "nodes", "depth", "terminal"].includes(result.reason)) ||
+    (phase === "completed" && result.reason === undefined) ||
+    (!result.completedIteration && result.lines.length > 0) ||
+    (result.reason === "depth" && !result.completedIteration)
   )
     throw new EngineError(
       "ENGINE_CRASHED",
@@ -181,19 +189,49 @@ export function validateResult(
     );
   const roots = new Set<string>();
   const root = replay(position);
+  const expected = terminalResultFromGame(root);
+  if (
+    result.reason === "terminal" ||
+    result.outcome !== undefined ||
+    result.winner !== undefined ||
+    result.terminalScore !== undefined ||
+    expected
+  ) {
+    const score = result.terminalScore;
+    if (
+      phase !== "completed" ||
+      result.reason !== "terminal" ||
+      !result.completedIteration ||
+      result.lines.length ||
+      !expected ||
+      expected.outcome !== result.outcome ||
+      expected.winner !== result.winner ||
+      !validScore(score) ||
+      score.kind !== expected.terminalScore!.kind ||
+      score.value !== expected.terminalScore!.value ||
+      score.bound !== "exact"
+    ) {
+      throw new EngineError("ENGINE_CRASHED", "Invalid terminal result.", true);
+    }
+  } else if (result.completedIteration && result.lines.length === 0) {
+    throw new EngineError(
+      "ENGINE_CRASHED",
+      "A complete iteration must contain a line.",
+      true,
+    );
+  }
   result.lines.forEach((line, index) => {
     if (
+      !line ||
       line.rank !== index + 1 ||
+      typeof line.rootMove !== "string" ||
+      !Array.isArray(line.pv) ||
       roots.has(line.rootMove) ||
       line.rootMove !== line.pv?.[0] ||
       (rootMoves && !rootMoves.includes(line.rootMove)) ||
       line.pv.length > 256 ||
-      !line.score ||
-      line.score.perspective !== "white" ||
-      !["cp", "mate"].includes(line.score.kind) ||
-      !["exact", "lower", "upper"].includes(line.score.bound) ||
-      !Number.isInteger(line.score.value) ||
-      (line.score.kind === "mate" && line.score.unit !== "plies")
+      !validScore(line.score) ||
+      (line.score.kind === "mate" && line.score.value === 0)
     )
       throw new EngineError(
         "ENGINE_CRASHED",
@@ -223,23 +261,21 @@ export function validateResult(
       );
     }
   });
-  if (result.outcome) {
-    const expected = terminalResult(position);
-    if (
-      result.lines.length ||
-      !expected ||
-      expected.outcome !== result.outcome ||
-      expected.winner !== result.winner ||
-      expected.terminalScore?.kind !== result.terminalScore?.kind ||
-      expected.terminalScore?.value !== result.terminalScore?.value ||
-      result.terminalScore?.perspective !== "white" ||
-      result.terminalScore?.bound !== "exact"
-    )
-      throw new EngineError("ENGINE_CRASHED", "Invalid terminal result.", true);
-  }
+}
+function validScore(score: Score | undefined): score is Score {
+  return (
+    !!score &&
+    score.perspective === "white" &&
+    ["cp", "mate"].includes(score.kind) &&
+    ["exact", "lower", "upper"].includes(score.bound) &&
+    Number.isSafeInteger(score.value) &&
+    (score.kind !== "mate" || score.unit === "plies")
+  );
 }
 export function terminalResult(position: Position): RawResult | null {
-  const game = replay(position);
+  return terminalResultFromGame(replay(position));
+}
+function terminalResultFromGame(game: Chess): RawResult | null {
   let outcome: RawResult["outcome"];
   if (game.isCheckmate()) outcome = "checkmate";
   else if (game.isStalemate()) outcome = "stalemate";

@@ -6,9 +6,17 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "strict": true,
     "skipLibCheck": true,
-    "types": [],
+    "types": ["bun"],
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "scripts/**/*.ts",
+    "bin/**/*.ts",
+    "tests/*.ts",
+    "tests/browser/**/*.ts",
+    "tests/integration/browser-app/offline.ts",
+    "playwright.config.ts"
+  ]
 }

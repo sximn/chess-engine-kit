@@ -22,7 +22,7 @@ test("asset deployment removes obsolete owned bytes and preserves unrelated/modi
       notices: [],
     }),
   );
-  execFileSync(process.execPath, ["bin/copy-assets.mjs", "--to", dir]);
+  execFileSync("bun", ["dist/bin/copy-assets.js", "--to", dir]);
   assert.equal(fs.existsSync(path.join(dir, "old.wasm")), false);
   assert.equal(fs.readFileSync(path.join(dir, "custom.txt"), "utf8"), "keep");
   assert.equal(

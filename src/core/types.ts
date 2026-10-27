@@ -80,6 +80,8 @@ export type EngineDescriptor = {
   sourceRevision?: string;
   buildHash: string;
   modelHash?: string;
+  /** Hash of the provider's worker/normalization implementation, when available. */
+  adapterHash?: string;
 };
 export type Identity = EngineDescriptor & { settingsFingerprint: string };
 export type IntegerRange = { min: number; max: number };
@@ -107,6 +109,7 @@ export type EngineReady = Identity & {
   apiVersion: 1;
   capabilities: EngineCapabilities;
   settings: EngineOptions;
+  /** Provider asset-cache status; Frozenight caches WASM only, not the page or worker. */
   offlineAssets: boolean;
 };
 export type AnalysisResult = RawResult &
@@ -158,7 +161,9 @@ export interface WorkerEngineAdapter {
   readonly capabilities: Readonly<EngineCapabilities>;
   configure(options: EngineOptions): NormalizedSettings;
   validateRequest?(request: AnalyzeRequest, settings: NormalizedSettings): void;
-  loadAssets(): Promise<{ initialization: unknown; offlineAssets: boolean }>;
+  loadAssets(
+    signal?: AbortSignal,
+  ): Promise<{ initialization: unknown; offlineAssets: boolean }>;
   createWorker(): Worker;
   analysisMessage(
     request: AnalyzeRequest,
@@ -166,10 +171,25 @@ export interface WorkerEngineAdapter {
   ): unknown;
 }
 export type WorkerClientOptions = {
+  /** Full asset-loading, compilation and worker startup deadline; default 30,000 ms. */
   initializationTimeoutMs?: number;
   nodeOnlyWatchdogMs?: number;
 };
 export type AssetEntry = { file: string; sha256: string; bytes: number };
+/** Normalized messages emitted by a provider worker to createWorkerEngine. */
+export type WorkerEngineResponse =
+  | { type: "ready"; apiVersion: 1 }
+  | {
+      type: "progress" | "completed";
+      jobId: string;
+      result: RawResult;
+      memoryBytes?: number | null;
+    }
+  | {
+      type: "failed";
+      jobId?: string;
+      error: { code: ErrorCode; message: string; retryable: boolean };
+    };
 export type EngineAssetManifest = {
   apiVersion: 1;
   packageVersion: string;

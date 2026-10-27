@@ -31,26 +31,50 @@ export class WorkerEngineClient implements ChessEngine {
   private assets?: ReturnType<WorkerEngineAdapter["loadAssets"]>;
   private active?: Job;
   private listeners = new Set<(event: EngineEvent) => void>();
+  private eventQueue: {
+    event: EngineEvent;
+    listeners: Set<(event: EngineEvent) => void>;
+  }[] = [];
+  private transitionDepth = 0;
+  private deliveringEvents = false;
   private finished = new Set<string>();
   private settings: NormalizedSettings;
   private offlineAssets = false;
   private rejectStartup?: (error: EngineError) => void;
   private disposed = false;
+  private assetController?: AbortController;
   private adapter: WorkerEngineAdapter;
   private supervision: WorkerClientOptions;
+  private descriptorSnapshot: WorkerEngineAdapter["descriptor"];
+  private capabilitiesSnapshot: WorkerEngineAdapter["capabilities"];
   constructor(
     adapter: WorkerEngineAdapter,
     supervision: WorkerClientOptions = {},
   ) {
     this.adapter = adapter;
+    this.descriptorSnapshot = structuredClone(adapter.descriptor);
+    this.capabilitiesSnapshot = structuredClone(adapter.capabilities);
     this.supervision = supervision;
+    for (const value of [
+      supervision.initializationTimeoutMs,
+      supervision.nodeOnlyWatchdogMs,
+    ]) {
+      if (
+        value !== undefined &&
+        (!Number.isSafeInteger(value) || value < 1 || value > 2_147_481_647)
+      )
+        throw new EngineError(
+          "INVALID_OPTIONS",
+          "Supervision deadlines must be positive integer milliseconds.",
+        );
+    }
     this.settings = structuredClone(adapter.configure({}));
   }
   get descriptor() {
-    return this.adapter.descriptor;
+    return structuredClone(this.descriptorSnapshot);
   }
   get capabilities() {
-    return this.adapter.capabilities;
+    return structuredClone(this.capabilitiesSnapshot);
   }
   get identity(): Identity {
     return {
@@ -64,12 +88,35 @@ export class WorkerEngineClient implements ChessEngine {
   }
   private emit(event: EngineEvent) {
     if (this.disposed) return;
-    for (const listener of this.listeners)
-      try {
-        listener(event);
-      } catch {
-        /* Consumer errors cannot break engine supervision. */
+    this.eventQueue.push({ event, listeners: new Set(this.listeners) });
+    this.deliverEvents();
+  }
+  private transition<T>(operation: () => T): T {
+    this.transitionDepth++;
+    try {
+      return operation();
+    } finally {
+      this.transitionDepth--;
+      this.deliverEvents();
+    }
+  }
+  private deliverEvents() {
+    if (this.transitionDepth || this.deliveringEvents) return;
+    this.deliveringEvents = true;
+    try {
+      while (this.eventQueue.length) {
+        const { event, listeners } = this.eventQueue.shift()!;
+        for (const listener of listeners) {
+          try {
+            listener(structuredClone(event));
+          } catch {
+            /* Consumer errors cannot break engine supervision. */
+          }
+        }
       }
+    } finally {
+      this.deliveringEvents = false;
+    }
   }
   async initialize(config: InitializeConfig = {}): Promise<EngineReady> {
     if (config.apiVersion !== undefined && config.apiVersion !== API_VERSION)
@@ -103,12 +150,14 @@ export class WorkerEngineClient implements ChessEngine {
           this.adapter.configure(structuredClone(config.engineOptions)),
         )
       : this.settings;
-    this.disposed = false;
-    if (settings.fingerprint !== this.settings.fingerprint) {
-      if (this.active) this.cancel(this.active.request.jobId);
-      this.dropWorker();
-      this.settings = settings;
-    }
+    this.transition(() => {
+      this.disposed = false;
+      if (settings.fingerprint !== this.settings.fingerprint) {
+        if (this.active) this.cancel(this.active.request.jobId);
+        this.dropWorker();
+        this.settings = settings;
+      }
+    });
     try {
       await this.ensureWorker();
     } catch (error) {
@@ -129,6 +178,9 @@ export class WorkerEngineClient implements ChessEngine {
     };
   }
   analyzePosition(request: AnalyzeRequest): Promise<AnalysisResult> {
+    return this.transition(() => this.startAnalysis(request));
+  }
+  private startAnalysis(request: AnalyzeRequest): Promise<AnalysisResult> {
     let accepted: AnalyzeRequest;
     try {
       validateRequest(request, this.capabilities);
@@ -200,6 +252,9 @@ export class WorkerEngineClient implements ChessEngine {
     jobId: string;
     status: "stopped" | "already-finished" | "unknown";
   } {
+    return this.transition(() => this.cancelJob(jobId));
+  }
+  private cancelJob(jobId: string): ReturnType<ChessEngine["cancel"]> {
     const job = this.active;
     if (!job || job.request.jobId !== jobId)
       return {
@@ -229,24 +284,30 @@ export class WorkerEngineClient implements ChessEngine {
     return { jobId, status: "stopped" };
   }
   reset() {
-    if (this.active) this.cancel(this.active.request.jobId);
-    this.dropWorker();
-    this.finished.clear();
+    this.transition(() => {
+      if (this.active) this.cancel(this.active.request.jobId);
+      this.dropWorker();
+      this.finished.clear();
+    });
   }
   dispose() {
-    if (this.active) this.cancel(this.active.request.jobId);
-    this.dropWorker();
-    this.assets = undefined;
-    this.disposed = true;
-    this.listeners.clear();
-    this.finished.clear();
+    this.transition(() => {
+      if (this.active) this.cancel(this.active.request.jobId);
+      this.dropWorker();
+      this.assets = undefined;
+      this.disposed = true;
+      this.listeners.clear();
+      this.finished.clear();
+    });
   }
   private remember(id: string) {
     this.finished.add(id);
     if (this.finished.size > 128)
       this.finished.delete(this.finished.values().next().value!);
   }
-  private dropWorker() {
+  private dropWorker(
+    error = new EngineError("CANCELLED", "Engine startup was cancelled.", true),
+  ) {
     this.generation++;
     if (this.worker) {
       this.worker.onmessage = null;
@@ -255,9 +316,12 @@ export class WorkerEngineClient implements ChessEngine {
       this.worker.terminate();
     }
     this.worker = undefined;
-    this.rejectStartup?.(
-      new EngineError("CANCELLED", "Engine startup was cancelled.", true),
-    );
+    if (this.assetController) {
+      this.assetController.abort();
+      this.assetController = undefined;
+      this.assets = undefined;
+    }
+    this.rejectStartup?.(error);
     this.rejectStartup = undefined;
     this.startup = undefined;
   }
@@ -272,7 +336,7 @@ export class WorkerEngineClient implements ChessEngine {
           );
     const job = this.active;
     this.active = undefined;
-    this.dropWorker();
+    this.dropWorker(error);
     if (!job) return;
     clearTimeout(job.timer);
     this.remember(job.request.jobId);
@@ -300,12 +364,41 @@ export class WorkerEngineClient implements ChessEngine {
     if (this.worker && !this.startup) return Promise.resolve();
     if (this.startup) return this.startup;
     const generation = this.generation;
+    let interrupt!: (error: EngineError) => void;
+    const interrupted = new Promise<never>((_, reject) => {
+      interrupt = reject;
+    });
+    this.rejectStartup = interrupt;
+    const deadline = setTimeout(
+      () =>
+        interrupt(
+          new EngineError(
+            "ENGINE_CRASHED",
+            "The engine did not initialize before its startup deadline.",
+            true,
+          ),
+        ),
+      this.supervision.initializationTimeoutMs ?? 30_000,
+    );
     const run = async () => {
       if (!this.assets) {
-        const loading = this.adapter.loadAssets().catch((error) => {
-          if (this.assets === loading) this.assets = undefined;
-          throw error;
-        });
+        const controller = new AbortController();
+        this.assetController = controller;
+        const loading = Promise.resolve()
+          .then(() => this.adapter.loadAssets(controller.signal))
+          .then(
+            (asset) => {
+              if (this.assetController === controller)
+                this.assetController = undefined;
+              return asset;
+            },
+            (error) => {
+              if (this.assets === loading) this.assets = undefined;
+              if (this.assetController === controller)
+                this.assetController = undefined;
+              throw error;
+            },
+          );
         this.assets = loading;
       }
       const asset = await this.assets;
@@ -319,33 +412,10 @@ export class WorkerEngineClient implements ChessEngine {
       const worker = this.adapter.createWorker();
       this.worker = worker;
       await new Promise<void>((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          this.fail(
-            new EngineError(
-              "ENGINE_CRASHED",
-              "The engine did not initialize.",
-              true,
-            ),
-          );
-          reject(
-            new EngineError(
-              "ENGINE_CRASHED",
-              "The engine did not initialize.",
-              true,
-            ),
-          );
-        }, this.supervision.initializationTimeoutMs ?? 5000);
         const ready = () => {
-          clearTimeout(timeout);
-          this.rejectStartup = undefined;
           resolve();
         };
-        this.rejectStartup = (error) => {
-          clearTimeout(timeout);
-          reject(error);
-        };
         worker.onerror = () => {
-          clearTimeout(timeout);
           this.fail(
             new EngineError(
               "ENGINE_CRASHED",
@@ -362,7 +432,6 @@ export class WorkerEngineClient implements ChessEngine {
           );
         };
         worker.onmessageerror = () => {
-          clearTimeout(timeout);
           this.fail(
             new EngineError(
               "ENGINE_CRASHED",
@@ -429,7 +498,6 @@ export class WorkerEngineClient implements ChessEngine {
               data.error.message,
               data.error.retryable,
             );
-            clearTimeout(timeout);
             this.fail(error);
             reject(error);
             return;
@@ -453,6 +521,7 @@ export class WorkerEngineClient implements ChessEngine {
               job.request.position,
               job.request.multiPv,
               job.request.rootMoves,
+              data.type,
             );
           } catch (error) {
             this.fail(error as EngineError);
@@ -489,7 +558,6 @@ export class WorkerEngineClient implements ChessEngine {
         try {
           worker.postMessage(asset.initialization);
         } catch {
-          clearTimeout(timeout);
           reject(
             new EngineError(
               "UNSUPPORTED_BROWSER",
@@ -499,17 +567,20 @@ export class WorkerEngineClient implements ChessEngine {
         }
       });
     };
-    const pending = run();
+    const pending = Promise.race([run(), interrupted]);
     this.startup = pending;
     void pending.then(
       () => {
-        if (this.startup === pending) this.startup = undefined;
-      },
-      () => {
+        clearTimeout(deadline);
         if (this.startup === pending) {
-          this.worker?.terminate();
-          this.worker = undefined;
           this.startup = undefined;
+          this.rejectStartup = undefined;
+        }
+      },
+      (error) => {
+        clearTimeout(deadline);
+        if (this.startup === pending) {
+          this.dropWorker(error instanceof EngineError ? error : undefined);
         }
       },
     );

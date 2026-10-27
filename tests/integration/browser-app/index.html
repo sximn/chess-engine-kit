@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Engine browser test app</title>
+    <style>
+      body {
+        font: 16px system-ui;
+        margin: 0;
+        padding: calc(20px + env(safe-area-inset-top)) 20px 30px;
+      }
+      button {
+        min-height: 44px;
+        padding: 8px 16px;
+      }
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Installed npm package verification</h1>
+    <button id="run">Run engine checks</button>
+    <p id="status" role="status">Ready</p>
+    <pre id="output"></pre>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
