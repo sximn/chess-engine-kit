@@ -138,6 +138,11 @@ host. `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom locations. W
 Cargo sources are fetched automatically for notices, including when compilation
 ran in a separate container cache.
 
+Native builds always select the reviewed model and Rust toolchain. Ambient
+`EVALFILE`, compiler wrappers, Rust flags and Cargo profile/target/build overrides
+cannot silently change the compiled engine or redirect the native reference.
+Keep intentional compiler settings in the reviewed build recipe.
+
 Review engine/model changes against the pinned upstream. Update
 `engine/frozenight/source.json` when changing the upstream revision or model hash;
 keep the vendored input model in Git. Update Rust/container/toolchain pins together

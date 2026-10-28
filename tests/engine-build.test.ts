@@ -4,6 +4,42 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { buildInLinuxContainer } from "../scripts/maintenance/engine/linux-build.ts";
+import { rustEnvironment } from "../scripts/maintenance/engine/rust-environment.ts";
+
+test("native builds pin the model, compiler and target despite ambient Cargo overrides", () => {
+  const env = rustEnvironment("/engine/frozenight", {
+    ENGINE_CARGO: "/tools/cargo",
+    CARGO_HOME: "/cache/cargo",
+    RUSTUP_HOME: "/tools/rustup",
+    EVALFILE: "/another-model.zst",
+    RUSTUP_TOOLCHAIN: "nightly",
+    RUSTC: "/another-rustc",
+    RUSTC_WRAPPER: "sccache",
+    RUSTC_WORKSPACE_WRAPPER: "wrapper",
+    CARGO_PROFILE_RELEASE_OPT_LEVEL: "0",
+    CARGO_BUILD_TARGET: "another-target",
+    CARGO_TARGET_DIR: "/another-target-directory",
+    CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS: "--cfg alternate",
+    RUSTFLAGS: "--cfg alternate",
+    CARGO_ENCODED_RUSTFLAGS: "--cfg\x1falternate",
+  });
+  assert.equal(env.EVALFILE, "/engine/frozenight/core/model.json.zst");
+  assert.equal(env.RUSTUP_TOOLCHAIN, "1.90.0");
+  assert.equal(env.RUSTC, "/tools/rustc");
+  assert.equal(env.CARGO_TARGET_DIR, "/engine/frozenight/target");
+  assert.equal(env.CARGO_HOME, "/cache/cargo");
+  assert.equal(env.RUSTUP_HOME, "/tools/rustup");
+  for (const name of [
+    "RUSTC_WRAPPER",
+    "RUSTC_WORKSPACE_WRAPPER",
+    "CARGO_PROFILE_RELEASE_OPT_LEVEL",
+    "CARGO_BUILD_TARGET",
+    "CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS",
+    "RUSTFLAGS",
+    "CARGO_ENCODED_RUSTFLAGS",
+  ])
+    assert.equal(env[name], undefined, name);
+});
 
 test("canonical compiler isolates Linux caches, mounts sources read-only and remaps paths", () => {
   const directory = fs.mkdtempSync(
@@ -74,7 +110,11 @@ test("notice generation uses the configured Cargo's Rust compiler with a cold ca
       "sysroot/share/doc/rust/licenses",
     ])
       fs.mkdirSync(path.join(directory, name), { recursive: true });
-    for (const name of ["engine-notices.ts", "notice-bundle.ts"])
+    for (const name of [
+      "engine-notices.ts",
+      "notice-bundle.ts",
+      "rust-environment.ts",
+    ])
       fs.copyFileSync(
         path.join("scripts/maintenance/engine", name),
         path.join(directory, "scripts", name),

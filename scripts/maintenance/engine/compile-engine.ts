@@ -5,6 +5,7 @@ import zlib from "node:zlib";
 import { spawnSync } from "node:child_process";
 import os from "node:os";
 import { buildInLinuxContainer } from "./linux-build.ts";
+import { rustEnvironment } from "./rust-environment.ts";
 import {
   canonicalFlags,
   engineInputKey,
@@ -52,14 +53,7 @@ if (
     {
       stdio: "inherit",
       env: {
-        ...process.env,
-        RUSTUP_TOOLCHAIN: "1.90.0",
-        RUSTC: process.env.ENGINE_CARGO
-          ? path.join(path.dirname(cargo), "rustc")
-          : process.env.RUSTC || "rustc",
-        CARGO_INCREMENTAL: "0",
-        CARGO_TARGET_DIR: path.join(root, "target"),
-        RUSTFLAGS: "",
+        ...rustEnvironment(root),
         CARGO_ENCODED_RUSTFLAGS: actualFlags.join("\x1f"),
       },
     },

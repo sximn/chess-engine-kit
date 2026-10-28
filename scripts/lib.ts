@@ -209,6 +209,7 @@ export function releaseFingerprint() {
     "public",
     "target",
     ".git",
+    ".DS_Store",
   ]);
 
   function walk(relative: string) {

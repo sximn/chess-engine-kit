@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { NoticeBundle, addRustNotices } from "./notice-bundle.ts";
+import { rustEnvironment } from "./rust-environment.ts";
 
 type CargoPackage = {
   name: string;
@@ -18,9 +19,8 @@ if (args.length && (args.length !== 2 || args[0] !== "--output"))
 const output = path.resolve(args[1] || "assets/frozenight");
 fs.mkdirSync(output, { recursive: true });
 const cargo = process.env.ENGINE_CARGO || "cargo";
-const rustc = process.env.ENGINE_CARGO
-  ? path.join(path.dirname(cargo), "rustc")
-  : process.env.RUSTC || "rustc";
+const env = rustEnvironment(path.resolve("engine/frozenight"));
+const rustc = env.RUSTC!;
 
 const result = spawnSync(
   cargo,
@@ -34,7 +34,7 @@ const result = spawnSync(
   ],
   {
     encoding: "utf8",
-    env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0", RUSTC: rustc },
+    env,
   },
 );
 
@@ -112,7 +112,7 @@ for (const p of packages) {
 
 const sysrootResult = spawnSync(rustc, ["--print", "sysroot"], {
   encoding: "utf8",
-  env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0", RUSTC: rustc },
+  env,
 });
 
 if (sysrootResult.status !== 0) {

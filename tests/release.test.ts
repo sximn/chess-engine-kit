@@ -182,6 +182,11 @@ test("release gates bind source, independent engine proof and tested tarball wit
       "GITHUB_REPOSITORY",
       "GH_TOKEN",
       "GITHUB_STEP_SUMMARY",
+      "GITHUB_OUTPUT",
+      "GITHUB_ACTIONS",
+      "NODE_AUTH_TOKEN",
+      "RELEASE_PROVENANCE",
+      "PATH",
     ].map((name) => [name, process.env[name]]),
   );
   try {
@@ -195,6 +200,7 @@ test("release gates bind source, independent engine proof and tested tarball wit
     for (const name of [
       "lib.ts",
       "release/metadata.ts",
+      "release/check-release.ts",
       "release/registry.ts",
       "release/engine-artifact.ts",
       "release/publish.ts",
@@ -233,6 +239,11 @@ test("release gates bind source, independent engine proof and tested tarball wit
     const { finishRelease } = await import(
       moduleUrl("release/finish-release.ts")
     );
+    const sourceFingerprint = releaseFingerprint();
+    const finderMetadata = path.join(directory, "src/.DS_Store");
+    fs.writeFileSync(finderMetadata, "Finder metadata");
+    assert.equal(releaseFingerprint(), sourceFingerprint);
+    fs.unlinkSync(finderMetadata);
     delete process.env.RELEASE_DEFAULT_BRANCH;
     delete process.env.RELEASE_EXPECTED_COMMIT;
     process.env.GITHUB_REPOSITORY = "sximn/chess-engine-kit";
@@ -241,6 +252,7 @@ test("release gates bind source, independent engine proof and tested tarball wit
       directory,
       ".build/test-summary.md",
     );
+    process.env.GITHUB_OUTPUT = path.join(directory, ".build/test-output");
     assert.equal(validateRelease("v1.2.3", "next").commit, releaseCommit());
     assert.throws(
       () => validateRelease("v1.2.2", "next"),
@@ -328,6 +340,26 @@ test("release gates bind source, independent engine proof and tested tarball wit
     };
     const options = { dryRun: false, tag: "next", releaseTag: "v1.2.3" };
     const dry = { ...options, dryRun: true };
+    // Exercise the Actions path without depending on the runner's npm version
+    // or inheriting real publication credentials. All uploads remain mocked.
+    const mockBin = path.join(directory, ".build/mock-bin");
+    fs.mkdirSync(mockBin);
+    const npmVersion = path.join(mockBin, "npm-version");
+    const npmInvocation = path.join(mockBin, "npm-invocation.json");
+    fs.writeFileSync(npmVersion, "11.5.1");
+    fs.writeFileSync(
+      path.join(mockBin, "npm"),
+      `#!${process.execPath}\nimport fs from "node:fs";
+const args = process.argv.slice(2);
+if (args.length === 1 && args[0] === "--version") console.log(fs.readFileSync(${JSON.stringify(npmVersion)}, "utf8"));
+else if (args[0] === "publish" && args.includes("--dry-run")) fs.writeFileSync(${JSON.stringify(npmInvocation)}, JSON.stringify(args));
+else throw Error("The test npm stub refuses every command except version checks and dry runs");\n`,
+      { mode: 0o755 },
+    );
+    process.env.PATH = mockBin + path.delimiter + process.env.PATH;
+    process.env.GITHUB_ACTIONS = "true";
+    process.env.RELEASE_PROVENANCE = "true";
+    delete process.env.NODE_AUTH_TOKEN;
     await assert.rejects(
       publishRelease(dry, { query: neverQuery, execute }),
       /release:prepare/,
@@ -350,6 +382,29 @@ test("release gates bind source, independent engine proof and tested tarball wit
       recursive: true,
       force: true,
     });
+    assert.equal(fs.existsSync(path.join(directory, "node_modules")), false);
+    for (const args of [
+      [
+        "scripts/release/check-release.ts",
+        "--tag",
+        "v1.2.3",
+        "--channel",
+        "next",
+      ],
+      ["scripts/release/publish.ts", "--dry-run", "--tag", "next"],
+    ]) {
+      const result = Bun.spawnSync([process.execPath, ...args], {
+        cwd: directory,
+        env: process.env,
+      });
+      assert.equal(result.exitCode, 0, result.stderr.toString());
+    }
+    assert.ok(
+      JSON.parse(fs.readFileSync(npmInvocation, "utf8")).includes(
+        "--ignore-scripts",
+      ),
+    );
+    assert.equal(fs.existsSync(path.join(directory, ".build/engine")), false);
     await publishRelease(
       { ...dry, tag: "latest" },
       { query: neverQuery, execute },
@@ -411,6 +466,20 @@ test("release gates bind source, independent engine proof and tested tarball wit
     receipt.sha256 = sha256(bytes);
     seal();
 
+    for (const unsupported of ["11.5.0", "invalid version"]) {
+      fs.writeFileSync(npmVersion, unsupported);
+      await assert.rejects(
+        publishRelease(options, { query: neverQuery, execute }),
+        /Trusted publishing requires npm/,
+      );
+    }
+    fs.writeFileSync(npmVersion, "11.5.1");
+    await assert.rejects(
+      publishRelease(options, { query: async () => null, execute }),
+      /temporary NPM_TOKEN/,
+    );
+    assert.equal(commands.length, 0);
+
     const published: RegistryPackage = {
       versions: {
         "1.2.3": {
@@ -425,14 +494,16 @@ test("release gates bind source, independent engine proof and tested tarball wit
       "dist-tags": { next: "1.2.3" },
     };
     let lookups = 0;
+    process.env.NODE_AUTH_TOKEN = "fixture-bootstrap-token-never-sent";
     await publishRelease(options, {
-      query: async () =>
-        ++lookups === 1 ? { versions: {}, "dist-tags": {} } : published,
+      query: async () => (++lookups === 1 ? null : published),
       execute,
     });
     assert.equal(commands.length, 1);
     assert.equal(commands[0].command, "npm");
     assert.equal(commands[0].args.includes("--dry-run"), false);
+    assert.equal(commands[0].args.includes("--provenance"), true);
+    delete process.env.NODE_AUTH_TOKEN;
     commands.length = 0;
     await publishRelease(options, { query: async () => published, execute });
     assert.equal(

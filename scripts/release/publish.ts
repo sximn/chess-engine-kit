@@ -95,7 +95,7 @@ export async function publishRelease(
 
   const release = validateRelease(releaseTag, tag);
   if (process.env.GITHUB_ACTIONS === "true") {
-    const npmResult = Bun.spawnSync(["npm", "--version"]);
+    const npmResult = Bun.spawnSync(["npm", "--version"], { env: process.env });
     const npmVersion = npmResult.stdout
       .toString()
       .trim()

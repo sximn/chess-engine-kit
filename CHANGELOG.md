@@ -25,8 +25,13 @@ that version is published; an entry by itself does not mean it is available on n
 
 ### Fixed
 
+- Exclude Finder metadata from engine cache keys and release fingerprints so
+  opening a folder cannot invalidate a verified build.
+- Pin native engine builds to the reviewed model and compiler settings, including
+  when the developer shell contains Cargo overrides.
+- Make manual-release tests independent of runner credentials and npm versions,
+  with explicit checks for trusted-publishing and first-publication requirements.
 - Use a canonical Linux x86_64 compiler host for engine assets so macOS/ARM
   maintenance builds match Linux CI without relaxing binary verification.
-
 - Build WASM and generated manifests from source in CI and releases; cache verified
   engine outputs locally and keep compiled artifacts out of Git.

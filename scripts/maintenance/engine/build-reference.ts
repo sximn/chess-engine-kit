@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
+import { rustEnvironment } from "./rust-environment.ts";
 const cargo = process.env.ENGINE_CARGO || "cargo";
 const result = spawnSync(
   cargo,
@@ -16,13 +17,7 @@ const result = spawnSync(
   ],
   {
     stdio: "inherit",
-    env: {
-      ...process.env,
-      RUSTUP_TOOLCHAIN: "1.90.0",
-      RUSTC: process.env.ENGINE_CARGO
-        ? path.join(path.dirname(cargo), "rustc")
-        : process.env.RUSTC || "rustc",
-    },
+    env: rustEnvironment(path.resolve("engine/frozenight")),
   },
 );
 process.exit(result.status ?? 1);

@@ -48,6 +48,12 @@ test("engine cache reuses verified outputs for SDK/version edits and invalidates
     );
     assert.equal(ensureEngine({ cwd, build }).key, initial.key);
     assert.equal(builds, 1);
+    fs.writeFileSync(
+      path.join(cwd, "engine/frozenight/.DS_Store"),
+      "Finder metadata",
+    );
+    assert.equal(ensureEngine({ cwd, build }).key, initial.key);
+    assert.equal(builds, 1);
     fs.appendFileSync(
       path.join(cwd, "engine/frozenight/core/lib.rs"),
       "// engine edit\n",

@@ -65,7 +65,7 @@ export function engineInputKey(cwd = projectRoot) {
     const file = path.join(cwd, relative);
     if (fs.statSync(file).isDirectory()) {
       for (const name of fs.readdirSync(file).sort())
-        if (name !== "target" && name !== ".git")
+        if (!["target", ".git", ".DS_Store"].includes(name))
           walk(path.join(relative, name));
     } else {
       hash.update(relative.split(path.sep).join("/") + "\0");
