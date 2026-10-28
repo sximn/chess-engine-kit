@@ -5,6 +5,8 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+## [0.0.1] - 2026-10-28
+
 ### Added
 
 - Initial experimental browser chess analysis SDK with a prebuilt Frozenight WASM
