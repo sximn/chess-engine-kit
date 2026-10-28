@@ -107,6 +107,18 @@ bun run engine:verify
 ```
 
 `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom toolchain locations.
+
+`engine:notices` is an explicit maintenance command, not a package-build step.
+It reads the installed pinned chess.js package, locked Cargo packages and Rust
+1.90.0's standard-library notices, then refreshes the tracked
+`assets/frozenight/THIRD-PARTY-NOTICES.txt` and dependency inventory. It converts
+the Rust HTML to plain text, shares matching notice texts after normalizing
+whitespace, and retains copyright statements and license wording. It also
+includes the standalone license texts referenced by Rust's in-tree inventory;
+the rest of Rust's generic license directory is not copied. The broad Rust
+component inventory (including other targets) is retained. Commit and review
+the refreshed files when updating Rust, engine dependencies or chess.js.
+
 Cargo.lock pins dependencies. The builder remaps checkout/registry paths and
 records source/model/build/binary identities. Verification rebuilds the engine and notices in a temporary checkout, then
 compares committed binary bytes, manifest identities, license notices and dependency

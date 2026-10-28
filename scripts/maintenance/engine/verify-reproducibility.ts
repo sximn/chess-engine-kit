@@ -80,14 +80,28 @@ if (import.meta.main) {
       path.join(temp, "node_modules"),
       "dir",
     );
-    for (const name of ["build-engine.ts", "engine-notices.ts"]) {
+    // Notice generation reads package.json and imports its converter. Copy all
+    // source inputs before running either maintenance command in isolation.
+    fs.copyFileSync(
+      path.join(root, "package.json"),
+      path.join(temp, "package.json"),
+    );
+    for (const name of [
+      "build-engine.ts",
+      "engine-notices.ts",
+      "notice-bundle.ts",
+    ]) {
       const destination = path.join(temp, "scripts/maintenance/engine", name);
       fs.mkdirSync(path.dirname(destination), { recursive: true });
       fs.copyFileSync(
         path.join(root, "scripts/maintenance/engine", name),
         destination,
       );
-      run("bun", [destination], { cwd: temp });
+    }
+    for (const name of ["build-engine.ts", "engine-notices.ts"]) {
+      run("bun", [path.join(temp, "scripts/maintenance/engine", name)], {
+        cwd: temp,
+      });
     }
     compareEngineArtifacts(
       path.join(root, "assets/frozenight"),

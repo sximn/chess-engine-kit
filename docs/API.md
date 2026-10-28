@@ -103,6 +103,11 @@ restart the worker after a failure; decide retries in your application.
 Use `chess-engine-assets --to <public-folder>/engines/frozenight` before serving
 the app. The CLI verifies shipped assets, removes unchanged obsolete owned files,
 and preserves unrelated/modified obsolete files. Use a generated directory.
+
+Keep the copied `LICENSE-MIT.txt`, `LICENSE-APACHE.txt` and
+`THIRD-PARTY-NOTICES.txt` with the deployed worker and WASM; the notices cover
+the bundled third-party code.
+
 Subpath deployments should resolve the asset URL against the application base.
 Workers and assets must come from the application's origin.
 

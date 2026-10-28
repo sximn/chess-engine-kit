@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { format } from "prettier";
+import { NoticeBundle, addRustNotices } from "./notice-bundle.ts";
+
 type CargoPackage = {
   name: string;
   version: string;
@@ -10,7 +11,9 @@ type CargoPackage = {
   repository: string | null;
   manifest_path: string;
 };
+
 const cargo = process.env.ENGINE_CARGO || "cargo";
+
 const result = spawnSync(
   cargo,
   [
@@ -24,9 +27,14 @@ const result = spawnSync(
   ],
   { encoding: "utf8", env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" } },
 );
-if (result.status !== 0) throw Error(result.stderr);
+
+if (result.status !== 0) {
+  throw Error(result.stderr);
+}
+
 const metadata = JSON.parse(result.stdout) as { packages: CargoPackage[] },
   packages = metadata.packages.filter((p) => p.source);
+
 const manifest = packages.map((p) => ({
   name: p.name,
   version: p.version,
@@ -34,22 +42,32 @@ const manifest = packages.map((p) => ({
   source: p.source,
   repository: p.repository,
 }));
-if (manifest.some((p) => !p.license || /GPL|AGPL|LGPL/.test(p.license)))
+
+if (manifest.some((p) => !p.license || /GPL|AGPL|LGPL/.test(p.license))) {
   throw Error("Dependency license requires review");
-let text =
-  "Frozenight browser port: dependency notices\n\nIncludes build-time dependencies as well as runtime libraries. Cargo.lock pins exact checksums.\n\n";
+}
+
+const bundle = new NoticeBundle();
+
+const chess = JSON.parse(
+  fs.readFileSync("node_modules/chess.js/package.json", "utf8"),
+);
+
+const expectedChess = JSON.parse(fs.readFileSync("package.json", "utf8"))
+  .dependencies["chess.js"];
+
+if (chess.version !== expectedChess) {
+  throw Error("Install the pinned chess.js before refreshing notices");
+}
+
+bundle.addComponent(
+  `chess.js ${chess.version}\nSPDX: ${chess.license}\nLICENSE: ${bundle.addText(fs.readFileSync("node_modules/chess.js/LICENSE", "utf8"))}`,
+);
+
 for (const p of packages) {
-  text +=
-    "\n" +
-    "=".repeat(60) +
-    "\n" +
-    p.name +
-    " " +
-    p.version +
-    "\nSPDX: " +
-    p.license +
-    "\n";
+  const references: string[] = [];
   const dir = path.dirname(p.manifest_path);
+
   const licenses = fs
     .readdirSync(dir)
     .sort()
@@ -58,54 +76,56 @@ for (const p of packages) {
         /^(LICENSE|LICENCE|COPYING|NOTICE)/i.test(n) &&
         fs.statSync(path.join(dir, n)).isFile(),
     );
+
   if (!licenses.length) {
-    if (["cozy-chess", "cozy-chess-types"].includes(p.name))
-      text +=
-        "\n" +
-        fs.readFileSync("engine/frozenight/COZY-CHESS-LICENSE-MIT.txt", "utf8");
-    else throw Error("Missing packaged notice for " + p.name);
+    if (["cozy-chess", "cozy-chess-types"].includes(p.name)) {
+      references.push(
+        `LICENSE-MIT: ${bundle.addText(fs.readFileSync("engine/frozenight/COZY-CHESS-LICENSE-MIT.txt", "utf8"))}`,
+      );
+    } else {
+      throw Error("Missing packaged notice for " + p.name);
+    }
   }
-  for (const file of licenses)
-    text +=
-      "\n" + file + "\n" + fs.readFileSync(path.join(dir, file), "utf8") + "\n";
+
+  for (const file of licenses) {
+    references.push(
+      `${file}: ${bundle.addText(fs.readFileSync(path.join(dir, file), "utf8"))}`,
+    );
+  }
+
+  bundle.addComponent(
+    `Cargo dependency: ${p.name} ${p.version}\nSPDX: ${p.license}\n${references.join("\n")}`,
+  );
 }
-const dir = "assets/frozenight";
-// This runtime dependency's license is shipped alongside the engine notices.
-fs.copyFileSync("node_modules/chess.js/LICENSE", dir + "/CHESS-JS-LICENSE.txt");
-fs.writeFileSync(dir + "/DEPENDENCY-NOTICES.txt", text);
-fs.writeFileSync(
-  "engine/frozenight/dependencies.json",
-  JSON.stringify(manifest, null, 2) + "\n",
-);
-console.log("Retained notices for", packages.length, "locked crates");
 
 // Rust's shipped standard-library notices are outside Cargo metadata.
 const rustc = process.env.ENGINE_CARGO
   ? path.join(path.dirname(cargo), "rustc")
   : "rustc";
+
 const sysrootResult = spawnSync(rustc, ["--print", "sysroot"], {
   encoding: "utf8",
   env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" },
 });
-if (sysrootResult.status !== 0)
+
+if (sysrootResult.status !== 0) {
   throw Error("Cannot locate pinned Rust standard-library notices");
+}
+
 const rustDoc = path.join(sysrootResult.stdout.trim(), "share/doc/rust");
-// Keep HTML formatting deterministic, including the doctype, so routine repository
-// formatting does not make the committed notices differ from their regeneration.
-const copyright = fs.readFileSync(
-  path.join(rustDoc, "COPYRIGHT-library.html"),
-  "utf8",
+
+addRustNotices(
+  bundle,
+  fs.readFileSync(path.join(rustDoc, "COPYRIGHT-library.html"), "utf8"),
+  (name) => fs.readFileSync(path.join(rustDoc, "licenses", name), "utf8"),
 );
+
+fs.writeFileSync("assets/frozenight/THIRD-PARTY-NOTICES.txt", bundle.render());
 fs.writeFileSync(
-  dir + "/RUST-COPYRIGHT.html",
-  await format(copyright.replace(/^<!doctype html>/i, "<!doctype html>"), {
-    parser: "html",
-    endOfLine: "lf",
-  }),
+  "engine/frozenight/dependencies.json",
+  JSON.stringify(manifest, null, 2) + "\n",
 );
-fs.cpSync(path.join(rustDoc, "licenses"), dir + "/licenses", {
-  recursive: true,
-});
+
 console.log(
-  "Retained Rust 1.90.0 standard-library notices (including notices for other targets).",
+  `Consolidated chess.js, ${packages.length} locked crates and Rust 1.90.0 standard-library notices. Commit the refreshed notices with engine/dependency updates.`,
 );

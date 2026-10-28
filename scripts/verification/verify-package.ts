@@ -25,6 +25,9 @@ for (const required of [
   "dist/types/index.d.ts",
   "dist/bin/copy-assets.js",
   "CHANGELOG.md",
+  "dist/assets/frozenight/LICENSE-MIT.txt",
+  "dist/assets/frozenight/LICENSE-APACHE.txt",
+  "dist/assets/frozenight/THIRD-PARTY-NOTICES.txt",
   "docs/API.md",
   "docs/PUBLISHING.md",
 ]) {

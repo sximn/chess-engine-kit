@@ -44,6 +44,10 @@ For SvelteKit, use `static/engines/frozenight`. Serve the folder from your app's
 origin. These commands use Bun as the task runner. The published SDK and asset-copy
 CLI also support Node-based build tooling.
 
+The copied folder includes Frozenight's licenses and consolidated third-party
+notices. Keep these files with the deployed assets; see
+[third-party notices](THIRD_PARTY_NOTICES.md).
+
 ## Analyze a position
 
 Run this in the browser, such as a component's mount hook:
