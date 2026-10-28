@@ -1,6 +1,9 @@
 import { spawnSync } from "node:child_process";
+import path from "node:path";
+import { rustEnvironment } from "./rust-environment.ts";
+const cargo = process.env.ENGINE_CARGO || "cargo";
 const result = spawnSync(
-  process.env.ENGINE_CARGO || "cargo",
+  cargo,
   [
     "build",
     "--manifest-path",
@@ -12,6 +15,9 @@ const result = spawnSync(
     "--bin",
     "frozenight-reference",
   ],
-  { stdio: "inherit", env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" } },
+  {
+    stdio: "inherit",
+    env: rustEnvironment(path.resolve("engine/frozenight")),
+  },
 );
 process.exit(result.status ?? 1);

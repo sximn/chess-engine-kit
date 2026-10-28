@@ -1,5 +1,7 @@
 name: Verify engine package
 on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
 jobs:
   package:
     runs-on: ubuntu-24.04
@@ -12,6 +14,10 @@ jobs:
         with:
           node-version: 24
       - run: bun install --frozen-lockfile
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.90.0
+          targets: wasm32-unknown-unknown
       - name: Type-check SDK, scripts and tests
         run: bun run check
       - name: Prefer Ubuntu archive for system packages
@@ -40,14 +46,22 @@ jobs:
         if: always()
         with:
           name: package-and-verification
+          include-hidden-files: true
           path: |
             .build/*.tgz
             .build/release.json
             .build/reports/
   engine:
-    runs-on: ubuntu-latest
+    name: Verify container build against tested npm artifact
+    needs: package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ENGINE_BUILD_CONTAINER: "1"
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.4
@@ -59,11 +73,15 @@ jobs:
           toolchain: 1.90.0
           targets: wasm32-unknown-unknown
       - run: bun install --frozen-lockfile
-      - run: bun run engine:build && bun run engine:notices
-      - run: bun run test:native
-      - run: bun scripts/maintenance/engine/verify-reproducibility.ts
+      - uses: actions/download-artifact@v4
+        with:
+          name: package-and-verification
+          path: .build
+      - name: Independently rebuild and compare the container engine with the tested package
+        run: bun run engine:verify --package .build/package.tgz
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rebuilt-engine-verification
-          path: .build/reports/
+          name: rebuilt-container-engine-verification
+          include-hidden-files: true
+          path: .build/reports/engine-verification.json

@@ -44,7 +44,7 @@ test("asset deployment removes obsolete owned bytes and preserves unrelated/modi
   execFileSync("bun", ["dist/bin/copy-assets.js", "--to", dir]);
   assert.equal(fs.existsSync(path.join(dir, "old.wasm")), false);
   for (const file of legacyNotices) {
-    assert.equal(fs.existsSync(path.join(dir, file)), false); 
+    assert.equal(fs.existsSync(path.join(dir, file)), false);
   }
 
   assert.equal(fs.readFileSync(path.join(dir, "custom.txt"), "utf8"), "keep");

@@ -3,8 +3,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { root, readPackage, run, reportPath, packPackage } from "../lib.ts";
+import {
+  copyEngineCache,
+  ensureEngine,
+} from "../maintenance/engine/engine-cache.ts";
 
 const original = readPackage();
+const engine = ensureEngine();
 const sourceFiles = ["package.json", "src/adapters/frozenight/manifest.ts"];
 
 const before = sourceFiles.map((file) =>
@@ -26,12 +31,19 @@ try {
     "assets",
     "bin",
     "scripts/build-package.ts",
+    "scripts/maintenance/engine",
+    "engine",
   ]) {
     const destination = path.join(directory, name);
 
     fs.mkdirSync(path.dirname(destination), { recursive: true });
-    fs.cpSync(path.join(root, name), destination, { recursive: true });
+    fs.cpSync(path.join(root, name), destination, {
+      recursive: true,
+      filter: (file) => path.basename(file) !== "target",
+    });
   }
+
+  copyEngineCache(directory);
 
   fs.symlinkSync(
     path.join(root, "node_modules"),
@@ -61,6 +73,11 @@ try {
   );
 
   assert.equal(manifest.packageVersion, bumped.version);
+  assert.equal(
+    manifest.wasm.sha256,
+    engine.manifest.wasmSha256,
+    "A package version bump must reuse the same engine inputs/output.",
+  );
   assert.equal(
     manifest.descriptor.engineVersion,
     bumped.version + "+" + manifest.descriptor.sourceRevision.slice(0, 12),

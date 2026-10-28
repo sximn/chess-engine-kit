@@ -11,7 +11,7 @@ function paragraphs(text: string): string {
       for (const word of normalize(paragraph).split(" ")) {
         const last = lines.length - 1;
         if (last < 0 || lines[last].length + word.length + 1 > 88) {
-          lines.push(word); 
+          lines.push(word);
         } else {
           lines[last] += " " + word;
         }

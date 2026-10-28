@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { NoticeBundle, addRustNotices } from "./notice-bundle.ts";
+import { rustEnvironment } from "./rust-environment.ts";
 
 type CargoPackage = {
   name: string;
@@ -12,7 +13,14 @@ type CargoPackage = {
   manifest_path: string;
 };
 
+const args = process.argv.slice(2);
+if (args.length && (args.length !== 2 || args[0] !== "--output"))
+  throw Error("Use engine:notices [--output <directory>].");
+const output = path.resolve(args[1] || "assets/frozenight");
+fs.mkdirSync(output, { recursive: true });
 const cargo = process.env.ENGINE_CARGO || "cargo";
+const env = rustEnvironment(path.resolve("engine/frozenight"));
+const rustc = env.RUSTC!;
 
 const result = spawnSync(
   cargo,
@@ -21,11 +29,13 @@ const result = spawnSync(
     "--manifest-path",
     "engine/frozenight/Cargo.toml",
     "--locked",
-    "--offline",
     "--format-version",
     "1",
   ],
-  { encoding: "utf8", env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" } },
+  {
+    encoding: "utf8",
+    env,
+  },
 );
 
 if (result.status !== 0) {
@@ -99,13 +109,10 @@ for (const p of packages) {
 }
 
 // Rust's shipped standard-library notices are outside Cargo metadata.
-const rustc = process.env.ENGINE_CARGO
-  ? path.join(path.dirname(cargo), "rustc")
-  : "rustc";
 
 const sysrootResult = spawnSync(rustc, ["--print", "sysroot"], {
   encoding: "utf8",
-  env: { ...process.env, RUSTUP_TOOLCHAIN: "1.90.0" },
+  env,
 });
 
 if (sysrootResult.status !== 0) {
@@ -120,7 +127,15 @@ addRustNotices(
   (name) => fs.readFileSync(path.join(rustDoc, "licenses", name), "utf8"),
 );
 
-fs.writeFileSync("assets/frozenight/THIRD-PARTY-NOTICES.txt", bundle.render());
+fs.writeFileSync(path.join(output, "THIRD-PARTY-NOTICES.txt"), bundle.render());
+fs.copyFileSync(
+  "engine/frozenight/LICENSE-MIT",
+  path.join(output, "LICENSE-MIT.txt"),
+);
+fs.copyFileSync(
+  "engine/frozenight/LICENSE-APACHE",
+  path.join(output, "LICENSE-APACHE.txt"),
+);
 fs.writeFileSync(
   "engine/frozenight/dependencies.json",
   JSON.stringify(manifest, null, 2) + "\n",

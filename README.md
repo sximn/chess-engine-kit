@@ -8,7 +8,10 @@ The package is experimental. See [engine provenance and limitations](docs/PROVEN
 
 ## Try the example locally
 
-From this repository, using Node >=22.12 and Bun 1.4.4:
+From this repository, use Node >=22.12 and Bun 1.4.4. The first source build also
+needs the [engine compiler setup](docs/DEVELOPMENT.md#first-source-build): Rust
+1.90.0 on Linux x86_64, or running Docker/Colima on macOS and other architectures.
+Later SDK builds reuse the verified local engine cache.
 
 ```sh
 bun install --frozen-lockfile
@@ -91,4 +94,5 @@ WebAssembly compilation. The host app owns its board, PGN parsing and offline sh
 
 See the [API guide](docs/API.md) for cancellation, lifecycle and adapter contracts,
 [development guide](docs/DEVELOPMENT.md) for tests and engine rebuilds, and
-[publishing guide](docs/PUBLISHING.md) for versioning and release commands.
+[publishing guide](docs/PUBLISHING.md) for the manual release workflow.
+User-facing changes are recorded in the [changelog](CHANGELOG.md).

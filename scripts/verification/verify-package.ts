@@ -1,5 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import { ensureEngine } from "../maintenance/engine/engine-cache.ts";
+import { verifyPackagedEngine } from "../release/engine-artifact.ts";
 import {
   root,
   run,
@@ -11,6 +13,11 @@ import {
 
 run("bun", ["scripts/build-package.ts"]);
 const packed = await packPackage();
+const engine = ensureEngine();
+await verifyPackagedEngine(packed.file, {
+  inputKey: engine.key,
+  files: engine.files,
+});
 
 if (
   packed.files.some((file) =>
@@ -24,6 +31,7 @@ for (const required of [
   "dist/index.js",
   "dist/types/index.d.ts",
   "dist/bin/copy-assets.js",
+  "CHANGELOG.md",
   "dist/assets/frozenight/LICENSE-MIT.txt",
   "dist/assets/frozenight/LICENSE-APACHE.txt",
   "dist/assets/frozenight/THIRD-PARTY-NOTICES.txt",
