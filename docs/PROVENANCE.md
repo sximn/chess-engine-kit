@@ -9,6 +9,9 @@ The bundled upstream `model.json.zst` has SHA-256
 `3b2ed542427de7de8ddb7b3eff6f47a40c682fd82b0cd8f9f5e2c5a793e58cac`.
 Original MIT/Apache notices are retained; this distribution elects MIT. See
 [third-party notices](../THIRD_PARTY_NOTICES.md) and the licenses shipped with assets.
+`THIRD-PARTY-NOTICES.txt` consolidates chess.js, Cargo and Rust standard-library
+notices as plain text, with matching texts shared between component entries.
+It ships alongside Frozenight's original `LICENSE-MIT.txt` and `LICENSE-APACHE.txt`.
 
 The browser port adds same-root MultiPV/root restrictions, preservation of
 completed iterations, browser clock imports, native-thread exclusion, search
