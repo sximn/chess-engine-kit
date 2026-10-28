@@ -24,6 +24,7 @@ for (const required of [
   "dist/index.js",
   "dist/types/index.d.ts",
   "dist/bin/copy-assets.js",
+  "CHANGELOG.md",
   "docs/API.md",
   "docs/PUBLISHING.md",
 ]) {

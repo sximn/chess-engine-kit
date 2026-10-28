@@ -3,8 +3,10 @@
 Use Node >=22.12 and Bun 1.4.4. Ordinary SDK builds use the committed prebuilt
 WASM and need no Rust installation.
 
-Bun handles repository tasks, packing, publishing and version changes. The
-minimal example retains npm as the installation compatibility check.
+Bun handles repository tasks, packing and version changes. npm publishes verified
+tarballs and provides GitHub trusted publishing. The minimal example also uses npm
+as an installation compatibility check. See the [publishing guide](PUBLISHING.md)
+for the manual release workflow.
 
 `bun run check` invokes Bun's native `bun check` to validate the SDK, scripts,
 asset-copy CLI, unit tests, browser tests and Playwright configuration from source.
@@ -101,13 +103,21 @@ bun run engine:build
 bun run engine:reference
 bun run engine:notices
 bun run test:native
-bun scripts/maintenance/engine/verify-reproducibility.ts
+bun run engine:verify
 ```
 
 `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom toolchain locations.
 Cargo.lock pins dependencies. The builder remaps checkout/registry paths and
-records source/model/build/binary identities. Reproducibility checks compare
-independent checkout paths on the same host; they do not assert cross-OS identity.
+records source/model/build/binary identities. Verification rebuilds the engine and notices in a temporary checkout, then
+compares committed binary bytes, manifest identities, license notices and dependency
+records with that rebuild. Informational gzip/Brotli size estimates may differ
+between compression implementations; they are the only manifest fields excluded
+from this comparison. It never
+overwrites the originals, so stale WASM or license notices fail CI. The report
+binds the verified assets to the source commit and release input fingerprint.
+Temporary build files are removed on success and failure. The build comparison
+also exercises independent checkout paths; it does not establish reproducibility
+across every supported OS/toolchain combination.
 
 When intentionally changing engine behavior, review changes against the pinned
 upstream, update source/model pins and notices, run native checks, and explicitly

@@ -1,5 +1,7 @@
 name: Verify engine package
 on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
 jobs:
   package:
     runs-on: ubuntu-24.04
@@ -40,6 +42,7 @@ jobs:
         if: always()
         with:
           name: package-and-verification
+          include-hidden-files: true
           path: |
             .build/*.tgz
             .build/release.json
@@ -59,11 +62,11 @@ jobs:
           toolchain: 1.90.0
           targets: wasm32-unknown-unknown
       - run: bun install --frozen-lockfile
-      - run: bun run engine:build && bun run engine:notices
+      - run: bun run engine:verify
       - run: bun run test:native
-      - run: bun scripts/maintenance/engine/verify-reproducibility.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: rebuilt-engine-verification
+          include-hidden-files: true
           path: .build/reports/

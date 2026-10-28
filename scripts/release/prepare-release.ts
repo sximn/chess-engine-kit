@@ -7,6 +7,7 @@ import {
   releaseFingerprint,
   sha256,
   reportPath,
+  releaseCommit,
 } from "../lib.ts";
 
 const receipt = path.join(root, ".build/release.json");
@@ -14,6 +15,7 @@ const receipt = path.join(root, ".build/release.json");
 fs.rmSync(receipt, { force: true });
 
 const fingerprint = releaseFingerprint();
+const commit = releaseCommit();
 
 run("bun", ["run", "check"]);
 run("bun", ["run", "test"]);
@@ -27,7 +29,7 @@ const packed = JSON.parse(
 
 const pkg = readPackage();
 
-if (fingerprint !== releaseFingerprint()) {
+if (fingerprint !== releaseFingerprint() || commit !== releaseCommit()) {
   throw Error(
     "Release inputs changed during preparation. Run bun run release:prepare again.",
   );
@@ -45,11 +47,13 @@ fs.writeFileSync(
   receipt,
   JSON.stringify(
     {
+      schemaVersion: 1,
       name: pkg.name,
       version: pkg.version,
       tarball: packed.file,
       sha256: packed.sha256,
       fingerprint,
+      commit,
     },
     null,
     2,

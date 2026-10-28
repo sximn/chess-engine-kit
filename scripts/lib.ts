@@ -15,6 +15,14 @@ export const readPackage = () =>
 export const sha256 = (bytes: Uint8Array) =>
   createHash("sha256").update(bytes).digest("hex");
 
+export function releaseCommit(): string | null {
+  const result = spawnSync("git", ["rev-parse", "--verify", "HEAD"], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  return result.status === 0 ? result.stdout.trim() : null;
+}
+
 export function run(
   command: string,
   args: string[],
@@ -194,7 +202,14 @@ export async function installApplication(
 
 export function releaseFingerprint() {
   const hash = createHash("sha256");
-  const skip = new Set(["node_modules", "dist", ".build", "public"]);
+  const skip = new Set([
+    "node_modules",
+    "dist",
+    ".build",
+    "public",
+    "target",
+    ".git",
+  ]);
 
   function walk(relative: string) {
     if (
@@ -219,11 +234,13 @@ export function releaseFingerprint() {
 
   for (const entry of [
     "package.json",
+    ".gitignore",
     "bun.lock",
     "tsconfig.json",
     "tsconfig.build.json",
     "playwright.config.ts",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md",
     "src",
@@ -233,6 +250,8 @@ export function releaseFingerprint() {
     "tests",
     "examples",
     "assets",
+    "engine",
+    ".github",
   ]) {
     walk(entry);
   }

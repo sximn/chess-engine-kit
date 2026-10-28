@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
+import { format } from "prettier";
 type CargoPackage = {
   name: string;
   version: string;
@@ -69,6 +70,8 @@ for (const p of packages) {
       "\n" + file + "\n" + fs.readFileSync(path.join(dir, file), "utf8") + "\n";
 }
 const dir = "assets/frozenight";
+// This runtime dependency's license is shipped alongside the engine notices.
+fs.copyFileSync("node_modules/chess.js/LICENSE", dir + "/CHESS-JS-LICENSE.txt");
 fs.writeFileSync(dir + "/DEPENDENCY-NOTICES.txt", text);
 fs.writeFileSync(
   "engine/frozenight/dependencies.json",
@@ -87,9 +90,18 @@ const sysrootResult = spawnSync(rustc, ["--print", "sysroot"], {
 if (sysrootResult.status !== 0)
   throw Error("Cannot locate pinned Rust standard-library notices");
 const rustDoc = path.join(sysrootResult.stdout.trim(), "share/doc/rust");
-fs.copyFileSync(
+// Keep HTML formatting deterministic, including the doctype, so routine repository
+// formatting does not make the committed notices differ from their regeneration.
+const copyright = fs.readFileSync(
   path.join(rustDoc, "COPYRIGHT-library.html"),
+  "utf8",
+);
+fs.writeFileSync(
   dir + "/RUST-COPYRIGHT.html",
+  await format(copyright.replace(/^<!doctype html>/i, "<!doctype html>"), {
+    parser: "html",
+    endOfLine: "lf",
+  }),
 );
 fs.cpSync(path.join(rustDoc, "licenses"), dir + "/licenses", {
   recursive: true,

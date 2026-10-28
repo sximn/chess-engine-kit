@@ -87,4 +87,5 @@ WebAssembly compilation. The host app owns its board, PGN parsing and offline sh
 
 See the [API guide](docs/API.md) for cancellation, lifecycle and adapter contracts,
 [development guide](docs/DEVELOPMENT.md) for tests and engine rebuilds, and
-[publishing guide](docs/PUBLISHING.md) for versioning and release commands.
+[publishing guide](docs/PUBLISHING.md) for the manual release workflow.
+User-facing changes are recorded in the [changelog](CHANGELOG.md).

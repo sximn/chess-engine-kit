@@ -29,6 +29,7 @@
     "dist/",
     "LICENSE",
     "README.md",
+    "CHANGELOG.md",
     "THIRD_PARTY_NOTICES.md",
     "docs/",
     "examples/minimal/README.md",
@@ -50,9 +51,11 @@
     "engine:build": "bun scripts/maintenance/engine/build-engine.ts",
     "engine:reference": "bun scripts/maintenance/engine/build-reference.ts",
     "engine:notices": "bun scripts/maintenance/engine/engine-notices.ts",
+    "engine:verify": "bun scripts/maintenance/engine/verify-reproducibility.ts",
     "test:native": "bun scripts/maintenance/engine/verify-native.ts",
     "example:setup": "bun scripts/setup-example.ts",
     "release:prepare": "bun scripts/release/prepare-release.ts",
+    "release:check": "bun scripts/release/check-release.ts",
     "release:dry-run": "bun scripts/release/publish.ts --dry-run",
     "release:publish": "bun scripts/release/publish.ts",
     "version:patch": "bun pm version patch --no-git-tag-version",
@@ -77,7 +80,8 @@
   "packageManager": "bun@1.4.4",
   "publishConfig": {
     "access": "public",
-    "tag": "next"
+    "tag": "next",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "chess",
