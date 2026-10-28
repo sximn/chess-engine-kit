@@ -19,8 +19,15 @@ deadline/node/max-ply safeguards, legal PV reconstruction, terminal/history
 handling, standard UCI castling normalization and typed allocation-failure errors.
 The TypeScript adapter adds deployment, integrity checking and worker supervision.
 
-Engine/model updates must revise the pin, manifests, notices and native reference
-fixtures together. Runtime users consume immutable package versions and
+The authored pins are in `engine/frozenight/source.json`. The compressed model is
+an upstream build input retained in Git. Compiled WASM and generated manifests
+are built from these inputs during CI/release preparation and included in the
+npm package, rather than committed. Local builds cache validated outputs by engine
+input fingerprint; release preparation always builds and independently verifies
+fresh outputs with the canonical Linux x86_64 Rust toolchain.
+
+Engine/model updates must revise the authored pins, reviewed notices and native
+reference fixtures together. Runtime users consume immutable package versions and
 content-addressed assets rather than a moving upstream branch.
 
 This remains an experimental analysis engine. Earlier exploratory quick-budget

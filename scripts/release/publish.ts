@@ -10,6 +10,7 @@ import {
   reportPath,
 } from "../lib.ts";
 import { registry, validateRelease } from "./metadata.ts";
+import { verifyReleaseEngine } from "./engine-artifact.ts";
 import {
   readRegistryPackage,
   verifyRegistryArtifact,
@@ -59,7 +60,7 @@ export async function publishRelease(
     typeof receipt.tarball === "string" ? receipt.tarball : "",
   );
   if (
-    receipt.schemaVersion !== 1 ||
+    receipt.schemaVersion !== 2 ||
     !tarball.startsWith(path.join(root, ".build") + path.sep) ||
     !fs.existsSync(tarball) ||
     fs.realpathSync(tarball) !== tarball ||
@@ -72,6 +73,8 @@ export async function publishRelease(
     throw Error(
       "Release inputs, commit or tarball changed. Run bun run release:prepare again.",
     );
+
+  await verifyReleaseEngine(tarball, receipt);
 
   if (dryRun) {
     // No registry lookup, credentials or publishing call is possible on this path.
@@ -91,35 +94,6 @@ export async function publishRelease(
   }
 
   const release = validateRelease(releaseTag, tag);
-  let engine;
-  try {
-    engine = JSON.parse(
-      fs.readFileSync(reportPath("engine-verification.json"), "utf8"),
-    );
-  } catch {
-    throw Error(
-      "Run bun run engine:verify for this checkout before publishing.",
-    );
-  }
-  const manifest = JSON.parse(
-    fs.readFileSync(
-      path.join(root, "assets/frozenight/engine-manifest.json"),
-      "utf8",
-    ),
-  );
-  if (
-    engine?.schemaVersion !== 1 ||
-    engine.commit !== release.commit ||
-    engine.fingerprint !== receipt.fingerprint ||
-    engine.committedAssetsMatch !== true ||
-    engine.noticesMatch !== true ||
-    engine.wasmSha256 !== manifest.wasmSha256 ||
-    engine.buildHash !== manifest.buildHash
-  ) {
-    throw Error(
-      "Engine verification is stale or does not match the release. Run bun run engine:verify again.",
-    );
-  }
   if (process.env.GITHUB_ACTIONS === "true") {
     const npmResult = Bun.spawnSync(["npm", "--version"]);
     const npmVersion = npmResult.stdout

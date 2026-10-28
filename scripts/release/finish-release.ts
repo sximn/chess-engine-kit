@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { root, run, sha256 } from "../lib.ts";
+import { root, run, sha256, releaseFingerprint } from "../lib.ts";
+import { verifyReleaseEngine } from "./engine-artifact.ts";
 import { releaseArguments, validateRelease } from "./metadata.ts";
 import {
   readRegistryPackage,
@@ -25,6 +26,9 @@ export async function finishRelease(
   const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
   const tarball = path.resolve(root, receipt.tarball);
   if (
+    receipt.schemaVersion !== 2 ||
+    receipt.commit !== release.commit ||
+    receipt.fingerprint !== releaseFingerprint() ||
     !tarball.startsWith(path.join(root, ".build") + path.sep) ||
     evidence.commit !== release.commit ||
     evidence.tag !== tag ||
@@ -33,6 +37,7 @@ export async function finishRelease(
     sha256(fs.readFileSync(tarball)) !== receipt.sha256
   )
     throw Error("Publication evidence does not match this release.");
+  await verifyReleaseEngine(tarball, receipt);
   const published = await dependencies.query(release.name);
   if (!published)
     throw Error("Package is missing from npm; refusing to announce a release.");
@@ -104,6 +109,7 @@ export async function finishRelease(
     tarball,
     path.join(root, ".build/release.json"),
     evidencePath,
+    path.join(root, ".build/reports/engine-verification.json"),
     "--repo",
     repository,
     "--clobber",

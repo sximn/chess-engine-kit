@@ -1,146 +1,176 @@
 # Development and verification
 
-Use Node >=22.12 and Bun 1.4.4. Ordinary SDK builds use the committed prebuilt
-WASM and need no Rust installation.
+Use Node >=22.12 and Bun 1.4.4. Git contains source, the pinned model input,
+lockfiles, reviewed licensing records and intentional test fixtures. Compiled
+WASM, generated manifests, SDK bundles and tarballs are build outputs under
+`.build/` and `dist/`; they are never committed.
 
-Bun handles repository tasks, packing and version changes. npm publishes verified
-tarballs and provides GitHub trusted publishing. The minimal example also uses npm
-as an installation compatibility check. See the [publishing guide](PUBLISHING.md)
-for the manual release workflow.
+The published npm package includes the compiled engine. Applications installing
+it need neither Rust nor Docker. Working from this repository requires an engine
+compiler on the first build, as described below.
 
-`bun run check` invokes Bun's native `bun check` to validate the SDK, scripts,
-asset-copy CLI, unit tests, browser tests and Playwright configuration from source.
-Contract tests load the
-built SDK at runtime while using its source API for types, so checking works
-before `dist/` exists. Standalone applications check their own sources after
-installing the packed package: the browser test app uses `bun run check`, and the
-minimal npm example uses `tsc --noEmit`.
+## First source build
 
-Repository scripts are TypeScript executed by Bun; unit/engine tests run with
-Bun's test runner. `tsconfig.build.json` selects the browser SDK for declaration
-generation. The TypeScript compiler remains for emitting `dist/types/` because
-Bun's checker does not emit declarations. The asset-copy CLI source in
-`bin/copy-assets.ts` is bundled into `dist/bin/copy-assets.js` with a Node shebang
-for npm applications. The browser SDK is published as JavaScript with TypeScript
-declarations.
+On Linux x86_64, install Rust 1.90.0 with target `wasm32-unknown-unknown`.
+On macOS and other architectures, start Docker or Colima with `linux/amd64`
+support. Engine compilation automatically uses the digest-pinned Linux x86_64
+image in `scripts/maintenance/engine/Dockerfile` there. The canonical compiler
+host matters: native macOS/ARM and Linux compilers can order functions differently
+even with the same Rust version and WASM target.
 
 ```sh
 bun install --frozen-lockfile
 bun run check
+bun run build
 bun run test
+```
+
+`build`, `test`, `test:package` and `example:setup` automatically ensure a valid
+engine build exists. There is no separate generated-file setup step to remember.
+`bun run check` works before generated outputs exist: the SDK's authored manifest
+bridge is typed from source, and its generated value is injected while bundling.
+Builds never rewrite tracked TypeScript or licensing records.
+
+## Local engine cache
+
+Engine outputs are stored in immutable directories under `.build/engine/objects/`.
+A small index per input key selects a complete build. The key covers the vendored
+engine/model, source pins, lockfiles, engine tooling and container configuration,
+reviewed notices, the Bun pin and the chess.js dependency version.
+
+SDK TypeScript edits and package version bumps reuse the engine. Engine inputs
+changing cause a rebuild. Every cache hit checks the complete file inventory and
+SHA-256 hashes, the model/source pins, and the WASM manifest. Missing, partial or
+corrupt entries are rebuilt. A failed build cannot replace the last good entry.
+The cache index is published atomically after successful validation; concurrent
+readers continue using an immutable, complete build directory.
+
+```sh
+bun run engine:build          # build only if missing or invalid
+bun run engine:build --force  # compile even with a valid cache
+```
+
+Deleting `.build/engine/` clears the generated asset cache. Rust compiler caches
+are separate under `engine/frozenight/target/`; the container's caches live in
+its `linux-x64/` subdirectory. Set `ENGINE_BUILD_CONTAINER=1` to exercise the
+pinned container on Linux x86_64 too. Only sources and build caches enter the
+container; engine sources are mounted read-only.
+
+## Package and browser checks
+
+Bun runs repository scripts, tests, packing and version changes. npm installs the
+minimal example for compatibility and publishes the verified tarball. The SDK is
+bundled JavaScript with TypeScript declarations; its asset-copy CLI runs on Node.
+TypeScript emits declarations, while `bun check` checks SDK, CLI, script and test
+sources before building.
+
+```sh
+bun run test
+bun run test:versioning
 bun run test:package
 bunx playwright install chromium firefox webkit
 bun run test:browser
 ```
 
-`bun run test` builds the SDK and exercises client contracts, asset deployment,
-independent move generation, frozen native/WASM parity, history, legal PVs and OOM
-recovery. The deterministic reference searches are deliberately shallow; passing
-parity checks does not measure engine strength. The tactical fixture test checks
-legal reference solutions, not the engine's puzzle solve rate.
+`test` builds the SDK and checks client contracts, asset deployment, independent
+move generation, frozen native/WASM parity, history, legal PVs and OOM recovery.
+Parity is a deterministic fidelity check, not a measure of engine strength.
 
-`test:package` builds and packs the current version, checks package contents and
-documentation links, then installs it into isolated copies of the browser test
-app (`tests/integration/browser-app`) and the learning example (`examples/minimal`)
-at `.build/apps/`. Bun installs the browser app from its committed `bun.lock`
-with `--frozen-lockfile`; npm installs the minimal example with `npm ci` and its
-`package-lock.json`. Both disable install scripts, then install the exact tarball
-without saving manifest or lockfile changes. Verification reads the packed
-archive to check its identity and file list. The source applications and their
-lockfiles are never rewritten by verification.
+`test:package` packs the SDK, validates the engine and deployment manifests inside
+the archive, then installs that exact tarball into isolated copies of the browser
+app and minimal example under `.build/apps/`. Bun and npm disable install scripts;
+every installed package file must match the archive. Their production builds are
+served at subpaths for Chromium, Firefox and WebKit tests, including real analysis,
+cancellation, corrupt assets, offline reload and the minimal UI. Run `test:package`
+before `test:browser`.
 
-Every installed package file must match the verified tarball's bytes. This checks
-that both package managers installed the artifact being released.
+`test:versioning` rehearses a patch bump in an isolated source copy. It transports
+the already-verified engine cache, checks SDK/deployment metadata and tarball
+identity, and removes the copy. A version-only change must not compile the engine
+again. No source manifests or application lockfiles are rewritten.
 
-Browser checks use those production builds at deployment subpaths in Chromium,
-Firefox and WebKit. They cover real analysis, cancellation/replacement, offline
-reload in the browser test app, corrupt downloads, and the minimal example's UI.
-Run `test:package` first. Install browser binaries separately when setting up a
-new machine. `release:prepare` runs the entire package sequence.
+## Reproducibility and releases
 
-`test:versioning` rehearses a patch bump using isolated build inputs. It checks
-the rebuilt SDK's exported manifest, deployed asset versions and npm tarball
-identity, then removes the temporary copy. It does not install dependencies or
-build the applications; `test:package` covers those checks for the release version.
+```sh
+bun run engine:verify
+bun run release:prepare
+bun run release:dry-run
+```
 
-Generated reports belong in `.build/reports/`, tarballs in `.build/`, and browser
-traces in `test-results/`. CI uploads reports and the release artifact. Historical
-screenshots, timings and extraction proofs are not maintained as source files.
-Deterministic fixtures, source/model manifests and license notices remain tracked.
+`engine:verify` compares the current validated build with a fresh compilation in
+an independent source/target directory. It also regenerates notices and compares
+them with the reviewed records. WASM bytes, manifest identities, license text and
+dependency records must match. Only informational gzip/Brotli size estimates may
+vary between compression implementations. Temporary work stays under `.build/`
+on the project's shared volume and is removed after success or failure.
+
+`release:prepare` always forces a source build, independently rebuilds it, runs
+live native parity/unit checks, rehearses a version bump, tests npm/Bun consumers,
+and runs the browser suite. The final tarball's embedded engine inventory must
+match the independently verified build. A receipt binds the source commit,
+source fingerprint, tarball SHA-256 and engine-verification record. Source inputs
+changing during the process cause preparation to fail.
+
+CI runs this full preparation from a fresh checkout. A second container job
+rebuilds independently and compares against the engine extracted from that run's
+tested npm tarball using `engine:verify --package <tarball>`. Generated engine
+outputs are not restored from a shared CI cache. Publishing remains a separate,
+manual workflow action; see the [publishing guide](PUBLISHING.md).
+
+Reports and tarballs are under `.build/`, browser traces under `test-results/`.
+Intermediate CI artifacts expire; successful GitHub releases retain the tested
+tarball, receipt, engine proof and publication evidence as release attachments.
 
 ## CI browser setup
 
-The package job uses Ubuntu 24.04 and checks SDK, script and test types before browser
-setup. System dependency installation bypasses the Azure Ubuntu mirror in both the hosted runner's
-mirror list and direct APT source URLs. This addresses intermittent mirror stalls
-reported in [runner-images](https://github.com/actions/runner-images/issues/12949).
-System dependencies and browser binaries install in separate steps, each limited
-to ten minutes, so logs show which download stage is slow. The next hosted run
-must confirm the timing improvement; local browser tests do not measure APT.
-
-## Repository layout
-
-Run commands from the repository root. Scripts are grouped by purpose:
-
-- `scripts/`: package builds, unit tests, example setup and shared helpers.
-- `scripts/verification/`: package installation, version checks and the browser
-  test server. `bun run test:package` checks the packed npm artifact.
-- `scripts/release/`: release preparation and publication.
-- `scripts/maintenance/engine/`: Rust/WASM builds and engine verification.
-- `scripts/maintenance/fixtures/`: explicit test-data regeneration.
-
-The learning example remains in `examples/minimal/`. The browser test app lives
-under `tests/integration/` because it exercises package contracts for automated
-tests. Its offline shell belongs to the test app; the SDK does not register a
-service worker. See that app's README for manual inspection commands.
+The package job uses Ubuntu 24.04. Browser system dependency installation bypasses
+the Azure Ubuntu mirror in both hosted runner mirror lists and APT source URLs,
+addressing the intermittent stalls described in
+[runner-images](https://github.com/actions/runner-images/issues/12949).
+System dependencies and browser binaries install separately with ten-minute
+limits so failed downloads can be diagnosed independently.
 
 ## Engine changes
 
-Install Rust 1.90.0 and target `wasm32-unknown-unknown`:
+Native reference checks and notice regeneration also require Rust 1.90.0 on the
+host. `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom locations. When
+`ENGINE_CARGO` is set, its companion `rustc` is used consistently. Missing locked
+Cargo sources are fetched automatically for notices, including when compilation
+ran in a separate container cache.
+
+Review engine/model changes against the pinned upstream. Update
+`engine/frozenight/source.json` when changing the upstream revision or model hash;
+keep the vendored input model in Git. Update Rust/container/toolchain pins together
+when changing compilers. Then refresh reviewed notices and native expectations:
 
 ```sh
+bun run engine:notices
 bun run engine:build
 bun run engine:reference
-bun run engine:notices
-bun run test:native
-bun run engine:verify
+# Only after reviewing intentional behavior changes:
+bun scripts/maintenance/fixtures/freeze-native-fixtures.ts
+bun run release:prepare
 ```
 
-`ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom toolchain locations.
+`engine:notices` updates the reviewed text files in `assets/frozenight/` and
+`engine/frozenight/dependencies.json`. It retains original Frozenight licenses
+and consolidates chess.js, locked Cargo and Rust standard-library notices as
+plain text. Matching texts are shared after whitespace normalization; copyright
+statements and license wording are retained. The broad Rust component inventory,
+including other targets, is retained. Review and commit these records; generated
+WASM, manifests and build reports remain ignored.
 
-`engine:notices` is an explicit maintenance command, not a package-build step.
-It reads the installed pinned chess.js package, locked Cargo packages and Rust
-1.90.0's standard-library notices, then refreshes the tracked
-`assets/frozenight/THIRD-PARTY-NOTICES.txt` and dependency inventory. It converts
-the Rust HTML to plain text, shares matching notice texts after normalizing
-whitespace, and retains copyright statements and license wording. It also
-includes the standalone license texts referenced by Rust's in-tree inventory;
-the rest of Rust's generic license directory is not copied. The broad Rust
-component inventory (including other targets) is retained. Commit and review
-the refreshed files when updating Rust, engine dependencies or chess.js.
+The fixture tools never run automatically to bless changed output. The other
+occasional commands are `scripts/maintenance/fixtures/create-engine-corpus.ts`
+and `scripts/maintenance/fixtures/import-puzzle-corpus.py`. Refresh and review
+native expectations after intentionally changing the deterministic corpus.
 
-Cargo.lock pins dependencies. The builder remaps checkout/registry paths and
-records source/model/build/binary identities. Verification rebuilds the engine and notices in a temporary checkout, then
-compares committed binary bytes, manifest identities, license notices and dependency
-records with that rebuild. Informational gzip/Brotli size estimates may differ
-between compression implementations; they are the only manifest fields excluded
-from this comparison. It never
-overwrites the originals, so stale WASM or license notices fail CI. The report
-binds the verified assets to the source commit and release input fingerprint.
-Temporary build files are removed on success and failure. The build comparison
-also exercises independent checkout paths; it does not establish reproducibility
-across every supported OS/toolchain combination.
+## Repository layout
 
-When intentionally changing engine behavior, review changes against the pinned
-upstream, update source/model pins and notices, run native checks, and explicitly
-refresh frozen expectations with
-`bun scripts/maintenance/fixtures/freeze-native-fixtures.ts`.
-Review fixture diffs before accepting them, then rerun package verification.
-
-The other fixture generators are occasional maintenance tools:
-
-- `bun scripts/maintenance/fixtures/create-engine-corpus.ts` regenerates the
-  deterministic game/position corpus. Refresh native expectations afterward.
-- `python3 scripts/maintenance/fixtures/import-puzzle-corpus.py <puzzles.csv>`
-  imports the tactical corpus from a supplied CSV prefix. The script documents
-  how to obtain that input; it does not download it.
+- `src/`, `bin/`: SDK and asset-copy CLI sources.
+- `engine/`: pinned Rust/model inputs, upstream licenses and dependency inventory.
+- `assets/frozenight/`: reviewed licensing records only.
+- `scripts/maintenance/engine/`: compiler, cache and independent verification.
+- `scripts/verification/`: package, version and browser application checks.
+- `scripts/release/`: release preparation, sealed-artifact publication and records.
+- `examples/minimal/`: learning example; `tests/integration/`: contract applications.

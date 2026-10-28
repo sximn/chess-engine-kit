@@ -8,7 +8,10 @@ The package is experimental. See [engine provenance and limitations](docs/PROVEN
 
 ## Try the example locally
 
-From this repository, using Node >=22.12 and Bun 1.4.4:
+From this repository, use Node >=22.12 and Bun 1.4.4. The first source build also
+needs the [engine compiler setup](docs/DEVELOPMENT.md#first-source-build): Rust
+1.90.0 on Linux x86_64, or running Docker/Colima on macOS and other architectures.
+Later SDK builds reuse the verified local engine cache.
 
 ```sh
 bun install --frozen-lockfile

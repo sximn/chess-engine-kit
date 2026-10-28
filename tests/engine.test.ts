@@ -6,6 +6,7 @@ import { spawnSync } from "node:child_process";
 import { Chess } from "chess.js";
 import { instantiateEngine } from "./helpers.ts";
 import path from "node:path";
+import { readEngineCache } from "../scripts/maintenance/engine/engine-cache.ts";
 import { reportPath } from "../scripts/lib.ts";
 import {
   validateResult,
@@ -14,10 +15,12 @@ import {
   replay,
 } from "./helpers.ts";
 import type { AnalysisResult, RawResult, Position } from "../src/core/types.ts";
-const manifest = JSON.parse(
-  fs.readFileSync("assets/frozenight/engine-manifest.json", "utf8"),
+const cached = readEngineCache();
+if (!cached) throw Error("Run bun run build before engine tests.");
+const manifest = cached.manifest;
+const bytes = fs.readFileSync(
+  path.join(cached.absoluteDirectory, manifest.wasmFile),
 );
-const bytes = fs.readFileSync("assets/frozenight/" + manifest.wasmFile);
 const compiled = await WebAssembly.compile(bytes);
 const engine = await instantiateEngine(compiled, () => {});
 const corpus = JSON.parse(

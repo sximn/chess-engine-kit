@@ -7,3 +7,7 @@ artifacts/
 test-results/
 playwright-report/
 tests/integration/browser-app/public/
+
+# Legacy engine outputs; all new generated assets live under .build/.
+assets/frozenight/*.wasm
+assets/frozenight/engine-manifest.json

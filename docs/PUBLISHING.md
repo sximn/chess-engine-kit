@@ -6,7 +6,7 @@ publication requires selecting its publish checkbox. Run it from the release tag
 so npm provenance identifies the same commit that was built.
 
 `package.json` is the version source. The workflow checks the matching Git tag,
-changelog entry, source commit, engine assets and verified tarball. Bun builds and
+changelog entry, source commit, engine build inputs and verified tarball. Bun builds and
 tests the package; npm uploads the already-tested tarball without rebuilding it.
 
 ## One-time setup
@@ -100,12 +100,11 @@ needed after bootstrap. See [npm trusted publishing](https://docs.npmjs.com/trus
    missing or duplicated version heading, an invalid date, empty release notes,
    and TODO/TBD placeholders. It uses this entry as the GitHub release body.
 
-3. If engine source, model or dependencies changed, regenerate and review the
-   engine assets, notices and reference fixtures as described in the
-   [development guide](DEVELOPMENT.md#engine-changes). CI independently rebuilds
-   the engine and compares the committed WASM bytes, manifest identities, licenses
-   and dependency metadata. Only informational gzip/Brotli size estimates are
-   excluded because compression implementations can differ. Stale assets fail verification without being replaced.
+3. If engine source, model or dependencies changed, review the source/model pins,
+   notices and reference fixtures as described in the
+   [development guide](DEVELOPMENT.md#engine-changes). Commit the authored inputs,
+   reviewed licensing records and intentional fixture updates. Compiled WASM and
+   generated manifests stay out of Git; CI creates and independently rebuilds them.
 
 4. Commit and merge the version, changelog and implementation onto the default
    branch. Create and push the exact `v<version>` tag on that merged commit:
@@ -141,14 +140,22 @@ The workflow serializes release runs and does not cancel an upload in progress.
 New publications must advance their selected channel; an older version cannot
 silently roll `next` or `latest` backward.
 
-Verification compares committed WASM and notices against a source rebuild, tests
-that committed WASM against a live native reference, then runs type checks,
-unit/engine tests, a version-bump rehearsal, package installation/build checks
-with npm and Bun, and Chromium/Firefox/WebKit tests. The release receipt binds the
-package name/version, source commit, input fingerprint and tarball SHA-256.
+Preparation forces a fresh engine build from the tagged sources using the pinned
+Linux x86_64 toolchain, then compares it with an independent source rebuild.
+It verifies reviewed notices and live native parity, checks source types, rehearses
+a version bump, installs/builds the npm tarball with npm and Bun, and runs
+Chromium/Firefox/WebKit tests. The exact engine files embedded in the tarball must
+match the independently verified build. Git is never used as a store of compiled
+outputs, and generation never dirties the source checkout.
+
+The release receipt binds package identity, source commit/fingerprint, tarball
+SHA-256 and the engine-verification record's SHA-256. The engine record includes
+the input key, compiler/source identities and the hash of every generated asset.
 
 The publish job downloads that run's artifact and checks the tag, source, engine
-verification and receipt again. It uploads the verified tarball with lifecycle
+verification and receipt again. It extracts and validates the engine, worker,
+notices and deployment manifest inside that tarball against the sealed proof;
+this job has no Rust toolchain or local engine cache. It uploads the verified tarball with lifecycle
 scripts disabled, then checks the registry's SHA-512 integrity and selected
 dist-tag. The run summary records the actual registry tags. On a package's
 first-ever publication, `latest` may also be assigned even when publishing with
@@ -156,13 +163,15 @@ first-ever publication, `latest` may also be assigned even when publishing with
 [Bun's documented registry tag behavior](https://bun.com/docs/pm/cli/publish#--tag).
 
 After npm verification succeeds, a separate job creates a GitHub release using
-the changelog entry and attaches the tarball, receipt and publication evidence.
+the changelog entry and attaches the tarball, receipt, independent engine proof
+and publication evidence. The npm tarball contains the compiled WASM and all
+runtime assets; installing the package requires no Rust or Docker.
 `next` releases are marked as GitHub prereleases; `latest` releases are normal
 GitHub releases. No GitHub release is announced before npm is verified.
 
 ## If a release fails
 
-- **Missing notes, mismatched tag/version, stale engine assets or failed tests:**
+- **Missing notes, mismatched tag/version, source/rebuild mismatches or failed tests:**
   nothing is uploaded. Correct and commit the inputs. Use a new tag/version if
   the original release was published; otherwise replace an unpublished candidate
   tag only after confirming no publication occurred, then verify it again.
@@ -198,8 +207,11 @@ bun run release:prepare
 bun run release:dry-run
 ```
 
-`release:prepare` checks the package and browser applications without requiring
-Rust, a clean Git checkout, a release tag or registry credentials. `release:dry-run`
+Set up the canonical compiler and host native Rust toolchain as described in the
+[development guide](DEVELOPMENT.md#first-source-build). Unlike an ordinary SDK
+build, `release:prepare` deliberately bypasses the generated-asset cache and runs
+a fresh build, independent rebuild and live native reference checks. It requires
+no release tag, clean checkout or registry credentials for this local rehearsal. `release:dry-run`
 validates its receipt and invokes `npm publish <verified-tarball> --dry-run`.
 It uploads nothing and needs no placeholder token.
 
@@ -215,9 +227,11 @@ and the matching tag. Use the GitHub workflow for releases; the underlying
 for recovery by maintainers with npm credentials. It enforces the same artifact,
 source, changelog, engine and registry checks. It does not create a GitHub release.
 
-The generated SDK manifest may be rewritten by builds; it is the only tracked
-build output exempt from the clean-checkout check. Source, documentation, tests,
-engine assets and workflow changes invalidate the receipt and engine evidence.
+All tracked source files must be clean for real publication; generated outputs
+live under ignored directories. Source, model, toolchain, documentation, fixture
+or workflow changes invalidate the release receipt. Ordinary local builds reuse
+the engine cache when only SDK code or package versions change; preparation
+always verifies fresh engine outputs before sealing a publishable artifact.
 
 ## Consume the release
 

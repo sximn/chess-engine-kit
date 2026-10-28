@@ -212,11 +212,14 @@ export function releaseFingerprint() {
   ]);
 
   function walk(relative: string) {
+    // Ignore legacy generated files from checkouts made before source-only builds.
     if (
-      relative === path.join("src", "adapters", "frozenight", "manifest.ts")
-    ) {
+      relative === path.join("assets", "frozenight", "engine-manifest.json") ||
+      /^assets\/frozenight\/[^/]+\.wasm$/.test(
+        relative.split(path.sep).join("/"),
+      )
+    )
       return;
-    }
 
     const file = path.join(root, relative);
     if (fs.statSync(file).isDirectory()) {

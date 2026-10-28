@@ -3,7 +3,9 @@
 A Vite + TypeScript page with editable root FEN and UCI history, three candidate
 lines, progress, cancellation and error handling. It imports the installed package
 and keeps the UI in [src/main.ts](src/main.ts). Use Node >=22.12. Repository setup
-also uses Bun.
+also uses Bun and the engine compiler for the first source build. Subsequent
+SDK builds reuse the local engine cache. Registry installations include prebuilt
+WASM and need neither Rust nor Docker.
 
 ## From the repository
 

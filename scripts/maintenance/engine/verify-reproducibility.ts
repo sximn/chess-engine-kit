@@ -1,7 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
-import os from "node:os";
 import { isDeepStrictEqual } from "node:util";
+import { ensureEngine } from "./engine-cache.ts";
+import {
+  engineInputKey,
+  inventory,
+  licenseFiles,
+  validateEngine,
+} from "./engine-inputs.ts";
+import { extractPackagedEngine } from "../../release/engine-artifact.ts";
 import {
   root,
   run,
@@ -58,55 +65,74 @@ export function compareEngineArtifacts(expected: string, rebuilt: string) {
       !copy.has(name)
     ) {
       throw Error(
-        `Committed engine assets differ from the source rebuild: ${name}. Run bun run engine:build and bun run engine:notices, review and commit the assets, then verify again.`,
+        `Generated engine builds differ: ${name}. Inspect the pinned toolchain, build inputs and diagnostics before preparing a release.`,
       );
     }
   }
 }
 
 if (import.meta.main) {
+  const args = process.argv.slice(2);
+  if (args.length && (args.length !== 2 || args[0] !== "--package"))
+    throw Error("Use engine:verify [--package <tested-tarball>].");
   const report = reportPath("engine-verification.json");
   fs.rmSync(report, { force: true });
   const fingerprint = releaseFingerprint();
   const commit = releaseCommit();
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), "chess-engine-rebuild-"));
+  const key = engineInputKey();
+  const temp = fs.mkdtempSync(path.join(root, ".build/engine-rebuild-"));
   try {
+    const cached = args.length ? null : ensureEngine();
+    const baseline =
+      cached?.absoluteDirectory ?? path.join(temp, "package-engine");
+    if (args.length)
+      await extractPackagedEngine(path.resolve(args[1]), baseline);
+    const manifest = validateEngine(baseline, key);
+    const files = inventory(baseline);
     fs.cpSync(path.join(root, "engine"), path.join(temp, "engine"), {
       recursive: true,
       filter: (file) => path.basename(file) !== "target",
     });
+    fs.cpSync(
+      path.join(root, "scripts/maintenance/engine"),
+      path.join(temp, "scripts/maintenance/engine"),
+      { recursive: true },
+    );
+    fs.copyFileSync(
+      path.join(root, "package.json"),
+      path.join(temp, "package.json"),
+    );
     fs.symlinkSync(
       path.join(root, "node_modules"),
       path.join(temp, "node_modules"),
       "dir",
     );
-    // Notice generation reads package.json and imports its converter. Copy all
-    // source inputs before running either maintenance command in isolation.
-    fs.copyFileSync(
-      path.join(root, "package.json"),
-      path.join(temp, "package.json"),
-    );
-    for (const name of [
-      "build-engine.ts",
-      "engine-notices.ts",
-      "notice-bundle.ts",
-    ]) {
-      const destination = path.join(temp, "scripts/maintenance/engine", name);
-      fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.mkdirSync(path.join(temp, "assets/frozenight"), { recursive: true });
+    for (const name of licenseFiles)
       fs.copyFileSync(
-        path.join(root, "scripts/maintenance/engine", name),
-        destination,
+        path.join(root, "assets/frozenight", name),
+        path.join(temp, "assets/frozenight", name),
       );
-    }
-    for (const name of ["build-engine.ts", "engine-notices.ts"]) {
-      run("bun", [path.join(temp, "scripts/maintenance/engine", name)], {
-        cwd: temp,
-      });
-    }
-    compareEngineArtifacts(
-      path.join(root, "assets/frozenight"),
-      path.join(temp, "assets/frozenight"),
+    const rebuilt = path.join(temp, "rebuilt-engine");
+    run(
+      "bun",
+      [
+        path.join(temp, "scripts/maintenance/engine/compile-engine.ts"),
+        "--output",
+        rebuilt,
+      ],
+      { cwd: temp },
     );
+    run(
+      "bun",
+      [
+        path.join(temp, "scripts/maintenance/engine/engine-notices.ts"),
+        "--output",
+        rebuilt,
+      ],
+      { cwd: temp },
+    );
+    compareEngineArtifacts(baseline, rebuilt);
     if (
       !fs
         .readFileSync(path.join(root, "engine/frozenight/dependencies.json"))
@@ -115,42 +141,41 @@ if (import.meta.main) {
             path.join(temp, "engine/frozenight/dependencies.json"),
           ),
         )
-    ) {
+    )
       throw Error(
-        "Committed engine dependencies.json is stale. Run bun run engine:notices, review and commit it.",
+        "Reviewed engine dependency inventory is stale. Run bun run engine:notices and review its changes.",
       );
-    }
-    if (fingerprint !== releaseFingerprint() || commit !== releaseCommit())
+    if (
+      fingerprint !== releaseFingerprint() ||
+      commit !== releaseCommit() ||
+      key !== engineInputKey() ||
+      !isDeepStrictEqual(files, inventory(baseline))
+    )
       throw Error(
-        "Release inputs changed during engine verification; run it again.",
+        "Source inputs or the baseline engine changed during verification. Run it again.",
       );
-    const manifest = JSON.parse(
-      fs.readFileSync(
-        path.join(root, "assets/frozenight/engine-manifest.json"),
-        "utf8",
-      ),
-    );
     fs.writeFileSync(
       report,
       JSON.stringify(
         {
-          schemaVersion: 1,
+          schemaVersion: 2,
           commit,
           fingerprint,
+          inputKey: key,
+          files,
           wasmSha256: manifest.wasmSha256,
           buildHash: manifest.buildHash,
-          committedAssetsMatch: true,
+          reproducible: true,
           noticesMatch: true,
-          manifestIdentityMatch: true,
-          diagnosticFieldsIgnored: ["gzipBytes", "brotliBytes"],
           independentCheckout: true,
+          diagnosticFieldsIgnored: ["gzipBytes", "brotliBytes"],
         },
         null,
         2,
       ) + "\n",
     );
     console.log(
-      "Independent source rebuild matches the committed WASM, manifest, dependencies and license notices. Checkout assets were not modified.",
+      "Independent source builds produce identical WASM and reviewed notices. No generated assets were read from Git or written to source directories.",
     );
   } finally {
     fs.rmSync(temp, { recursive: true, force: true });

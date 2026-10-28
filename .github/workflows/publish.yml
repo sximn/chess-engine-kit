@@ -65,10 +65,6 @@ jobs:
         with:
           toolchain: 1.90.0
           targets: wasm32-unknown-unknown
-      - name: Compare committed engine assets and notices with an independent rebuild
-        run: bun run engine:verify
-      - name: Verify committed WASM against a live native reference
-        run: bun run test:native
       - name: Prefer Ubuntu archive for system packages
         run: |
           if [[ -f /etc/apt/apt-mirrors.txt ]]; then
@@ -85,7 +81,7 @@ jobs:
       - name: Install Playwright browsers
         timeout-minutes: 10
         run: bunx playwright install chromium firefox webkit
-      - name: Prepare and test the exact package tarball
+      - name: Build engine from source, independently rebuild, and test the exact package tarball
         run: bun run release:prepare
       - name: Rehearse npm publication without credentials
         run: bun run release:dry-run --tag "$RELEASE_CHANNEL"

@@ -22,3 +22,11 @@ that version is published; an entry by itself does not mean it is available on n
   strength or certify game-review accuracy.
 - Browser deployments require HTTPS, same-origin assets and a policy permitting
   Web Crypto, module workers and WebAssembly compilation.
+
+### Fixed
+
+- Use a canonical Linux x86_64 compiler host for engine assets so macOS/ARM
+  maintenance builds match Linux CI without relaxing binary verification.
+
+- Build WASM and generated manifests from source in CI and releases; cache verified
+  engine outputs locally and keep compiled artifacts out of Git.
