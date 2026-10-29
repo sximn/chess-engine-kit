@@ -1,6 +1,6 @@
 {
   "name": "chess-engine-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
   "repository": {
     "type": "git",
@@ -29,16 +29,9 @@
     "dist/",
     "LICENSE",
     "README.md",
-    "CHANGELOG.md",
     "THIRD_PARTY_NOTICES.md",
-    "docs/",
-    "examples/minimal/README.md",
-    "examples/minimal/package.json",
-    "examples/minimal/package-lock.json",
-    "examples/minimal/tsconfig.json",
-    "examples/minimal/vite.config.ts",
-    "examples/minimal/index.html",
-    "examples/minimal/src/"
+    "docs/API.md",
+    "docs/PROVENANCE.md"
   ],
   "sideEffects": false,
   "scripts": {
@@ -67,12 +60,11 @@
     "chess.js": "1.4.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.64.1",
     "@types/bun": "^1.4.4",
     "@types/node": "24.10.1",
     "prettier": "3.9.10",
-    "typescript": "6.0.3",
-    "vite": "8.3.5"
+    "typescript": "6.0.3"
   },
   "engines": {
     "node": ">=22.12.0"

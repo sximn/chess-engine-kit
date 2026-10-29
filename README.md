@@ -9,8 +9,8 @@ The package is experimental. See [engine provenance and limitations](docs/PROVEN
 ## Try the example locally
 
 From this repository, use Node >=22.12 and Bun 1.4.4. The first source build also
-needs the [engine compiler setup](docs/DEVELOPMENT.md#first-source-build): Rust
-1.90.0 on Linux x86_64, or running Docker/Colima on macOS and other architectures.
+needs the [engine compiler setup](https://github.com/sximn/chess-engine-kit/blob/main/docs/DEVELOPMENT.md#first-source-build): Rust
+1.90.0 with the `wasm32-unknown-unknown` target on your local machine.
 Later SDK builds reuse the verified local engine cache.
 
 ```sh
@@ -20,7 +20,7 @@ npm --prefix examples/minimal run dev
 ```
 
 Open the URL Vite prints. Enter a FEN and optional moves, then analyze or cancel.
-The [minimal example](examples/minimal/README.md) uses the packed npm package and
+The [minimal example](https://github.com/sximn/chess-engine-kit/blob/main/examples/minimal/README.md) uses the packed npm package and
 shows scores, candidate lines, progress, terminal positions and errors.
 
 ## Install in your project
@@ -93,6 +93,6 @@ needs HTTPS for Web Crypto and a policy allowing same-origin module workers and
 WebAssembly compilation. The host app owns its board, PGN parsing and offline shell.
 
 See the [API guide](docs/API.md) for cancellation, lifecycle and adapter contracts,
-[development guide](docs/DEVELOPMENT.md) for tests and engine rebuilds, and
-[publishing guide](docs/PUBLISHING.md) for the manual release workflow.
-User-facing changes are recorded in the [changelog](CHANGELOG.md).
+[development guide](https://github.com/sximn/chess-engine-kit/blob/main/docs/DEVELOPMENT.md) for tests and engine rebuilds, and
+[publishing guide](https://github.com/sximn/chess-engine-kit/blob/main/docs/PUBLISHING.md) for the manual release workflow.
+User-facing changes are recorded in the [changelog](https://github.com/sximn/chess-engine-kit/blob/main/CHANGELOG.md).

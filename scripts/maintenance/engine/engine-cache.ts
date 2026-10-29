@@ -118,7 +118,7 @@ function compile(directory: string, cwd: string) {
   if (result.error) throw result.error;
   if (result.status !== 0)
     throw Error(
-      "Engine compilation failed. Install the pinned Rust toolchain on Linux x86_64, or start Docker/Colima on other hosts. See docs/DEVELOPMENT.md.",
+      "Engine compilation failed. Install Rust 1.90.0 with the wasm32-unknown-unknown target. See docs/DEVELOPMENT.md#first-source-build.",
     );
 }
 

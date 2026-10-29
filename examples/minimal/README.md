@@ -5,7 +5,7 @@ lines, progress, cancellation and error handling. It imports the installed packa
 and keeps the UI in [src/main.ts](src/main.ts). Use Node >=22.12. Repository setup
 also uses Bun and the engine compiler for the first source build. Subsequent
 SDK builds reuse the local engine cache. Registry installations include prebuilt
-WASM and need neither Rust nor Docker.
+WASM and do not need Rust.
 
 ## From the repository
 

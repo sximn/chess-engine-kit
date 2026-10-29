@@ -115,7 +115,8 @@ export function validateEngine(
     manifest.inputKey !== key ||
     manifest.upstreamCommit !== source.upstreamCommit ||
     manifest.networkHash !== source.modelSha256 ||
-    manifest.buildHost !== "x86_64-unknown-linux-gnu" ||
+    typeof manifest.buildHost !== "string" ||
+    !/^[a-z0-9_]+(?:-[a-z0-9_]+){2,}$/.test(manifest.buildHost) ||
     manifest.toolchain !== "Rust 1.90.0" ||
     !/^[a-f0-9]{64}$/.test(manifest.buildHash) ||
     !/^engine-[a-f0-9]{16}\.wasm$/.test(manifest.wasmFile)

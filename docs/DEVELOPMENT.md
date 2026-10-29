@@ -6,17 +6,24 @@ WASM, generated manifests, SDK bundles and tarballs are build outputs under
 `.build/` and `dist/`; they are never committed.
 
 The published npm package includes the compiled engine. Applications installing
-it need neither Rust nor Docker. Working from this repository requires an engine
+it does not need Rust. Working from this repository requires a local Rust
 compiler on the first build, as described below.
 
 ## First source build
 
-On Linux x86_64, install Rust 1.90.0 with target `wasm32-unknown-unknown`.
-On macOS and other architectures, start Docker or Colima with `linux/amd64`
-support. Engine compilation automatically uses the digest-pinned Linux x86_64
-image in `scripts/maintenance/engine/Dockerfile` there. The canonical compiler
-host matters: native macOS/ARM and Linux compilers can order functions differently
-even with the same Rust version and WASM target.
+On macOS, Linux and other supported Rust hosts, install Rust 1.90.0 with target
+`wasm32-unknown-unknown`. Engine builds run directly with the local compiler.
+With rustup installed, prepare the toolchain with:
+
+```sh
+rustup toolchain install 1.90.0 --profile minimal
+rustup target add --toolchain 1.90.0 wasm32-unknown-unknown
+```
+
+The manifest records the actual compiler host. Different hosts can order WASM
+functions differently even with the same Rust version and target, so byte-for-byte
+reproducibility is checked with the same compiler host. CI release artifacts are
+built and independently verified on Linux x86_64.
 
 ```sh
 bun install --frozen-lockfile
@@ -35,7 +42,7 @@ Builds never rewrite tracked TypeScript or licensing records.
 
 Engine outputs are stored in immutable directories under `.build/engine/objects/`.
 A small index per input key selects a complete build. The key covers the vendored
-engine/model, source pins, lockfiles, engine tooling and container configuration,
+engine/model, source pins, lockfiles and engine tooling,
 reviewed notices, the Bun pin and the chess.js dependency version.
 
 SDK TypeScript edits and package version bumps reuse the engine. Engine inputs
@@ -51,10 +58,9 @@ bun run engine:build --force  # compile even with a valid cache
 ```
 
 Deleting `.build/engine/` clears the generated asset cache. Rust compiler caches
-are separate under `engine/frozenight/target/`; the container's caches live in
-its `linux-x64/` subdirectory. Set `ENGINE_BUILD_CONTAINER=1` to exercise the
-pinned container on Linux x86_64 too. Only sources and build caches enter the
-container; engine sources are mounted read-only.
+are separate under `engine/frozenight/target/`. Builds use the local Cargo and
+Rust compiler; `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom
+installation and cache locations.
 
 ## Package and browser checks
 
@@ -102,7 +108,7 @@ an independent source/target directory. It also regenerates notices and compares
 them with the reviewed records. WASM bytes, manifest identities, license text and
 dependency records must match. Only informational gzip/Brotli size estimates may
 vary between compression implementations. Temporary work stays under `.build/`
-on the project's shared volume and is removed after success or failure.
+and is removed after success or failure.
 
 `release:prepare` always forces a source build, independently rebuilds it, runs
 live native parity/unit checks, rehearses a version bump, tests npm/Bun consumers,
@@ -111,7 +117,7 @@ match the independently verified build. A receipt binds the source commit,
 source fingerprint, tarball SHA-256 and engine-verification record. Source inputs
 changing during the process cause preparation to fail.
 
-CI runs this full preparation from a fresh checkout. A second container job
+CI runs this full preparation from a fresh checkout. A second native Linux job
 rebuilds independently and compares against the engine extracted from that run's
 tested npm tarball using `engine:verify --package <tarball>`. Generated engine
 outputs are not restored from a shared CI cache. Publishing remains a separate,
@@ -135,8 +141,7 @@ limits so failed downloads can be diagnosed independently.
 Native reference checks and notice regeneration also require Rust 1.90.0 on the
 host. `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom locations. When
 `ENGINE_CARGO` is set, its companion `rustc` is used consistently. Missing locked
-Cargo sources are fetched automatically for notices, including when compilation
-ran in a separate container cache.
+Cargo sources are fetched automatically for notices.
 
 Native builds always select the reviewed model and Rust toolchain. Ambient
 `EVALFILE`, compiler wrappers, Rust flags and Cargo profile/target/build overrides
@@ -145,7 +150,7 @@ Keep intentional compiler settings in the reviewed build recipe.
 
 Review engine/model changes against the pinned upstream. Update
 `engine/frozenight/source.json` when changing the upstream revision or model hash;
-keep the vendored input model in Git. Update Rust/container/toolchain pins together
+keep the vendored input model in Git. Update Rust toolchain pins together
 when changing compilers. Then refresh reviewed notices and native expectations:
 
 ```sh

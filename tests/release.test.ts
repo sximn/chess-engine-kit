@@ -543,6 +543,14 @@ else throw Error("The test npm stub refuses every command except version checks 
 
     const finishOptions = { tag: "v1.2.3", channel: "next" };
     const missing = async () => new Response("{}", { status: 404 });
+    assert.equal(
+      fs.existsSync(path.join(directory, ".build/reports/published.json")),
+      false,
+      "Failed publication attempts must clear stale success evidence",
+    );
+    // Finalization requires fresh evidence from a successful verification.
+    await publishRelease(options, { query: async () => published, execute });
+    assert.equal(commands.length, 0, "Verification must not upload again");
     await assert.rejects(
       finishRelease(finishOptions, {
         query: async () => null,

@@ -165,7 +165,7 @@ first-ever publication, `latest` may also be assigned even when publishing with
 After npm verification succeeds, a separate job creates a GitHub release using
 the changelog entry and attaches the tarball, receipt, independent engine proof
 and publication evidence. The npm tarball contains the compiled WASM and all
-runtime assets; installing the package requires no Rust or Docker.
+runtime assets; installing the package requires no Rust.
 `next` releases are marked as GitHub prereleases; `latest` releases are normal
 GitHub releases. No GitHub release is announced before npm is verified.
 
@@ -207,7 +207,7 @@ bun run release:prepare
 bun run release:dry-run
 ```
 
-Set up the canonical compiler and host native Rust toolchain as described in the
+Set up the pinned local Rust toolchain as described in the
 [development guide](DEVELOPMENT.md#first-source-build). Unlike an ordinary SDK
 build, `release:prepare` deliberately bypasses the generated-asset cache and runs
 a fresh build, independent rebuild and live native reference checks. It requires
