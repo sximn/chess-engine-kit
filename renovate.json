@@ -1,0 +1,27 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "automerge": false,
+  "prConcurrentLimit": 3,
+  "packageRules": [
+    {
+      "description": "Approve major upgrades before opening PRs",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Review engine and compiler updates deliberately",
+      "matchManagers": ["cargo", "dockerfile", "rust-toolchain"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Review CI runtime and runner changes deliberately",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["uses-with", "github-runner"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
