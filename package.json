@@ -30,7 +30,8 @@
     "LICENSE",
     "README.md",
     "THIRD_PARTY_NOTICES.md",
-    "docs/"
+    "docs/API.md",
+    "docs/PROVENANCE.md"
   ],
   "sideEffects": false,
   "scripts": {
