@@ -84,7 +84,7 @@ try {
   );
 
   const sdk = await import(
-    pathToFileURL(path.join(directory, "dist/index.js")).href
+    pathToFileURL(path.join(directory, "dist/frozenight.js")).href
   );
 
   assert.deepEqual(

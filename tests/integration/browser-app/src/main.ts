@@ -1,11 +1,14 @@
 import {
   createFrozenight,
   frozenightAssetUrls,
+} from "chess-engine-kit/frozenight";
+import { createFrozenight as createManualFrozenight } from "chess-engine-kit/frozenight/manual";
+import {
   API_VERSION,
   type ChessEngine,
   type EngineEvent,
   type AnalyzeRequest,
-} from "chess-engine-kit";
+} from "chess-engine-kit/core";
 const ROOT = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
   apiVersion: API_VERSION,
@@ -103,6 +106,21 @@ async function run() {
   }
 }
 Object.assign(window, { runEngineSmoke: smoke });
+Object.assign(window, {
+  runManualEngineSmoke: async (folder: boolean) => {
+    const engine = createManualFrozenight(
+      folder
+        ? { assetBaseUrl: new URL("./manual-engine/", document.baseURI) }
+        : { assetUrls: frozenightAssetUrls() },
+    );
+    try {
+      await engine.initialize();
+      return await engine.analyzePosition(make("manual", 3));
+    } finally {
+      engine.dispose();
+    }
+  },
+});
 document.querySelector("#run")!.addEventListener("click", () => void run());
 if ("serviceWorker" in navigator)
   void navigator.serviceWorker

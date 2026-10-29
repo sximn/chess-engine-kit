@@ -4,6 +4,19 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { reportPath } from "../../scripts/lib.ts";
 
+test("manual entry runs with explicit URLs and a CLI-deployed folder", async ({
+  page,
+}) => {
+  await page.goto("./");
+  for (const folder of [false, true]) {
+    const result = await page.evaluate(
+      (folder) => (window as any).runManualEngineSmoke(folder),
+      folder,
+    );
+    expect(result.lines).toHaveLength(3);
+  }
+});
+
 test("webpack consumes the package with its standard asset handling on a subpath", async ({
   page,
 }) => {

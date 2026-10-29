@@ -35,9 +35,47 @@ test("asset URLs allow bundler queries and reject cross-origin or inline assets"
   }
 });
 
-test("packaged URLs retain literal paths to all verified assets and work without browser globals", async () => {
-  const sdk: typeof import("../src/index.ts") = await import(
+test("manual entry requires a delivery option and shares core error identity", async () => {
+  const core: typeof import("../src/core.ts") = await import(
+    new URL("../dist/core.js", import.meta.url).href
+  );
+  const root: typeof import("../src/index.ts") = await import(
     new URL("../dist/index.js", import.meta.url).href
+  );
+  const manual: typeof import("../src/frozenight-manual.ts") = await import(
+    new URL("../dist/frozenight-manual.js", import.meta.url).href
+  );
+  assert.equal(root.EngineError, core.EngineError);
+  assert.equal(root.createWorkerEngine, core.createWorkerEngine);
+  assert.equal("createFrozenight" in root, false);
+  // Exercise invalid JavaScript callers as well as the stricter TS signature.
+  const create = manual.createFrozenight as (options?: unknown) => unknown;
+  for (const options of [
+    undefined,
+    {},
+    {
+      assetUrls: { wasm: "/engine.wasm", worker: "/worker.js" },
+      assetBaseUrl: "/manual/",
+    },
+  ])
+    assert.throws(
+      () => create(options),
+      (error) =>
+        error instanceof core.EngineError && error.code === "INVALID_OPTIONS",
+    );
+  for (const options of [
+    { assetUrls: { wasm: "/engine.wasm", worker: "/worker.js" } },
+    { assetBaseUrl: "/manual/" },
+  ]) {
+    const engine = manual.createFrozenight(options);
+    assert.equal(engine.descriptor.engineId, "frozenight");
+    engine.dispose();
+  }
+});
+
+test("packaged URLs retain literal paths to all verified assets and work without browser globals", async () => {
+  const sdk: typeof import("../src/frozenight.ts") = await import(
+    new URL("../dist/frozenight.js", import.meta.url).href
   );
   const urls = sdk.frozenightAssetUrls();
   const manifest = sdk.frozenightManifest;
@@ -55,14 +93,6 @@ test("packaged URLs retain literal paths to all verified assets and work without
       asset.sha256,
     );
   }
-  assert.throws(
-    () =>
-      sdk.createFrozenight({
-        assetUrls: urls,
-        assetBaseUrl: "/manual/",
-      }),
-    /Choose assetUrls or assetBaseUrl/,
-  );
 });
 
 test("asset deployment removes obsolete owned bytes and preserves unrelated/modified files", () => {

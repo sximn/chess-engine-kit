@@ -1,8 +1,8 @@
+import { API_VERSION } from "chess-engine-kit/core";
 import {
-  API_VERSION,
   createFrozenight,
   frozenightAssetUrls,
-} from "chess-engine-kit";
+} from "chess-engine-kit/frozenight";
 
 window.runEngineSmoke = async () => {
   const engine = createFrozenight();

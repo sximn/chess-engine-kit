@@ -39,12 +39,19 @@ Package tests verify this with Vite 8 and webpack 5. See the
 [API guide](docs/API.md#assets-offline-use-and-result-caches) for
 custom URLs, older tooling and deployments without an asset-aware bundler.
 
+Use `chess-engine-kit/core` for shared types, constants, errors and the generic
+worker client. The package root exposes the same core API. Import Frozenight
+from `chess-engine-kit/frozenight` to include its packaged assets, or use
+`chess-engine-kit/frozenight/manual` when your app supplies its own asset URLs.
+Core and manual imports emit no packaged engine assets.
+
 ## Analyze a position
 
 Run this in the browser, such as a component's mount hook:
 
 ```ts
-import { API_VERSION, createFrozenight } from "chess-engine-kit";
+import { API_VERSION } from "chess-engine-kit/core";
+import { createFrozenight } from "chess-engine-kit/frozenight";
 
 const engine = createFrozenight();
 

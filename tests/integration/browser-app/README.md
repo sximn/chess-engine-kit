@@ -4,7 +4,7 @@ This app installs the packed npm artifact and exposes engine checks to Playwrigh
 It is a test harness. The learning example lives in `examples/minimal/`.
 
 The browser suite checks development loading directly from `node_modules`,
-MultiPV, repetition history, 100 cancellation/replacement
+automatic and manual entry points, MultiPV, repetition history, 100 cancellation/replacement
 cycles, offline reload and recovery after a corrupt WASM download. The app owns
 its service worker and offline shell; the SDK does not register a service worker.
 

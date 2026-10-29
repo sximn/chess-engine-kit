@@ -6,7 +6,7 @@ WASM, generated manifests, SDK bundles and tarballs are build outputs under
 `.build/` and `dist/`; they are never committed.
 
 The published npm package includes the compiled engine. Applications installing
-it does not need Rust. Working from this repository requires a local Rust
+it do not need Rust. Working from this repository requires a local Rust
 compiler on the first build, as described below.
 
 ## First source build
@@ -65,8 +65,9 @@ installation and cache locations.
 ## Package and browser checks
 
 Bun runs repository scripts, tests, packing and version changes. npm installs the
-minimal example for compatibility and publishes the verified tarball. The SDK is
-bundled JavaScript with TypeScript declarations; its asset-copy CLI runs on Node.
+minimal example for compatibility and publishes the verified tarball. The SDK
+publishes separate ESM entries with shared chunks and TypeScript declarations;
+its asset-copy CLI runs on Node.
 TypeScript emits declarations, while `bun check` checks SDK, CLI, script and test
 sources before building.
 
@@ -89,9 +90,12 @@ every installed package file must match the archive. Their production builds are
 served at subpaths for Chromium, Firefox and WebKit tests, including real analysis,
 cancellation, corrupt assets, offline reload and the minimal UI. A Vite development
 server also verifies optimized dependencies resolve directly to `node_modules`.
-Production builds must emit the packaged WASM and notices without writing a public
-asset folder; webpack uses its standard URL asset handling. Run `test:package`
-before `test:browser`.
+Production builds of the automatic `/frozenight` entry must emit the packaged
+WASM and notices without writing a public asset folder; webpack uses its standard
+URL asset handling. Additional builds of the root, `/core` and
+`/frozenight/manual` entries must emit no engine assets in either Vite or webpack.
+The browser suite also exercises manual URLs and a folder deployed with the Node
+CLI. Run `test:package` before `test:browser`.
 
 `test:versioning` rehearses a patch bump in an isolated source copy. It transports
 the already-verified engine cache, checks SDK/deployment metadata and tarball

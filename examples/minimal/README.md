@@ -35,8 +35,9 @@ npm run dev
 ```
 
 Commit the updated package.json and lockfile in your app. The bundler loads the
-worker, WASM and licenses directly from the installed package and emits them in
-production. There are no asset-copy scripts or generated public files to commit.
+worker, WASM and licenses through `chess-engine-kit/frozenight` directly from the
+installed package and emits them in production. There are no asset-copy scripts
+or generated public files to commit.
 For SvelteKit, initialize in `onMount`; no static folder setup is needed.
 
 UCI uses coordinates (`g1f3`), not SAN (`Nf3`). Positive scores favor White. Mate

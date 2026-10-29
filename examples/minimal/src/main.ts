@@ -1,10 +1,10 @@
+import { createFrozenight } from "chess-engine-kit/frozenight";
 import {
   API_VERSION,
   EngineError,
-  createFrozenight,
   type AnalysisResult,
   type Score,
-} from "chess-engine-kit";
+} from "chess-engine-kit/core";
 
 const engine = createFrozenight({ hashMiB: 16 });
 const form = document.querySelector<HTMLFormElement>("#analysis")!;

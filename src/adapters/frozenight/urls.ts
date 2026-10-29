@@ -1,8 +1,4 @@
-/** URLs may be supplied by a bundler or an application's own asset server. */
-export type FrozenightAssetUrls = {
-  wasm: string | URL;
-  worker: string | URL;
-};
+import type { FrozenightAssetUrls } from "./options.js";
 
 // The package build injects literal, module-relative URL references so consuming
 // bundlers can discover and emit the prebuilt assets, including their notices.

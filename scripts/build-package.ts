@@ -103,7 +103,15 @@ fs.writeFileSync(
 );
 
 const sdk = await Bun.build({
-  entrypoints: ["src/index.ts"],
+  entrypoints: [
+    "src/index.ts",
+    "src/core.ts",
+    "src/frozenight.ts",
+    "src/frozenight-manual.ts",
+  ],
+  // Share client/error classes across entries while keeping URL references in
+  // the automatic Frozenight entry only. All JS outputs stay beside assets/.
+  splitting: true,
   target: "browser",
   format: "esm",
   external: ["chess.js"],

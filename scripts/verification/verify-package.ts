@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ensureEngine } from "../maintenance/engine/engine-cache.ts";
 import { verifyPackagedEngine } from "../release/engine-artifact.ts";
+import { verifyEntrypoints } from "./verify-entrypoints.ts";
 import type { EngineAssetManifest } from "../../src/core/types.ts";
 import {
   root,
@@ -34,6 +35,12 @@ if (
 for (const required of [
   "dist/index.js",
   "dist/types/index.d.ts",
+  "dist/core.js",
+  "dist/types/core.d.ts",
+  "dist/frozenight.js",
+  "dist/types/frozenight.d.ts",
+  "dist/frozenight-manual.js",
+  "dist/types/frozenight-manual.d.ts",
   "dist/bin/copy-assets.js",
   "LICENSE",
   "README.md",
@@ -106,6 +113,21 @@ for (const name of Object.keys(applications)) {
         `Bundler omitted or modified packaged asset: ${name}/${asset.file}`,
       );
   }
+  if (name === "browser-app") {
+    verifyEntrypoints(directory, "vite");
+    // Exercise the optional manual-folder path against the packaged Node CLI.
+    run("node", [
+      path.join(
+        directory,
+        "node_modules",
+        packed.name,
+        "dist/bin/copy-assets.js",
+      ),
+      "--to",
+      path.join(directory, "dist/manual-engine"),
+    ]);
+  }
+  if (name === "webpack-app") verifyEntrypoints(directory, "webpack");
 }
 
 fs.writeFileSync(
