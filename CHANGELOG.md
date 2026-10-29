@@ -5,6 +5,12 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+### Bug Fixes
+
+- Separate PR package verification from release preparation: test native/WASM
+  parity, versioning, npm/Bun consumers and browsers, then independently rebuild
+  the engine against the tested tarball once.
+
 ## [0.0.2] - 2026-10-29
 
 ### Security

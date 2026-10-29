@@ -93,7 +93,8 @@ export async function publishRelease(
   await verifyReleaseEngine(tarball, receipt);
 
   if (dryRun) {
-    // No registry lookup, credentials or publishing call is possible here
+    // Rehearse publication of an unpublished release candidate. npm may query
+    // the registry and rejects existing versions, so PR CI must not run this.
     dependencies.execute("npm", [
       "publish",
       tarball,
