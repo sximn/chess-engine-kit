@@ -1,12 +1,15 @@
 import {
   createFrozenight,
+  frozenightAssetUrls,
+} from "chess-engine-kit/frozenight";
+import { createFrozenight as createManualFrozenight } from "chess-engine-kit/frozenight/manual";
+import {
   API_VERSION,
   type ChessEngine,
   type EngineEvent,
   type AnalyzeRequest,
-} from "chess-engine-kit";
+} from "chess-engine-kit/core";
 const ROOT = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-const base = new URL("./engines/frozenight/", document.baseURI);
 const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
   apiVersion: API_VERSION,
   jobId,
@@ -17,7 +20,6 @@ const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
 });
 async function smoke(cycles = 1) {
   const engine: ChessEngine = createFrozenight({
-    assetBaseUrl: base,
     hashMiB: 16,
   });
   const events: EngineEvent[] = [];
@@ -79,7 +81,12 @@ async function smoke(cycles = 1) {
       cycles,
       terminalEvents: terminal.length,
       cancelled,
-      baseUrl: String(base),
+      assetUrls: Object.fromEntries(
+        Object.entries(frozenightAssetUrls()).map(([key, value]) => [
+          key,
+          key === "notices" ? value : String(value),
+        ]),
+      ),
       sharedMemory: ready.capabilities.sharedMemory,
     };
   } finally {
@@ -99,6 +106,21 @@ async function run() {
   }
 }
 Object.assign(window, { runEngineSmoke: smoke });
+Object.assign(window, {
+  runManualEngineSmoke: async (folder: boolean) => {
+    const engine = createManualFrozenight(
+      folder
+        ? { assetBaseUrl: new URL("./manual-engine/", document.baseURI) }
+        : { assetUrls: frozenightAssetUrls() },
+    );
+    try {
+      await engine.initialize();
+      return await engine.analyzePosition(make("manual", 3));
+    } finally {
+      engine.dispose();
+    }
+  },
+});
 document.querySelector("#run")!.addEventListener("click", () => void run());
 if ("serviceWorker" in navigator)
   void navigator.serviceWorker

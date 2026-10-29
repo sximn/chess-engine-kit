@@ -1,5 +1,26 @@
 # API guide
 
+## Package entry points
+
+```ts
+import { API_VERSION, EngineError, createWorkerEngine } from "chess-engine-kit/core";
+import type { ChessEngine, AnalyzeRequest } from "chess-engine-kit/core";
+import { createFrozenight, frozenightAssetUrls } from "chess-engine-kit/frozenight";
+```
+
+`chess-engine-kit/core` exports the engine-neutral API. The package root exports
+that same API. Neither includes Frozenight assets in consumer builds.
+`chess-engine-kit/frozenight` exports the automatic adapter, `frozenightManifest`,
+`frozenightAssetUrls`, `FrozenightOptions` and `FrozenightAssetUrls`. This entry
+includes the packaged WASM, worker and notices in consumer builds.
+
+`chess-engine-kit/frozenight/manual` exports `createFrozenight`,
+`frozenightManifest` and the option types, including `ManualFrozenightOptions`.
+It requires either `assetUrls` or `assetBaseUrl` and emits no packaged engine
+assets. Choose this entry for custom delivery; importing the automatic entry
+still includes its assets even if your application does not use them at runtime.
+Core client and error classes are shared across all entries.
+
 ## Positions, limits and scores
 
 `position.rootFen` is the starting position; `movesUci` is the legal move sequence
@@ -56,7 +77,8 @@ try {
 unsubscribe();
 ```
 
-Import `EngineError` from the package. Each accepted job has one terminal event:
+Import `EngineError` from `chess-engine-kit/core`. Each accepted job has one
+terminal event:
 `completed`, `cancelled` or `failed`. Invalid requests reject before replacing
 active work and do not emit an accepted-job terminal event. Use unique job IDs.
 Only one job is active per engine instance; a valid new request cancels the old
@@ -100,16 +122,50 @@ restart the worker after a failure; decide retries in your application.
 
 ## Assets, offline use and result caches
 
-Use `chess-engine-assets --to <public-folder>/engines/frozenight` before serving
-the app. The CLI verifies shipped assets, removes unchanged obsolete owned files,
-and preserves unrelated/modified obsolete files. Use a generated directory.
+`createFrozenight()` from `chess-engine-kit/frozenight` uses the worker and WASM
+shipped in `node_modules`. Literal
+`new URL("./asset", import.meta.url)` references let asset-aware bundlers serve
+them in development and include them in production output, with no copy scripts
+or generated public folder. URLs follow the bundler's deployment base, including
+subpaths. The same references include `LICENSE-MIT.txt`, `LICENSE-APACHE.txt`,
+`THIRD-PARTY-NOTICES.txt` and engine build metadata. Keep these files in deployments.
 
-Keep the copied `LICENSE-MIT.txt`, `LICENSE-APACHE.txt` and
-`THIRD-PARTY-NOTICES.txt` with the deployed worker and WASM; the notices cover
-the bundled third-party code.
+The package API does not depend on a framework or bundler plugin. This setup is
+tested with Vite 8 and webpack 5. Older
+Vite versions may require `optimizeDeps: { exclude: ["chess-engine-kit/frozenight"] }`
+to preserve module-relative URLs in development. Other tools must support this
+asset syntax or use explicit URLs. Importing and creating the engine remain
+SSR-safe; call `initialize()` in the browser.
 
-Subpath deployments should resolve the asset URL against the application base.
-Workers and assets must come from the application's origin.
+`frozenightAssetUrls()` returns `{ wasm, worker, notices }`, with notice URLs keyed
+by their original filenames. This can also be used for links to deployed licenses.
+The manifest retains the original filenames and hashes; bundlers may rename the
+output files. WASM integrity is checked against the packaged manifest regardless
+of its final URL.
+
+For applications that manage asset delivery themselves, use the manual entry and
+supply both URLs:
+
+```ts
+import { createFrozenight } from "chess-engine-kit/frozenight/manual";
+
+const engine = createFrozenight({
+  assetUrls: { wasm: "/engine/analysis.wasm", worker: "/engine/analysis.js" },
+});
+```
+
+Workers and WASM must be HTTP(S) assets on the application's origin. Keep them as
+separate files rather than inline data URLs. The package's `?no-inline` URL query
+prevents inlining in Vite; configure equivalent behavior if your tooling needs it.
+Custom URLs must point to the matching packaged engine version, and the host is
+responsible for deploying its accompanying notices.
+
+Without an asset-aware bundler, the optional
+`chess-engine-assets --to <public-folder>/engines/frozenight` CLI still copies and
+verifies the assets and licenses. Use the manual entry and pass
+`assetBaseUrl: new URL("./engines/frozenight/", document.baseURI)` to use that
+folder. The CLI removes unchanged obsolete owned files and preserves unrelated
+or modified files. Choose either `assetUrls` or `assetBaseUrl`, not both.
 
 Frozenight's optional CacheStorage caches verified WASM bytes. `offlineAssets`
 reports that WASM cache status; it does not prove the worker or page is available

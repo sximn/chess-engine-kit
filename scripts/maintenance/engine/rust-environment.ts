@@ -1,4 +1,5 @@
 import path from "node:path";
+import { rustVersion } from "./engine-inputs.ts";
 
 // Compiler/model overrides are not engine inputs. Keep host caches and network
 // configuration, but take build settings from the reviewed recipe and sources.
@@ -22,7 +23,7 @@ export function rustEnvironment(
   return {
     ...env,
     EVALFILE: path.resolve(engineRoot, "core/model.json.zst"),
-    RUSTUP_TOOLCHAIN: "1.90.0",
+    RUSTUP_TOOLCHAIN: rustVersion,
     RUSTC: inherited.ENGINE_CARGO
       ? path.resolve(path.dirname(inherited.ENGINE_CARGO), "rustc")
       : "rustc",

@@ -110,6 +110,7 @@ export async function packPackage({
 export const applications: Record<string, string> = {
   "browser-app": "tests/integration/browser-app",
   minimal: "examples/minimal",
+  "webpack-app": "tests/integration/webpack-app",
 };
 
 export async function installApplication(

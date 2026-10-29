@@ -31,36 +31,29 @@ Once published, install the experimental release:
 bun add --exact chess-engine-kit@next
 ```
 
-Copy its assets before development and production builds. In a Vite app:
+The worker, WASM and licenses are included in the package. Bundlers that support
+`new URL("./asset", import.meta.url)` discover them directly in `node_modules`,
+serve them in development and emit them into the production build. No copy
+command, extra package scripts or generated files in your source tree are needed.
+Package tests verify this with Vite 8 and webpack 5. See the
+[API guide](docs/API.md#assets-offline-use-and-result-caches) for
+custom URLs, older tooling and deployments without an asset-aware bundler.
 
-```json
-{
-  "scripts": {
-    "engine:assets": "chess-engine-assets --to public/engines/frozenight",
-    "dev": "bun run engine:assets && vite",
-    "build": "bun run engine:assets && vite build"
-  }
-}
-```
-
-For SvelteKit, use `static/engines/frozenight`. Serve the folder from your app's
-origin. These commands use Bun as the task runner. The published SDK and asset-copy
-CLI also support Node-based build tooling.
-
-The copied folder includes Frozenight's licenses and consolidated third-party
-notices. Keep these files with the deployed assets; see
-[third-party notices](THIRD_PARTY_NOTICES.md).
+Use `chess-engine-kit/core` for shared types, constants, errors and the generic
+worker client. The package root exposes the same core API. Import Frozenight
+from `chess-engine-kit/frozenight` to include its packaged assets, or use
+`chess-engine-kit/frozenight/manual` when your app supplies its own asset URLs.
+Core and manual imports emit no packaged engine assets.
 
 ## Analyze a position
 
 Run this in the browser, such as a component's mount hook:
 
 ```ts
-import { API_VERSION, createFrozenight } from "chess-engine-kit";
+import { API_VERSION } from "chess-engine-kit/core";
+import { createFrozenight } from "chess-engine-kit/frozenight";
 
-const engine = createFrozenight({
-  assetBaseUrl: new URL("./engines/frozenight/", document.baseURI),
-});
+const engine = createFrozenight();
 
 try {
   await engine.initialize();

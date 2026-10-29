@@ -28,6 +28,10 @@ export function makeEngineProject(directory: string) {
     path.join(directory, "scripts/maintenance/engine"),
     { recursive: true },
   );
+  fs.copyFileSync(
+    path.join(import.meta.dir, "../engine/frozenight/rust-toolchain.toml"),
+    path.join(directory, "engine/frozenight/rust-toolchain.toml"),
+  );
   fs.writeFileSync(
     path.join(directory, "package.json"),
     JSON.stringify({

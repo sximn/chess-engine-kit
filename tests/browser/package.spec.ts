@@ -4,6 +4,64 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { reportPath } from "../../scripts/lib.ts";
 
+test("manual entry runs with explicit URLs and a CLI-deployed folder", async ({
+  page,
+}) => {
+  await page.goto("./");
+  for (const folder of [false, true]) {
+    const result = await page.evaluate(
+      (folder) => (window as any).runManualEngineSmoke(folder),
+      folder,
+    );
+    expect(result.lines).toHaveLength(3);
+  }
+});
+
+test("webpack consumes the package with its standard asset handling on a subpath", async ({
+  page,
+}) => {
+  await page.goto("http://localhost:4179/webpack/");
+  const result = await page.evaluate(() => (window as any).runEngineSmoke());
+  expect(result.result.lines).toHaveLength(3);
+  for (const url of result.notices) {
+    expect(url).toContain("/webpack/");
+    expect((await page.request.get(url)).ok()).toBe(true);
+  }
+});
+
+test("development serves packaged assets from node_modules without copying", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  try {
+    const page = await context.newPage();
+    const assets: string[] = [];
+    page.on("request", (request) => {
+      if (/\.(wasm|js)\?no-inline/.test(request.url()))
+        assets.push(request.url());
+    });
+    await page.goto("http://localhost:4178/");
+    const result = await page.evaluate(() => (window as any).runEngineSmoke());
+    expect(result.result.lines).toHaveLength(3);
+    expect(
+      assets.some(
+        (url) =>
+          url.includes("/node_modules/chess-engine-kit/") &&
+          url.includes(".wasm"),
+      ),
+    ).toBe(true);
+    expect(
+      assets.some(
+        (url) =>
+          url.includes("/node_modules/chess-engine-kit/") &&
+          url.includes("worker-"),
+      ),
+    ).toBe(true);
+  } finally {
+    await context.close();
+  }
+});
+
 test("installed tarball runs real MultiPV and 100 cancellation/replacement cycles on a subpath", async ({
   page,
 }, info) => {
@@ -16,7 +74,8 @@ test("installed tarball runs real MultiPV and 100 cancellation/replacement cycle
   expect(result.result.lines).toHaveLength(3);
   expect(result.repetition.outcome).toBe("repetition");
   expect(result.sharedMemory).toBe(false);
-  expect(result.baseUrl).toContain("/review/engines/frozenight/");
+  expect(result.assetUrls.wasm).toContain("/review/assets/");
+  expect(result.assetUrls.worker).toContain("/review/assets/");
   expect(errors).toEqual([]);
   fs.writeFileSync(
     reportPath(`browser-app-${info.project.name}.json`),

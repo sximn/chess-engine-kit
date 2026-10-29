@@ -5,6 +5,21 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-29
+
+### Breaking Changes
+
+- Move Frozenight imports to `chess-engine-kit/frozenight`. The root and `/core`
+  expose only the engine-neutral API. Use `/frozenight/manual` for `assetUrls` or
+  `assetBaseUrl`; core and manual imports no longer emit packaged engine assets.
+
+### Added
+
+- Load packaged engine assets through standard module-relative URLs so bundlers
+  can serve them from `node_modules` and include them in production output without
+  copy scripts or generated source files. Add explicit asset URL overrides and
+  access to deployed license URLs; retain manual folder hosting as an option.
+
 ### Bug Fixes
 
 - Separate PR package verification from release preparation: test native/WASM

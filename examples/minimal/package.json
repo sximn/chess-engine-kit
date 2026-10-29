@@ -3,9 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "assets": "chess-engine-assets --to public/engines/frozenight",
-    "dev": "npm run assets && vite",
-    "build": "npm run assets && tsc --noEmit && vite build",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {

@@ -6,6 +6,8 @@ import { isDeepStrictEqual } from "node:util";
 import {
   engineInputKey,
   engineTools,
+  engineTarget,
+  rustVersion,
   inventory,
   projectRoot,
   validateEngine,
@@ -118,7 +120,7 @@ function compile(directory: string, cwd: string) {
   if (result.error) throw result.error;
   if (result.status !== 0)
     throw Error(
-      "Engine compilation failed. Install Rust 1.90.0 with the wasm32-unknown-unknown target. See docs/DEVELOPMENT.md#first-source-build.",
+      `Engine compilation failed. Install Rust ${rustVersion} with the ${engineTarget} target. See docs/DEVELOPMENT.md#first-source-build.`,
     );
 }
 

@@ -11,6 +11,9 @@ Original MIT/Apache notices are retained; this distribution elects MIT. See
 [third-party notices](../THIRD_PARTY_NOTICES.md) and the licenses shipped with assets.
 `THIRD-PARTY-NOTICES.txt` consolidates chess.js, Cargo and Rust standard-library
 notices as plain text, with matching texts shared between component entries.
+Cargo host build usage is distinguished from WASM usage. Rust dependencies follow
+the pinned compiler's WASM link inputs, with conservative in-tree attributions and
+applicable exceptions retained; see the [notice scope](../THIRD_PARTY_NOTICES.md).
 It ships alongside Frozenight's original `LICENSE-MIT.txt` and `LICENSE-APACHE.txt`.
 
 The browser port adds same-root MultiPV/root restrictions, preservation of
