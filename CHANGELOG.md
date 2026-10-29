@@ -5,6 +5,19 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+### Bug Fixes
+
+- Add extra polling time when checking registry during publishing to avoid action failures that lead to published packaged without a github release
+
+### Miscellaneous Chores
+
+- Remove unused dependency `vite`
+- Bump dependency `@playwright/test` to 1.64.1
+- Clean up what gets published within the package
+  - Remove examples
+  - Remove unnecessary docs
+
+
 ## [0.0.1] - 2026-10-28
 
 ### Added

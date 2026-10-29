@@ -46,25 +46,32 @@ jobs:
             echo "::error::Choose the release tag (for example v0.0.1) in Use workflow from. Releases must run from a tag so provenance identifies the correct source commit."
             exit 1
           fi
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: false
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+
       - name: Check tag, version, changelog, repository and commit
         id: release
         run: bun run release:check --tag "$RELEASE_TAG" --channel "$RELEASE_CHANNEL"
+
       - run: bun install --frozen-lockfile
+
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: 1.90.0
           targets: wasm32-unknown-unknown
+
       - name: Prefer Ubuntu archive for system packages
         run: |
           if [[ -f /etc/apt/apt-mirrors.txt ]]; then
@@ -75,16 +82,21 @@ jobs:
               sudo sed -i -E 's|https?://azure\.archive\.ubuntu\.com/ubuntu/?|https://archive.ubuntu.com/ubuntu/|g' "$source"
             fi
           done
+
       - name: Install Playwright system dependencies
         timeout-minutes: 10
         run: bunx playwright install-deps chromium firefox webkit
+
       - name: Install Playwright browsers
         timeout-minutes: 10
         run: bunx playwright install chromium firefox webkit
+
       - name: Build engine from source, independently rebuild, and test the exact package tarball
         run: bun run release:prepare
+
       - name: Rehearse npm publication without credentials
         run: bun run release:dry-run --tag "$RELEASE_CHANNEL"
+
       - name: Save the verified release artifact
         uses: actions/upload-artifact@v4
         with:
@@ -97,6 +109,7 @@ jobs:
             .build/release.json
             .build/release-notes.md
             .build/reports/
+
       - name: Explain the result
         env:
           WILL_PUBLISH: ${{ inputs.publish }}
@@ -113,6 +126,7 @@ jobs:
               echo "Run this workflow again from the same tag with the same channel and the publish checkbox selected when ready."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Save failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
@@ -128,7 +142,8 @@ jobs:
     needs: verify
     if: ${{ inputs.publish }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    # allow about 20 minutes of registry polling plus setup and upload time
+    timeout-minutes: 30
     environment: npm
     permissions:
       contents: read
@@ -139,17 +154,21 @@ jobs:
           ref: ${{ needs.verify.outputs.commit }}
           fetch-depth: 0
           persist-credentials: false
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
+
       - uses: actions/download-artifact@v4
         with:
           name: verified-release
           path: .build
+
       - name: Publish or resume an identical successful upload, then verify npm
         env:
           # Optional bootstrap credential for the first-ever package publication.
@@ -157,14 +176,19 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           RELEASE_PROVENANCE: ${{ github.event.repository.visibility == 'public' }}
         run: bun run release:publish --release-tag "$RELEASE_TAG" --tag "$RELEASE_CHANNEL"
-      - name: Save publication evidence
+
+      - name: Save publication evidence and diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: publication-evidence
           overwrite: true
           include-hidden-files: true
-          path: .build/reports/published.json
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            .build/reports/published.json
+            .build/reports/publication-status.json
 
   release:
     name: Create GitHub release from the changelog
@@ -179,17 +203,21 @@ jobs:
           ref: ${{ needs.verify.outputs.commit }}
           fetch-depth: 0
           persist-credentials: false
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.4
+
       - uses: actions/download-artifact@v4
         with:
           name: verified-release
           path: .build
+
       - uses: actions/download-artifact@v4
         with:
           name: publication-evidence
           path: .build/reports
+
       - name: Create or finish the GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
