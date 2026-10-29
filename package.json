@@ -1,6 +1,6 @@
 {
   "name": "chess-engine-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Engine-neutral browser chess analysis API with a prebuilt Frozenight WASM adapter.",
   "repository": {
     "type": "git",

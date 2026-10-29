@@ -5,6 +5,8 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-10-29
+
 ### Security
 
 - Pin all GitHub Actions in verification and publishing workflows to full commit
