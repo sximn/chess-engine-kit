@@ -71,6 +71,7 @@ jobs:
         with:
           toolchain: 1.90.0
           targets: wasm32-unknown-unknown
+          components: rust-src
 
       - name: Prefer Ubuntu archive for system packages
         run: |

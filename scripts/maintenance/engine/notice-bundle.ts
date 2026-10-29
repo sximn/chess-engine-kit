@@ -1,5 +1,6 @@
 // Maintenance-only conversion of upstream notices. Package builds copy the
 // committed result and never need Cargo, Rust documentation or this converter.
+import { engineTarget, rustVersion } from "./engine-inputs.ts";
 const normalize = (text: string) => text.replace(/\s+/g, " ").trim();
 
 function paragraphs(text: string): string {
@@ -52,10 +53,11 @@ export class NoticeBundle {
       "Third-party notices for Frozenight browser assets",
       "",
       "Frozenight's own notices are in LICENSE-MIT.txt and LICENSE-APACHE.txt.",
-      "This file covers chess.js, locked Cargo dependencies (including build-time",
-      "dependencies), and Rust 1.90.0 standard-library notices. The broad upstream",
-      "Rust component inventory is retained, including other compilation targets;",
-      "an entry here does not imply that component is included in this WASM.",
+      `This file covers chess.js and the ${engineTarget} release build.`,
+      "Cargo build-time notices are retained for code/data generation and marked",
+      `separately from WASM dependencies. Rust ${rustVersion} dependencies are selected from`,
+      "the compiler's WASM link inputs, before dead-code elimination. Rust's in-tree",
+      "attributions are retained conservatively, including source-level exceptions.",
       "",
       "Matching notice texts are printed once, ignoring only whitespace differences.",
       "Each component references its complete texts by [Nxxx]. Copyright statements",
@@ -124,6 +126,8 @@ export function addRustNotices(
   bundle: NoticeBundle,
   html: string,
   readLicense: (name: string) => string,
+  selectedDependencies: Set<string>,
+  supplementalHtml: string,
 ) {
   const body = html.match(/<body>([\s\S]*?)<\/body>/)?.[1];
   if (!body || !body.includes('id="in-tree-files"')) {
@@ -164,13 +168,37 @@ export function addRustNotices(
   });
 
   bundle.addComponent(
-    `Rust 1.90.0 standard library\nSource: Rust 1.90.0 share/doc/rust/COPYRIGHT-library.html\n\n${htmlText(parts[0])}\n\nIn-tree license texts:\n${references.join("\n")}`,
+    `Rust ${rustVersion} standard library\nSource: Rust ${rustVersion} share/doc/rust/COPYRIGHT-library.html\n\n${htmlText(parts[0])}\n\nIn-tree license texts:\n${references.join("\n")}`,
   );
 
-  for (let i = 1; i < parts.length; i += 2) {
-    const title = htmlText(parts[i]);
+  // The library-only inventory omits some dependencies present in distributed
+  // sysroots (e.g. miniz_oxide). Fall back to the full toolchain inventory, but
+  // only by exact name AND version from the pinned Rust source lockfile.
+  const sections = new Map<
+    string,
+    { title: string; section: string; source: string }
+  >();
+  for (const [contents, source] of [
+    [html, "COPYRIGHT-library.html"],
+    [supplementalHtml, "COPYRIGHT.html"],
+  ]) {
+    const chunks = contents.split(/<h3>([\s\S]*?)<\/h3>/);
+    for (let i = 1; i < chunks.length; i += 2) {
+      const title = htmlText(chunks[i]);
+      const id = /^📦 (\S+)$/.exec(title)?.[1];
+      if (!id) throw Error(`Unrecognized Rust dependency heading: ${title}`);
+      if (!sections.has(id))
+        sections.set(id, { title, section: chunks[i + 1], source });
+    }
+  }
 
-    let section = parts[i + 1];
+  for (const id of [...selectedDependencies].sort()) {
+    const entry = sections.get(id);
+    if (!entry)
+      throw Error(`Missing upstream Rust notice for linked dependency ${id}`);
+    const { title, source } = entry;
+
+    let section = entry.section;
     const refs: string[] = [];
 
     section = section.replace(
@@ -189,9 +217,15 @@ export function addRustNotices(
     if (/<(?:details|pre|summary)\b/.test(section)) {
       throw Error(`Unconverted Rust notice: ${title}`);
     }
+    if (!refs.length)
+      throw Error(`Missing complete upstream license/notice text: ${id}`);
 
     bundle.addComponent(
-      `Rust standard-library dependency: ${title}\n${htmlText(section).replace(/\n\nNotices:$/, "")}\n${refs.join("\n")}`,
+      `Rust standard-library dependency: ${title}\nScope: WASM link input\nSource: Rust ${rustVersion} share/doc/rust/${source}\n${htmlText(
+        section,
+      )
+        .replace(/\n\nNotices:$/, "")
+        .replace(/\n\nIn libstd: (?:Yes|No)/, "")}\n${refs.join("\n")}`,
     );
   }
 }

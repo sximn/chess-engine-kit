@@ -75,6 +75,7 @@ if (import.meta.main) {
   const args = process.argv.slice(2);
   if (args.length && (args.length !== 2 || args[0] !== "--package"))
     throw Error("Use engine:verify [--package <tested-tarball>].");
+  run("bun", ["scripts/maintenance/engine/engine-notices.ts", "--check"]);
   const report = reportPath("engine-verification.json");
   fs.rmSync(report, { force: true });
   const fingerprint = releaseFingerprint();
@@ -133,18 +134,6 @@ if (import.meta.main) {
       { cwd: temp },
     );
     compareEngineArtifacts(baseline, rebuilt);
-    if (
-      !fs
-        .readFileSync(path.join(root, "engine/frozenight/dependencies.json"))
-        .equals(
-          fs.readFileSync(
-            path.join(temp, "engine/frozenight/dependencies.json"),
-          ),
-        )
-    )
-      throw Error(
-        "Reviewed engine dependency inventory is stale. Run bun run engine:notices and review its changes.",
-      );
     if (
       fingerprint !== releaseFingerprint() ||
       commit !== releaseCommit() ||

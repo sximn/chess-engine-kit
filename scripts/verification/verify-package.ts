@@ -31,6 +31,14 @@ if (
 ) {
   throw Error("Development files leaked into the runtime package");
 }
+if (
+  packed.files.some((file) =>
+    /(^|\/)(fixtures\/|tactical-corpus\.json$)/.test(file),
+  )
+)
+  throw Error(
+    "Test fixtures (including the CC0 tactical corpus) leaked into the runtime package",
+  );
 
 for (const required of [
   "dist/index.js",

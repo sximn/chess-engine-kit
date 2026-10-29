@@ -20,6 +20,7 @@ const fingerprint = releaseFingerprint();
 const commit = releaseCommit();
 
 run("bun", ["run", "check"]);
+run("bun", ["scripts/maintenance/engine/engine-notices.ts", "--check"]);
 // Release preparation always builds from source, even when a local cache exists.
 const engine = ensureEngine({ force: true });
 run("bun", ["run", "engine:verify"]);

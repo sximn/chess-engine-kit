@@ -4,11 +4,47 @@ import { createHash } from "node:crypto";
 
 export const projectRoot = path.resolve(import.meta.dir, "../../..");
 export const engineTools = "scripts/maintenance/engine";
+
+const { toolchain } = Bun.TOML.parse(
+  fs.readFileSync(
+    path.join(projectRoot, "engine/frozenight/rust-toolchain.toml"),
+    "utf8",
+  ),
+) as { toolchain: { channel: string; targets: string[] } };
+
+if (
+  !/^\d+\.\d+\.\d+$/.test(toolchain.channel) ||
+  toolchain.targets.length !== 1
+) {
+  throw Error(
+    "Pin one Rust release and one WASM target in rust-toolchain.toml",
+  );
+}
+
+export const rustVersion = toolchain.channel;
+export const engineTarget = toolchain.targets[0];
+
+export function engineCargoArgs(root: string, command = "build") {
+  return [
+    command,
+    "--manifest-path",
+    root + "/Cargo.toml",
+    "--locked",
+    "--release",
+    "--target",
+    engineTarget,
+    "-p",
+    "upapawn-engine",
+    "--lib",
+  ];
+}
+
 export const licenseFiles = [
   "LICENSE-MIT.txt",
   "LICENSE-APACHE.txt",
   "THIRD-PARTY-NOTICES.txt",
 ];
+
 export const canonicalFlags = [
   "-C",
   "link-arg=--max-memory=268435456",
@@ -16,7 +52,31 @@ export const canonicalFlags = [
   "link-arg=-zstack-size=1048576",
   "--remap-path-prefix=<engine-root>=/engine/frozenight",
   "--remap-path-prefix=<cargo-home>=/cargo",
+  // Installed rust-src changes std source spans. Use the compiler's original
+  // paths so warm builds and fresh builds agree whether sources are installed.
+  "--remap-path-prefix=<rust-source>=/rustc/<rust-commit>",
 ];
+
+export function engineRustFlags(
+  engineRoot: string,
+  cargoHome: string,
+  sysroot: string,
+  compiler: string,
+) {
+  const commit = /^commit-hash: ([a-f0-9]{40})$/m.exec(compiler)?.[1];
+  if (!commit) {
+    throw Error("Cannot identify pinned Rust compiler commit");
+  }
+
+  return canonicalFlags.map((flag) =>
+    flag
+      .replace("<engine-root>", engineRoot)
+      .replace("<cargo-home>", cargoHome)
+      .replace("<rust-source>", path.join(sysroot, "lib/rustlib/src/rust"))
+      .replace("<rust-commit>", commit),
+  );
+}
+
 export const digest = (bytes: Uint8Array | string) =>
   createHash("sha256").update(bytes).digest("hex");
 
@@ -117,7 +177,7 @@ export function validateEngine(
     manifest.networkHash !== source.modelSha256 ||
     typeof manifest.buildHost !== "string" ||
     !/^[a-z0-9_]+(?:-[a-z0-9_]+){2,}$/.test(manifest.buildHost) ||
-    manifest.toolchain !== "Rust 1.90.0" ||
+    manifest.toolchain !== `Rust ${rustVersion}` ||
     !/^[a-f0-9]{64}$/.test(manifest.buildHash) ||
     !/^engine-[a-f0-9]{16}\.wasm$/.test(manifest.wasmFile)
   )

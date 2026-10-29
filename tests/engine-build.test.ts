@@ -61,7 +61,11 @@ test("WASM builds use local pinned Rust, record its host and reject failed rebui
       path.join(tools, "rustc"),
       `#!${process.execPath}
 import fs from "node:fs";
-console.log("release: " + fs.readFileSync(${JSON.stringify(version)}, "utf8") + "\\nhost: aarch64-apple-darwin");
+if (process.argv.includes("-vV")) {
+  console.log("release: " + fs.readFileSync(${JSON.stringify(version)}, "utf8"));
+  console.log("host: aarch64-apple-darwin");
+  console.log("commit-hash: " + "1".repeat(40));
+} else console.log(${JSON.stringify(path.join(tools, "sysroot"))});
 `,
       { mode: 0o755 },
     );
@@ -123,6 +127,12 @@ fs.writeFileSync(artifact, Buffer.from([0, 97, 115, 109, 1, 0, 0, 0]));
         `--remap-path-prefix=${path.join(directory, ".build/cargo")}=/cargo`,
       ),
     );
+    assert.ok(
+      env.CARGO_ENCODED_RUSTFLAGS.includes(
+        `--remap-path-prefix=${path.join(tools, "sysroot/lib/rustlib/src/rust")}=/rustc/${"1".repeat(40)}`,
+      ),
+      "Installed Rust sources must not change embedded standard-library paths",
+    );
     fs.unlinkSync(invocation);
     fs.writeFileSync(version, "1.91.0");
     const wrongVersion = run();
@@ -148,20 +158,28 @@ test("notice generation uses the configured Cargo's Rust compiler with a cold ca
       "tools",
       "engine/frozenight",
       "assets/frozenight",
-      "scripts",
+      "scripts/maintenance/engine",
       "node_modules/chess.js",
       "sysroot/share/doc/rust/licenses",
+      "sysroot/lib/rustlib/src/rust/library/std",
+      "sysroot/lib/rustlib/src/rust/library/compiler-builtins/compiler-builtins",
     ])
       fs.mkdirSync(path.join(directory, name), { recursive: true });
     for (const name of [
       "engine-notices.ts",
       "notice-bundle.ts",
       "rust-environment.ts",
+      "engine-inputs.ts",
+      "notice-inventory.ts",
     ])
       fs.copyFileSync(
         path.join("scripts/maintenance/engine", name),
-        path.join(directory, "scripts", name),
+        path.join(directory, "scripts/maintenance/engine", name),
       );
+    fs.copyFileSync(
+      "engine/frozenight/rust-toolchain.toml",
+      path.join(directory, "engine/frozenight/rust-toolchain.toml"),
+    );
     fs.writeFileSync(
       path.join(directory, "package.json"),
       JSON.stringify({ dependencies: { "chess.js": "1.4.0" } }),
@@ -185,12 +203,24 @@ test("notice generation uses the configured Cargo's Rust compiler with a cold ca
     const rustc = path.join(directory, "tools/rustc");
     fs.writeFileSync(
       path.join(directory, "tools/cargo"),
-      `#!${process.execPath}\nif (process.env.RUSTC !== ${JSON.stringify(rustc)}) { console.error("No matching Rust compiler configured"); process.exit(1); }\nconsole.log(JSON.stringify({packages:[]}));\n`,
+      `#!${process.execPath}
+if (process.env.RUSTC !== ${JSON.stringify(rustc)}) { console.error("No matching Rust compiler configured"); process.exit(1); }
+require("node:fs").writeFileSync(${JSON.stringify(path.join(directory, "cargo-invoked"))}, "called");
+if (process.argv.includes("rustc")) {
+  console.log(JSON.stringify({reason:"compiler-artifact", package_id:"engine", filenames:[process.env.CARGO_TARGET_DIR + "/wasm32-unknown-unknown/release/engine.wasm"]}));
+  for (const name of ["std", "compiler_builtins"]) console.log(JSON.stringify(${JSON.stringify(path.join(directory, "sysroot/target-libdir"))} + "/lib" + name + "-abc123.rlib"));
+} else console.log(JSON.stringify({packages:[{id:"engine", source:null}]}));
+`,
       { mode: 0o755 },
     );
     fs.writeFileSync(
       rustc,
-      `#!${process.execPath}\nconsole.log(${JSON.stringify(path.join(directory, "sysroot"))});\n`,
+      `#!${process.execPath}
+if (process.argv.includes("-vV")) {
+  console.log("release: 1.90.0");
+  console.log("commit-hash: " + "1".repeat(40));
+} else console.log(process.argv.includes("target-libdir") ? ${JSON.stringify(path.join(directory, "sysroot/target-libdir"))} : ${JSON.stringify(path.join(directory, "sysroot"))});
+`,
       { mode: 0o755 },
     );
     fs.writeFileSync(
@@ -201,8 +231,25 @@ test("notice generation uses the configured Cargo's Rust compiler with a cold ca
       path.join(directory, "sysroot/share/doc/rust/licenses/MIT.txt"),
       "Rust license fixture",
     );
+    fs.writeFileSync(
+      path.join(directory, "sysroot/share/doc/rust/COPYRIGHT.html"),
+      "<body></body>",
+    );
+    const source = path.join(directory, "sysroot/lib/rustlib/src/rust/library");
+    fs.writeFileSync(
+      path.join(source, "Cargo.lock"),
+      'version = 4\n[[package]]\nname = "std"\nversion = "0.0.0"\n[[package]]\nname = "compiler_builtins"\nversion = "0.0.0"\n',
+    );
+    for (const [dir, name] of [
+      ["std", "std"],
+      ["compiler-builtins/compiler-builtins", "compiler_builtins"],
+    ])
+      fs.writeFileSync(
+        path.join(source, dir, "Cargo.toml"),
+        `[package]\nname = "${name}"\nversion = "0.0.0"\nlicense = "MIT OR Apache-2.0"\n`,
+      );
     const result = Bun.spawnSync(
-      [process.execPath, "scripts/engine-notices.ts"],
+      [process.execPath, "scripts/maintenance/engine/engine-notices.ts"],
       {
         cwd: directory,
         env: {
@@ -220,6 +267,32 @@ test("notice generation uses the configured Cargo's Rust compiler with a cold ca
     );
     assert.match(notices, /Chess license fixture/);
     assert.match(notices, /Rust license fixture/);
+    fs.unlinkSync(path.join(directory, "cargo-invoked"));
+    fs.unlinkSync(path.join(source, "Cargo.lock"));
+    const missingSource = Bun.spawnSync(
+      [
+        process.execPath,
+        "scripts/maintenance/engine/engine-notices.ts",
+        "--check",
+      ],
+      {
+        cwd: directory,
+        env: {
+          ...process.env,
+          ENGINE_CARGO: path.join(directory, "tools/cargo"),
+        },
+      },
+    );
+    assert.notEqual(missingSource.exitCode, 0);
+    assert.match(
+      missingSource.stderr.toString(),
+      /Run once: rustup component add rust-src/,
+    );
+    assert.equal(
+      fs.existsSync(path.join(directory, "cargo-invoked")),
+      false,
+      "Preflight must fail before Cargo compilation",
+    );
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

@@ -16,9 +16,14 @@ On macOS, Linux and other supported Rust hosts, install Rust 1.90.0 with target
 With rustup installed, prepare the toolchain with:
 
 ```sh
-rustup toolchain install 1.90.0 --profile minimal
-rustup target add --toolchain 1.90.0 wasm32-unknown-unknown
+rustup toolchain install 1.90.0 --profile minimal --target wasm32-unknown-unknown --component rust-src
 ```
+
+The toolchain and target are defined in `engine/frozenight/rust-toolchain.toml`.
+`rust-src` is required for maintainer notice verification (`engine:notices`,
+`engine:verify` and `release:prepare`); ordinary builds and npm consumers do not
+read it. Release preparation checks these prerequisites before compiling.
+For an existing installation, run `rustup component add rust-src --toolchain 1.90.0` once.
 
 The manifest records the actual compiler host. Different hosts can order WASM
 functions differently even with the same Rust version and target, so byte-for-byte
@@ -113,7 +118,7 @@ bun run release:dry-run
 `engine:verify` compares the current validated build with a fresh compilation in
 an independent source/target directory. It also regenerates notices and compares
 them with the reviewed records. WASM bytes, manifest identities, license text and
-dependency records must match. Only informational gzip/Brotli size estimates may
+component inventory must match. Only informational gzip/Brotli size estimates may
 vary between compression implementations. Temporary work stays under `.build/`
 and is removed after success or failure.
 
@@ -156,7 +161,8 @@ limits so failed downloads can be diagnosed independently.
 Native reference checks and notice regeneration also require Rust 1.90.0 on the
 host. `ENGINE_CARGO`, `CARGO_HOME` and `RUSTUP_HOME` support custom locations. When
 `ENGINE_CARGO` is set, its companion `rustc` is used consistently. Missing locked
-Cargo sources are fetched automatically for notices.
+Cargo sources are fetched automatically for notices. The source-build setup above
+also installs the pinned compiler's source component for notice verification.
 
 Native builds always select the reviewed model and Rust toolchain. Ambient
 `EVALFILE`, compiler wrappers, Rust flags and Cargo profile/target/build overrides
@@ -177,13 +183,21 @@ bun scripts/maintenance/fixtures/freeze-native-fixtures.ts
 bun run release:prepare
 ```
 
-`engine:notices` updates the reviewed text files in `assets/frozenight/` and
-`engine/frozenight/dependencies.json`. It retains original Frozenight licenses
-and consolidates chess.js, locked Cargo and Rust standard-library notices as
-plain text. Matching texts are shared after whitespace normalization; copyright
-statements and license wording are retained. The broad Rust component inventory,
-including other targets, is retained. Review and commit these records; generated
-WASM, manifests and build reports remain ignored.
+`engine:notices` updates only the reviewed notice files in `assets/frozenight/`.
+It compiles the release library in a temporary target directory using the normal
+build's target and flags. Cargo's compilation units identify engine crates and
+host build tools. The compiler's WASM link inputs identify standard-library crates;
+the pinned toolchain's own source lockfile supplies their versions. Complete license
+texts come from that toolchain and the compiled Cargo sources. Unknown components
+or missing notices fail generation. There is no separate dependency inventory to
+maintain: the generated notice file contains each selected component and its usage.
+
+Original Frozenight licenses, copyright statements and applicable exceptions are
+retained. Matching notice texts are shared after whitespace normalization. Review
+and commit the refreshed notices; `engine:verify` independently regenerates and
+compares them. See [third-party notices](../THIRD_PARTY_NOTICES.md) for scope.
+
+Version 0.0.2 copied Rust's entire copyright inventory, including `fortanix-sgx-abi` under MPL-2.0. Rust 1.90.0's [standard-library manifest](https://github.com/rust-lang/rust/blob/1.90.0/library/std/Cargo.toml#L61-L64) declares that crate only for `x86_64-fortanix-unknown-sgx`. It is absent from this engine's Cargo compilation units, WASM target libraries and actual linker inputs. The generator now selects applicable components using those build inputs; it does not exclude any license identifier.
 
 The fixture tools never run automatically to bless changed output. The other
 occasional commands are `scripts/maintenance/fixtures/create-engine-corpus.ts`
@@ -193,7 +207,7 @@ native expectations after intentionally changing the deterministic corpus.
 ## Repository layout
 
 - `src/`, `bin/`: SDK and asset-copy CLI sources.
-- `engine/`: pinned Rust/model inputs, upstream licenses and dependency inventory.
+- `engine/`: pinned Rust/model inputs, upstream licenses and Cargo dependency definitions.
 - `assets/frozenight/`: reviewed licensing records only.
 - `scripts/maintenance/engine/`: compiler, cache and independent verification.
 - `scripts/verification/`: package, version and browser application checks.
