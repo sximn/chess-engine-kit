@@ -31,25 +31,13 @@ Once published, install the experimental release:
 bun add --exact chess-engine-kit@next
 ```
 
-Copy its assets before development and production builds. In a Vite app:
-
-```json
-{
-  "scripts": {
-    "engine:assets": "chess-engine-assets --to public/engines/frozenight",
-    "dev": "bun run engine:assets && vite",
-    "build": "bun run engine:assets && vite build"
-  }
-}
-```
-
-For SvelteKit, use `static/engines/frozenight`. Serve the folder from your app's
-origin. These commands use Bun as the task runner. The published SDK and asset-copy
-CLI also support Node-based build tooling.
-
-The copied folder includes Frozenight's licenses and consolidated third-party
-notices. Keep these files with the deployed assets; see
-[third-party notices](THIRD_PARTY_NOTICES.md).
+The worker, WASM and licenses are included in the package. Bundlers that support
+`new URL("./asset", import.meta.url)` discover them directly in `node_modules`,
+serve them in development and emit them into the production build. No copy
+command, extra package scripts or generated files in your source tree are needed.
+Package tests verify this with Vite 8 and webpack 5. See the
+[API guide](docs/API.md#assets-offline-use-and-result-caches) for
+custom URLs, older tooling and deployments without an asset-aware bundler.
 
 ## Analyze a position
 
@@ -58,9 +46,7 @@ Run this in the browser, such as a component's mount hook:
 ```ts
 import { API_VERSION, createFrozenight } from "chess-engine-kit";
 
-const engine = createFrozenight({
-  assetBaseUrl: new URL("./engines/frozenight/", document.baseURI),
-});
+const engine = createFrozenight();
 
 try {
   await engine.initialize();

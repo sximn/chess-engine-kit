@@ -34,9 +34,10 @@ npm install --save-exact chess-engine-kit@next
 npm run dev
 ```
 
-Commit the updated package.json and lockfile in your app. Asset copying is already
-included in the development and production scripts. For SvelteKit, adapt the
-destination to `static/engines/frozenight` and initialize in `onMount`.
+Commit the updated package.json and lockfile in your app. The bundler loads the
+worker, WASM and licenses directly from the installed package and emits them in
+production. There are no asset-copy scripts or generated public files to commit.
+For SvelteKit, initialize in `onMount`; no static folder setup is needed.
 
 UCI uses coordinates (`g1f3`), not SAN (`Nf3`). Positive scores favor White. Mate
 distance is in plies. Frozenight requires a node limit. Preserve original FEN plus

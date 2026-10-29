@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ensureEngine } from "../maintenance/engine/engine-cache.ts";
 import { verifyPackagedEngine } from "../release/engine-artifact.ts";
+import type { EngineAssetManifest } from "../../src/core/types.ts";
 import {
   root,
   run,
@@ -9,6 +10,7 @@ import {
   applications,
   installApplication,
   reportPath,
+  sha256,
 } from "../lib.ts";
 
 run("bun", ["scripts/build-package.ts"]);
@@ -78,15 +80,31 @@ for (const name of Object.keys(applications)) {
 
   run(name === "minimal" ? "npm" : "bun", ["run", "build"], { cwd: directory });
 
-  const manifest = JSON.parse(
+  if (fs.existsSync(path.join(directory, "public"))) {
+    throw Error("Consumer builds must not create an engine folder in public");
+  }
+  const manifest: EngineAssetManifest = JSON.parse(
     fs.readFileSync(
-      path.join(directory, "dist/engines/frozenight/manifest.json"),
+      path.join(root, "dist/assets/frozenight/manifest.json"),
       "utf8",
     ),
   );
-
-  if (manifest.packageVersion !== packed.version) {
-    throw Error("Deployed assets do not match the release version");
+  const emitted = new Set<string>();
+  function inspect(folder: string) {
+    for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
+      const file = path.join(folder, entry.name);
+      if (entry.isDirectory()) inspect(file);
+      else emitted.add(sha256(fs.readFileSync(file)));
+    }
+  }
+  inspect(path.join(directory, "dist"));
+  // Consumer bundlers may minify the worker. WASM and legal notices must retain
+  // their exact bytes; browser tests verify that the emitted worker executes.
+  for (const asset of [manifest.wasm, ...manifest.notices]) {
+    if (!emitted.has(asset.sha256))
+      throw Error(
+        `Bundler omitted or modified packaged asset: ${name}/${asset.file}`,
+      );
   }
 }
 
@@ -97,7 +115,11 @@ fs.writeFileSync(
       ...packed,
       file: path.relative(root, packed.file),
       applications: Object.keys(applications),
-      packageManagers: { "browser-app": "bun", minimal: "npm" },
+      packageManagers: {
+        "browser-app": "bun",
+        minimal: "npm",
+        "webpack-app": "bun",
+      },
       installScripts: false,
     },
     null,
@@ -106,5 +128,5 @@ fs.writeFileSync(
 );
 
 console.log(
-  `Verified ${packed.name}@${packed.version} in the Bun browser app and npm minimal example. Tarball: ${path.relative(root, packed.file)}`,
+  `Verified ${packed.name}@${packed.version} in Vite and webpack consumers with Bun and npm. Tarball: ${path.relative(root, packed.file)}`,
 );

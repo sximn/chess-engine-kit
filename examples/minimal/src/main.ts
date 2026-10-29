@@ -6,11 +6,7 @@ import {
   type Score,
 } from "chess-engine-kit";
 
-// Vite's relative base and document.baseURI also work under a deployment subpath.
-const engine = createFrozenight({
-  assetBaseUrl: new URL("./engines/frozenight/", document.baseURI),
-  hashMiB: 16,
-});
+const engine = createFrozenight({ hashMiB: 16 });
 const form = document.querySelector<HTMLFormElement>("#analysis")!;
 const fen = document.querySelector<HTMLTextAreaElement>("#fen")!;
 const moves = document.querySelector<HTMLInputElement>("#moves")!;

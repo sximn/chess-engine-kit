@@ -7,9 +7,13 @@ import {
 } from "../../core/types.js";
 import { FROZENIGHT_CAPABILITIES } from "./capabilities.js";
 import { FROZENIGHT_MANIFEST } from "./manifest.js";
-import { assetBaseUrl, loadFrozenightAssets } from "./assets.js";
+import { assetBaseUrl, assetUrl, loadFrozenightAssets } from "./assets.js";
+import { frozenightAssetUrls, type FrozenightAssetUrls } from "./urls.js";
 import { validateFrozenightRequest } from "./validation.js";
 export type FrozenightOptions = {
+  /** Override both URLs when the host manages asset delivery itself. */
+  assetUrls?: FrozenightAssetUrls;
+  /** Optional manually served folder; otherwise use the package's assets. */
   assetBaseUrl?: string | URL;
   hashMiB?: number;
   cacheAssets?: boolean;
@@ -17,7 +21,22 @@ export type FrozenightOptions = {
   supervision?: WorkerClientOptions;
 };
 export function createFrozenight(options: FrozenightOptions = {}): ChessEngine {
-  const base = options.assetBaseUrl ?? "/engines/frozenight/";
+  if (options.assetUrls && options.assetBaseUrl !== undefined)
+    throw new EngineError(
+      "INVALID_OPTIONS",
+      "Choose assetUrls or assetBaseUrl, not both.",
+    );
+  const urls = () => {
+    if (options.assetUrls) return options.assetUrls;
+    if (options.assetBaseUrl !== undefined) {
+      const base = assetBaseUrl(options.assetBaseUrl);
+      return {
+        wasm: new URL(FROZENIGHT_MANIFEST.wasm.file, base),
+        worker: new URL(FROZENIGHT_MANIFEST.worker.file, base),
+      };
+    }
+    return frozenightAssetUrls();
+  };
   const configure = (values: EngineOptions) => {
     if (Object.keys(values).some((key) => key !== "hashMiB"))
       throw new EngineError("INVALID_OPTIONS", "Unknown Frozenight option.");
@@ -46,17 +65,17 @@ export function createFrozenight(options: FrozenightOptions = {}): ChessEngine {
       loadAssets: (signal) =>
         loadFrozenightAssets(
           FROZENIGHT_MANIFEST,
-          base,
+          urls().wasm,
           options.cacheAssets !== false,
           signal,
         ),
       createWorker:
         options.workerFactory ??
         (() =>
-          new Worker(
-            new URL(FROZENIGHT_MANIFEST.worker.file, assetBaseUrl(base)),
-            { type: "module", name: "Frozenight analysis" },
-          )),
+          new Worker(assetUrl(urls().worker), {
+            type: "module",
+            name: "Frozenight analysis",
+          })),
       analysisMessage: (request, settings) => ({
         type: "analyze",
         request,

@@ -21,6 +21,18 @@ export default defineConfig({
       url: "http://localhost:4177/minimal/",
       reuseExistingServer: false,
     },
+    {
+      command: "bun run dev --host 127.0.0.1 --port 4178 --strictPort",
+      cwd: ".build/apps/browser-app",
+      url: "http://localhost:4178/",
+      reuseExistingServer: false,
+    },
+    {
+      command:
+        "bun scripts/verification/serve-test-app.ts --app webpack-app --base /webpack/ --port 4179",
+      url: "http://localhost:4179/webpack/",
+      reuseExistingServer: false,
+    },
   ],
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },

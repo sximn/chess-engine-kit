@@ -5,6 +5,13 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+### Added
+
+- Load packaged engine assets through standard module-relative URLs so bundlers
+  can serve them from `node_modules` and include them in production output without
+  copy scripts or generated source files. Add explicit asset URL overrides and
+  access to deployed license URLs; retain manual folder hosting as an option.
+
 ### Bug Fixes
 
 - Separate PR package verification from release preparation: test native/WASM

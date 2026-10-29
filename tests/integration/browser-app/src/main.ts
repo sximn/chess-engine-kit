@@ -1,12 +1,12 @@
 import {
   createFrozenight,
+  frozenightAssetUrls,
   API_VERSION,
   type ChessEngine,
   type EngineEvent,
   type AnalyzeRequest,
 } from "chess-engine-kit";
 const ROOT = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-const base = new URL("./engines/frozenight/", document.baseURI);
 const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
   apiVersion: API_VERSION,
   jobId,
@@ -17,7 +17,6 @@ const make = (jobId: string, multiPv = 3): AnalyzeRequest => ({
 });
 async function smoke(cycles = 1) {
   const engine: ChessEngine = createFrozenight({
-    assetBaseUrl: base,
     hashMiB: 16,
   });
   const events: EngineEvent[] = [];
@@ -79,7 +78,12 @@ async function smoke(cycles = 1) {
       cycles,
       terminalEvents: terminal.length,
       cancelled,
-      baseUrl: String(base),
+      assetUrls: Object.fromEntries(
+        Object.entries(frozenightAssetUrls()).map(([key, value]) => [
+          key,
+          key === "notices" ? value : String(value),
+        ]),
+      ),
       sharedMemory: ready.capabilities.sharedMemory,
     };
   } finally {

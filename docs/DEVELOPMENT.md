@@ -84,10 +84,13 @@ Parity is a deterministic fidelity check, not a measure of engine strength.
 
 `test:package` packs the SDK, validates the engine and deployment manifests inside
 the archive, then installs that exact tarball into isolated copies of the browser
-app and minimal example under `.build/apps/`. Bun and npm disable install scripts;
+app, minimal example and webpack consumer under `.build/apps/`. Bun and npm disable install scripts;
 every installed package file must match the archive. Their production builds are
 served at subpaths for Chromium, Firefox and WebKit tests, including real analysis,
-cancellation, corrupt assets, offline reload and the minimal UI. Run `test:package`
+cancellation, corrupt assets, offline reload and the minimal UI. A Vite development
+server also verifies optimized dependencies resolve directly to `node_modules`.
+Production builds must emit the packaged WASM and notices without writing a public
+asset folder; webpack uses its standard URL asset handling. Run `test:package`
 before `test:browser`.
 
 `test:versioning` rehearses a patch bump in an isolated source copy. It transports

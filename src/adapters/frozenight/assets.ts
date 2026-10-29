@@ -19,6 +19,20 @@ export function assetBaseUrl(value: string | URL): URL {
     );
   return base;
 }
+export function assetUrl(value: string | URL): URL {
+  if (typeof location === "undefined")
+    throw new EngineError(
+      "UNSUPPORTED_BROWSER",
+      "Initialize the engine in a browser.",
+    );
+  const url = new URL(value, location.href);
+  if (url.origin !== location.origin || !/^https?:$/.test(url.protocol))
+    throw new EngineError(
+      "INVALID_OPTIONS",
+      "Engine assets must be served from the application origin.",
+    );
+  return url;
+}
 async function digest(bytes: ArrayBuffer) {
   return [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))]
     .map((x) => x.toString(16).padStart(2, "0"))
@@ -26,7 +40,7 @@ async function digest(bytes: ArrayBuffer) {
 }
 export async function loadFrozenightAssets(
   manifest: EngineAssetManifest,
-  base: string | URL,
+  wasmUrl: string | URL,
   useCache: boolean,
   signal?: AbortSignal,
 ) {
@@ -39,7 +53,7 @@ export async function loadFrozenightAssets(
       "UNSUPPORTED_BROWSER",
       "This environment cannot run local WebAssembly analysis.",
     );
-  const url = new URL(manifest.wasm.file, assetBaseUrl(base)).href;
+  const url = assetUrl(wasmUrl).href;
   let cache: Cache | undefined;
   if (useCache)
     try {

@@ -5,6 +5,65 @@ import path from "node:path";
 import os from "node:os";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { assetBaseUrl, assetUrl } from "../src/adapters/frozenight/assets.ts";
+
+test("asset URLs allow bundler queries and reject cross-origin or inline assets", () => {
+  const original = Object.getOwnPropertyDescriptor(globalThis, "location");
+  Object.defineProperty(globalThis, "location", {
+    configurable: true,
+    value: new URL("https://app.example/review/"),
+  });
+  try {
+    assert.equal(
+      assetUrl("/assets/engine.wasm?no-inline").href,
+      "https://app.example/assets/engine.wasm?no-inline",
+    );
+    assert.equal(
+      assetBaseUrl("./engine").href,
+      "https://app.example/review/engine/",
+    );
+    for (const value of [
+      "https://cdn.example/engine.wasm",
+      "http://app.example/engine.wasm",
+      "data:application/wasm;base64,AAAA",
+      "blob:https://app.example/worker",
+    ])
+      assert.throws(() => assetUrl(value), /application origin/);
+  } finally {
+    if (original) Object.defineProperty(globalThis, "location", original);
+    else Reflect.deleteProperty(globalThis, "location");
+  }
+});
+
+test("packaged URLs retain literal paths to all verified assets and work without browser globals", async () => {
+  const sdk: typeof import("../src/index.ts") = await import(
+    new URL("../dist/index.js", import.meta.url).href
+  );
+  const urls = sdk.frozenightAssetUrls();
+  const manifest = sdk.frozenightManifest;
+  for (const [asset, url] of [
+    [manifest.wasm, urls.wasm],
+    [manifest.worker, urls.worker],
+    ...manifest.notices.map(
+      (notice) => [notice, urls.notices[notice.file]] as const,
+    ),
+  ] as const) {
+    const bytes = fs.readFileSync(new URL(url));
+    assert.equal(bytes.length, asset.bytes);
+    assert.equal(
+      createHash("sha256").update(bytes).digest("hex"),
+      asset.sha256,
+    );
+  }
+  assert.throws(
+    () =>
+      sdk.createFrozenight({
+        assetUrls: urls,
+        assetBaseUrl: "/manual/",
+      }),
+    /Choose assetUrls or assetBaseUrl/,
+  );
+});
 
 test("asset deployment removes obsolete owned bytes and preserves unrelated/modified files", () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "engine-assets-test-"));

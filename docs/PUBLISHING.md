@@ -248,7 +248,7 @@ always verifies fresh engine outputs before sealing a publishable artifact.
 bun add --exact chess-engine-kit@next
 ```
 
-Follow the [README](../README.md) for asset copying and analysis, or copy the
+Follow the [README](../README.md) for installation and analysis, or copy the
 [minimal example](../examples/minimal/README.md). Commit the application's manifest
 and lockfile. Recheck deployment base paths, production builds, offline behavior
 and required devices before replacing an existing integration.

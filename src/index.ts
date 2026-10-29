@@ -5,3 +5,7 @@ export {
   frozenightManifest,
   type FrozenightOptions,
 } from "./adapters/frozenight/index.js";
+export {
+  frozenightAssetUrls,
+  type FrozenightAssetUrls,
+} from "./adapters/frozenight/urls.js";
