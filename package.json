@@ -29,16 +29,8 @@
     "dist/",
     "LICENSE",
     "README.md",
-    "CHANGELOG.md",
     "THIRD_PARTY_NOTICES.md",
-    "docs/",
-    "examples/minimal/README.md",
-    "examples/minimal/package.json",
-    "examples/minimal/package-lock.json",
-    "examples/minimal/tsconfig.json",
-    "examples/minimal/vite.config.ts",
-    "examples/minimal/index.html",
-    "examples/minimal/src/"
+    "docs/"
   ],
   "sideEffects": false,
   "scripts": {
