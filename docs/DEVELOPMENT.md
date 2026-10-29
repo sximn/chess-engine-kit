@@ -117,11 +117,19 @@ match the independently verified build. A receipt binds the source commit,
 source fingerprint, tarball SHA-256 and engine-verification record. Source inputs
 changing during the process cause preparation to fail.
 
-CI runs this full preparation from a fresh checkout. A second native Linux job
-rebuilds independently and compares against the engine extracted from that run's
-tested npm tarball using `engine:verify --package <tarball>`. Generated engine
-outputs are not restored from a shared CI cache. Publishing remains a separate,
-manual workflow action; see the [publishing guide](PUBLISHING.md).
+PR and push CI runs `check`, `test:native` (including the full unit suite),
+`test:versioning`, `test:package` and `test:browser` from a fresh checkout. A second
+Linux job rebuilds independently and compares against the engine extracted from
+that run's tested npm tarball using `engine:verify --package <tarball>`. This is
+the PR's reproducibility check; the package job does not repeat it or create a
+release receipt. Generated engine outputs are not restored from a shared CI cache.
+
+The separate manual release workflow runs full `release:prepare`, then validates
+the receipt and rehearses npm publication with `release:dry-run`. This can contact
+the registry and rejects an already-published release candidate. PR checks
+validate the current package version even if it is already published. Registry
+identity, channel and upload checks also run during real publication. See the
+[publishing guide](PUBLISHING.md).
 
 Reports and tarballs are under `.build/`, browser traces under `test-results/`.
 Intermediate CI artifacts expire; successful GitHub releases retain the tested

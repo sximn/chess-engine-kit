@@ -20,6 +20,14 @@ jobs:
           targets: wasm32-unknown-unknown
       - name: Type-check SDK, scripts and tests
         run: bun run check
+      # test:native builds the SDK and runs the entire unit/engine suite with
+      # a freshly built native reference. No release receipt is needed for PRs.
+      - name: Run unit tests and native/WASM parity checks
+        run: bun run test:native
+      - name: Verify package version changes reuse the engine
+        run: bun run test:versioning
+      - name: Test the exact tarball in npm and Bun consumers
+        run: bun run test:package
       - name: Prefer Ubuntu archive for system packages
         shell: bash
         run: |
@@ -40,8 +48,8 @@ jobs:
       - name: Install Playwright browsers
         timeout-minutes: 10
         run: bunx playwright install chromium firefox webkit
-      - run: bun run release:prepare
-      - run: bun run release:dry-run
+      - name: Test installed package consumers in Chromium, Firefox and WebKit
+        run: bun run test:browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
@@ -49,7 +57,6 @@ jobs:
           include-hidden-files: true
           path: |
             .build/*.tgz
-            .build/release.json
             .build/reports/
   engine:
     name: Verify independent build against tested npm artifact

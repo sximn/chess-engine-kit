@@ -39,8 +39,12 @@ If `chess-engine-kit` has never been published:
 4. After the first successful publication, configure the trusted publisher below,
    remove the environment secret and revoke the bootstrap token.
 
-A dry run checks packaging; it cannot prove account ownership or publishing
-permission. npm enforces those permissions during the real upload. See npm's
+A dry run rehearses npm publication and rejects an already-published version;
+it cannot prove account ownership or publishing permission. PR CI tests the
+package and its consumers without invoking release preparation or publication.
+The manual release workflow validates the prepared receipt and runs
+`npm publish --dry-run`. npm enforces publication permissions during the real
+upload. See npm's
 [access token documentation](https://docs.npmjs.com/about-access-tokens/).
 
 ### Subsequent publications: npm trusted publisher
@@ -211,9 +215,14 @@ Set up the pinned local Rust toolchain as described in the
 [development guide](DEVELOPMENT.md#first-source-build). Unlike an ordinary SDK
 build, `release:prepare` deliberately bypasses the generated-asset cache and runs
 a fresh build, independent rebuild and live native reference checks. It requires
-no release tag, clean checkout or registry credentials for this local rehearsal. `release:dry-run`
-validates its receipt and invokes `npm publish <verified-tarball> --dry-run`.
-It uploads nothing and needs no placeholder token.
+no release tag, clean checkout or registry credentials for preparation.
+`release:dry-run` validates its receipt and engine evidence, then invokes
+`npm publish <verified-tarball> --ignore-scripts --dry-run` with the selected
+channel and registry. It uploads nothing and needs no placeholder token, but npm
+may contact the registry and rejects an already-published version. Run this for
+an unpublished release candidate; ordinary PR checks do not invoke it. To recover
+after an upload, use **Re-run failed jobs** on the original run so the publish job
+resumes with its original artifact without repeating the successful dry run.
 
 For a tagged release candidate, check its metadata locally with:
 
