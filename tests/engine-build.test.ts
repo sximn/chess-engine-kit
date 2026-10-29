@@ -3,7 +3,11 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
-import { buildInLinuxContainer } from "../scripts/maintenance/engine/linux-build.ts";
+import { makeEngineProject } from "./engine-fixture.ts";
+import {
+  validateEngine,
+  engineInputKey,
+} from "../scripts/maintenance/engine/engine-inputs.ts";
 import { rustEnvironment } from "../scripts/maintenance/engine/rust-environment.ts";
 
 test("native builds pin the model, compiler and target despite ambient Cargo overrides", () => {
@@ -41,57 +45,96 @@ test("native builds pin the model, compiler and target despite ambient Cargo ove
     assert.equal(env[name], undefined, name);
 });
 
-test("canonical compiler isolates Linux caches, mounts sources read-only and remaps paths", () => {
-  const directory = fs.mkdtempSync(
-    path.join(os.tmpdir(), "chess linux builder "),
+test("WASM builds use local pinned Rust, record its host and reject failed rebuilds", () => {
+  const directory = fs.realpathSync(
+    fs.mkdtempSync(path.join(os.tmpdir(), "chess local builder ")),
   );
   try {
-    fs.mkdirSync(path.join(directory, "target/release"), { recursive: true });
-    const native = path.join(directory, "target/release/native-reference");
-    fs.writeFileSync(native, "native cache");
-    const artifact = path.join(
+    makeEngineProject(directory);
+    const tools = path.join(directory, ".build/tools");
+    fs.mkdirSync(tools);
+    const invocation = path.join(tools, "invocation.json");
+    const version = path.join(tools, "version");
+    const failed = path.join(tools, "failed");
+    fs.writeFileSync(version, "1.90.0");
+    fs.writeFileSync(
+      path.join(tools, "rustc"),
+      `#!${process.execPath}
+import fs from "node:fs";
+console.log("release: " + fs.readFileSync(${JSON.stringify(version)}, "utf8") + "\\nhost: aarch64-apple-darwin");
+`,
+      { mode: 0o755 },
+    );
+    fs.writeFileSync(
+      path.join(tools, "cargo"),
+      `#!${process.execPath}
+import fs from "node:fs";
+import path from "node:path";
+if (fs.existsSync(${JSON.stringify(failed)})) process.exit(1);
+fs.writeFileSync(${JSON.stringify(invocation)}, JSON.stringify({ args: process.argv.slice(2), env: process.env }));
+const artifact = path.join(process.env.CARGO_TARGET_DIR, "wasm32-unknown-unknown/release/upapawn_engine.wasm");
+fs.mkdirSync(path.dirname(artifact), { recursive: true });
+fs.writeFileSync(artifact, Buffer.from([0, 97, 115, 109, 1, 0, 0, 0]));
+`,
+      { mode: 0o755 },
+    );
+    const run = () =>
+      Bun.spawnSync(
+        [
+          process.execPath,
+          "scripts/maintenance/engine/compile-engine.ts",
+          "--output",
+          ".build/output",
+        ],
+        {
+          cwd: directory,
+          env: {
+            ...process.env,
+            // Only the stub compiler is available; no external build service is used.
+            PATH: tools,
+            ENGINE_CARGO: path.join(tools, "cargo"),
+            CARGO_HOME: path.join(directory, ".build/cargo"),
+            RUSTFLAGS: "--cfg alternate",
+            CARGO_BUILD_TARGET: "another-target",
+          },
+        },
+      );
+    const result = run();
+    assert.equal(result.exitCode, 0, result.stderr.toString());
+    const manifest = validateEngine(
+      path.join(directory, ".build/output"),
+      engineInputKey(directory),
       directory,
-      "target/linux-x64/target/wasm32-unknown-unknown/release/upapawn_engine.wasm",
     );
-    const invocations: string[][] = [];
-    const bytes = Buffer.from("canonical compiler output");
-    const flags = [
-      "-C",
-      "link-arg=--max-memory=268435456",
-      "--remap-path-prefix=<engine-root>=/engine/frozenight",
-      "--remap-path-prefix=<cargo-home>=/cargo",
-    ];
-    const actual = buildInLinuxContainer(directory, flags, (args) => {
-      invocations.push(args);
-      if (args[0] === "run") {
-        assert.equal(args[args.indexOf("--platform") + 1], "linux/amd64");
-        assert.ok(args.includes(`${directory}:/engine/frozenight:ro`));
-        assert.ok(args.includes("CARGO_HOME=/cargo"));
-        assert.ok(args.includes("CARGO_TARGET_DIR=/engine/frozenight/target"));
-        assert.ok(args.includes("CARGO_INCREMENTAL=0"));
-        assert.ok(
-          args.includes(
-            "CARGO_ENCODED_RUSTFLAGS=-C\x1flink-arg=--max-memory=268435456\x1f--remap-path-prefix=/engine/frozenight=/engine/frozenight\x1f--remap-path-prefix=/cargo=/cargo",
-          ),
-        );
-        assert.equal(args.includes("--env-file"), false);
-        fs.mkdirSync(path.dirname(artifact), { recursive: true });
-        fs.writeFileSync(artifact, bytes);
-      }
-    });
-    assert.deepEqual(actual, bytes);
-    assert.deepEqual(
-      invocations.map((args) => args[0]),
-      ["build", "run"],
+    assert.equal(manifest.buildHost, "aarch64-apple-darwin");
+    const { args, env } = JSON.parse(fs.readFileSync(invocation, "utf8"));
+    assert.ok(args.includes("--locked"));
+    assert.equal(args[args.indexOf("--target") + 1], "wasm32-unknown-unknown");
+    assert.equal(env.RUSTUP_TOOLCHAIN, "1.90.0");
+    assert.equal(env.RUSTFLAGS, undefined);
+    assert.equal(env.CARGO_BUILD_TARGET, undefined);
+    assert.ok(
+      env.CARGO_ENCODED_RUSTFLAGS.includes(
+        `--remap-path-prefix=${path.join(directory, "engine/frozenight")}=/engine/frozenight`,
+      ),
     );
-    assert.equal(fs.readFileSync(native, "utf8"), "native cache");
-    // A failed rebuild must never return the previous successful artifact.
-    assert.throws(
-      () =>
-        buildInLinuxContainer(directory, flags, (args) => {
-          if (args[0] === "run") throw Error("Compiler failed");
-        }),
-      /Compiler failed/,
+    assert.ok(
+      env.CARGO_ENCODED_RUSTFLAGS.includes(
+        `--remap-path-prefix=${path.join(directory, ".build/cargo")}=/cargo`,
+      ),
+    );
+    fs.unlinkSync(invocation);
+    fs.writeFileSync(version, "1.91.0");
+    const wrongVersion = run();
+    assert.notEqual(wrongVersion.exitCode, 0);
+    assert.match(wrongVersion.stderr.toString(), /require Rust 1\.90\.0/);
+    assert.equal(fs.existsSync(invocation), false);
+    fs.writeFileSync(version, "1.90.0");
+    fs.writeFileSync(failed, "fail compilation");
+    assert.notEqual(
+      run().exitCode,
+      0,
+      "A failed build must not reuse stale WASM",
     );
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });

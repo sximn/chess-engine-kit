@@ -60,7 +60,7 @@ test("engine cache reuses verified outputs for SDK/version edits and invalidates
     );
     assert.notEqual(ensureEngine({ cwd, build }).key, initial.key);
     fs.appendFileSync(
-      path.join(cwd, "scripts/maintenance/engine/Dockerfile"),
+      path.join(cwd, "scripts/maintenance/engine/compile-engine.ts"),
       "\n# toolchain edit\n",
     );
     ensureEngine({ cwd, build });

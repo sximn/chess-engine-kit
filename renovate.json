@@ -14,7 +14,7 @@
     },
     {
       "description": "Review engine and compiler updates deliberately",
-      "matchManagers": ["cargo", "dockerfile", "rust-toolchain"],
+      "matchManagers": ["cargo", "rust-toolchain"],
       "dependencyDashboardApproval": true
     },
     {

@@ -4,7 +4,6 @@ import crypto from "node:crypto";
 import zlib from "node:zlib";
 import { spawnSync } from "node:child_process";
 import os from "node:os";
-import { buildInLinuxContainer } from "./linux-build.ts";
 import { rustEnvironment } from "./rust-environment.ts";
 import {
   canonicalFlags,
@@ -28,43 +27,48 @@ const actualFlags = canonicalFlags.map((flag) =>
   flag.replace("<engine-root>", root).replace("<cargo-home>", cargoHome),
 );
 const cargo = process.env.ENGINE_CARGO || "cargo";
-// A compiler version and WASM target alone do not fix host-dependent function
-// ordering. Distributable binaries use the Linux x86_64 Rust host.
-let bytes: Buffer;
+const env = rustEnvironment(root);
+const compiler = spawnSync(env.RUSTC!, ["-vV"], {
+  encoding: "utf8",
+  env,
+});
+const buildHost = /^host: (\S+)$/m.exec(compiler.stdout ?? "")?.[1];
 if (
-  process.platform === "linux" &&
-  process.arch === "x64" &&
-  process.env.ENGINE_BUILD_CONTAINER !== "1"
-) {
-  const built = spawnSync(
-    cargo,
-    [
-      "build",
-      "--manifest-path",
-      root + "/Cargo.toml",
-      "--locked",
-      "--release",
-      "--target",
-      "wasm32-unknown-unknown",
-      "-p",
-      "upapawn-engine",
-      "--lib",
-    ],
-    {
-      stdio: "inherit",
-      env: {
-        ...rustEnvironment(root),
-        CARGO_ENCODED_RUSTFLAGS: actualFlags.join("\x1f"),
-      },
+  compiler.status !== 0 ||
+  !/^release: 1\.90\.0$/m.test(compiler.stdout ?? "") ||
+  !buildHost
+)
+  throw Error(
+    "Engine builds require Rust 1.90.0 with the wasm32-unknown-unknown target. See docs/DEVELOPMENT.md#first-source-build.",
+    { cause: compiler.error },
+  );
+const built = spawnSync(
+  cargo,
+  [
+    "build",
+    "--manifest-path",
+    root + "/Cargo.toml",
+    "--locked",
+    "--release",
+    "--target",
+    "wasm32-unknown-unknown",
+    "-p",
+    "upapawn-engine",
+    "--lib",
+  ],
+  {
+    stdio: "inherit",
+    env: {
+      ...env,
+      CARGO_ENCODED_RUSTFLAGS: actualFlags.join("\x1f"),
     },
-  );
-  if (built.status !== 0) process.exit(built.status ?? 1);
-  bytes = fs.readFileSync(
-    root + "/target/wasm32-unknown-unknown/release/upapawn_engine.wasm",
-  );
-} else {
-  bytes = buildInLinuxContainer(root, canonicalFlags);
-}
+  },
+);
+if (built.error) throw built.error;
+if (built.status !== 0) process.exit(built.status ?? 1);
+const bytes = fs.readFileSync(
+  root + "/target/wasm32-unknown-unknown/release/upapawn_engine.wasm",
+);
 const sha = (bytes: Uint8Array) =>
   crypto.createHash("sha256").update(bytes).digest("hex");
 const source = crypto.createHash("sha256");
@@ -112,7 +116,7 @@ const manifest = {
     params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 9 },
   }).length,
   toolchain: "Rust 1.90.0",
-  buildHost: "x86_64-unknown-linux-gnu",
+  buildHost,
   target: "wasm32-unknown-unknown",
   mode: "scalar",
   threads: 1,

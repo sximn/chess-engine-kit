@@ -17,6 +17,11 @@ that version is published; an entry by itself does not mean it is available on n
 ### Bug Fixes
 
 - Add extra polling time when checking registry during publishing to avoid action failures that lead to published packaged without a github release
+- Restore verified publication evidence before testing GitHub release finalization
+  after failed publication attempts.
+- Align package verification and documentation links with the slim npm package.
+- Build and test engine sources with local Rust on macOS, Linux and other supported
+  hosts. Remove the Docker build setup and record the actual compiler host.
 
 ### Miscellaneous Chores
 

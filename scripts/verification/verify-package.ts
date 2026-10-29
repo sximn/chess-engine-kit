@@ -21,7 +21,9 @@ await verifyPackagedEngine(packed.file, {
 
 if (
   packed.files.some((file) =>
-    /^(src|engine|scripts|tests|node_modules|artifacts|\.build)\//.test(file),
+    /^(src|engine|scripts|tests|examples|node_modules|artifacts|\.build)\//.test(
+      file,
+    ),
   )
 ) {
   throw Error("Development files leaked into the runtime package");
@@ -31,12 +33,14 @@ for (const required of [
   "dist/index.js",
   "dist/types/index.d.ts",
   "dist/bin/copy-assets.js",
-  "CHANGELOG.md",
+  "LICENSE",
+  "README.md",
+  "THIRD_PARTY_NOTICES.md",
   "dist/assets/frozenight/LICENSE-MIT.txt",
   "dist/assets/frozenight/LICENSE-APACHE.txt",
   "dist/assets/frozenight/THIRD-PARTY-NOTICES.txt",
   "docs/API.md",
-  "docs/PUBLISHING.md",
+  "docs/PROVENANCE.md",
 ]) {
   if (!packed.files.includes(required)) {
     throw Error(`Missing packaged file: ${required}`);

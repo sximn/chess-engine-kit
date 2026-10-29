@@ -24,7 +24,8 @@ an upstream build input retained in Git. Compiled WASM and generated manifests
 are built from these inputs during CI/release preparation and included in the
 npm package, rather than committed. Local builds cache validated outputs by engine
 input fingerprint; release preparation always builds and independently verifies
-fresh outputs with the canonical Linux x86_64 Rust toolchain.
+fresh outputs with the same local Rust compiler host. CI release builds use the
+pinned Linux x86_64 Rust toolchain.
 
 Engine/model updates must revise the authored pins, reviewed notices and native
 reference fixtures together. Runtime users consume immutable package versions and
