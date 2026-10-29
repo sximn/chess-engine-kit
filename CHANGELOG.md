@@ -5,6 +5,13 @@ that version is published; an entry by itself does not mean it is available on n
 
 ## [Unreleased]
 
+### Security
+
+- Pin all GitHub Actions in verification and publishing workflows to full commit
+  hashes, including the Rust toolchain action, to prevent upstream tag or branch
+  changes from silently changing CI and release code
+  - https://docs.github.com/en/actions/reference/security/secure-use#using-third-party-actions
+
 ### Bug Fixes
 
 - Add extra polling time when checking registry during publishing to avoid action failures that lead to published packaged without a github release
